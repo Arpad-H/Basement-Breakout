@@ -132,7 +132,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 9d21708aeb1f5a94685b675d13ae2bce, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.6986752
+      value: -3.6985
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9d21708aeb1f5a94685b675d13ae2bce, type: 3}
       propertyPath: m_LocalPosition.y
@@ -140,7 +140,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9d21708aeb1f5a94685b675d13ae2bce, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1.8099543
+      value: -1.8097
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9d21708aeb1f5a94685b675d13ae2bce, type: 3}
       propertyPath: m_LocalRotation.w
@@ -176,7 +176,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 9d21708aeb1f5a94685b675d13ae2bce, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 230250885}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 9d21708aeb1f5a94685b675d13ae2bce, type: 3}
       insertIndex: -1
@@ -191,6 +194,37 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1809188935}
   m_SourcePrefab: {fileID: 100100000, guid: 9d21708aeb1f5a94685b675d13ae2bce, type: 3}
+--- !u!1 &230250884
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 230250885}
+  m_Layer: 0
+  m_Name: GrabPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &230250885
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 230250884}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.00013, y: 0.00816, z: -0.00171}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1809188933}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &438152058
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -199,6 +233,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1139692011}
     m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 243421b0bb179904f9ba27ecac587d00, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 55.593754
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 243421b0bb179904f9ba27ecac587d00, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 55.593754
+      objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 243421b0bb179904f9ba27ecac587d00, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3.7604
@@ -245,7 +287,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 243421b0bb179904f9ba27ecac587d00, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1063757920}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 243421b0bb179904f9ba27ecac587d00, type: 3}
       insertIndex: -1
@@ -282,7 +327,7 @@ HingeJoint:
   m_Anchor: {x: 0, y: 0.0002597618, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -3.7412798, y: 1.9743313, z: -1.5327634}
+  m_ConnectedAnchor: {x: -3.74611, y: 2.0674, z: -1.5320834}
   serializedVersion: 2
   m_UseSpring: 0
   m_Spring:
@@ -381,7 +426,7 @@ MonoBehaviour:
   m_StartingHoverFilters: []
   m_StartingSelectFilters: []
   m_StartingInteractionStrengthFilters: []
-  m_AttachTransform: {fileID: 0}
+  m_AttachTransform: {fileID: 1063757920}
   m_SecondaryAttachTransform: {fileID: 0}
   m_UseDynamicAttach: 0
   m_MatchAttachPosition: 1
@@ -756,6 +801,37 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 77e7c27b2c5525e4aa8cc9f99d654486, type: 3}
+--- !u!1 &1063757919
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1063757920}
+  m_Layer: 0
+  m_Name: GrabPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1063757920
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1063757919}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.00008, y: 0.00048, z: -0.00234}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 438152059}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1139692010
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1031,7 +1107,7 @@ HingeJoint:
   m_Anchor: {x: 0, y: 0.0002597618, z: 0}
   m_Axis: {x: 0, y: 0, z: 1}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0, y: 0, z: 0}
+  m_ConnectedAnchor: {x: -3.6842098, y: 2.1243858, z: -1.8117834}
   serializedVersion: 2
   m_UseSpring: 0
   m_Spring:
@@ -1130,7 +1206,7 @@ MonoBehaviour:
   m_StartingHoverFilters: []
   m_StartingSelectFilters: []
   m_StartingInteractionStrengthFilters: []
-  m_AttachTransform: {fileID: 0}
+  m_AttachTransform: {fileID: 230250885}
   m_SecondaryAttachTransform: {fileID: 0}
   m_UseDynamicAttach: 0
   m_MatchAttachPosition: 1
