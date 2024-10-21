@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using EzySlice;
 using UnityEngine.InputSystem;
+using UnityEngine.XR;
 
 //Credits, Code by: https://www.youtube.com/watch?v=GQzW6ZJFQ94
 public class SliceObject : MonoBehaviour
@@ -56,5 +57,10 @@ public class SliceObject : MonoBehaviour
         MeshCollider collider = slicedObject.AddComponent<MeshCollider>();
         collider.convex = true;
         rb.AddExplosionForce(cutForce, slicedObject.transform.position, 1);
+    }
+
+    public void canSaw()
+    {
+        print("Can saw");
     }
 }
