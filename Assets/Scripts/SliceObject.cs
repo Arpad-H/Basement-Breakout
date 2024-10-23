@@ -14,7 +14,8 @@ public class SliceObject : MonoBehaviour
     public LayerMask slicableLayer;
     public Material crossSectionMaterial;
     public float cutForce = 20;
-
+    private bool canCut = false;
+    
     void Start()
     {
         
@@ -23,7 +24,7 @@ public class SliceObject : MonoBehaviour
     void FixedUpdate()
     {
         bool hasHit = Physics.Linecast(startSlicePoint.position, endSlicePoint.position, out RaycastHit hit, slicableLayer);
-        if (hasHit)
+        if (hasHit && canCut)
         {
             GameObject target = hit.transform.gameObject;
             Slice(target);
@@ -61,6 +62,16 @@ public class SliceObject : MonoBehaviour
 
     public void canSaw()
     {
-        print("Can saw");
+        canCut = true;
+    }
+    
+    public void cantSaw()
+    {
+        canCut = false;
+    }
+
+    public void test()
+    {
+        print("TURNED ON");
     }
 }
