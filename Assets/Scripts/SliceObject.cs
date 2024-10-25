@@ -8,13 +8,14 @@ using UnityEngine.XR;
 //Credits, Code by: https://www.youtube.com/watch?v=GQzW6ZJFQ94
 public class SliceObject : MonoBehaviour
 {
-    public Transform startSlicePoint;
-    public Transform endSlicePoint;
-    public VelocityEstimator velocityEstimator;
-    public LayerMask slicableLayer;
-    public Material crossSectionMaterial;
-    public float cutForce = 20;
+    [SerializeField] private Transform startSlicePoint;
+    [SerializeField] private Transform endSlicePoint;
+    [SerializeField] private VelocityEstimator velocityEstimator;
+    [SerializeField] private LayerMask slicableLayer;
+    [SerializeField] private Material crossSectionMaterial;
+    [SerializeField] private float cutForce = 20;
     private bool canCut = false;
+    private bool hasFuel = false;
     
     void Start()
     {
@@ -24,7 +25,7 @@ public class SliceObject : MonoBehaviour
     void FixedUpdate()
     {
         bool hasHit = Physics.Linecast(startSlicePoint.position, endSlicePoint.position, out RaycastHit hit, slicableLayer);
-        if (hasHit && canCut)
+        if (hasHit && canCut && hasFuel)
         {
             GameObject target = hit.transform.gameObject;
             Slice(target);
@@ -43,10 +44,10 @@ public class SliceObject : MonoBehaviour
         {
             GameObject upperHull = hull.CreateUpperHull(target, crossSectionMaterial);
             SetupSlicedComponent(upperHull);
-            upperHull.layer = LayerMask.NameToLayer("Sliceable");
+            //upperHull.layer = LayerMask.NameToLayer("Sliceable");
             GameObject lowerHull = hull.CreateLowerHull(target, crossSectionMaterial);
             SetupSlicedComponent(lowerHull);
-            lowerHull.layer = LayerMask.NameToLayer("Sliceable");
+            //lowerHull.layer = LayerMask.NameToLayer("Sliceable");
             
             Destroy(target);
         }
@@ -70,8 +71,8 @@ public class SliceObject : MonoBehaviour
         canCut = false;
     }
 
-    public void test()
+    public void fueledUp()
     {
-        print("TURNED ON");
+        hasFuel = true;
     }
 }
