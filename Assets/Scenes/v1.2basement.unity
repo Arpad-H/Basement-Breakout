@@ -240,6 +240,32 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!1 &133487408 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -5711052370896006010, guid: 50f0105f4cbc24bc9a8a39ddbfc8671d, type: 3}
+  m_PrefabInstance: {fileID: 1308355299}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &133487412
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 133487408}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.025670478, y: 0.022843413, z: 0}
+  m_Center: {x: -0.0028352393, y: 0.009523548, z: 2.220446e-16}
 --- !u!1001 &186438179
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1797,7 +1823,10 @@ PrefabInstance:
     - {fileID: -2572967989333021709, guid: 50f0105f4cbc24bc9a8a39ddbfc8671d, type: 3}
     - {fileID: -8700617353114198275, guid: 50f0105f4cbc24bc9a8a39ddbfc8671d, type: 3}
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: -5711052370896006010, guid: 50f0105f4cbc24bc9a8a39ddbfc8671d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 133487412}
   m_SourcePrefab: {fileID: 100100000, guid: 50f0105f4cbc24bc9a8a39ddbfc8671d, type: 3}
 --- !u!1 &1397804778
 GameObject:
@@ -2779,13 +2808,49 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8284155835808247997, guid: 4cca9a3bfc3619a46ad5cffad9cefdc6, type: 3}
+      propertyPath: angleThreshold
+      value: 85
+      objectReference: {fileID: 0}
+    - target: {fileID: 8284155835808247997, guid: 4cca9a3bfc3619a46ad5cffad9cefdc6, type: 3}
+      propertyPath: onLeverActivated.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8284155835808247997, guid: 4cca9a3bfc3619a46ad5cffad9cefdc6, type: 3}
+      propertyPath: onLeverActivated.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8284155835808247997, guid: 4cca9a3bfc3619a46ad5cffad9cefdc6, type: 3}
       propertyPath: onLeverActivated.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1534472015}
     - target: {fileID: 8284155835808247997, guid: 4cca9a3bfc3619a46ad5cffad9cefdc6, type: 3}
+      propertyPath: onLeverActivated.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 16728748}
+    - target: {fileID: 8284155835808247997, guid: 4cca9a3bfc3619a46ad5cffad9cefdc6, type: 3}
       propertyPath: onLeverDeactivated.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1534472015}
+    - target: {fileID: 8284155835808247997, guid: 4cca9a3bfc3619a46ad5cffad9cefdc6, type: 3}
+      propertyPath: onLeverActivated.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8284155835808247997, guid: 4cca9a3bfc3619a46ad5cffad9cefdc6, type: 3}
+      propertyPath: onLeverActivated.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: set_intensity
+      objectReference: {fileID: 0}
+    - target: {fileID: 8284155835808247997, guid: 4cca9a3bfc3619a46ad5cffad9cefdc6, type: 3}
+      propertyPath: onLeverActivated.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: UnityEngine.Light, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 8284155835808247997, guid: 4cca9a3bfc3619a46ad5cffad9cefdc6, type: 3}
+      propertyPath: onLeverActivated.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_FloatArgument
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 8284155835808247997, guid: 4cca9a3bfc3619a46ad5cffad9cefdc6, type: 3}
+      propertyPath: onLeverActivated.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
