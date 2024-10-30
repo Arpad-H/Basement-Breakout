@@ -4,6 +4,7 @@ using UnityEngine;
 using EzySlice;
 using UnityEngine.InputSystem;
 using UnityEngine.XR;
+using Plane = UnityEngine.Plane;
 
 //Credits, Code by: https://www.youtube.com/watch?v=GQzW6ZJFQ94
 public class SliceObject : MonoBehaviour
@@ -16,10 +17,12 @@ public class SliceObject : MonoBehaviour
     [SerializeField] private float cutForce = 20;
     private bool canCut = false;
     private bool hasFuel = false;
+    private GameObject FuelGauge;
     
     void Start()
     {
-        
+        FuelGauge = GameObject.Find("Fuel");
+        FuelGauge.transform.localScale = new Vector3(0, 1, 0.01f);
     }
 
     void FixedUpdate()
@@ -44,9 +47,9 @@ public class SliceObject : MonoBehaviour
         {
             GameObject upperHull = hull.CreateUpperHull(target, crossSectionMaterial);
             SetupSlicedComponent(upperHull);
-            //upperHull.layer = LayerMask.NameToLayer("Sliceable");
             GameObject lowerHull = hull.CreateLowerHull(target, crossSectionMaterial);
             SetupSlicedComponent(lowerHull);
+            //upperHull.layer = LayerMask.NameToLayer("Sliceable");
             //lowerHull.layer = LayerMask.NameToLayer("Sliceable");
             
             Destroy(target);
@@ -74,5 +77,10 @@ public class SliceObject : MonoBehaviour
     public void fueledUp()
     {
         hasFuel = true;
+    }
+
+    public void fueling(float fuel)
+    {
+        FuelGauge.transform.localScale = new Vector3(fuel, 1, 0.01f);
     }
 }

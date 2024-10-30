@@ -9949,6 +9949,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1499500365}
     - target: {fileID: 829404216742919394, guid: 7e07047b3137c044f87c4b3ea2a21e2c, type: 3}
+      propertyPath: maxCuts
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 829404216742919394, guid: 7e07047b3137c044f87c4b3ea2a21e2c, type: 3}
       propertyPath: cutForce
       value: 20
       objectReference: {fileID: 0}
@@ -13028,7 +13032,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 2.2e-44, y: 2.4405384e-30, z: 9.1858e-41, w: 4.591775e-39}
+  m_BoundingSphereOverride: {x: 1.02e-43, y: 3e-45, z: 3.99e-42, w: 0}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
@@ -18119,9 +18123,41 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4390401286268406329, guid: e4d84735f28b01e43ba5d970d9a7ab3c, type: 3}
+      propertyPath: fueling.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4390401286268406329, guid: e4d84735f28b01e43ba5d970d9a7ab3c, type: 3}
+      propertyPath: fueling.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4390401286268406329, guid: e4d84735f28b01e43ba5d970d9a7ab3c, type: 3}
       propertyPath: fueled.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1300995622}
+    - target: {fileID: 4390401286268406329, guid: e4d84735f28b01e43ba5d970d9a7ab3c, type: 3}
+      propertyPath: fueling.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1300995622}
+    - target: {fileID: 4390401286268406329, guid: e4d84735f28b01e43ba5d970d9a7ab3c, type: 3}
+      propertyPath: fueling.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4390401286268406329, guid: e4d84735f28b01e43ba5d970d9a7ab3c, type: 3}
+      propertyPath: fueling.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: fueling
+      objectReference: {fileID: 0}
+    - target: {fileID: 4390401286268406329, guid: e4d84735f28b01e43ba5d970d9a7ab3c, type: 3}
+      propertyPath: fueling.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: SliceObject, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4390401286268406329, guid: e4d84735f28b01e43ba5d970d9a7ab3c, type: 3}
+      propertyPath: fueling.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_FloatArgument
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4390401286268406329, guid: e4d84735f28b01e43ba5d970d9a7ab3c, type: 3}
+      propertyPath: fueling.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

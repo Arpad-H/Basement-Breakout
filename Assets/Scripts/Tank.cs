@@ -8,14 +8,23 @@ public class Tank : MonoBehaviour
 {
     [SerializeField] private GameObject tankHole;
     [SerializeField] private UnityEvent fueled = new UnityEvent();
-    private bool canSnap = false;
-    private Vector3 snapPos;
+    [SerializeField] private UnityEvent<float> fueling;
+    private bool fueledUp = false;
+    private float fuelTimer = 0;
 
     void FixedUpdate()
     {
-        if (canSnap)
+        if (fueledUp)
         {
-            transform.position = snapPos;
+            fuelTimer += Time.deltaTime;
+            if (fuelTimer >= 3)
+            {
+                fueled.Invoke();
+            }
+            else
+            {
+                fueling.Invoke(fuelTimer/10);
+            }
         }
     }
     
@@ -23,10 +32,15 @@ public class Tank : MonoBehaviour
     {
         if (other.gameObject.layer == 7)
         {
-            fueled.Invoke();
-            snapPos = other.transform.position;
-            canSnap = true;
+            fueledUp = true;
         }
-            
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.layer == 7)
+        {
+            fueledUp = false;
+        }
     }
 }
