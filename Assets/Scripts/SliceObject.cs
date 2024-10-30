@@ -32,7 +32,6 @@ public class SliceObject : MonoBehaviour
         {
             GameObject target = hit.transform.gameObject;
             Slice(target);
-            print("RAAAAAAHHHHHH");
         }
     }
 
