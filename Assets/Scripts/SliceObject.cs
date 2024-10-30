@@ -22,7 +22,7 @@ public class SliceObject : MonoBehaviour
     void Start()
     {
         FuelGauge = GameObject.Find("Fuel");
-        FuelGauge.transform.localScale = new Vector3(0, 1, 0.01f);
+        FuelGauge.transform.localScale = new Vector3(0.001f, 1, 0);
     }
 
     void FixedUpdate()
@@ -32,6 +32,7 @@ public class SliceObject : MonoBehaviour
         {
             GameObject target = hit.transform.gameObject;
             Slice(target);
+            print("RAAAAAAHHHHHH");
         }
     }
 
@@ -81,6 +82,6 @@ public class SliceObject : MonoBehaviour
 
     public void fueling(float fuel)
     {
-        FuelGauge.transform.localScale = new Vector3(fuel, 1, 0.01f);
+        FuelGauge.transform.localScale = new Vector3(0.001f, 1, fuel);
     }
 }

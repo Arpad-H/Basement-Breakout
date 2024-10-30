@@ -23,7 +23,7 @@ public class Tank : MonoBehaviour
             }
             else
             {
-                fueling.Invoke(fuelTimer/10);
+                fueling.Invoke(fuelTimer/1000);
             }
         }
     }
