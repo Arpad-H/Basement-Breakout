@@ -3,26 +3,32 @@ using System.Collections.Generic;
 using UnityEngine;
 using EzySlice;
 using UnityEngine.InputSystem;
+using UnityEngine.XR;
+using Plane = UnityEngine.Plane;
 
 //Credits, Code by: https://www.youtube.com/watch?v=GQzW6ZJFQ94
 public class SliceObject : MonoBehaviour
 {
-    public Transform startSlicePoint;
-    public Transform endSlicePoint;
-    public VelocityEstimator velocityEstimator;
-    public LayerMask slicableLayer;
-    public Material crossSectionMaterial;
-    public float cutForce = 20;
-
+    [SerializeField] private Transform startSlicePoint;
+    [SerializeField] private Transform endSlicePoint;
+    [SerializeField] private VelocityEstimator velocityEstimator;
+    [SerializeField] private LayerMask slicableLayer;
+    [SerializeField] private Material crossSectionMaterial;
+    [SerializeField] private float cutForce = 20;
+    private bool canCut = false;
+    private bool hasFuel = false;
+    private GameObject FuelGauge;
+    
     void Start()
     {
-        
+        FuelGauge = GameObject.Find("Fuel");
+        FuelGauge.transform.localScale = new Vector3(0, 1, 0.01f);
     }
 
     void FixedUpdate()
     {
         bool hasHit = Physics.Linecast(startSlicePoint.position, endSlicePoint.position, out RaycastHit hit, slicableLayer);
-        if (hasHit)
+        if (hasHit && canCut && hasFuel)
         {
             GameObject target = hit.transform.gameObject;
             Slice(target);
@@ -41,10 +47,10 @@ public class SliceObject : MonoBehaviour
         {
             GameObject upperHull = hull.CreateUpperHull(target, crossSectionMaterial);
             SetupSlicedComponent(upperHull);
-            upperHull.layer = LayerMask.NameToLayer("Sliceable");
             GameObject lowerHull = hull.CreateLowerHull(target, crossSectionMaterial);
             SetupSlicedComponent(lowerHull);
-            lowerHull.layer = LayerMask.NameToLayer("Sliceable");
+            //upperHull.layer = LayerMask.NameToLayer("Sliceable");
+            //lowerHull.layer = LayerMask.NameToLayer("Sliceable");
             
             Destroy(target);
         }
@@ -56,5 +62,25 @@ public class SliceObject : MonoBehaviour
         MeshCollider collider = slicedObject.AddComponent<MeshCollider>();
         collider.convex = true;
         rb.AddExplosionForce(cutForce, slicedObject.transform.position, 1);
+    }
+
+    public void canSaw()
+    {
+        canCut = true;
+    }
+    
+    public void cantSaw()
+    {
+        canCut = false;
+    }
+
+    public void fueledUp()
+    {
+        hasFuel = true;
+    }
+
+    public void fueling(float fuel)
+    {
+        FuelGauge.transform.localScale = new Vector3(fuel, 1, 0.01f);
     }
 }
