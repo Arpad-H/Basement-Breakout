@@ -27,13 +27,6 @@ public class SoundFXManager : MonoBehaviour
         Destroy(audioSource.gameObject, clipLength);
         
     }
-
-    void Start()
-    {
-        
-    }
-    void Update()
-    {
-        
-    }
+    
+    
 }
