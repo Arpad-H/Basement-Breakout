@@ -16,13 +16,14 @@ public class AudioDetection : MonoBehaviour
 
     void Update()
     {
-        audioSource.time = (Microphone.GetPosition(Microphone.devices[0])) / (float)AudioSettings.outputSampleRate;
+        audioSource.time = Microphone.GetPosition(Microphone.devices[0]) / (float)AudioSettings.outputSampleRate;
     }
 
     public void PlaySound()
     {
         audioSource.clip = recordedClip;
         audioSource.Play();
+        
     }
 
     public void StopSound()

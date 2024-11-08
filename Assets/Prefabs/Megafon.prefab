@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 5622123199990451281}
   - component: {fileID: 5594703075476407420}
   - component: {fileID: 5033613440406940057}
+  - component: {fileID: 4562825709338499181}
+  - component: {fileID: 7816949208072428348}
   - component: {fileID: 308297043390501585}
   m_Layer: 0
   m_Name: Megafon
@@ -305,6 +307,25 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!165 &4562825709338499181
+AudioHighPassFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2406590741490554404}
+  m_Enabled: 1
+  m_CutoffFrequency: 1715
+  m_HighpassResonanceQ: 1
+--- !u!170 &7816949208072428348
+AudioDistortionFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2406590741490554404}
+  m_Enabled: 1
+  m_DistortionLevel: 0.5
 --- !u!114 &308297043390501585
 MonoBehaviour:
   m_ObjectHideFlags: 0
