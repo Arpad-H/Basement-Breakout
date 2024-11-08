@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using EzySlice;
 using UnityEngine.InputSystem;
+using UnityEngine.UIElements;
 using UnityEngine.XR;
 using Plane = UnityEngine.Plane;
 
@@ -15,23 +16,32 @@ public class SliceObject : MonoBehaviour
     [SerializeField] private LayerMask slicableLayer;
     [SerializeField] private Material crossSectionMaterial;
     [SerializeField] private float cutForce = 20;
+    [SerializeField] private Transform waterPos;
+    [SerializeField] private GameObject Eyes;
     private bool canCut = false;
     private bool hasFuel = false;
+    private bool noWaterDamage = true;
     private GameObject FuelGauge;
     
     void Start()
     {
         FuelGauge = GameObject.Find("Fuel");
-        FuelGauge.transform.localScale = new Vector3(0, 1, 0.01f);
+        FuelGauge.transform.localScale = new Vector3(0.001f, 1, 0);
     }
 
     void FixedUpdate()
     {
         bool hasHit = Physics.Linecast(startSlicePoint.position, endSlicePoint.position, out RaycastHit hit, slicableLayer);
-        if (hasHit && canCut && hasFuel)
+        if (hasHit && canCut && hasFuel && noWaterDamage)
         {
             GameObject target = hit.transform.gameObject;
             Slice(target);
+        }
+
+        if (transform.position.y < waterPos.position.y)
+        {
+            noWaterDamage = false;
+            Eyes.SetActive(true);
         }
     }
 
@@ -81,6 +91,6 @@ public class SliceObject : MonoBehaviour
 
     public void fueling(float fuel)
     {
-        FuelGauge.transform.localScale = new Vector3(fuel, 1, 0.01f);
+        FuelGauge.transform.localScale = new Vector3(0.001f, 1, fuel);
     }
 }
