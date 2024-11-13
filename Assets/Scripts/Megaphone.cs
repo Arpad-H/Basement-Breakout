@@ -23,7 +23,6 @@ public class AudioDetection : MonoBehaviour
     {
         if (hasEnergy)
         {
-            print("RAAAAHHHHHH");
             audioSource.clip = recordedClip;
             audioSource.time = (Microphone.GetPosition(Microphone.devices[0]) - 1280) / (float)AudioSettings.outputSampleRate;
             audioSource.Play();
