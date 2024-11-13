@@ -8,6 +8,7 @@ public class TVBehavior : MonoBehaviour
     [SerializeField] private VideoClip[] clips;
     private VideoClip currentClip;
     private VideoPlayer videoPlayer;
+    private AudioSource audioSource;
 
     // Dictionary to store each clip’s last playtime and last update time
     private Dictionary<VideoClip, double> clipLastPlayTime = new Dictionary<VideoClip, double>();
@@ -16,6 +17,12 @@ public class TVBehavior : MonoBehaviour
     void Start()
     {
         videoPlayer = VideoQuad.GetComponent<VideoPlayer>();
+        audioSource = VideoQuad.GetComponent<AudioSource>();
+
+        // Set the AudioSource to be used by the VideoPlayer
+        videoPlayer.audioOutputMode = VideoAudioOutputMode.AudioSource;
+        videoPlayer.SetTargetAudioSource(0, audioSource);
+
         currentClip = clips[0];
         videoPlayer.clip = currentClip;
 
@@ -29,12 +36,7 @@ public class TVBehavior : MonoBehaviour
 
     void Update()
     {
-        // if (videoPlayer.isPlaying && videoPlayer.time >= videoPlayer.clip.length)
-        // {
-        //     // Automatically loop the clip
-        //     videoPlayer.time = 0;
-        //     videoPlayer.Play();
-        // }
+
     }
 
     public void changeClip()
