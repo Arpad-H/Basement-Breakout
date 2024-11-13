@@ -47,7 +47,7 @@ public class SliceObject : MonoBehaviour {
             Eyes.SetActive(true);
         }
     }
-
+    
     public void Slice(GameObject target) {
         if (!chainsawStartUpSound.isPlaying) {
             chainsawStartUpSound.Play();

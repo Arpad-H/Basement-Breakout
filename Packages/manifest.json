@@ -3,6 +3,7 @@
     "com.unity.collab-proxy": "2.5.2",
     "com.unity.feature.development": "1.0.1",
     "com.unity.feature.vr": "1.0.0",
+    "com.unity.formats.alembic": "2.3.4",
     "com.unity.inputsystem": "1.11.0",
     "com.unity.learn.iet-framework": "3.1.3",
     "com.unity.postprocessing": "3.4.0",
@@ -11,8 +12,9 @@
     "com.unity.timeline": "1.7.6",
     "com.unity.visualscripting": "1.9.4",
     "com.unity.xr.interaction.toolkit": "3.0.3",
-    "com.unity.xr.management": "4.4.0",
+    "com.unity.xr.management": "4.5.0",
     "com.unity.xr.openxr": "1.12.1",
+    "io.z3y.github.shadergraph": "https://github.com/z3y/ShaderGraph.git",
     "com.unity.modules.ai": "1.0.0",
     "com.unity.modules.androidjni": "1.0.0",
     "com.unity.modules.animation": "1.0.0",
@@ -44,5 +46,14 @@
     "com.unity.modules.vr": "1.0.0",
     "com.unity.modules.wind": "1.0.0",
     "com.unity.modules.xr": "1.0.0"
-  }
+  },
+  "scopedRegistries": [
+    {
+      "name": "sg",
+      "url": "https://z3y.github.io/vpm-package-listing/",
+      "scopes": [
+        "global"
+      ]
+    }
+  ]
 }

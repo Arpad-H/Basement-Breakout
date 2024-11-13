@@ -9,7 +9,7 @@ public class WebglWater : MonoBehaviour
     private float deltaTime = 0.0f;
     Mesh myMesh;
     MeshFilter meshFilter;
-    Material myMaterial;
+   public Material myMaterial;
     private RenderTexture textureA;
     private RenderTexture textureB;
 
@@ -48,7 +48,7 @@ public class WebglWater : MonoBehaviour
         ClearRenderTexture(textureB, Color.black);
 
 
-        myMaterial = new Material(myShader);
+       // myMaterial = new Material(myShader);
 
         myMaterial.SetFloat("_Strength", 1);
         myMaterial.SetTexture("_MainTex", textureA);
