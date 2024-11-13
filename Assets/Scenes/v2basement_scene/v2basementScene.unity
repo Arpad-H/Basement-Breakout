@@ -5375,7 +5375,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7277802327414017198, guid: 77e7c27b2c5525e4aa8cc9f99d654486, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7434851320941268098, guid: 77e7c27b2c5525e4aa8cc9f99d654486, type: 3}
       propertyPath: m_AnchorMax.y
@@ -10874,6 +10874,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1343745671}
     m_Modifications:
+    - target: {fileID: 2145916827128595876, guid: 0e349627c21d95a40ae2705e9043e063, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2406590741490554404, guid: 0e349627c21d95a40ae2705e9043e063, type: 3}
       propertyPath: m_Name
       value: Megafon
@@ -11661,6 +11665,34 @@ PrefabInstance:
     - target: {fileID: 4351743596747679566, guid: e4d84735f28b01e43ba5d970d9a7ab3c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4390401286268406329, guid: e4d84735f28b01e43ba5d970d9a7ab3c, type: 3}
+      propertyPath: fueling.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4390401286268406329, guid: e4d84735f28b01e43ba5d970d9a7ab3c, type: 3}
+      propertyPath: fueled.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1157876655}
+    - target: {fileID: 4390401286268406329, guid: e4d84735f28b01e43ba5d970d9a7ab3c, type: 3}
+      propertyPath: fueling.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1157876655}
+    - target: {fileID: 4390401286268406329, guid: e4d84735f28b01e43ba5d970d9a7ab3c, type: 3}
+      propertyPath: fueling.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4390401286268406329, guid: e4d84735f28b01e43ba5d970d9a7ab3c, type: 3}
+      propertyPath: fueling.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: fueling
+      objectReference: {fileID: 0}
+    - target: {fileID: 4390401286268406329, guid: e4d84735f28b01e43ba5d970d9a7ab3c, type: 3}
+      propertyPath: fueling.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: SliceObject, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4390401286268406329, guid: e4d84735f28b01e43ba5d970d9a7ab3c, type: 3}
+      propertyPath: fueling.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -13902,6 +13934,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1343745671}
     m_Modifications:
+    - target: {fileID: 780129849666425575, guid: 2e87cbfa1e33a254489d893dbfc60d0e, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2662663139574317706, guid: 2e87cbfa1e33a254489d893dbfc60d0e, type: 3}
       propertyPath: waterPos
       value: 
@@ -13909,6 +13945,10 @@ PrefabInstance:
     - target: {fileID: 6045873690304899379, guid: 2e87cbfa1e33a254489d893dbfc60d0e, type: 3}
       propertyPath: m_Name
       value: Ducksaw (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6950021897969804529, guid: 2e87cbfa1e33a254489d893dbfc60d0e, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7427172545186742082, guid: 2e87cbfa1e33a254489d893dbfc60d0e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -13960,6 +14000,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7427172545186742082, guid: 2e87cbfa1e33a254489d893dbfc60d0e, type: 3}
   m_PrefabInstance: {fileID: 1157876651}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1157876655 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2662663139574317706, guid: 2e87cbfa1e33a254489d893dbfc60d0e, type: 3}
+  m_PrefabInstance: {fileID: 1157876651}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 323991cf22e4b624dab153147027d35e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1158073579
 PrefabInstance:
   m_ObjectHideFlags: 0
