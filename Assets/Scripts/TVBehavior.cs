@@ -1,30 +1,51 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Video;
 
 public class TVBehavior : MonoBehaviour
 {
-    // Start is called before the first frame update
     [SerializeField] private GameObject VideoQuad;
     [SerializeField] private VideoClip[] clips;
     private VideoClip currentClip;
+    private VideoPlayer videoPlayer;
+
+    // Dictionary to store each clip’s last playtime and last update time
+    private Dictionary<VideoClip, double> clipLastPlayTime = new Dictionary<VideoClip, double>();
+    private Dictionary<VideoClip, double> clipLastUpdateTime = new Dictionary<VideoClip, double>();
+
     void Start()
     {
+        videoPlayer = VideoQuad.GetComponent<VideoPlayer>();
         currentClip = clips[0];
-        VideoQuad.GetComponent<VideoPlayer>().clip = currentClip;   
+        videoPlayer.clip = currentClip;
+
+        // Initialize playtime and last update time for each clip
+        foreach (var clip in clips)
+        {
+            clipLastPlayTime[clip] = 0.0;
+            clipLastUpdateTime[clip] = Time.time;
+        }
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+        // if (videoPlayer.isPlaying && videoPlayer.time >= videoPlayer.clip.length)
+        // {
+        //     // Automatically loop the clip
+        //     videoPlayer.time = 0;
+        //     videoPlayer.Play();
+        // }
     }
 
     public void changeClip()
     {
-        // add debug message
         Debug.Log("Changing Clip");
+
+        // Calculate ongoing time for the current clip
+        clipLastPlayTime[currentClip] += Time.time - clipLastUpdateTime[currentClip];
+        clipLastPlayTime[currentClip] %= currentClip.length; // Ensure it wraps if over the length
+
+        // Move to the next clip in sequence
         for (int i = 0; i < clips.Length; i++)
         {
             if (clips[i] == currentClip)
@@ -33,21 +54,30 @@ public class TVBehavior : MonoBehaviour
                 {
                     Debug.Log("Last Clip");
                     currentClip = clips[0];
-                    updateClipOnQuad();
                 }
                 else
                 {
                     Debug.Log("Next Clip");
                     currentClip = clips[i + 1];
-                    updateClipOnQuad();
                 }
+                updateClipOnQuad();
                 break;
             }
         }
     }
-    
+
     public void updateClipOnQuad()
     {
-        VideoQuad.GetComponent<VideoPlayer>().clip = currentClip;
+        videoPlayer.clip = currentClip;
+
+        // Calculate the virtual playback time based on the elapsed time since last update
+        double elapsedTime = Time.time - clipLastUpdateTime[currentClip];
+        double virtualTime = (clipLastPlayTime[currentClip] + elapsedTime) % currentClip.length;
+
+        // Set videoPlayer time to this calculated virtual time
+        videoPlayer.time = virtualTime;
+        clipLastUpdateTime[currentClip] = Time.time;
+
+        videoPlayer.Play();
     }
 }
