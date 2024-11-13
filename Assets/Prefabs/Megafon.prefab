@@ -98,7 +98,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &5900991311201494195
 Transform:
   m_ObjectHideFlags: 0
@@ -127,6 +127,7 @@ GameObject:
   - component: {fileID: 3609450359068675380}
   - component: {fileID: 8186019911035935587}
   - component: {fileID: 5850861100831260755}
+  - component: {fileID: 7071119537619082203}
   m_Layer: 0
   m_Name: Door
   m_TagString: Untagged
@@ -220,6 +221,33 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &7071119537619082203
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2284635274110623298}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &2406590741490554404
 GameObject:
   m_ObjectHideFlags: 0
@@ -232,10 +260,7 @@ GameObject:
   - component: {fileID: 5622123199990451281}
   - component: {fileID: 5594703075476407420}
   - component: {fileID: 5033613440406940057}
-  - component: {fileID: 4562825709338499181}
-  - component: {fileID: 7816949208072428348}
   - component: {fileID: 308297043390501585}
-  - component: {fileID: 2145916827128595876}
   m_Layer: 0
   m_Name: Megafon
   m_TagString: Untagged
@@ -443,7 +468,7 @@ AudioSource:
   m_GameObject: {fileID: 2406590741490554404}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -4022930909100350339, guid: d09f38e0f944a2f4b90473f9b15c50cb, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -520,7 +545,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 1
+      value: 1.1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -530,25 +555,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!165 &4562825709338499181
-AudioHighPassFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2406590741490554404}
-  m_Enabled: 1
-  m_CutoffFrequency: 1715
-  m_HighpassResonanceQ: 1
---- !u!170 &7816949208072428348
-AudioDistortionFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2406590741490554404}
-  m_Enabled: 1
-  m_DistortionLevel: 0.5
 --- !u!114 &308297043390501585
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -561,14 +567,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e27a79c467389c54abbebb920a1bad08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!81 &2145916827128595876
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2406590741490554404}
-  m_Enabled: 1
 --- !u!1 &5550325088936757064
 GameObject:
   m_ObjectHideFlags: 0
@@ -586,7 +584,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7668934513423000628
 Transform:
   m_ObjectHideFlags: 0
