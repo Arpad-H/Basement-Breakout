@@ -21,14 +21,15 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: M_Decal_Puddle_02
-  m_Shader: {fileID: -6465566751694194690, guid: d17930beb575b3646a642bdf1854b4a6,
-    type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: d17930beb575b3646a642bdf1854b4a6, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
+  - _SURFACE_TYPE_TRANSPARENT
+  m_InvalidKeywords:
   - _BUILTIN_SURFACE_TYPE_TRANSPARENT
   - _MATERIAL_AFFECTS_ALBEDO
   - _MATERIAL_AFFECTS_MASKMAP
-  - _SURFACE_TYPE_TRANSPARENT
-  m_InvalidKeywords: []
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 1
   m_DoubleSidedGI: 0
@@ -37,11 +38,16 @@ Material:
     RenderType: Transparent
   disabledShaderPasses:
   - DepthOnly
+  m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
     - _Albedo:
         m_Texture: {fileID: 2800000, guid: 433b20d9ed0c95049891c04b2885bb43, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DFG:
+        m_Texture: {fileID: 2800000, guid: 83d5abfd23f37a645bb0bc0e39aae43a, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Normals:
@@ -97,6 +103,7 @@ Material:
     - _DrawOrder: 0
     - _DstBlend: 10
     - _Float: -157.04
+    - _GlossyReflections: 1
     - _Hue_Intensity: -59.57
     - _OpacityIntensity: 1
     - _QueueControl: 1
@@ -104,6 +111,7 @@ Material:
     - _ReceiveShadows: 1
     - _Roughness: 0
     - _Roughness_Intensity: 0
+    - _SpecularHighlights: 1
     - _SrcBlend: 5
     - _Surface: 1
     - _U_Tile: 0.5
