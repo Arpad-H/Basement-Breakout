@@ -5,33 +5,60 @@ using UnityEngine;
 
 public class AudioDetection : MonoBehaviour
 {
-    
+    private string micName;
     private AudioSource audioSource;
     private AudioClip recordedClip;
     private GameObject battery;
     private bool hasEnergy = false;
+    private AudioHighPassFilter filter;
     
     void Start()
     {
+        micName = Microphone.devices[0];
         battery = GameObject.Find("InsertedBattery");
         battery.SetActive(false);
+        /*audioSource = GetComponent<AudioSource>();
+        recordedClip = Microphone.Start(Microphone.devices[0], true, 3599, AudioSettings.outputSampleRate); //"Headset Microphone (Oculus Virtual Audio Device)"*/
+        
         audioSource = GetComponent<AudioSource>();
-        recordedClip = Microphone.Start(Microphone.devices[0], true, 3599, AudioSettings.outputSampleRate); //"Headset Microphone (Oculus Virtual Audio Device)"
+        
+
+        
+
+        
+        audioSource.loop = true;
+        //audioSource.Play();
+
+        filter = new AudioHighPassFilter();
+        if (filter != null)
+        {
+            filter.cutoffFrequency = 1750;
+        }
     }
 
     public void PlaySound()
     {
-        if (hasEnergy)
+        if (hasEnergy && !audioSource.isPlaying)
         {
+            //audioSource.clip = recordedClip;
+            //audioSource.time = (Microphone.GetPosition(Microphone.devices[0]) - 1280) / (float)AudioSettings.outputSampleRate;
+            
+            int minFreq;
+            int maxFreq;
+            Microphone.GetDeviceCaps(micName, out minFreq, out maxFreq);
+        
+            recordedClip = Microphone.Start(micName, true, 1, maxFreq);
+            while (!(Microphone.GetPosition(micName) > 0)) { }
             audioSource.clip = recordedClip;
-            audioSource.time = (Microphone.GetPosition(Microphone.devices[0]) - 1280) / (float)AudioSettings.outputSampleRate;
+            
             audioSource.Play();
         }
     }
 
     public void StopSound()
     { 
-        audioSource.Stop();
+        if(audioSource.isPlaying)
+            audioSource.Stop();
     }
 
     public void batteryInserted()
