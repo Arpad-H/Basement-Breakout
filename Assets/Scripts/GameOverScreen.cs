@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.Serialization;
 
 public class GameOverScreen : MonoBehaviour
 {
@@ -11,13 +12,22 @@ public class GameOverScreen : MonoBehaviour
     [SerializeField] private Transform head;
     [SerializeField] private float menuDistance;
     [SerializeField] private GameObject menu;
-    [SerializeField] private GameObject reasonOfDeathText;
+    [FormerlySerializedAs("reasonOfDeathText")] [SerializeField] private GameObject reasonOfDeath;
     public InputActionProperty showMenuButton;
     private bool gameOverScreen = false;
+    private TextMeshProUGUI reasonOfDeathText;
 
     void Start()
     {
-        if (reasonOfDeathText == null)
+        if (reasonOfDeath != null)
+        {
+            reasonOfDeathText = reasonOfDeath.GetComponent<TextMeshProUGUI>();
+            if (reasonOfDeathText == null)
+            {
+                Debug.LogError("TextMeshProUGUI component not found on GameObjekt reasonOfDeath.");
+            }
+        }
+        else
         {
             Debug.LogError("GameObject with TextMeshProUGUI component not found");
         }
@@ -40,12 +50,13 @@ public class GameOverScreen : MonoBehaviour
     {
         Debug.Log("Game Over Screen: " + reasonOfDeath);
         gameOverScreen = true;
+        setText(reasonOfDeath);
     }
 
 
-    private void setText(string reasonOfDeathText)
+    private void setText(string reasonOfDeath)
     {
-        
+        reasonOfDeathText.SetText(reasonOfDeath);
     }
    
    
