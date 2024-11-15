@@ -261,6 +261,10 @@ GameObject:
   - component: {fileID: 5594703075476407420}
   - component: {fileID: 5033613440406940057}
   - component: {fileID: 308297043390501585}
+  - component: {fileID: 6344685342814994919}
+  - component: {fileID: 221377271637001821}
+  - component: {fileID: 4795727583803174245}
+  - component: {fileID: 2995458289709562667}
   m_Layer: 0
   m_Name: Megafon
   m_TagString: Untagged
@@ -567,6 +571,73 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e27a79c467389c54abbebb920a1bad08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!170 &6344685342814994919
+AudioDistortionFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2406590741490554404}
+  m_Enabled: 1
+  m_DistortionLevel: 0.95
+--- !u!164 &221377271637001821
+AudioReverbFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2406590741490554404}
+  m_Enabled: 1
+  m_DryLevel: 0
+  m_Room: -1000
+  m_RoomHF: -1200
+  m_DecayTime: 1.49
+  m_DecayHFRatio: 0.54
+  m_ReflectionsLevel: -370
+  m_ReverbLevel: 1030
+  m_ReverbDelay: 0.011
+  m_Diffusion: 100
+  m_Density: 60
+  m_HFReference: 5000
+  m_RoomLF: 0
+  m_LFReference: 250
+  m_ReflectionsDelay: 0
+  m_ReverbPreset: 4
+--- !u!169 &4795727583803174245
+AudioLowPassFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2406590741490554404}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_LowpassResonanceQ: 1
+  lowpassLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0.11323329
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!165 &2995458289709562667
+AudioHighPassFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2406590741490554404}
+  m_Enabled: 1
+  m_CutoffFrequency: 500
+  m_HighpassResonanceQ: 1
 --- !u!1 &5550325088936757064
 GameObject:
   m_ObjectHideFlags: 0

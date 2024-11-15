@@ -10,55 +10,52 @@ public class AudioDetection : MonoBehaviour
     private AudioClip recordedClip;
     private GameObject battery;
     private bool hasEnergy = false;
-    private AudioHighPassFilter filter;
+    //private AudioHighPassFilter filter;
     
     void Start()
     {
         micName = Microphone.devices[0];
         battery = GameObject.Find("InsertedBattery");
         battery.SetActive(false);
-        /*audioSource = GetComponent<AudioSource>();
-        recordedClip = Microphone.Start(Microphone.devices[0], true, 3599, AudioSettings.outputSampleRate); //"Headset Microphone (Oculus Virtual Audio Device)"*/
         
         audioSource = GetComponent<AudioSource>();
         
-
+        int minFreq;
+        int maxFreq;
+        Microphone.GetDeviceCaps(micName, out minFreq, out maxFreq);
         
+        recordedClip = Microphone.Start(micName, true, 1, maxFreq);
+        while (!(Microphone.GetPosition(micName) > 0)) { }
 
-        
+        audioSource.clip = recordedClip;
         audioSource.loop = true;
-        //audioSource.Play();
+        audioSource.mute = true;
+        audioSource.Play();
 
-        filter = new AudioHighPassFilter();
+        /*filter = new AudioHighPassFilter();
         if (filter != null)
         {
             filter.cutoffFrequency = 1750;
-        }
+        }*/
+    }
+
+    public void Update()
+    {
+        
     }
 
     public void PlaySound()
     {
-        if (hasEnergy && !audioSource.isPlaying)
+        if (hasEnergy)
         {
-            //audioSource.clip = recordedClip;
-            //audioSource.time = (Microphone.GetPosition(Microphone.devices[0]) - 1280) / (float)AudioSettings.outputSampleRate;
-            
-            int minFreq;
-            int maxFreq;
-            Microphone.GetDeviceCaps(micName, out minFreq, out maxFreq);
-        
-            recordedClip = Microphone.Start(micName, true, 1, maxFreq);
-            while (!(Microphone.GetPosition(micName) > 0)) { }
-            audioSource.clip = recordedClip;
-            
-            audioSource.Play();
+            audioSource.timeSamples = Microphone.GetPosition(micName);
+            audioSource.mute = false;
         }
     }
 
     public void StopSound()
     { 
-        if(audioSource.isPlaying)
-            audioSource.Stop();
+        audioSource.mute = true;
     }
 
     public void batteryInserted()
