@@ -29,8 +29,8 @@ public class AudioDetection : MonoBehaviour
 
         audioSource.clip = recordedClip;
         audioSource.loop = true;
-        audioSource.mute = true;
         audioSource.Play();
+        audioSource.mute = true;
 
         /*filter = new AudioHighPassFilter();
         if (filter != null)
@@ -38,12 +38,7 @@ public class AudioDetection : MonoBehaviour
             filter.cutoffFrequency = 1750;
         }*/
     }
-
-    public void Update()
-    {
-        
-    }
-
+    
     public void PlaySound()
     {
         if (hasEnergy)
