@@ -37,7 +37,8 @@ AudioMixerGroupController:
   m_Name: SoundFX
   m_AudioMixer: {fileID: 24100000}
   m_GroupID: 9d4c86e9c3424904592b476034850557
-  m_Children: []
+  m_Children:
+  - {fileID: 1197026959604310248}
   m_Volume: 2a53438dbc9da6d46ba76559fec2dced
   m_Pitch: 7e783a7ebf84b6641af94ca8fae3661e
   m_Send: 00000000000000000000000000000000
@@ -77,6 +78,7 @@ AudioMixerController:
     - b2c0231f6d22ef64ea1da1c2427cda18
     - 9d4c86e9c3424904592b476034850557
     - cb0519498e2575b42aaa477786bee5c4
+    - e77974786c6af0340bed62d88689ddbb
     name: View
   m_CurrentViewIndex: 0
   m_TargetSnapshot: {fileID: 24500006}
@@ -128,6 +130,25 @@ AudioMixerSnapshotController:
   m_FloatValues:
     584e2cc19d041744baf4a7c87b20f9ba: -15.1
   m_TransitionOverrides: {}
+--- !u!243 &1197026959604310248
+AudioMixerGroupController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Megaphone
+  m_AudioMixer: {fileID: 24100000}
+  m_GroupID: e77974786c6af0340bed62d88689ddbb
+  m_Children: []
+  m_Volume: 64d8e79273d70fe45aadaf432e773182
+  m_Pitch: 971851e989463e54986728bc78d5f8d7
+  m_Send: 00000000000000000000000000000000
+  m_Effects:
+  - {fileID: 8698941705977929438}
+  m_UserColorIndex: 0
+  m_Mute: 0
+  m_Solo: 0
+  m_BypassEffects: 0
 --- !u!244 &2056498268520123175
 AudioMixerEffectController:
   m_ObjectHideFlags: 3
@@ -161,6 +182,20 @@ AudioMixerGroupController:
   m_Mute: 0
   m_Solo: 0
   m_BypassEffects: 0
+--- !u!244 &8698941705977929438
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_EffectID: 6cae3def72c80d9459bfe00e86d28fff
+  m_EffectName: Attenuation
+  m_MixLevel: a663de52648a9fe46ad0545b371e95d1
+  m_Parameters: []
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0
 --- !u!243 &8950563966043553463
 AudioMixerGroupController:
   m_ObjectHideFlags: 0
