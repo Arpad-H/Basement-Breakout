@@ -27,6 +27,9 @@ namespace Crest.Examples
         int _version = 0;
 #pragma warning restore 414
 
+        //[Header("ControlAxis")]
+        private Vector2 direction;
+        
         [Header("Buoyancy Force")]
         [Tooltip("Height offset from transform center to bottom of boat (if any).")]
         public float _bottomH = 0f;
@@ -165,7 +168,7 @@ namespace Crest.Examples
 
             float forward = _throttleBias;
 #if INPUT_SYSTEM_ENABLED
-            float rawForward = !Application.isFocused ? 0 : ((Keyboard.current.wKey.isPressed ? 1 : 0) + (Keyboard.current.sKey.isPressed ? -1 : 0));
+            float rawForward = !Application.isFocused ? 0 : (direction.y);
 #else
             float rawForward = Input.GetAxis("Vertical");
 #endif
@@ -177,8 +180,7 @@ namespace Crest.Examples
             if (_playerControlled) sideways +=
 #if INPUT_SYSTEM_ENABLED
                     !Application.isFocused ? 0 :
-                    ((Keyboard.current.aKey.isPressed ? reverseMultiplier * -1f : 0f) +
-                    (Keyboard.current.dKey.isPressed ? reverseMultiplier * 1f : 0f));
+                    (direction.x);
 #else
                     (Input.GetKey(KeyCode.A) ? reverseMultiplier * -1f : 0f) +
                     (Input.GetKey(KeyCode.D) ? reverseMultiplier * 1f : 0f);
@@ -225,6 +227,12 @@ namespace Crest.Examples
                 var torqueLength = Vector3.Cross(transform.up, normalLongitudinal);
                 _rb.AddTorque(torqueLength * _boyancyTorque, ForceMode.Acceleration);
             }
+        }
+        
+        
+        public void move(Vector2 direction)
+        {
+            this.direction = direction;
         }
     }
 }
