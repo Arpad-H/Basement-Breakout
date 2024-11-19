@@ -14,18 +14,21 @@ public class GameManager : MonoBehaviour
     void Awake()
     {
         Instance = this;
+        CableBehavior.OnWaterStateChanged += OnWaterStateChanged;
     }
 
-    // Start is called before the first frame update
-    void Start()
+    private void OnDestroy()
     {
+        CableBehavior.OnWaterStateChanged -= OnWaterStateChanged;
     }
 
-    // Update is called once per frame
-    void Update()
+
+    private void OnWaterStateChanged(bool state)
     {
+        Debug.Log("GameManager: OnWaterStateChanged: " + state);
     }
 
+    
 
     public void UpdateGameState(GameState newState)
     {
