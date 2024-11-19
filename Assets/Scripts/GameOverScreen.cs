@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -17,6 +18,31 @@ public class GameOverScreen : MonoBehaviour
     private bool gameOverScreen = false;
     private TextMeshProUGUI reasonOfDeathText;
 
+
+    private void Awake()
+    {
+        GameManager.OnGameStateChanged += GameManagerOnGameStateChanged;
+        
+    }
+
+    private void OnDestroy()
+    {
+        GameManager.OnGameStateChanged -= GameManagerOnGameStateChanged;
+    }
+    //If OnGameStateChanged has changed, this method is called
+    private void GameManagerOnGameStateChanged(GameManager.GameState state)
+    {
+        switch (state)
+        {
+            case GameManager.GameState.Drowned:
+                Debug.Log("Drowned");
+                break;
+            case GameManager.GameState.ElectricShock:
+                Debug.Log("Electric Shock");
+                break;
+                
+        }
+    }
     void Start()
     {
         if (reasonOfDeath != null)
@@ -44,6 +70,9 @@ public class GameOverScreen : MonoBehaviour
         menu.transform.LookAt(new Vector3(head.position.x, menu.transform.position.y, head.position.z));
         menu.transform.forward *= -1;
     }
+    
+    
+    
 
 
    public void showGameOverScreen(string reasonOfDeath)
