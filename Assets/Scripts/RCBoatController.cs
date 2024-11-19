@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.XR.Interaction.Toolkit.Interactables;
 using UnityEngine.Events;
+using UnityEngine.XR.Interaction.Toolkit.Samples.StarterAssets;
 
 public class RCBoatController : MonoBehaviour
 {
@@ -15,6 +16,7 @@ public class RCBoatController : MonoBehaviour
     [SerializeField] private Transform leftHand;
     [SerializeField] private Transform rightHand;
     [SerializeField] private UnityEvent<Vector2> moving;
+    [SerializeField] private GameObject locomotion;
     
     void Update()
     {
@@ -22,6 +24,7 @@ public class RCBoatController : MonoBehaviour
         OVRInput.FixedUpdate();
         if (controlable)
         {
+            locomotion.SetActive(false);
             if (rightHanded)
             {
                 direction = OVRInput.Get(OVRInput.RawAxis2D.LThumbstick);
@@ -31,6 +34,10 @@ public class RCBoatController : MonoBehaviour
                 direction = OVRInput.Get(OVRInput.RawAxis2D.RThumbstick);
             }
             moving.Invoke(direction);
+        }
+        else
+        {
+            locomotion.SetActive(true);
         }
     }
 
