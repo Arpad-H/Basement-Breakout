@@ -32,11 +32,12 @@ public class SliceObject : MonoBehaviour {
         FuelGauge.transform.localScale = new Vector3(0.001f, 1, 0);
     }
 
-    void FixedUpdate() {
+    void FixedUpdate() { 
         if (!chainsawIdleSound.isPlaying && canCut) {
             chainsawIdleSound.Play();
         }
         bool hasHit = Physics.Linecast(startSlicePoint.position, endSlicePoint.position, out RaycastHit hit, slicableLayer);
+        print(hasHit +" "+ canCut +" "+ hasFuel +" "+ noWaterDamage);
         if (hasHit && canCut && hasFuel && noWaterDamage) {
             GameObject target = hit.transform.gameObject;
             Slice(target);
@@ -63,8 +64,10 @@ public class SliceObject : MonoBehaviour {
             SetupSlicedComponent(upperHull);
             GameObject lowerHull = hull.CreateLowerHull(target, crossSectionMaterial);
             SetupSlicedComponent(lowerHull);
-            //upperHull.layer = LayerMask.NameToLayer("Sliceable");
-            //lowerHull.layer = LayerMask.NameToLayer("Sliceable");
+            upperHull.layer = LayerMask.NameToLayer("Sliceable");
+            lowerHull.layer = LayerMask.NameToLayer("Sliceable");
+            
+            print("HULLS: " + upperHull + " " + lowerHull);
             
             Destroy(target);
         }
