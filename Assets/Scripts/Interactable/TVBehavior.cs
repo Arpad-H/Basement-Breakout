@@ -6,9 +6,11 @@ public class TVBehavior : MonoBehaviour
 {
     [SerializeField] private GameObject VideoQuad;
     [SerializeField] private VideoClip[] clips;
+    [SerializeField] private AudioSource switchStationSound;
+    
     private VideoClip currentClip;
     private VideoPlayer videoPlayer;
-    private AudioSource audioSource;
+    private AudioSource videoAudio;
 
     // Dictionary to store each clip’s last playtime and last update time
     private Dictionary<VideoClip, double> clipLastPlayTime = new Dictionary<VideoClip, double>();
@@ -17,11 +19,11 @@ public class TVBehavior : MonoBehaviour
     void Start()
     {
         videoPlayer = VideoQuad.GetComponent<VideoPlayer>();
-        audioSource = VideoQuad.GetComponent<AudioSource>();
+        videoAudio = VideoQuad.GetComponent<AudioSource>();
 
         // Set the AudioSource to be used by the VideoPlayer
         videoPlayer.audioOutputMode = VideoAudioOutputMode.AudioSource;
-        videoPlayer.SetTargetAudioSource(0, audioSource);
+        videoPlayer.SetTargetAudioSource(0, videoAudio);
 
         currentClip = clips[0];
         videoPlayer.clip = currentClip;
@@ -41,6 +43,8 @@ public class TVBehavior : MonoBehaviour
 
     public void changeClip()
     {
+        switchStationSound.pitch = Random.Range(0.8f, 1.2f);
+        switchStationSound.Play();
         Debug.Log("Changing Clip");
 
         // Calculate ongoing time for the current clip

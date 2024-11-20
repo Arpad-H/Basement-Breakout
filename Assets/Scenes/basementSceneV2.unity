@@ -96,7 +96,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 112000000, guid: 12b6c2715e75f49f7bce73f7cb629b1e, type: 2}
+  m_LightingDataAsset: {fileID: 112000000, guid: c8a1da72a7b220c40a5f08e5022781c2, type: 2}
   m_LightingSettings: {fileID: 0}
 --- !u!196 &4
 NavMeshSettings:
@@ -6080,6 +6080,10 @@ PrefabInstance:
     - target: {fileID: 3756758867968520904, guid: 77e7c27b2c5525e4aa8cc9f99d654486, type: 3}
       propertyPath: vignetteIntensityCurve.m_Curve.Array.data[2].tangentMode
       value: 34
+      objectReference: {fileID: 0}
+    - target: {fileID: 3900566706723104911, guid: 77e7c27b2c5525e4aa8cc9f99d654486, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4881960960664945695, guid: 77e7c27b2c5525e4aa8cc9f99d654486, type: 3}
       propertyPath: m_LocalScale.x
@@ -15177,6 +15181,107 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1030981289, guid: abc00000000012887539377001607443, type: 3}
   m_PrefabInstance: {fileID: 1139525976}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1141877114 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2020941885742293750, guid: 09aa3977e57c4db42adb0aef7b6f793c, type: 3}
+  m_PrefabInstance: {fileID: 5899948083891769179}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &1141877115
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1141877114}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: d6690007498118141965d3c81bb1a227, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1001 &1144255679
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -30144,10 +30249,17 @@ PrefabInstance:
       propertyPath: VideoQuad
       value: 
       objectReference: {fileID: 265820786}
+    - target: {fileID: 6933913890325083169, guid: 09aa3977e57c4db42adb0aef7b6f793c, type: 3}
+      propertyPath: switchStationSound
+      value: 
+      objectReference: {fileID: 1141877115}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2020941885742293750, guid: 09aa3977e57c4db42adb0aef7b6f793c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1141877115}
   m_SourcePrefab: {fileID: 100100000, guid: 09aa3977e57c4db42adb0aef7b6f793c, type: 3}
 --- !u!1001 &6621102298518498495
 PrefabInstance:
