@@ -6,7 +6,7 @@ using UnityEngine;
 public class PlayerCollisionHEventHandler : MonoBehaviour
 {
     [SerializeField] private GameObject targetObject;
-    private CollisionEventHandler Instance;
+    //private CollisionEventHandler Instance;
     
     public static event Action<bool> OnWaterStateChangedPlayer;
     

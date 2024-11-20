@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 
@@ -10,24 +11,38 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
     public static event Action<GameState> OnGameStateChanged;
+    
+    private bool playerIsInWhater = false;
+    private bool cableISinWater = false;
+    
 
     void Awake()
     {
-        Instance = this;
+        //Instance = this;
         CollisionEventHandler.OnWaterStateChangedCable += OnWaterStateChangedCable;
+        PlayerCollisionHEventHandler.OnWaterStateChangedPlayer += OnWaterStateChangedCable;
     }
 
     private void OnDestroy()
     {
         CollisionEventHandler.OnWaterStateChangedCable -= OnWaterStateChangedCable;
+        PlayerCollisionHEventHandler.OnWaterStateChangedPlayer -= OnWaterStateChangedCable;
     }
 
 
     private void OnWaterStateChangedCable(bool state)
     {
         Debug.Log("GameManager: OnWaterStateChanged: " + state);
+        cableISinWater = state;
+        SceneManager.LoadScene("startMenuScene");
     }
 
+    private void OnWaterStateChangedPlayer(bool state)
+    {
+        Debug.Log("GameManager: OnWaterStateChangedPlayer: " + state);
+        playerIsInWhater = state;
+        
+    }
     
 
     public void UpdateGameState(GameState newState)

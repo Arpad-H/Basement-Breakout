@@ -10,6 +10,9 @@ public class CollisionEventHandler : MonoBehaviour
     public static event Action<bool> OnWaterStateChangedCable;
     
     private bool hasCollided  = false;
+    
+    private bool playerIsInWhater = false;
+    private bool cableISinWater = false;
 
     
     private void Awake()
