@@ -1,33 +1,25 @@
-using UnityEngine;
 using System;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
-public class CableBehavior : MonoBehaviour
+public class PlayerCollisionHEventHandler : MonoBehaviour
 {
     [SerializeField] private GameObject targetObject;
-
-    private CableBehavior Instance;
-    public event Action<Collider> OnObjectEntered;
-    public event Action<Collider> OnObjectExited;
+    private CollisionEventHandler Instance;
     
-    public static event Action<bool> OnWaterStateChanged;
+    public static event Action<bool> OnWaterStateChangedPlayer;
     
-    private bool isInWhater  = false;
-
-
-    private void Awake()
-    {
-        Instance = this;
-    }
+    private bool hasCollided  = false;
     
-
-
+    
     private void OnTriggerEnter(Collider other)
     {
         
         if (other.gameObject == targetObject)
         {
-            isInWhater = true;
-            OnWaterStateChanged?.Invoke(isInWhater);
+            hasCollided = true;
+            OnWaterStateChangedPlayer?.Invoke(hasCollided);
             Debug.Log($"Object entered: {other.gameObject.name}");
         }
     }
@@ -36,9 +28,9 @@ public class CableBehavior : MonoBehaviour
     {
         if (other.gameObject == targetObject)
         {
-            isInWhater = false;
+            hasCollided = false;
             
-            OnWaterStateChanged?.Invoke(isInWhater);
+            OnWaterStateChangedPlayer?.Invoke(hasCollided);
             Debug.Log($"Object exited: {other.gameObject.name}");
         }
     }
@@ -49,6 +41,7 @@ public class CableBehavior : MonoBehaviour
     {
         targetObject = newTargetObject;
     }
+    
     
     
 }
