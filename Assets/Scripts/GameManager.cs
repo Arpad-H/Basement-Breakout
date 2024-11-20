@@ -14,16 +14,16 @@ public class GameManager : MonoBehaviour
     void Awake()
     {
         Instance = this;
-        CableBehavior.OnWaterStateChanged += OnWaterStateChanged;
+        CollisionEventHandler.OnWaterStateChangedCable += OnWaterStateChangedCable;
     }
 
     private void OnDestroy()
     {
-        CableBehavior.OnWaterStateChanged -= OnWaterStateChanged;
+        CollisionEventHandler.OnWaterStateChangedCable -= OnWaterStateChangedCable;
     }
 
 
-    private void OnWaterStateChanged(bool state)
+    private void OnWaterStateChangedCable(bool state)
     {
         Debug.Log("GameManager: OnWaterStateChanged: " + state);
     }
