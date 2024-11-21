@@ -34,14 +34,14 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("GameManager: OnWaterStateChanged: " + state);
         cableISinWater = state;
-        SceneManager.LoadScene("startMenuScene");
+        checkPlayerAndCableInWhater(playerIsInWhater, cableISinWater);
     }
 
     private void OnWaterStateChangedPlayer(bool state)
     {
         Debug.Log("GameManager: OnWaterStateChangedPlayer: " + state);
         playerIsInWhater = state;
-        
+        checkPlayerAndCableInWhater(playerIsInWhater, cableISinWater);
     }
     
 
@@ -77,5 +77,15 @@ public class GameManager : MonoBehaviour
         Beam,
         Tutorial,
         Game
+    }
+
+    private void checkPlayerAndCableInWhater(bool playerIsInWhater, bool cableIsInWhater)
+    {
+        if (playerIsInWhater == true && cableIsInWhater == true)
+        {
+            Debug.Log("GameManager: OnWaterStateChangedPlayerAndCableInWhater: " );
+            //TODO: GameOverScene
+            SceneManager.LoadScene("startMenuScene");
+        }
     }
 }

@@ -4,31 +4,30 @@ using System;
 public class CollisionEventHandler : MonoBehaviour
 {
     [SerializeField] private GameObject targetObject;
+    [SerializeField] private Objecttype objecttypeselection;
 
     private CollisionEventHandler Instance;
-    
+
     public static event Action<bool> OnWaterStateChangedCable;
-    
-    private bool hasCollided  = false;
-    
+    public static event Action<bool> OnWaterStateChangedPlayer;
+
+    //private bool hasCollided  = false;
+
     private bool playerIsInWhater = false;
     private bool cableISinWater = false;
 
-    
+
     private void Awake()
     {
         //Instance = this;
     }
-    
 
 
     private void OnTriggerEnter(Collider other)
     {
-        
         if (other.gameObject == targetObject)
         {
-            hasCollided = true;
-            OnWaterStateChangedCable?.Invoke(hasCollided);
+            eventsHandler(true);
             Debug.Log($"Object entered: {other.gameObject.name}");
         }
     }
@@ -37,19 +36,37 @@ public class CollisionEventHandler : MonoBehaviour
     {
         if (other.gameObject == targetObject)
         {
-            hasCollided = false;
-            
-            OnWaterStateChangedCable?.Invoke(hasCollided);
+            eventsHandler(false);
             Debug.Log($"Object exited: {other.gameObject.name}");
         }
     }
 
-    
 
     public void SetTargetObject(GameObject newTargetObject)
     {
         targetObject = newTargetObject;
     }
-    
-    
+
+
+    public enum Objecttype
+    {
+        Cable,
+        Player
+    }
+
+
+    void eventsHandler(bool state)
+    {
+        switch (objecttypeselection)
+        {
+            case Objecttype.Player:
+                OnWaterStateChangedCable?.Invoke(state);
+                break;
+            case Objecttype.Cable:
+                OnWaterStateChangedPlayer?.Invoke(state);
+                break;
+            default:
+                throw new ArgumentOutOfRangeException(nameof(objecttypeselection), objecttypeselection, null);
+        }
+    }
 }
