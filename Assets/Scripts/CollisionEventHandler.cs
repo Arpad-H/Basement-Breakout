@@ -25,10 +25,13 @@ public class CollisionEventHandler : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        
+        Debug.Log("AAAAAA Object entered: " + true + nameof(objecttypeselection));
         if (other.gameObject == targetObject)
         {
             eventsHandler(true);
-            Debug.Log($"Object entered: {other.gameObject.name}");
+            Debug.Log($"Object entered AAAAA: {other.gameObject.name}" + true);
+            
         }
     }
 
@@ -37,7 +40,8 @@ public class CollisionEventHandler : MonoBehaviour
         if (other.gameObject == targetObject)
         {
             eventsHandler(false);
-            Debug.Log($"Object exited: {other.gameObject.name}");
+            Debug.Log($"Object exitedA  AAAA: {other.gameObject.name}" + false);
+            Debug.Log("Object exit: " + true + nameof(objecttypeselection));
         }
     }
 
