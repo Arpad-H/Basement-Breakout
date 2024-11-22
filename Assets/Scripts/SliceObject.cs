@@ -37,7 +37,6 @@ public class SliceObject : MonoBehaviour {
             chainsawIdleSound.Play();
         }
         bool hasHit = Physics.Linecast(startSlicePoint.position, endSlicePoint.position, out RaycastHit hit, slicableLayer);
-        print(hasHit +" "+ canCut +" "+ hasFuel +" "+ noWaterDamage);
         if (hasHit && canCut && hasFuel && noWaterDamage) {
             GameObject target = hit.transform.gameObject;
             Slice(target);
