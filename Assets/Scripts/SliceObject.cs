@@ -16,7 +16,6 @@ public class SliceObject : MonoBehaviour {
     [SerializeField] private Material crossSectionMaterial;
     [SerializeField] private float cutForce = 20;
     [SerializeField] private Transform waterPos;
-    [SerializeField] private GameObject Eyes;
     [SerializeField] private AudioClip chainsawRefuelSound;
     [SerializeField] private AudioSource chainsawStartUpSound;
     [SerializeField] private AudioSource chainsawIdleSound;
@@ -44,7 +43,6 @@ public class SliceObject : MonoBehaviour {
 
         if (transform.position.y < waterPos.position.y) {
             noWaterDamage = false;
-            Eyes.SetActive(true);
         }
     }
     
