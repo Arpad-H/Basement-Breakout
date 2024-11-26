@@ -20,26 +20,26 @@ public class GameManager : MonoBehaviour
     {
         //Instance = this;
         CollisionEventHandler.OnWaterStateChangedCable += OnWaterStateChangedCable;
-        PlayerCollisionHEventHandler.OnWaterStateChangedPlayer += OnWaterStateChangedCable;
+        CollisionEventHandler.OnWaterStateChangedPlayer += OnWaterStateChangedPlayer;
     }
 
     private void OnDestroy()
     {
         CollisionEventHandler.OnWaterStateChangedCable -= OnWaterStateChangedCable;
-        PlayerCollisionHEventHandler.OnWaterStateChangedPlayer -= OnWaterStateChangedCable;
+        CollisionEventHandler.OnWaterStateChangedPlayer -= OnWaterStateChangedPlayer;
     }
 
 
     private void OnWaterStateChangedCable(bool state)
     {
-        Debug.Log("GameManager: OnWaterStateChanged: " + state);
+        Debug.Log($"[GameManager]: OnWaterStateChangedCable: + {state}");
         cableISinWater = state;
         checkPlayerAndCableInWhater(playerIsInWhater, cableISinWater);
     }
 
     private void OnWaterStateChangedPlayer(bool state)
     {
-        Debug.Log("GameManager: OnWaterStateChangedPlayer: " + state);
+        Debug.Log("[GameManager]: OnWaterStateChangedPlayer: " + state);
         playerIsInWhater = state;
         checkPlayerAndCableInWhater(playerIsInWhater, cableISinWater);
     }
@@ -83,9 +83,10 @@ public class GameManager : MonoBehaviour
     {
         if (playerIsInWhater == true && cableIsInWhater == true)
         {
-            Debug.Log("GameManager: OnWaterStateChangedPlayerAndCableInWhater: " );
+            Debug.Log("[GameManager]: OnWaterStateChangedPlayerAndCableInWhater: " );
             //TODO: GameOverScene
             SceneManager.LoadScene("startMenuScene");
         }
     }
 }
+

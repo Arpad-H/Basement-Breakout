@@ -18,7 +18,7 @@ Material:
   - _COMPUTEDIRECTIONALLIGHT_ON
   - _DEBUGVISUALISE_NONE
   - _FLOW_ON
-  - _FOAM_ON
+  - _FOAM3DLIGHTING_ON
   - _SHADOWS_ON
   - _SUBSURFACESCATTERING_ON
   - _TRANSPARENCY_ON
@@ -129,10 +129,10 @@ Material:
     - _DirectionalLightFarDistance: 137
     - _DirectionalLightVaryRoughness: 0
     - _Flow: 1
-    - _Foam: 1
-    - _Foam3DLighting: 0
+    - _Foam: 0
+    - _Foam3DLighting: 1
     - _FoamBubbleParallax: 0.1
-    - _FoamScale: 0.01
+    - _FoamScale: 4.4
     - _FresnelPower: 5
     - _Invert: 1
     - _MipBias: 0
@@ -180,12 +180,12 @@ Material:
     - _WaveFoamBubblesStart: 0.115
     - _WaveFoamBubblesStrength: 0.637
     - _WaveFoamCoverage: 0.38
-    - _WaveFoamFeather: 0.916
-    - _WaveFoamLightScale: 0.13
-    - _WaveFoamNormalStrength: 18.1
+    - _WaveFoamFeather: 0.052
+    - _WaveFoamLightScale: 0.284
+    - _WaveFoamNormalStrength: 5.5
     - _WaveFoamNormalsY: 0.253
-    - _WaveFoamSpecularBoost: 9.3
-    - _WaveFoamSpecularFallOff: 293
+    - _WaveFoamSpecularBoost: 2.35
+    - _WaveFoamSpecularFallOff: 136
     - _WaveFoamStart: 0
     - _WaveFoamStrength: 1
     m_Colors:
@@ -194,7 +194,7 @@ Material:
     - _DiffuseGrazing: {r: 0.34117648, g: 0.3019608, b: 0.24313726, a: 1}
     - _DiffuseShadow: {r: 0.34117648, g: 0.3019608, b: 0.24313726, a: 1}
     - _FoamBubbleColor: {r: 0, g: 0, b: 0, a: 1}
-    - _FoamWhiteColor: {r: 1, g: 1, b: 1, a: 0.6862745}
+    - _FoamWhiteColor: {r: 1, g: 0.99634784, b: 0.97199994, a: 0.6862745}
     - _SkyAwayFromSun: {r: 0.15419213, g: 0.22129796, b: 0.5372549, a: 1}
     - _SkyBase: {r: 0, g: 0, b: 0, a: 1}
     - _SkyTowardsSun: {r: 2.6390157, g: 1.8217498, b: 0.9236555, a: 1}
