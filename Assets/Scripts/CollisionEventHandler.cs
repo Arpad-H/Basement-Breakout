@@ -10,11 +10,14 @@ public class CollisionEventHandler : MonoBehaviour
 
     public static event Action<bool> OnWaterStateChangedCable;
     public static event Action<bool> OnWaterStateChangedPlayer;
+   
+    
+    
 
     //private bool hasCollided  = false;
 
-    private bool playerIsInWhater = false;
-    private bool cableISinWater = false;
+    // private bool playerIsInWhater = false;
+    // private bool cableISinWater = false;
 
 
     private void Awake()
@@ -22,16 +25,15 @@ public class CollisionEventHandler : MonoBehaviour
         //Instance = this;
     }
 
+   
+
 
     private void OnTriggerEnter(Collider other)
     {
-        
         Debug.Log($"//CollisionEventHandler: Object entered : {other.gameObject.name} -" + true + objecttypeselection);
         if (other.gameObject == targetObject)
         {
             eventsHandler(true);
-           
-            
         }
     }
 
@@ -39,9 +41,9 @@ public class CollisionEventHandler : MonoBehaviour
     {
         if (other.gameObject == targetObject)
         {
-            eventsHandler(false);
-            Debug.Log($"//CollisionEventHandler: Object exited: {other.gameObject.name} - " + false+ objecttypeselection);
-            
+            //eventsHandler(false);
+            Debug.Log($"//CollisionEventHandler: Object exited: {other.gameObject.name} - " + false +
+                      objecttypeselection);
         }
     }
 
@@ -55,7 +57,7 @@ public class CollisionEventHandler : MonoBehaviour
     public enum Objecttype
     {
         Cable,
-        Player
+        Player,
     }
 
 
@@ -64,11 +66,13 @@ public class CollisionEventHandler : MonoBehaviour
         switch (objecttypeselection)
         {
             case Objecttype.Player:
-                Debug.Log($"VoideventsHandler: Object exited: - " + state+ objecttypeselection);
+                Debug.Log(
+                    $"//CollisionEventHandler: VoideventsHandler: Object exited: - " + state + objecttypeselection);
                 OnWaterStateChangedPlayer?.Invoke(state);
                 break;
             case Objecttype.Cable:
-                Debug.Log($"VoideventsHandler: Object exited: - " + state+ objecttypeselection);
+                Debug.Log(
+                    $"//CollisionEventHandler: VoideventsHandler: Object exited: - " + state + objecttypeselection);
                 OnWaterStateChangedCable?.Invoke(state);
                 break;
             default:

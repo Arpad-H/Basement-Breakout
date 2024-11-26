@@ -5,9 +5,9 @@ using UnityEngine.Events;
 public class LeverInteractable : MonoBehaviour
 {
     [SerializeField] private float angleThreshold = 45f;
-    
-    [SerializeField] private UnityEvent onLeverActivated = new UnityEvent();
-    [SerializeField] private UnityEvent onLeverDeactivated = new UnityEvent();
+    //TODO: change to nativ c# events
+    [SerializeField] public UnityEvent onLeverActivated = new UnityEvent();
+    [SerializeField] public UnityEvent onLeverDeactivated = new UnityEvent();
     
     private HingeJoint hingeJoint;
     private bool isActivated = false;
