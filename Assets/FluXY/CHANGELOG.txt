@@ -1,0 +1,58 @@
+# Change Log
+All notable changes to “FluXY - 2.5D fluid simulator” will be documented in this file.
+
+
+## [1.4.1] - 2023-06-20
+
+### Fixed
+- "Blit material FluidSimulation uses dest texture as input" error in Unity 2022.
+
+## [1.4] - 2022-11-28
+
+### Added
+- Flipbook recorder window.
+
+### Fixed
+- Occasional "SendMessage cannot be used in OnValidate" warning when changing the shape of a container. 
+
+## [1.3.1] - 2022-07-20
+
+### Added
+- Density readback
+- Positional offset parameter that allows to manually scroll both the fluid across the container. Expressed in UV units per second.
+
+## [1.3.0] - 2022-03-01
+
+### Added
+- Volumetric rendering support
+- Targets can now splat torque (rotational force)
+- Target splat size can now be automatically affected by transform scale
+- Targets now support velocity noise (curl noise) and density noise
+
+### Fixed
+- Containers set to zero scale on any axis would permanently disappear due to NaN values propagating trough the simulation.
+
+## [1.2.0] - 2022-01-20
+
+### Added
+- Tangent space simulation.
+- Support for arbitrary meshes in containers: no longer restricted to a rectangular plane.
+- Support for container surface normal maps.
+- Per-pixel gravity.
+- Fluid adhesion (causes a fraction of the fluid to stick to the container's surface)
+- Fluid surface tension (causes fluid to form rounded "drops")
+- Target rotation can now be derived from transform rotation.
+- Targets can now splat both linear and angular velocity
+
+### Fixed
+- Aspect ratio of targets was incorrectly rounded to integer values.
+
+## [1.1.0] - 2021-12-03
+
+### Added
+- Support for subdivided container meshes.
+- New URP-specific sample scenes.
+- URP opaque and transparent ShaderGraph shaders, driven using FluXY.
+
+## [1.0.0] - 2021-09-27
+- Initial release.
