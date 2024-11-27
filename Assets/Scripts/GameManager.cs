@@ -15,18 +15,26 @@ public class GameManager : MonoBehaviour
     private bool playerIsInWhater = false;
     private bool cableISinWater = false;
     
+    // Aktueller GameState
+    private GameState currentState;
+   
+    
 
     void Awake()
     {
         //Instance = this;
         CollisionEventHandler.OnWaterStateChangedCable += OnWaterStateChangedCable;
         PlayerCollisionHEventHandler.OnWaterStateChangedPlayer += OnWaterStateChangedCable;
+        TVBehavior.gameStateChanged += UpdateGameState;
+        
+        SetInitialGameState();
     }
 
     private void OnDestroy()
     {
         CollisionEventHandler.OnWaterStateChangedCable -= OnWaterStateChangedCable;
         PlayerCollisionHEventHandler.OnWaterStateChangedPlayer -= OnWaterStateChangedCable;
+        TVBehavior.gameStateChanged -= UpdateGameState;
     }
 
 
@@ -44,10 +52,27 @@ public class GameManager : MonoBehaviour
         checkPlayerAndCableInWhater(playerIsInWhater, cableISinWater);
     }
     
+    private void SetInitialGameState()
+    {
+        // Setzt den initialen Zustand des Spiels auf Tutorial
+        UpdateGameState(GameState.Tutorial);
+    }
+
+    
 
     public void UpdateGameState(GameState newState)
     {
-        //State = newState;
+        if (currentState == newState)
+        {
+            Debug.Log($"GameManager: GameState already set to {newState}. No changes made.");
+            return;
+        }
+
+        currentState = newState;
+
+        Debug.Log($"GameManager: GameState updated to {currentState}");
+
+        // Verarbeite Logik basierend auf dem neuen State
         switch (newState)
         {
             case GameState.ElectricShock:
@@ -58,14 +83,18 @@ public class GameManager : MonoBehaviour
                 break;
             case GameState.Beam:
                 break;
+            case GameState.Game:
+                Debug.Log("GameManager: Game state detected. Starting Gameplay.");
+                break;
+            case GameState.Tutorial:
+                Debug.Log("GameManager: Tutorial state detected. Preparing Tutorial.");
+                break;
             default:
                 throw new ArgumentOutOfRangeException(nameof(newState), newState, null);
         }
 
         // Andere GameObjekte können hierrauf reagieren
         OnGameStateChanged?.Invoke(newState);
-        {
-        }
     }
 
 
