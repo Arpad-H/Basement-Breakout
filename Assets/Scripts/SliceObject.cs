@@ -31,7 +31,13 @@ public class SliceObject : MonoBehaviour {
         FuelGauge.transform.localScale = new Vector3(0.001f, 1, 0);
     }
 
-    void FixedUpdate() { 
+    void FixedUpdate() {
+        if (OVRInput.Get(OVRInput.Button.PrimaryHandTrigger) || OVRInput.Get(OVRInput.Button.SecondaryHandTrigger)) {
+            canCut = OVRInput.Get(OVRInput.Button.PrimaryIndexTrigger) || OVRInput.Get(OVRInput.Button.SecondaryIndexTrigger);
+        }
+        else {
+            canCut = false;
+        }
         if (!chainsawIdleSound.isPlaying && canCut) {
             chainsawIdleSound.Play();
         }
@@ -75,15 +81,6 @@ public class SliceObject : MonoBehaviour {
         MeshCollider collider = slicedObject.AddComponent<MeshCollider>();
         collider.convex = true;
         rb.AddExplosionForce(cutForce, slicedObject.transform.position, 1);
-    }
-
-    public void canSaw() {
-        canCut = true;
-    }
-    
-    public void cantSaw() {
-        canCut = false;
-        
     }
 
     public void fueledUp() {

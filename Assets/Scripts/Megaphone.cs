@@ -38,6 +38,17 @@ public class AudioDetection : MonoBehaviour
             filter.cutoffFrequency = 1750;
         }*/
     }
+
+    void Update()
+    {
+        if ((OVRInput.Get(OVRInput.Button.PrimaryHandTrigger) || OVRInput.Get(OVRInput.Button.SecondaryHandTrigger)) &&
+            (OVRInput.Get(OVRInput.Button.PrimaryIndexTrigger) || OVRInput.Get(OVRInput.Button.SecondaryIndexTrigger))) {
+            PlaySound();
+        }
+        else {
+            StopSound();
+        }
+    }
     
     public void PlaySound()
     {
