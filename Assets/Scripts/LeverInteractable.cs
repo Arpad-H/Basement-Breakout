@@ -1,5 +1,3 @@
-using System;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 using UnityEngine.Events;
@@ -7,6 +5,9 @@ using UnityEngine.Events;
 public class LeverInteractable : MonoBehaviour
 {
     [SerializeField] private float angleThreshold = 45f;
+    [SerializeField] public UnityEvent onLeverActivated = new UnityEvent();
+    [SerializeField] public UnityEvent onLeverDeactivated = new UnityEvent();
+
 
     public static event Action<bool> onLeverAction;
 
@@ -17,7 +18,11 @@ public class LeverInteractable : MonoBehaviour
 
     private void Awake()
     {
-        
+        hingeJoint = GetComponent<HingeJoint>();
+        if (hingeJoint == null)
+        {
+            Debug.LogError("A Transform component is required on the same GameObject!");
+        }
     }
 
     private void Update()
