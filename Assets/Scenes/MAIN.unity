@@ -645,7 +645,7 @@ GameObject:
   - component: {fileID: 34657735}
   m_Layer: 0
   m_Name: Light
-  m_TagString: Untagged
+  m_TagString: Light
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -902,7 +902,7 @@ GameObject:
   - component: {fileID: 48814785}
   m_Layer: 0
   m_Name: Light (1)
-  m_TagString: Untagged
+  m_TagString: Light
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1062,7 +1062,7 @@ GameObject:
   - component: {fileID: 58542028}
   m_Layer: 0
   m_Name: Light
-  m_TagString: Untagged
+  m_TagString: Light
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1156,7 +1156,7 @@ GameObject:
   - component: {fileID: 66582050}
   m_Layer: 0
   m_Name: Light (1)
-  m_TagString: Untagged
+  m_TagString: Light
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2023,7 +2023,7 @@ GameObject:
   - component: {fileID: 128687633}
   m_Layer: 0
   m_Name: Light (1)
-  m_TagString: Untagged
+  m_TagString: Light
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2363,7 +2363,7 @@ GameObject:
   - component: {fileID: 150204630}
   m_Layer: 0
   m_Name: Light (1)
-  m_TagString: Untagged
+  m_TagString: Light
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2597,7 +2597,7 @@ GameObject:
   - component: {fileID: 159980591}
   m_Layer: 0
   m_Name: Light (1)
-  m_TagString: Untagged
+  m_TagString: Light
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3409,7 +3409,7 @@ GameObject:
   - component: {fileID: 208354514}
   m_Layer: 0
   m_Name: Light (2)
-  m_TagString: Untagged
+  m_TagString: Light
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4274,7 +4274,7 @@ GameObject:
   - component: {fileID: 259972795}
   m_Layer: 0
   m_Name: Light (1)
-  m_TagString: Untagged
+  m_TagString: Light
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4710,6 +4710,50 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1030988195, guid: abc00000000008286782697250970166, type: 3}
   m_PrefabInstance: {fileID: 268284409}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &275032346
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 275032348}
+  - component: {fileID: 275032349}
+  m_Layer: 0
+  m_Name: ElecticityManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &275032348
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 275032346}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -1.6275766, y: 0.6970849, z: -1.8757417}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &275032349
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 275032346}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d09a6aa5ae22419fba7145a06d0001c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &278415565
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4982,7 +5026,7 @@ GameObject:
   - component: {fileID: 299851660}
   m_Layer: 0
   m_Name: Light (1)
-  m_TagString: Untagged
+  m_TagString: Light
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5076,7 +5120,7 @@ GameObject:
   - component: {fileID: 300399047}
   m_Layer: 0
   m_Name: Light (1)
-  m_TagString: Untagged
+  m_TagString: Light
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6126,7 +6170,7 @@ GameObject:
   - component: {fileID: 347748232}
   m_Layer: 0
   m_Name: Light (3)
-  m_TagString: Untagged
+  m_TagString: Light
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6434,7 +6478,7 @@ GameObject:
   - component: {fileID: 361868799}
   m_Layer: 0
   m_Name: Light
-  m_TagString: Untagged
+  m_TagString: Light
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8022,7 +8066,7 @@ GameObject:
   - component: {fileID: 471372425}
   m_Layer: 0
   m_Name: Light (1)
-  m_TagString: Untagged
+  m_TagString: Light
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8718,7 +8762,7 @@ GameObject:
   - component: {fileID: 549674558}
   m_Layer: 0
   m_Name: Light (1)
-  m_TagString: Untagged
+  m_TagString: Light
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9206,7 +9250,7 @@ GameObject:
   - component: {fileID: 573348162}
   m_Layer: 0
   m_Name: Light (1)
-  m_TagString: Untagged
+  m_TagString: Light
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11497,7 +11541,7 @@ GameObject:
   - component: {fileID: 728087495}
   m_Layer: 0
   m_Name: Light (1)
-  m_TagString: Untagged
+  m_TagString: Light
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12860,7 +12904,7 @@ GameObject:
   - component: {fileID: 815775713}
   m_Layer: 0
   m_Name: Light
-  m_TagString: Untagged
+  m_TagString: Light
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -13875,7 +13919,7 @@ GameObject:
   - component: {fileID: 881415829}
   m_Layer: 0
   m_Name: Light (1)
-  m_TagString: Untagged
+  m_TagString: Light
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14304,7 +14348,7 @@ GameObject:
   - component: {fileID: 908231068}
   m_Layer: 0
   m_Name: Light
-  m_TagString: Untagged
+  m_TagString: Light
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14819,7 +14863,7 @@ GameObject:
   - component: {fileID: 922532482}
   m_Layer: 0
   m_Name: Light (1)
-  m_TagString: Untagged
+  m_TagString: Light
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -15321,7 +15365,7 @@ GameObject:
   - component: {fileID: 964025448}
   m_Layer: 0
   m_Name: Light (1)
-  m_TagString: Untagged
+  m_TagString: Light
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -16190,7 +16234,7 @@ GameObject:
   - component: {fileID: 1007131439}
   m_Layer: 0
   m_Name: Light
-  m_TagString: Untagged
+  m_TagString: Light
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -16482,7 +16526,7 @@ GameObject:
   - component: {fileID: 1025492577}
   m_Layer: 0
   m_Name: Light (1)
-  m_TagString: Untagged
+  m_TagString: Light
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -16576,7 +16620,7 @@ GameObject:
   - component: {fileID: 1028447109}
   m_Layer: 0
   m_Name: Light
-  m_TagString: Untagged
+  m_TagString: Light
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -17248,7 +17292,7 @@ GameObject:
   - component: {fileID: 1078563994}
   m_Layer: 0
   m_Name: Light
-  m_TagString: Untagged
+  m_TagString: Light
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -18294,7 +18338,7 @@ GameObject:
   - component: {fileID: 1133631256}
   m_Layer: 0
   m_Name: Light (1)
-  m_TagString: Untagged
+  m_TagString: Light
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -18875,6 +18919,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1257294448}
     m_Modifications:
+    - target: {fileID: -8854429743148946974, guid: 8ffceb6e76bd34a0997083a836ef5314, type: 3}
+      propertyPath: m_TagString
+      value: Light
+      objectReference: {fileID: 0}
     - target: {fileID: -8713953745488588858, guid: 8ffceb6e76bd34a0997083a836ef5314, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -18935,6 +18983,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: e2b943b352bbb4feca9bec678a6b73f6, type: 2}
+    - target: {fileID: -7760322205179501006, guid: 8ffceb6e76bd34a0997083a836ef5314, type: 3}
+      propertyPath: m_TagString
+      value: Light
+      objectReference: {fileID: 0}
     - target: {fileID: -6249782644698515193, guid: 8ffceb6e76bd34a0997083a836ef5314, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -18955,6 +19007,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: fairy_light_wuuuuub
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8ffceb6e76bd34a0997083a836ef5314, type: 3}
+      propertyPath: m_TagString
+      value: Light
+      objectReference: {fileID: 0}
+    - target: {fileID: 1071992910726180785, guid: 8ffceb6e76bd34a0997083a836ef5314, type: 3}
+      propertyPath: m_TagString
+      value: Light
+      objectReference: {fileID: 0}
+    - target: {fileID: 1073541367201779820, guid: 8ffceb6e76bd34a0997083a836ef5314, type: 3}
+      propertyPath: m_TagString
+      value: Light
+      objectReference: {fileID: 0}
+    - target: {fileID: 1832728881473536167, guid: 8ffceb6e76bd34a0997083a836ef5314, type: 3}
+      propertyPath: m_TagString
+      value: Light
+      objectReference: {fileID: 0}
     - target: {fileID: 2145801778247423979, guid: 8ffceb6e76bd34a0997083a836ef5314, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -18963,18 +19031,46 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: e2b943b352bbb4feca9bec678a6b73f6, type: 2}
+    - target: {fileID: 3184236984585975325, guid: 8ffceb6e76bd34a0997083a836ef5314, type: 3}
+      propertyPath: m_TagString
+      value: Light
+      objectReference: {fileID: 0}
     - target: {fileID: 3311311548035726924, guid: 8ffceb6e76bd34a0997083a836ef5314, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: e2b943b352bbb4feca9bec678a6b73f6, type: 2}
+    - target: {fileID: 3725938022223405585, guid: 8ffceb6e76bd34a0997083a836ef5314, type: 3}
+      propertyPath: m_TagString
+      value: Light
+      objectReference: {fileID: 0}
     - target: {fileID: 4060770218717038643, guid: 8ffceb6e76bd34a0997083a836ef5314, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: e2b943b352bbb4feca9bec678a6b73f6, type: 2}
+    - target: {fileID: 4967255308255819212, guid: 8ffceb6e76bd34a0997083a836ef5314, type: 3}
+      propertyPath: m_TagString
+      value: Light
+      objectReference: {fileID: 0}
     - target: {fileID: 5075064955351011137, guid: 8ffceb6e76bd34a0997083a836ef5314, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: e2b943b352bbb4feca9bec678a6b73f6, type: 2}
+    - target: {fileID: 6151391624722521414, guid: 8ffceb6e76bd34a0997083a836ef5314, type: 3}
+      propertyPath: m_TagString
+      value: Light
+      objectReference: {fileID: 0}
+    - target: {fileID: 8472028660831315926, guid: 8ffceb6e76bd34a0997083a836ef5314, type: 3}
+      propertyPath: m_TagString
+      value: Light
+      objectReference: {fileID: 0}
+    - target: {fileID: 8924296852632832353, guid: 8ffceb6e76bd34a0997083a836ef5314, type: 3}
+      propertyPath: m_TagString
+      value: Light
+      objectReference: {fileID: 0}
+    - target: {fileID: 8972134767357931170, guid: 8ffceb6e76bd34a0997083a836ef5314, type: 3}
+      propertyPath: m_TagString
+      value: Light
+      objectReference: {fileID: 0}
     - target: {fileID: 9088953987849635028, guid: 8ffceb6e76bd34a0997083a836ef5314, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -19295,7 +19391,7 @@ GameObject:
   - component: {fileID: 1183714092}
   m_Layer: 0
   m_Name: Light (2)
-  m_TagString: Untagged
+  m_TagString: Light
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -19690,7 +19786,7 @@ GameObject:
   - component: {fileID: 1202443213}
   m_Layer: 0
   m_Name: Light (1)
-  m_TagString: Untagged
+  m_TagString: Light
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -20738,7 +20834,7 @@ GameObject:
   - component: {fileID: 1257294448}
   m_Layer: 0
   m_Name: Lights
-  m_TagString: Untagged
+  m_TagString: Light
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -22205,7 +22301,7 @@ GameObject:
   - component: {fileID: 1341222202}
   m_Layer: 0
   m_Name: Light
-  m_TagString: Untagged
+  m_TagString: Light
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -22468,7 +22564,7 @@ GameObject:
   - component: {fileID: 1362405278}
   m_Layer: 0
   m_Name: Light (1)
-  m_TagString: Untagged
+  m_TagString: Light
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -23346,7 +23442,7 @@ GameObject:
   - component: {fileID: 1384755447}
   m_Layer: 0
   m_Name: Light (2)
-  m_TagString: Untagged
+  m_TagString: Light
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -23716,7 +23812,7 @@ GameObject:
   - component: {fileID: 1436963374}
   m_Layer: 0
   m_Name: Light (2)
-  m_TagString: Untagged
+  m_TagString: Light
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -24013,7 +24109,7 @@ GameObject:
   - component: {fileID: 1464840234}
   m_Layer: 0
   m_Name: Light
-  m_TagString: Untagged
+  m_TagString: Light
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -26469,6 +26565,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1257294448}
     m_Modifications:
+    - target: {fileID: -8854429743148946974, guid: 8ffceb6e76bd34a0997083a836ef5314, type: 3}
+      propertyPath: m_TagString
+      value: Light
+      objectReference: {fileID: 0}
     - target: {fileID: -8713953745488588858, guid: 8ffceb6e76bd34a0997083a836ef5314, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -26529,6 +26629,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: e2b943b352bbb4feca9bec678a6b73f6, type: 2}
+    - target: {fileID: -7760322205179501006, guid: 8ffceb6e76bd34a0997083a836ef5314, type: 3}
+      propertyPath: m_TagString
+      value: Light
+      objectReference: {fileID: 0}
     - target: {fileID: -6249782644698515193, guid: 8ffceb6e76bd34a0997083a836ef5314, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -26549,6 +26653,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: fairy_light_wuuuuub (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8ffceb6e76bd34a0997083a836ef5314, type: 3}
+      propertyPath: m_TagString
+      value: Light
+      objectReference: {fileID: 0}
+    - target: {fileID: 1071992910726180785, guid: 8ffceb6e76bd34a0997083a836ef5314, type: 3}
+      propertyPath: m_TagString
+      value: Light
+      objectReference: {fileID: 0}
+    - target: {fileID: 1073541367201779820, guid: 8ffceb6e76bd34a0997083a836ef5314, type: 3}
+      propertyPath: m_TagString
+      value: Light
+      objectReference: {fileID: 0}
+    - target: {fileID: 1832728881473536167, guid: 8ffceb6e76bd34a0997083a836ef5314, type: 3}
+      propertyPath: m_TagString
+      value: Light
+      objectReference: {fileID: 0}
     - target: {fileID: 2145801778247423979, guid: 8ffceb6e76bd34a0997083a836ef5314, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -26557,18 +26677,46 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: e2b943b352bbb4feca9bec678a6b73f6, type: 2}
+    - target: {fileID: 3184236984585975325, guid: 8ffceb6e76bd34a0997083a836ef5314, type: 3}
+      propertyPath: m_TagString
+      value: Light
+      objectReference: {fileID: 0}
     - target: {fileID: 3311311548035726924, guid: 8ffceb6e76bd34a0997083a836ef5314, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: e2b943b352bbb4feca9bec678a6b73f6, type: 2}
+    - target: {fileID: 3725938022223405585, guid: 8ffceb6e76bd34a0997083a836ef5314, type: 3}
+      propertyPath: m_TagString
+      value: Light
+      objectReference: {fileID: 0}
     - target: {fileID: 4060770218717038643, guid: 8ffceb6e76bd34a0997083a836ef5314, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: e2b943b352bbb4feca9bec678a6b73f6, type: 2}
+    - target: {fileID: 4967255308255819212, guid: 8ffceb6e76bd34a0997083a836ef5314, type: 3}
+      propertyPath: m_TagString
+      value: Light
+      objectReference: {fileID: 0}
     - target: {fileID: 5075064955351011137, guid: 8ffceb6e76bd34a0997083a836ef5314, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: e2b943b352bbb4feca9bec678a6b73f6, type: 2}
+    - target: {fileID: 6151391624722521414, guid: 8ffceb6e76bd34a0997083a836ef5314, type: 3}
+      propertyPath: m_TagString
+      value: Light
+      objectReference: {fileID: 0}
+    - target: {fileID: 8472028660831315926, guid: 8ffceb6e76bd34a0997083a836ef5314, type: 3}
+      propertyPath: m_TagString
+      value: Light
+      objectReference: {fileID: 0}
+    - target: {fileID: 8924296852632832353, guid: 8ffceb6e76bd34a0997083a836ef5314, type: 3}
+      propertyPath: m_TagString
+      value: Light
+      objectReference: {fileID: 0}
+    - target: {fileID: 8972134767357931170, guid: 8ffceb6e76bd34a0997083a836ef5314, type: 3}
+      propertyPath: m_TagString
+      value: Light
+      objectReference: {fileID: 0}
     - target: {fileID: 9088953987849635028, guid: 8ffceb6e76bd34a0997083a836ef5314, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -27154,7 +27302,7 @@ GameObject:
   - component: {fileID: 1668598020}
   m_Layer: 0
   m_Name: Light
-  m_TagString: Untagged
+  m_TagString: Light
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -28011,10 +28159,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7555532914974203156, guid: 2a754fbe10c93480abc8fae716187c9b, type: 3}
+      propertyPath: m_TagString
+      value: Light
+      objectReference: {fileID: 0}
     - target: {fileID: -7259431325691204786, guid: 2a754fbe10c93480abc8fae716187c9b, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: e2b943b352bbb4feca9bec678a6b73f6, type: 2}
+    - target: {fileID: -6892548450306216908, guid: 2a754fbe10c93480abc8fae716187c9b, type: 3}
+      propertyPath: m_TagString
+      value: Light
+      objectReference: {fileID: 0}
     - target: {fileID: -6510786561306804589, guid: 2a754fbe10c93480abc8fae716187c9b, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -28023,6 +28179,18 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: e2b943b352bbb4feca9bec678a6b73f6, type: 2}
+    - target: {fileID: -5568604637417889890, guid: 2a754fbe10c93480abc8fae716187c9b, type: 3}
+      propertyPath: m_TagString
+      value: Light
+      objectReference: {fileID: 0}
+    - target: {fileID: -5359612603467606591, guid: 2a754fbe10c93480abc8fae716187c9b, type: 3}
+      propertyPath: m_TagString
+      value: Light
+      objectReference: {fileID: 0}
+    - target: {fileID: -4948961549931080258, guid: 2a754fbe10c93480abc8fae716187c9b, type: 3}
+      propertyPath: m_TagString
+      value: Light
+      objectReference: {fileID: 0}
     - target: {fileID: -4235314729797614750, guid: 2a754fbe10c93480abc8fae716187c9b, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -28031,13 +28199,45 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: e2b943b352bbb4feca9bec678a6b73f6, type: 2}
+    - target: {fileID: -3046587006848634726, guid: 2a754fbe10c93480abc8fae716187c9b, type: 3}
+      propertyPath: m_TagString
+      value: Light
+      objectReference: {fileID: 0}
     - target: {fileID: -2091757201697427297, guid: 2a754fbe10c93480abc8fae716187c9b, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: e2b943b352bbb4feca9bec678a6b73f6, type: 2}
+    - target: {fileID: -2041873850312376155, guid: 2a754fbe10c93480abc8fae716187c9b, type: 3}
+      propertyPath: m_TagString
+      value: Light
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 2a754fbe10c93480abc8fae716187c9b, type: 3}
       propertyPath: m_Name
       value: fairy_light_wuuub_wuuub
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 2a754fbe10c93480abc8fae716187c9b, type: 3}
+      propertyPath: m_TagString
+      value: Light
+      objectReference: {fileID: 0}
+    - target: {fileID: 1350066559828562594, guid: 2a754fbe10c93480abc8fae716187c9b, type: 3}
+      propertyPath: m_TagString
+      value: Light
+      objectReference: {fileID: 0}
+    - target: {fileID: 2272690481616918633, guid: 2a754fbe10c93480abc8fae716187c9b, type: 3}
+      propertyPath: m_TagString
+      value: Light
+      objectReference: {fileID: 0}
+    - target: {fileID: 4616651210572145881, guid: 2a754fbe10c93480abc8fae716187c9b, type: 3}
+      propertyPath: m_TagString
+      value: Light
+      objectReference: {fileID: 0}
+    - target: {fileID: 5263184972316301466, guid: 2a754fbe10c93480abc8fae716187c9b, type: 3}
+      propertyPath: m_TagString
+      value: Light
+      objectReference: {fileID: 0}
+    - target: {fileID: 5564464076518005769, guid: 2a754fbe10c93480abc8fae716187c9b, type: 3}
+      propertyPath: m_TagString
+      value: Light
       objectReference: {fileID: 0}
     - target: {fileID: 5575970404272630123, guid: 2a754fbe10c93480abc8fae716187c9b, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -28047,6 +28247,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: e2b943b352bbb4feca9bec678a6b73f6, type: 2}
+    - target: {fileID: 7952806995265535495, guid: 2a754fbe10c93480abc8fae716187c9b, type: 3}
+      propertyPath: m_TagString
+      value: Light
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -28762,7 +28966,7 @@ GameObject:
   - component: {fileID: 1742419443}
   m_Layer: 0
   m_Name: LightComponent0 (10)
-  m_TagString: Untagged
+  m_TagString: Light
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -30047,7 +30251,7 @@ GameObject:
   - component: {fileID: 1798996316}
   m_Layer: 0
   m_Name: LightComponent0 (11)
-  m_TagString: Untagged
+  m_TagString: Light
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -31628,7 +31832,7 @@ GameObject:
   - component: {fileID: 1887149967}
   m_Layer: 0
   m_Name: Light (1)
-  m_TagString: Untagged
+  m_TagString: Light
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -32697,7 +32901,7 @@ GameObject:
   - component: {fileID: 1941488243}
   m_Layer: 0
   m_Name: Light (1)
-  m_TagString: Untagged
+  m_TagString: Light
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -32857,7 +33061,7 @@ GameObject:
   - component: {fileID: 1954139893}
   m_Layer: 0
   m_Name: Light (2)
-  m_TagString: Untagged
+  m_TagString: Light
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -33151,7 +33355,7 @@ GameObject:
   - component: {fileID: 1971299415}
   m_Layer: 0
   m_Name: Light (3)
-  m_TagString: Untagged
+  m_TagString: Light
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -33373,6 +33577,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1257294448}
     m_Modifications:
+    - target: {fileID: -8854429743148946974, guid: 8ffceb6e76bd34a0997083a836ef5314, type: 3}
+      propertyPath: m_TagString
+      value: Light
+      objectReference: {fileID: 0}
     - target: {fileID: -8713953745488588858, guid: 8ffceb6e76bd34a0997083a836ef5314, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -33433,6 +33641,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: e2b943b352bbb4feca9bec678a6b73f6, type: 2}
+    - target: {fileID: -7760322205179501006, guid: 8ffceb6e76bd34a0997083a836ef5314, type: 3}
+      propertyPath: m_TagString
+      value: Light
+      objectReference: {fileID: 0}
     - target: {fileID: -6249782644698515193, guid: 8ffceb6e76bd34a0997083a836ef5314, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -33453,6 +33665,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: fairy_light_wuuuuub (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8ffceb6e76bd34a0997083a836ef5314, type: 3}
+      propertyPath: m_TagString
+      value: Light
+      objectReference: {fileID: 0}
+    - target: {fileID: 1071992910726180785, guid: 8ffceb6e76bd34a0997083a836ef5314, type: 3}
+      propertyPath: m_TagString
+      value: Light
+      objectReference: {fileID: 0}
+    - target: {fileID: 1073541367201779820, guid: 8ffceb6e76bd34a0997083a836ef5314, type: 3}
+      propertyPath: m_TagString
+      value: Light
+      objectReference: {fileID: 0}
+    - target: {fileID: 1832728881473536167, guid: 8ffceb6e76bd34a0997083a836ef5314, type: 3}
+      propertyPath: m_TagString
+      value: Light
+      objectReference: {fileID: 0}
     - target: {fileID: 2145801778247423979, guid: 8ffceb6e76bd34a0997083a836ef5314, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -33461,18 +33689,46 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: e2b943b352bbb4feca9bec678a6b73f6, type: 2}
+    - target: {fileID: 3184236984585975325, guid: 8ffceb6e76bd34a0997083a836ef5314, type: 3}
+      propertyPath: m_TagString
+      value: Light
+      objectReference: {fileID: 0}
     - target: {fileID: 3311311548035726924, guid: 8ffceb6e76bd34a0997083a836ef5314, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: e2b943b352bbb4feca9bec678a6b73f6, type: 2}
+    - target: {fileID: 3725938022223405585, guid: 8ffceb6e76bd34a0997083a836ef5314, type: 3}
+      propertyPath: m_TagString
+      value: Light
+      objectReference: {fileID: 0}
     - target: {fileID: 4060770218717038643, guid: 8ffceb6e76bd34a0997083a836ef5314, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: e2b943b352bbb4feca9bec678a6b73f6, type: 2}
+    - target: {fileID: 4967255308255819212, guid: 8ffceb6e76bd34a0997083a836ef5314, type: 3}
+      propertyPath: m_TagString
+      value: Light
+      objectReference: {fileID: 0}
     - target: {fileID: 5075064955351011137, guid: 8ffceb6e76bd34a0997083a836ef5314, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: e2b943b352bbb4feca9bec678a6b73f6, type: 2}
+    - target: {fileID: 6151391624722521414, guid: 8ffceb6e76bd34a0997083a836ef5314, type: 3}
+      propertyPath: m_TagString
+      value: Light
+      objectReference: {fileID: 0}
+    - target: {fileID: 8472028660831315926, guid: 8ffceb6e76bd34a0997083a836ef5314, type: 3}
+      propertyPath: m_TagString
+      value: Light
+      objectReference: {fileID: 0}
+    - target: {fileID: 8924296852632832353, guid: 8ffceb6e76bd34a0997083a836ef5314, type: 3}
+      propertyPath: m_TagString
+      value: Light
+      objectReference: {fileID: 0}
+    - target: {fileID: 8972134767357931170, guid: 8ffceb6e76bd34a0997083a836ef5314, type: 3}
+      propertyPath: m_TagString
+      value: Light
+      objectReference: {fileID: 0}
     - target: {fileID: 9088953987849635028, guid: 8ffceb6e76bd34a0997083a836ef5314, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -35202,7 +35458,7 @@ GameObject:
   - component: {fileID: 2014805003}
   m_Layer: 0
   m_Name: Light (1)
-  m_TagString: Untagged
+  m_TagString: Light
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -35741,6 +35997,10 @@ PrefabInstance:
     - target: {fileID: 648152658470137081, guid: 1a4d573cb497dbc44a567dba52dc8ab1, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 3.2839966
+      objectReference: {fileID: 0}
+    - target: {fileID: 4728554169158923938, guid: 1a4d573cb497dbc44a567dba52dc8ab1, type: 3}
+      propertyPath: m_TagString
+      value: Light
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -36620,7 +36880,7 @@ GameObject:
   - component: {fileID: 2095435893}
   m_Layer: 0
   m_Name: Light
-  m_TagString: Untagged
+  m_TagString: Light
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -37683,7 +37943,7 @@ GameObject:
   - component: {fileID: 2143126196}
   m_Layer: 0
   m_Name: LightComponent0 (9)
-  m_TagString: Untagged
+  m_TagString: Light
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -37946,6 +38206,7 @@ SceneRoots:
   - {fileID: 852025035}
   - {fileID: 1073371317}
   - {fileID: 985680722}
+  - {fileID: 275032348}
   - {fileID: 112723836}
   - {fileID: 1059928379}
   - {fileID: 1710119841}
