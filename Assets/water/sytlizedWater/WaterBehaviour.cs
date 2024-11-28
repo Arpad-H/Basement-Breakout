@@ -1,19 +1,44 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class WaterBehaviour : MonoBehaviour
 {
-    [SerializeField]float floodingSpeed = 0.5f;
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private float floodingSpeed = 0.5f;
+    private bool isFlooding = false; // Steuert, ob das Wasser steigt
+
+    private void Awake()
     {
-        
+        // Abonniere das GameState-Änderungs-Event
+        GameManager.OnGameStateChanged += HandleGameStateChanged;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnDestroy()
     {
-        transform.Translate(Vector3.up * Time.deltaTime * floodingSpeed);
+        // Entferne das Abonnement, wenn das Objekt zerstört wird
+        GameManager.OnGameStateChanged -= HandleGameStateChanged;
+    }
+
+    private void Update()
+    {
+        // Lasse das Wasser nur steigen, wenn isFlooding true ist
+        if (isFlooding)
+        {
+            transform.Translate(Vector3.up * Time.deltaTime * floodingSpeed);
+        }
+    }
+
+    private void HandleGameStateChanged(GameManager.GameState newState)
+    {
+        // Überprüfe, ob der GameState auf "Game" geändert wurde
+        if (newState == GameManager.GameState.Game)
+        {
+            Debug.Log("WaterBehaviour: GameState is now 'Game'. Starting flooding.");
+            isFlooding = true; // Aktiviert das Steigen des Wassers
+        }
+        else
+        {
+            Debug.Log($"WaterBehaviour: GameState changed to {newState}. Flooding stopped.");
+            isFlooding = false; // Deaktiviert das Steigen des Wassers
+        }
     }
 }

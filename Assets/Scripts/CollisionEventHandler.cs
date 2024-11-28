@@ -26,11 +26,11 @@ public class CollisionEventHandler : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         
-        Debug.Log($"//CollisionEventHandler: Object entered : {other.gameObject.name} -" + true + objecttypeselection);
+        Debug.Log("AAAAAA Object entered: " + true + nameof(objecttypeselection));
         if (other.gameObject == targetObject)
         {
             eventsHandler(true);
-           
+            Debug.Log($"Object entered AAAAA: {other.gameObject.name}" + true);
             
         }
     }
@@ -40,8 +40,8 @@ public class CollisionEventHandler : MonoBehaviour
         if (other.gameObject == targetObject)
         {
             eventsHandler(false);
-            Debug.Log($"//CollisionEventHandler: Object exited: {other.gameObject.name} - " + false+ objecttypeselection);
-            
+            Debug.Log($"Object exitedA  AAAA: {other.gameObject.name}" + false);
+            Debug.Log("Object exit: " + true + nameof(objecttypeselection));
         }
     }
 
@@ -64,12 +64,10 @@ public class CollisionEventHandler : MonoBehaviour
         switch (objecttypeselection)
         {
             case Objecttype.Player:
-                Debug.Log($"VoideventsHandler: Object exited: - " + state+ objecttypeselection);
-                OnWaterStateChangedPlayer?.Invoke(state);
+                OnWaterStateChangedCable?.Invoke(state);
                 break;
             case Objecttype.Cable:
-                Debug.Log($"VoideventsHandler: Object exited: - " + state+ objecttypeselection);
-                OnWaterStateChangedCable?.Invoke(state);
+                OnWaterStateChangedPlayer?.Invoke(state);
                 break;
             default:
                 throw new ArgumentOutOfRangeException(nameof(objecttypeselection), objecttypeselection, null);
