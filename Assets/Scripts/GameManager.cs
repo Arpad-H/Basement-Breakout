@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
     
     private bool playerIsInWhater = false;
     private bool cableISinWater = false;
+    private bool electricityIsActive = true;
     
 
     void Awake()
@@ -21,6 +22,7 @@ public class GameManager : MonoBehaviour
         //Instance = this;
         CollisionEventHandler.OnWaterStateChangedCable += OnWaterStateChangedCable;
         CollisionEventHandler.OnWaterStateChangedPlayer += OnWaterStateChangedPlayer;
+        LeverInteractable.onLeverAction += OnLeverAction;
     }
 
     private void OnDestroy()
@@ -34,16 +36,23 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log($"[GameManager]: OnWaterStateChangedCable: + {state}");
         cableISinWater = state;
-        checkPlayerAndCableInWhater(playerIsInWhater, cableISinWater);
+        checkPlayerAndCableInWhater(playerIsInWhater, cableISinWater, electricityIsActive);
     }
 
     private void OnWaterStateChangedPlayer(bool state)
     {
         Debug.Log("[GameManager]: OnWaterStateChangedPlayer: " + state);
         playerIsInWhater = state;
-        checkPlayerAndCableInWhater(playerIsInWhater, cableISinWater);
+        checkPlayerAndCableInWhater(playerIsInWhater, cableISinWater, electricityIsActive);
     }
-    
+
+
+    private void OnLeverAction(bool state)
+    {
+        Debug.Log("[GameManager]: electricityIsActive: " + state);
+        electricityIsActive = state;
+        checkPlayerAndCableInWhater(playerIsInWhater, cableISinWater, electricityIsActive);
+    }
 
     public void UpdateGameState(GameState newState)
     {
@@ -76,12 +85,12 @@ public class GameManager : MonoBehaviour
         Win,
         Beam,
         Tutorial,
-        Game
+        Game,
     }
 
-    private void checkPlayerAndCableInWhater(bool playerIsInWhater, bool cableIsInWhater)
+    private void checkPlayerAndCableInWhater(bool playerIsInWhater, bool cableIsInWhater, bool electricityIsActive)
     {
-        if (playerIsInWhater == true && cableIsInWhater == true)
+        if (playerIsInWhater == true && cableIsInWhater == true && electricityIsActive == true)
         {
             Debug.Log("[GameManager]: OnWaterStateChangedPlayerAndCableInWhater: " );
             //TODO: GameOverScene
