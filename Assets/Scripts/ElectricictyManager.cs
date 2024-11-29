@@ -1,6 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Video;
 
 public class ElectricictyManager : MonoBehaviour
 {
@@ -9,9 +12,11 @@ public class ElectricictyManager : MonoBehaviour
      */
     
     private List<Light> lights = new List<Light>();
+    private GameObject tv;
+    private VideoPlayer Videoplayer;
     private void Awake()
     {
-        findAllLights();
+        
         
         LeverInteractable.onLeverAction += LeverInteractableOnonLeverAction;
         
@@ -19,29 +24,36 @@ public class ElectricictyManager : MonoBehaviour
 
     private void LeverInteractableOnonLeverAction(bool state)
     {
+        Debug.Log($"[ElectricityManager] Lever Interactable is on {state}");
         if (state)
         {
            enableAllLights(); 
+           enableTV();
         }
         else
         {
             disableAllLights();
+            disableTV();
         }
     }
 
-
-    void Start()
+    private void Start()
     {
-        
+        findAllLights();
+        tv = GameObject.Find("TV Demo");
+        if (tv != null)
+        {
+            Videoplayer = tv.GetComponent<VideoPlayer>();
+            
+        }
+        else
+        {
+            Debug.LogError("[ElectricityManager] GamObject tv is null");
+        }
+        {
+            
+        }
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-
 
 
     private void findAllLights()
@@ -62,6 +74,7 @@ public class ElectricictyManager : MonoBehaviour
         foreach (Light light in lights)
         {
             light.enabled = false;
+            Debug.Log($"[ElectricityManager] Light {light.name} is enabled");
         }
     }
 
@@ -70,6 +83,19 @@ public class ElectricictyManager : MonoBehaviour
         foreach (Light light in lights)
         {
             light.enabled = true;
+            Debug.Log($"[ElectricityManager] Light {light.name} is enabled");
         }
+    }
+
+
+
+    private void disableTV()
+    {
+        Videoplayer.enabled = false;
+    }
+
+    private void enableTV()
+    {
+        Videoplayer.enabled = true;
     }
 }

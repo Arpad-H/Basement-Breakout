@@ -1,3 +1,6 @@
+using System;
+using Oculus.Interaction;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 using UnityEngine.Events;
@@ -5,38 +8,58 @@ using UnityEngine.Events;
 public class LeverInteractable : MonoBehaviour
 {
     [SerializeField] private float angleThreshold = 45f;
-    [SerializeField] public UnityEvent onLeverActivated = new UnityEvent();
-    [SerializeField] public UnityEvent onLeverDeactivated = new UnityEvent();
-
 
     public static event Action<bool> onLeverAction;
 
 
-    private HingeJoint hingeJoint;
+    private Quaternion initialRotation;
     private bool isActivated = false;
     private bool wasOverThreshold = false;
+    
+    private OneGrabRotateTransformer rotateTransform;
 
     private void Awake()
     {
-        hingeJoint = GetComponent<HingeJoint>();
-        if (hingeJoint == null)
+        
+        if (rotateTransform == null)
         {
-            Debug.LogError("A Transform component is required on the same GameObject!");
+            rotateTransform = GetComponent<OneGrabRotateTransformer>();
         }
+
+        if (rotateTransform == null)
+        {
+            Debug.LogError("OneGrabRotateTransform component is required on the same GameObject!");
+        }
+        else
+        {
+            initialRotation = transform.localRotation;
+        }
+        
     }
 
     private void Update()
     {
-        float leverAngle = hingeJoint.angle;
-        bool isOverThreshold = Mathf.Abs(leverAngle) > angleThreshold;
+        if (rotateTransform == null) return;
 
-
-        if (isOverThreshold != wasOverThreshold)
+        
+        Quaternion currentRotation = transform.localRotation;
+        float angle = Quaternion.Angle(initialRotation, currentRotation);
+        
+       
+        
+        bool overThreshold = angle > angleThreshold;
+        
+        if (isActivated != overThreshold)
         {
-            isActivated = isOverThreshold;
+            Debug.Log($"[Lever interactable] changed to: {isActivated} Angle: {angle} Threshold: {angleThreshold}");
             onLeverAction?.Invoke(isActivated);
         }
-
-        wasOverThreshold = isOverThreshold;
+        
+        isActivated = overThreshold;
+        
+        
     }
+    
+    
 }
+
