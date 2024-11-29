@@ -4,7 +4,10 @@ using UnityEngine;
 public class WaterBehaviour : MonoBehaviour
 {
     [SerializeField] private float floodingSpeed = 0.5f;
+    [SerializeField] private GameObject heightPlane;
+    [SerializeField] private GameObject waterSim;
     private bool isFlooding = false; // Steuert, ob das Wasser steigt
+    private bool lowerSim = false; // Steuert, ob das Wasser steigt
 
     private void Awake()
     {
@@ -14,31 +17,44 @@ public class WaterBehaviour : MonoBehaviour
 
     private void OnDestroy()
     {
-        // Entferne das Abonnement, wenn das Objekt zerstört wird
         GameManager.OnGameStateChanged -= HandleGameStateChanged;
     }
 
     private void Update()
     {
-        // Lasse das Wasser nur steigen, wenn isFlooding true ist
         if (isFlooding)
         {
-            transform.Translate(Vector3.up * Time.deltaTime * floodingSpeed);
+            heightPlane.transform.Translate(Vector3.up * Time.deltaTime * floodingSpeed);
+        }
+        if (lowerSim)
+        {
+            waterSim.transform.Translate(Vector3.down * Time.deltaTime * floodingSpeed);
         }
     }
 
     private void HandleGameStateChanged(GameManager.GameState newState)
     {
-        // Überprüfe, ob der GameState auf "Game" geändert wurde
         if (newState == GameManager.GameState.Game)
         {
             Debug.Log("WaterBehaviour: GameState is now 'Game'. Starting flooding.");
-            isFlooding = true; // Aktiviert das Steigen des Wassers
+            isFlooding = true;
         }
         else
         {
             Debug.Log($"WaterBehaviour: GameState changed to {newState}. Flooding stopped.");
-            isFlooding = false; // Deaktiviert das Steigen des Wassers
+            isFlooding = false;
         }
+    }
+
+    public void SwapSimWithCrest()
+    {
+        waterSim.SetActive(false);
+        isFlooding = true;
+        floodingSpeed = 0.5f *floodingSpeed;
+    }
+    public void RampUpSpeed()
+    {
+        lowerSim = true;
+        floodingSpeed = floodingSpeed*2;
     }
 }
