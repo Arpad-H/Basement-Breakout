@@ -1,3 +1,5 @@
+using System;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 using UnityEngine.Events;
@@ -5,16 +7,13 @@ using UnityEngine.Events;
 public class LeverInteractable : MonoBehaviour
 {
     [SerializeField] private float angleThreshold = 45f;
-    
-    [SerializeField] private UnityEvent onLeverActivated = new UnityEvent();
-    [SerializeField] private UnityEvent onLeverDeactivated = new UnityEvent();
-    
+
+    public static event Action<bool> onLeverAction;
+
+
     private HingeJoint hingeJoint;
     private bool isActivated = false;
     private bool wasOverThreshold = false;
-
-    public UnityEvent OnLeverActivated => onLeverActivated;
-    public UnityEvent OnLeverDeactivated => onLeverDeactivated;
 
     private void Awake()
     {
@@ -27,25 +26,16 @@ public class LeverInteractable : MonoBehaviour
 
     private void Update()
     {
-        // Variante 1: Verwendung des HingeJoint
         float leverAngle = hingeJoint.angle;
         bool isOverThreshold = Mathf.Abs(leverAngle) > angleThreshold;
-        
-        
+
+
         if (isOverThreshold != wasOverThreshold)
         {
             isActivated = isOverThreshold;
-            
-            if (isActivated)
-            {
-                onLeverActivated.Invoke();
-            }
-            else
-            {
-                onLeverDeactivated.Invoke();
-            }
+            onLeverAction?.Invoke(isActivated);
         }
-        
+
         wasOverThreshold = isOverThreshold;
     }
 }
