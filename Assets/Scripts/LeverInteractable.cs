@@ -17,11 +17,7 @@ public class LeverInteractable : MonoBehaviour
 
     private void Awake()
     {
-        hingeJoint = GetComponent<HingeJoint>();
-        if (hingeJoint == null)
-        {
-            Debug.LogError("HingeJoint component is required on the same GameObject!");
-        }
+        
     }
 
     private void Update()
