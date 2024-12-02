@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Oculus.Interaction;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.XR.Interaction.Toolkit.Interactables;
@@ -16,6 +17,7 @@ public class RCBoatController : MonoBehaviour
     [SerializeField] private Transform rightHand;
     [SerializeField] private UnityEvent<Vector2> moving;
     [SerializeField] private GameObject locomotion;
+    [SerializeField] private GrabInteractable grabInteractable;
     
     void Update()
     {
@@ -54,6 +56,15 @@ public class RCBoatController : MonoBehaviour
     public void cannotDrive()
     {
         drive = false;
+    }
+
+    public void setGrabPointLeft()
+    {
+        grabInteractable.InjectOptionalGrabSource(leftHand);
+    }
+    public void setGrabPointRight()
+    {
+        grabInteractable.InjectOptionalGrabSource(rightHand);
     }
     
 }

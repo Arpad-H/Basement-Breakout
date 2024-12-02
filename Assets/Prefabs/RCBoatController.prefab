@@ -131,7 +131,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blockId: f8766c17-aaf8-4b55-9431-de8deea83842
-  instanceId: b8f8d90f-e335-4ea7-852f-485ffc741aaf
+  instanceId: 776e880f-2ccd-4010-bcd3-bbdacaacd739
   version: 1
   installationRoutineCheckpoint:
     _installationRoutineId: f8338144-8280-4ff6-9455-ae2bb9c20fe8
@@ -475,6 +475,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   locomotion: {fileID: 0}
+  grabInteractable: {fileID: 2660515002983491250}
 --- !u!114 &6903925725233900586
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -517,3 +518,39 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  leftGrab:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 457268508903670741}
+        m_TargetAssemblyTypeName: RCBoatController, Assembly-CSharp
+        m_MethodName: setGrabPointLeft
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  leftUngrab:
+    m_PersistentCalls:
+      m_Calls: []
+  rightGrab:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 457268508903670741}
+        m_TargetAssemblyTypeName: RCBoatController, Assembly-CSharp
+        m_MethodName: setGrabPointRight
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  rightUngrab:
+    m_PersistentCalls:
+      m_Calls: []

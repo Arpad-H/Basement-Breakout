@@ -11,25 +11,33 @@ public class CustomButtonMapper : MonoBehaviour
     private bool rightGrabbing = false;
     [SerializeField] private UnityEvent active = new UnityEvent();
     [SerializeField] private UnityEvent unactive = new UnityEvent();
+    [SerializeField] private UnityEvent leftGrab = new UnityEvent();
+    [SerializeField] private UnityEvent leftUngrab = new UnityEvent();
+    [SerializeField] private UnityEvent rightGrab = new UnityEvent();
+    [SerializeField] private UnityEvent rightUngrab = new UnityEvent();
     
     private void Update()
     {
         if (OVRInput.Get(OVRInput.Button.PrimaryHandTrigger) && leftControlable)
         {
             leftGrabbing = true;
+            leftGrab.Invoke();
         }
         else
         {
             leftGrabbing = false;
+            leftUngrab.Invoke();
         }
         
         if (OVRInput.Get(OVRInput.Button.SecondaryHandTrigger) && rightControlable)
         {
             rightGrabbing = true;
+            rightGrab.Invoke();
         }
         else
         {
             rightGrabbing = false;
+            rightUngrab.Invoke();
         }
 
         if (OVRInput.Get(OVRInput.Button.PrimaryIndexTrigger) && leftGrabbing)
