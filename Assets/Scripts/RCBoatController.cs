@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Oculus.Interaction;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.XR.Interaction.Toolkit.Interactables;
@@ -8,8 +9,7 @@ using UnityEngine.XR.Interaction.Toolkit.Samples.StarterAssets;
 
 public class RCBoatController : MonoBehaviour
 {
-
-    private bool controlable = false;
+    private bool drive = false;
     private bool leftHanded = false;
     private bool rightHanded = false;
     Vector2 direction = Vector2.zero;
@@ -17,55 +17,54 @@ public class RCBoatController : MonoBehaviour
     [SerializeField] private Transform rightHand;
     [SerializeField] private UnityEvent<Vector2> moving;
     [SerializeField] private GameObject locomotion;
+    [SerializeField] private GrabInteractable grabInteractable;
     
     void Update()
     {
-        OVRInput.Update();
-        OVRInput.FixedUpdate();
-        if (controlable)
-        {
+        //OVRInput.Update();
+        //.FixedUpdate();
+        
+        if (drive) {
+            leftHanded = OVRInput.Get(OVRInput.Button.PrimaryHandTrigger);
+            rightHanded = OVRInput.Get(OVRInput.Button.SecondaryHandTrigger);
             locomotion.SetActive(false);
             if (rightHanded)
             {
-                direction = OVRInput.Get(OVRInput.RawAxis2D.LThumbstick);
+                direction = OVRInput.Get(OVRInput.RawAxis2D.RThumbstick);
             }
             else if(leftHanded)
             {
-                direction = OVRInput.Get(OVRInput.RawAxis2D.RThumbstick);
+                direction = OVRInput.Get(OVRInput.RawAxis2D.LThumbstick);
             }
-            moving.Invoke(direction);
+            else
+            {
+                direction = Vector2.zero;
+            }
         }
-        else
-        {
+        else {
             locomotion.SetActive(true);
+            direction = Vector2.zero;
         }
+        moving.Invoke(direction);
     }
 
-    public void canControl()
+    public void canDrive()
     {
-        controlable = true;
+        drive = true;
     }
 
-    public void cannotControl()
+    public void cannotDrive()
     {
-        controlable = false;
-        direction = Vector2.zero;
+        drive = false;
     }
 
-    public void pickup()
+    public void setGrabPointLeft()
     {
-        leftHanded = OVRInput.Get(OVRInput.Button.PrimaryHandTrigger);
-        rightHanded = OVRInput.Get(OVRInput.Button.SecondaryHandTrigger);
-
-        if (leftHanded)
-        {
-            GetComponent<XRGrabInteractable>().attachTransform = leftHand;
-        }
-        else if(rightHanded)
-        {
-            GetComponent<XRGrabInteractable>().attachTransform = rightHand;
-        }
+        grabInteractable.InjectOptionalGrabSource(leftHand);
     }
-    
+    public void setGrabPointRight()
+    {
+        grabInteractable.InjectOptionalGrabSource(rightHand);
+    }
     
 }
