@@ -8,8 +8,7 @@ using UnityEngine.XR.Interaction.Toolkit.Samples.StarterAssets;
 
 public class RCBoatController : MonoBehaviour
 {
-
-    private bool controlable = false;
+    private bool drive = false;
     private bool leftHanded = false;
     private bool rightHanded = false;
     Vector2 direction = Vector2.zero;
@@ -20,34 +19,41 @@ public class RCBoatController : MonoBehaviour
     
     void Update()
     {
-        OVRInput.Update();
-        OVRInput.FixedUpdate();
+        //OVRInput.Update();
+        //.FixedUpdate();
         
-        if (OVRInput.Get(OVRInput.Button.PrimaryHandTrigger) || OVRInput.Get(OVRInput.Button.SecondaryHandTrigger)) {
-            if (OVRInput.Get(OVRInput.Button.PrimaryIndexTrigger) || OVRInput.Get(OVRInput.Button.SecondaryIndexTrigger))
+        if (drive) {
+            leftHanded = OVRInput.Get(OVRInput.Button.PrimaryHandTrigger);
+            rightHanded = OVRInput.Get(OVRInput.Button.SecondaryHandTrigger);
+            locomotion.SetActive(false);
+            if (rightHanded)
             {
-                leftHanded = OVRInput.Get(OVRInput.Button.PrimaryHandTrigger);
-                rightHanded = OVRInput.Get(OVRInput.Button.SecondaryHandTrigger);
-                locomotion.SetActive(false);
-                if (rightHanded)
-                {
-                    direction = OVRInput.Get(OVRInput.RawAxis2D.RThumbstick);
-                }
-                else if(leftHanded)
-                {
-                    direction = OVRInput.Get(OVRInput.RawAxis2D.LThumbstick);
-                }
-                moving.Invoke(direction);
+                direction = OVRInput.Get(OVRInput.RawAxis2D.RThumbstick);
+            }
+            else if(leftHanded)
+            {
+                direction = OVRInput.Get(OVRInput.RawAxis2D.LThumbstick);
             }
             else
             {
-                locomotion.SetActive(true);
+                direction = Vector2.zero;
             }
         }
         else {
             locomotion.SetActive(true);
             direction = Vector2.zero;
         }
+        moving.Invoke(direction);
+    }
+
+    public void canDrive()
+    {
+        drive = true;
+    }
+
+    public void cannotDrive()
+    {
+        drive = false;
     }
     
 }

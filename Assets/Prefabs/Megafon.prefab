@@ -213,6 +213,7 @@ GameObject:
   - component: {fileID: 221377271637001821}
   - component: {fileID: 4795727583803174245}
   - component: {fileID: 2995458289709562667}
+  - component: {fileID: 7476460870490281816}
   m_Layer: 0
   m_Name: Megafon
   m_TagString: Untagged
@@ -443,6 +444,48 @@ AudioHighPassFilter:
   m_Enabled: 1
   m_CutoffFrequency: 500
   m_HighpassResonanceQ: 1
+--- !u!114 &7476460870490281816
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2406590741490554404}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7dfa3196966e7bf4fa20377c0f32700f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  active:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 308297043390501585}
+        m_TargetAssemblyTypeName: AudioDetection, Assembly-CSharp
+        m_MethodName: PlaySound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  unactive:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 308297043390501585}
+        m_TargetAssemblyTypeName: AudioDetection, Assembly-CSharp
+        m_MethodName: StopSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &5424221875676017867
 GameObject:
   m_ObjectHideFlags: 0
@@ -649,7 +692,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blockId: f8766c17-aaf8-4b55-9431-de8deea83842
-  instanceId: 030dcea5-a4df-4c50-8d22-f32dab548bcc
+  instanceId: f29ba8bb-3357-423b-ba70-95d361e1e7e9
   version: 1
   installationRoutineCheckpoint:
     _installationRoutineId: f8338144-8280-4ff6-9455-ae2bb9c20fe8

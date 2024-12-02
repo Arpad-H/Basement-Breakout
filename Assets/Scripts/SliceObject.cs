@@ -32,12 +32,6 @@ public class SliceObject : MonoBehaviour {
     }
 
     void FixedUpdate() {
-        if (OVRInput.Get(OVRInput.Button.PrimaryHandTrigger) || OVRInput.Get(OVRInput.Button.SecondaryHandTrigger)) {
-            canCut = OVRInput.Get(OVRInput.Button.PrimaryIndexTrigger) || OVRInput.Get(OVRInput.Button.SecondaryIndexTrigger);
-        }
-        else {
-            canCut = false;
-        }
         if (!chainsawIdleSound.isPlaying && canCut) {
             chainsawIdleSound.Play();
         }
@@ -98,5 +92,15 @@ public class SliceObject : MonoBehaviour {
         }
         
         FuelGauge.transform.localScale = new Vector3(0.001f, 1, fuel);
+    }
+
+    public void sawing()
+    {
+        canCut = true;
+    }
+    
+    public void notSawing()
+    {
+        canCut = false;
     }
 }

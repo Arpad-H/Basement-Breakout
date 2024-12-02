@@ -41,13 +41,13 @@ public class AudioDetection : MonoBehaviour
 
     void Update()
     {
-        if ((OVRInput.Get(OVRInput.Button.PrimaryHandTrigger) || OVRInput.Get(OVRInput.Button.SecondaryHandTrigger)) &&
+        /*if ((OVRInput.Get(OVRInput.Button.PrimaryHandTrigger) || OVRInput.Get(OVRInput.Button.SecondaryHandTrigger)) &&
             (OVRInput.Get(OVRInput.Button.PrimaryIndexTrigger) || OVRInput.Get(OVRInput.Button.SecondaryIndexTrigger))) {
             PlaySound();
         }
         else {
             StopSound();
-        }
+        }*/
     }
     
     public void PlaySound()
@@ -69,4 +69,5 @@ public class AudioDetection : MonoBehaviour
         hasEnergy = true;
         battery.SetActive(true);
     }
+    
 }

@@ -131,7 +131,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blockId: f8766c17-aaf8-4b55-9431-de8deea83842
-  instanceId: 81b05c27-c208-480b-ad54-2ef965314ef4
+  instanceId: b8f8d90f-e335-4ea7-852f-485ffc741aaf
   version: 1
   installationRoutineCheckpoint:
     _installationRoutineId: f8338144-8280-4ff6-9455-ae2bb9c20fe8
@@ -402,6 +402,7 @@ GameObject:
   - component: {fileID: 3125906183929089516}
   - component: {fileID: 70450914750461999}
   - component: {fileID: 457268508903670741}
+  - component: {fileID: 6903925725233900586}
   m_Layer: 0
   m_Name: RCBoatController
   m_TagString: Untagged
@@ -474,3 +475,45 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   locomotion: {fileID: 0}
+--- !u!114 &6903925725233900586
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8638823957032566174}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7dfa3196966e7bf4fa20377c0f32700f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  active:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 457268508903670741}
+        m_TargetAssemblyTypeName: RCBoatController, Assembly-CSharp
+        m_MethodName: canDrive
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  unactive:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 457268508903670741}
+        m_TargetAssemblyTypeName: RCBoatController, Assembly-CSharp
+        m_MethodName: cannotDrive
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
