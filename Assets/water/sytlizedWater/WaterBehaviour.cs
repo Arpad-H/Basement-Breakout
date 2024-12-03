@@ -24,11 +24,11 @@ public class WaterBehaviour : MonoBehaviour
     {
         if (isFlooding)
         {
-            heightPlane.transform.Translate(Vector3.up * Time.deltaTime * floodingSpeed);
+            heightPlane.transform.Translate(Vector3.up * (Time.deltaTime * floodingSpeed));
         }
         if (lowerSim)
         {
-            waterSim.transform.Translate(Vector3.down * Time.deltaTime * floodingSpeed);
+            waterSim.transform.Translate(Vector3.down * (Time.deltaTime * floodingSpeed));
         }
     }
 
@@ -49,12 +49,14 @@ public class WaterBehaviour : MonoBehaviour
     public void SwapSimWithCrest()
     {
         waterSim.SetActive(false);
-        isFlooding = true;
-        floodingSpeed = 0.5f *floodingSpeed;
+      
+        floodingSpeed = 0.25f *floodingSpeed;
     }
     public void RampUpSpeed()
     {
+        Debug.Log("RampUpSpeed");
         lowerSim = true;
-        floodingSpeed = floodingSpeed*2;
+        isFlooding = true;
+        floodingSpeed *= 4;
     }
 }
