@@ -16,26 +16,34 @@ public class CustomButtonMapper : MonoBehaviour
     [SerializeField] private UnityEvent rightGrab = new UnityEvent();
     [SerializeField] private UnityEvent rightUngrab = new UnityEvent();
     
+    [SerializeField] private UnityEvent justActive = new UnityEvent();
+    [SerializeField] private UnityEvent justLeftGrab = new UnityEvent();
+    [SerializeField] private UnityEvent justRightGrab = new UnityEvent();
+    
     private void Update()
     {
         if (OVRInput.Get(OVRInput.Button.PrimaryHandTrigger) && leftControlable)
         {
+            print("LEFT HAND GRAB");
             leftGrabbing = true;
             leftGrab.Invoke();
         }
         else
         {
+            print("LEFT HAND UNGRAB############");
             leftGrabbing = false;
             leftUngrab.Invoke();
         }
         
         if (OVRInput.Get(OVRInput.Button.SecondaryHandTrigger) && rightControlable)
         {
+            print("RIGHT HAND GRAB");
             rightGrabbing = true;
             rightGrab.Invoke();
         }
         else
         {
+            print("RIGHT HAND UNGRAB############");
             rightGrabbing = false;
             rightUngrab.Invoke();
         }
@@ -51,6 +59,24 @@ public class CustomButtonMapper : MonoBehaviour
         else
         {
             unactive.Invoke();
+        }
+
+        if (OVRInput.GetDown(OVRInput.Button.PrimaryHandTrigger) && leftControlable)
+        {
+            justLeftGrab.Invoke();
+        }
+        else if (OVRInput.GetDown(OVRInput.Button.SecondaryHandTrigger) && rightControlable)
+        {
+            justRightGrab.Invoke();
+        }
+
+        if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger) && leftGrabbing)
+        {
+            justActive.Invoke();
+        }
+        else if (OVRInput.GetDown(OVRInput.Button.SecondaryIndexTrigger) && rightGrabbing)
+        {
+            justActive.Invoke();
         }
     }
     
