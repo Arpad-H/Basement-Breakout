@@ -6,6 +6,7 @@ public class WaterIngresCoordinator : MonoBehaviour
 {
     public GameObject bookshelf;
     public GameObject burstWindow;
+    public GameObject guitar;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,5 +26,9 @@ public class WaterIngresCoordinator : MonoBehaviour
     public void BurstWindow()
     {
         burstWindow.GetComponent<burstingWindow>().BurstWindow();
+    }
+    public void DropGuitar()
+    {
+        guitar.GetComponent<Rigidbody>().useGravity = true;
     }
 }
