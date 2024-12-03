@@ -24,26 +24,22 @@ public class CustomButtonMapper : MonoBehaviour
     {
         if (OVRInput.Get(OVRInput.Button.PrimaryHandTrigger) && leftControlable)
         {
-            print("LEFT HAND GRAB");
             leftGrabbing = true;
             leftGrab.Invoke();
         }
         else
         {
-            print("LEFT HAND UNGRAB############");
             leftGrabbing = false;
             leftUngrab.Invoke();
         }
         
         if (OVRInput.Get(OVRInput.Button.SecondaryHandTrigger) && rightControlable)
         {
-            print("RIGHT HAND GRAB");
             rightGrabbing = true;
             rightGrab.Invoke();
         }
         else
         {
-            print("RIGHT HAND UNGRAB############");
             rightGrabbing = false;
             rightUngrab.Invoke();
         }
