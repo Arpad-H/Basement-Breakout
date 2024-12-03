@@ -72,11 +72,11 @@ public class TVBehavior : MonoBehaviour
 
     public void changeClip()
     {
-        if (gameManager == null)
+        /*if (gameManager == null)
         {
             Debug.LogError("TVBehavior: Cannot change GameState because GameManager is missing!");
             return;
-        }
+        }*/
 
         switchStationSound.pitch = UnityEngine.Random.Range(0.8f, 1.2f);
         switchStationSound.Play();
