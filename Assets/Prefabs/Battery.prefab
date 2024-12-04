@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4661811140144019126}
   - component: {fileID: 6194568451900392323}
   - component: {fileID: 8317200079421103566}
+  - component: {fileID: 226384234335332897}
   m_Layer: 0
   m_Name: Battery
   m_TagString: Untagged
@@ -99,6 +100,24 @@ MonoBehaviour:
   insertBattery:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &226384234335332897
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5131686548302406853}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  outlineColor: {r: 1, g: 1, b: 1, a: 1}
+  outlineWidth: 2
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
 --- !u!1 &6847909528293708225
 GameObject:
   m_ObjectHideFlags: 0
@@ -252,7 +271,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blockId: f8766c17-aaf8-4b55-9431-de8deea83842
-  instanceId: 0a342025-46b2-40c3-a8d4-ba194e82bb96
+  instanceId: 6104afc6-251e-496f-a8b8-c3d7b3e7a234
   version: 1
   installationRoutineCheckpoint:
     _installationRoutineId: f8338144-8280-4ff6-9455-ae2bb9c20fe8
