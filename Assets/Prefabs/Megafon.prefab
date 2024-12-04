@@ -214,6 +214,7 @@ GameObject:
   - component: {fileID: 4795727583803174245}
   - component: {fileID: 2995458289709562667}
   - component: {fileID: 7476460870490281816}
+  - component: {fileID: 1530894675465154683}
   m_Layer: 0
   m_Name: Megafon
   m_TagString: Untagged
@@ -486,6 +487,45 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  leftGrab:
+    m_PersistentCalls:
+      m_Calls: []
+  leftUngrab:
+    m_PersistentCalls:
+      m_Calls: []
+  rightGrab:
+    m_PersistentCalls:
+      m_Calls: []
+  rightUngrab:
+    m_PersistentCalls:
+      m_Calls: []
+  justActive:
+    m_PersistentCalls:
+      m_Calls: []
+  justLeftGrab:
+    m_PersistentCalls:
+      m_Calls: []
+  justRightGrab:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &1530894675465154683
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2406590741490554404}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  outlineColor: {r: 1, g: 1, b: 1, a: 1}
+  outlineWidth: 2
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
 --- !u!1 &5424221875676017867
 GameObject:
   m_ObjectHideFlags: 0
@@ -692,7 +732,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blockId: f8766c17-aaf8-4b55-9431-de8deea83842
-  instanceId: f29ba8bb-3357-423b-ba70-95d361e1e7e9
+  instanceId: 39cd6157-05b4-4f30-98be-558897efbc5f
   version: 1
   installationRoutineCheckpoint:
     _installationRoutineId: f8338144-8280-4ff6-9455-ae2bb9c20fe8
