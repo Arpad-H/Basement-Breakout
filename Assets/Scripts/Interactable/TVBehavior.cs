@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Oculus.Haptics;
 using UnityEngine;
 using UnityEngine.Video;
 
@@ -9,6 +10,7 @@ public class TVBehavior : MonoBehaviour
     [SerializeField] private GameObject VideoQuad;
     [SerializeField] private VideoClip[] clips;
     [SerializeField] private AudioSource switchStationSound;
+    [SerializeField] private HapticClip hapticClip;
 
     private VideoClip currentClip;
     private VideoPlayer videoPlayer;
@@ -72,14 +74,10 @@ public class TVBehavior : MonoBehaviour
 
     public void changeClip()
     {
-        /*if (gameManager == null)
-        {
-            Debug.LogError("TVBehavior: Cannot change GameState because GameManager is missing!");
-            return;
-        }*/
-
         switchStationSound.pitch = UnityEngine.Random.Range(0.8f, 1.2f);
         switchStationSound.Play();
+        HapticClipPlayer hapticClipPlayer = new HapticClipPlayer(hapticClip);
+        hapticClipPlayer.Play(Controller.Right);
         Debug.Log("Changing Clip");
 
         for (int i = 0; i < clips.Length; i++)
