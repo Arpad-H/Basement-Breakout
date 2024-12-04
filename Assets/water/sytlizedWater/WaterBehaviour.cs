@@ -7,6 +7,10 @@ public class WaterBehaviour : MonoBehaviour
     [SerializeField] private GameObject heightPlane;
     [SerializeField] private GameObject waterSim;
     [SerializeField] private GameObject WaveGen;
+    [SerializeField] private GameObject PlayerHead;
+    [SerializeField] private GameObject Player;
+    float drowningtime = 10f;
+    float timeUnderWater = 0f;
     
     private bool isFlooding = false; // Steuert, ob das Wasser steigt
     private bool lowerSim = false; // Steuert, ob das Wasser steigt
@@ -31,6 +35,20 @@ public class WaterBehaviour : MonoBehaviour
         if (lowerSim)
         {
             waterSim.transform.Translate(Vector3.down * (Time.deltaTime * floodingSpeed*2));
+        }
+
+        if (PlayerHead.transform.position.y < heightPlane.transform.position.y)
+        {
+            timeUnderWater += Time.deltaTime;
+        }
+        else
+        {
+            timeUnderWater = 0;
+        }
+
+        if (timeUnderWater > drowningtime)
+        {
+            Player.transform.position = new Vector3(50, 10, 0);
         }
     }
 
