@@ -3318,6 +3318,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 198339496}
     - target: {fileID: 6933913890325083169, guid: 09aa3977e57c4db42adb0aef7b6f793c, type: 3}
+      propertyPath: hapticClip
+      value: 
+      objectReference: {fileID: 2460798210113038985, guid: 9d23078f3a5a9be4c9133fee034ccec7, type: 3}
+    - target: {fileID: 6933913890325083169, guid: 09aa3977e57c4db42adb0aef7b6f793c, type: 3}
       propertyPath: clips.Array.size
       value: 3
       objectReference: {fileID: 0}
@@ -3344,6 +3348,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2020941885742293750, guid: 09aa3977e57c4db42adb0aef7b6f793c, type: 3}
       insertIndex: -1
       addedObject: {fileID: 92853881}
+    - targetCorrespondingSourceObject: {fileID: 2020941885742293750, guid: 09aa3977e57c4db42adb0aef7b6f793c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 92853889}
   m_SourcePrefab: {fileID: 100100000, guid: 09aa3977e57c4db42adb0aef7b6f793c, type: 3}
 --- !u!4 &92853879 stripped
 Transform:
@@ -3451,6 +3458,32 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &92853889
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 92853880}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b734f2bd29eeddd4d85afb0c266228c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_HapticOutput:
+    m_InputSourceMode: 2
+    m_InputAction:
+      m_Name: Haptic
+      m_Type: 2
+      m_ExpectedControlType: 
+      m_Id: 9fecf602-b8af-40bd-87f6-59035fdeaa9f
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    m_InputActionReference: {fileID: 0}
+    m_ObjectReferenceObject: {fileID: 0}
+  m_AmplitudeMultiplier: 1
 --- !u!1001 &95642805
 PrefabInstance:
   m_ObjectHideFlags: 0
