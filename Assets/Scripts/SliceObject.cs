@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using EzySlice;
+using Oculus.Haptics;
 using UnityEngine.InputSystem;
 using UnityEngine.UIElements;
 using UnityEngine.XR;
@@ -19,13 +20,16 @@ public class SliceObject : MonoBehaviour {
     [SerializeField] private AudioClip chainsawRefuelSound;
     [SerializeField] private AudioSource chainsawStartUpSound;
     [SerializeField] private AudioSource chainsawIdleSound;
+    [SerializeField] private HapticClip hapticClip;
     private float chainsawRefuelSoundLength;
     private bool canCut = false;
     private bool hasFuel = false;
     private bool noWaterDamage = true;
     private GameObject FuelGauge;
+    private HapticClipPlayer hapticClipPlayer;
     
     void Start() {
+        hapticClipPlayer = new HapticClipPlayer(hapticClip);
         chainsawRefuelSoundLength = chainsawRefuelSound.length;
         FuelGauge = GameObject.Find("Fuel");
         FuelGauge.transform.localScale = new Vector3(0.001f, 1, 0);
@@ -34,6 +38,7 @@ public class SliceObject : MonoBehaviour {
     void FixedUpdate() {
         if (!chainsawIdleSound.isPlaying && canCut) {
             chainsawIdleSound.Play();
+            hapticClipPlayer.Play(Controller.Both);
         }
         bool hasHit = Physics.Linecast(startSlicePoint.position, endSlicePoint.position, out RaycastHit hit, slicableLayer);
         if (hasHit && canCut && hasFuel && noWaterDamage) {
@@ -49,6 +54,7 @@ public class SliceObject : MonoBehaviour {
     public void Slice(GameObject target) {
         if (!chainsawStartUpSound.isPlaying) {
             chainsawStartUpSound.Play();
+            
         }
         Vector3 velocity = velocityEstimator.GetVelocityEstimate();
         Vector3 planeNormal = Vector3.Cross(endSlicePoint.position - startSlicePoint.position, velocity);
@@ -94,13 +100,11 @@ public class SliceObject : MonoBehaviour {
         FuelGauge.transform.localScale = new Vector3(0.001f, 1, fuel);
     }
 
-    public void sawing()
-    {
+    public void sawing() {
         canCut = true;
     }
     
-    public void notSawing()
-    {
+    public void notSawing() {
         canCut = false;
     }
 }
