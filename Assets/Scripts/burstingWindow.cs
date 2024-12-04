@@ -5,9 +5,10 @@ using UnityEngine;
 
 public class burstingWindow : MonoBehaviour
 {
-    [SerializeField]float timeTillBurst = 5f;
+    
     [SerializeField] GameObject solidWindow;
-    bool windowBurst = false;
+    [SerializeField] GameObject shatteredWindow;
+   
     // Start is called before the first frame update
     void Start()
     {
@@ -17,20 +18,26 @@ public class burstingWindow : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        timeTillBurst -= Time.deltaTime;
-        if (timeTillBurst <= 0 && !windowBurst)
-        {
-            windowBurst = true;
-          StartCoroutine(BurstWindow());
-        }
+       
     }
-    IEnumerator BurstWindow()
+    public void BurstWindow()
     {
+            StartCoroutine(BurstWindowCorutine());
+      
+    }
+    IEnumerator BurstWindowCorutine()
+    {
+        shatteredWindow.SetActive(true);
         Destroy(solidWindow);
         foreach (MeshCollider mc in GetComponentsInChildren<MeshCollider>())
         {
             mc.enabled = true;
-            mc.GameObject().AddComponent<ConstantForce>().force = new Vector3(Random.Range(0f,1f)*8, 0, 0);
+            mc.GameObject().AddComponent<ConstantForce>().force = new Vector3(Random.Range(0f,1.5f)*20, 0, 0);
+        } 
+        foreach (BoxCollider mc in GetComponentsInChildren<BoxCollider>())
+        {
+            mc.enabled = true;
+            mc.GameObject().AddComponent<ConstantForce>().force = new Vector3(Random.Range(0f,1.5f)*20, 0, 0);
         }
 
         foreach (var rb in GetComponentsInChildren<Rigidbody>())
@@ -38,7 +45,7 @@ public class burstingWindow : MonoBehaviour
             rb.useGravity = true;
         }
         
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(5);
         Destroy(this.GameObject());
     }
 }
