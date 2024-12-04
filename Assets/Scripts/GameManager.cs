@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour
     private bool playerIsInWhater = false;
     private bool cableISinWater = false;
     private bool electricityIsActive = true;
-    
+   
 
     void Awake()
     {
@@ -23,12 +23,15 @@ public class GameManager : MonoBehaviour
         CollisionEventHandler.OnWaterStateChangedCable += OnWaterStateChangedCable;
         CollisionEventHandler.OnWaterStateChangedPlayer += OnWaterStateChangedPlayer;
         LeverInteractable.onLeverAction += OnLeverAction;
+        TVBehavior.gameStateChanged += UpdateGameState;
     }
 
     private void OnDestroy()
     {
         CollisionEventHandler.OnWaterStateChangedCable -= OnWaterStateChangedCable;
         CollisionEventHandler.OnWaterStateChangedPlayer -= OnWaterStateChangedPlayer;
+        LeverInteractable.onLeverAction -= OnLeverAction;
+        TVBehavior.gameStateChanged -= UpdateGameState;
     }
 
 
@@ -73,8 +76,7 @@ public class GameManager : MonoBehaviour
 
         // Andere GameObjekte können hierrauf reagieren
         OnGameStateChanged?.Invoke(newState);
-        {
-        }
+        Debug.Log("updating game state");
     }
 
 
