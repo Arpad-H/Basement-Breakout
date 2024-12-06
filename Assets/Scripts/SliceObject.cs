@@ -25,14 +25,13 @@ public class SliceObject : MonoBehaviour {
     private bool canCut = false;
     private bool hasFuel = false;
     private bool noWaterDamage = true;
-    private GameObject FuelGauge;
+    private GameObject Fuelpointer;
     private HapticClipPlayer hapticClipPlayer;
     
     void Start() {
         hapticClipPlayer = new HapticClipPlayer(hapticClip);
         chainsawRefuelSoundLength = chainsawRefuelSound.length;
-        FuelGauge = GameObject.Find("Fuel");
-        FuelGauge.transform.localScale = new Vector3(0.001f, 1, 0);
+        Fuelpointer = GameObject.Find("FuelSpin");
     }
 
     void FixedUpdate() {
@@ -97,7 +96,7 @@ public class SliceObject : MonoBehaviour {
             timePlaying = 0;
         }
         
-        FuelGauge.transform.localScale = new Vector3(0.001f, 1, fuel);
+        Fuelpointer.transform.Rotate(0, fuel, 0);
     }
 
     public void sawing() {

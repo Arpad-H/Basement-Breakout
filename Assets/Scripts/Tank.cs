@@ -16,14 +16,14 @@ public class Tank : MonoBehaviour
     {
         if (fueledUp)
         {
-            fuelTimer += Time.deltaTime;
-            if (fuelTimer >= 3)
+            fuelTimer += Time.deltaTime * 10;
+            if (fuelTimer >= 8.5)
             {
                 fueled.Invoke();
             }
             else
             {
-                fueling.Invoke(fuelTimer/1000);
+                fueling.Invoke(-fuelTimer);
             }
         }
     }
