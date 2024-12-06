@@ -21,24 +21,26 @@ public class SliceObject : MonoBehaviour {
     [SerializeField] private AudioSource chainsawStartUpSound;
     [SerializeField] private AudioSource chainsawIdleSound;
     [SerializeField] private HapticClip hapticClip;
+
+    [SerializeField] private Animator animator;
     private float chainsawRefuelSoundLength;
     private bool canCut = false;
     private bool hasFuel = false;
     private bool noWaterDamage = true;
-    private GameObject FuelGauge;
+    private GameObject Fuelpointer;
     private HapticClipPlayer hapticClipPlayer;
     
     void Start() {
         hapticClipPlayer = new HapticClipPlayer(hapticClip);
         chainsawRefuelSoundLength = chainsawRefuelSound.length;
-        FuelGauge = GameObject.Find("Fuel");
-        FuelGauge.transform.localScale = new Vector3(0.001f, 1, 0);
+        Fuelpointer = GameObject.Find("FuelSpin");
     }
 
     void FixedUpdate() {
-        if (!chainsawIdleSound.isPlaying && canCut) {
+        if (!chainsawIdleSound.isPlaying && canCut && hasFuel && noWaterDamage) {
             chainsawIdleSound.Play();
             hapticClipPlayer.Play(Controller.Both);
+            animator.SetBool("isSawing", true);
         }
         bool hasHit = Physics.Linecast(startSlicePoint.position, endSlicePoint.position, out RaycastHit hit, slicableLayer);
         if (hasHit && canCut && hasFuel && noWaterDamage) {
@@ -97,7 +99,7 @@ public class SliceObject : MonoBehaviour {
             timePlaying = 0;
         }
         
-        FuelGauge.transform.localScale = new Vector3(0.001f, 1, fuel);
+        Fuelpointer.transform.Rotate(0, fuel, 0);
     }
 
     public void sawing() {
@@ -106,5 +108,6 @@ public class SliceObject : MonoBehaviour {
     
     public void notSawing() {
         canCut = false;
+        animator.SetBool("isSawing", false);
     }
 }
