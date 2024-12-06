@@ -37,7 +37,7 @@ public class SliceObject : MonoBehaviour {
     }
 
     void FixedUpdate() {
-        if (!chainsawIdleSound.isPlaying && canCut) {
+        if (!chainsawIdleSound.isPlaying && canCut && hasFuel && noWaterDamage) {
             chainsawIdleSound.Play();
             hapticClipPlayer.Play(Controller.Both);
             animator.SetBool("isSawing", true);

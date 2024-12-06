@@ -59,13 +59,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1389211926775509915}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.7071068, y: 0.000000024544377, z: -0.000000014901159, w: 0.7071068}
-  m_LocalPosition: {x: -0.0342, y: 0.0033, z: -0.02788}
-  m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
-  m_ConstrainProportionsScale: 0
+  m_LocalRotation: {x: 0.35355332, y: 0.61237246, z: -0.35355347, w: 0.6123724}
+  m_LocalPosition: {x: -0.0478, y: 0.0026, z: -0.0236}
+  m_LocalScale: {x: 0.008, y: 0.004, z: 0.008}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 7427172545186742082}
-  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 60, y: 90, z: 0}
 --- !u!33 &7346701006002483949
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -94,7 +94,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 7d10bd6901b89944eae664f64eb38963, type: 2}
+  - {fileID: 2100000, guid: 3054e5ae11b568e4aa20150625d3f6da, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -476,6 +476,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3666291039408195226}
   - component: {fileID: 5943199906191732189}
+  - component: {fileID: 9180131021483594264}
   m_Layer: 0
   m_Name: Collider
   m_TagString: Untagged
@@ -517,8 +518,29 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.09, y: 0.06, z: 0.05}
-  m_Center: {x: -0.02, y: 0.02, z: -0.01}
+  m_Size: {x: 0.08, y: 0.07, z: 0.06}
+  m_Center: {x: -0.015, y: 0.01, z: -0.01}
+--- !u!65 &9180131021483594264
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4595378512533933490}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.03, y: 0.03, z: 0.02}
+  m_Center: {x: -0.07, y: 0.03, z: 0}
 --- !u!1 &5164366883630217521
 GameObject:
   m_ObjectHideFlags: 0
@@ -726,6 +748,7 @@ MonoBehaviour:
   chainsawStartUpSound: {fileID: 6950021897969804529}
   chainsawIdleSound: {fileID: 780129849666425575}
   hapticClip: {fileID: 2460798210113038985, guid: 5bda17866e0dad94bb2b5eeb54feff5b, type: 3}
+  animator: {fileID: 0}
 --- !u!82 &780129849666425575
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1415,8 +1438,8 @@ Transform:
   m_GameObject: {fileID: 8449145914108492835}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -0.016, y: 0, z: -0.007}
+  m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 8247496745450633065}
