@@ -5683,6 +5683,7 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 2d56a396ea725c546a2bbb493be9e10c, type: 2}
     - {fileID: 11400000, guid: 80d46c2b76a1c6049bdbdf3d20aca83e, type: 2}
     - {fileID: 11400000, guid: ada2f9a64474acc4d8ddf13770483967, type: 2}
+    - {fileID: 11400000, guid: 9524685d18ac2974589e8b6c0773e4f2, type: 2}
     m_Events:
     - m_PersistentCalls:
         m_Calls:
@@ -5740,6 +5741,20 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 153584194}
+          m_TargetAssemblyTypeName: WaterIngresCoordinator, Assembly-CSharp
+          m_MethodName: StartParticles
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!114 &153584194
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5757,8 +5772,14 @@ MonoBehaviour:
   guitar: {fileID: 1803194415}
   beanbag: {fileID: 1892408467}
   fallingWater: {fileID: 2100000, guid: 9ed926e0b9eb8994db20451ea45ca07a, type: 2}
-  groundWaterSplash: {fileID: 0}
-  groundWaterring: {fileID: 0}
+  groundWaterSplash: {fileID: 2100000, guid: 781724f8b080c074f97d8214baa1ea7c, type: 2}
+  groundWaterDrop: {fileID: 2100000, guid: 097ea874012101a46ad17c0c42718688, type: 2}
+  runningWaterSheet: {fileID: 2100000, guid: 38df8f9ef3941214ca713fda46e1a0e6, type: 2}
+  waterStream: {fileID: 2100000, guid: 3e6593b6cd534bd489b3cbdf43740f10, type: 2}
+  waterDroplets: {fileID: 2100000, guid: c6efeb5006d5d1443b716f15da0fdca7, type: 2}
+  groundWaterRings: {fileID: 2100000, guid: 5215bd00f96ddb24ca56804c2e083903, type: 2}
+  lighningArcs: {fileID: 2100000, guid: f542f9ecb96c2424b95ce49b4339a1bc, type: 2}
+  lighningSpark: {fileID: 2100000, guid: c1a0cac330c5b0648aebdea04409c4bb, type: 2}
 --- !u!4 &153584195
 Transform:
   m_ObjectHideFlags: 0
