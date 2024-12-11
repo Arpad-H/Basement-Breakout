@@ -36,6 +36,11 @@ public class GameManager : MonoBehaviour
         CustomCollisionEventHandler.gameStateChanged -= UpdateGameState;
     }
 
+    private void Start()
+    {
+        UpdateGameState(GameState.Menu);
+    }
+
 
     private void OnWaterStateChangedCable(bool state)
     {
@@ -91,7 +96,7 @@ public class GameManager : MonoBehaviour
         Beam,
         Tutorial,
         Game,
-        LoadGamePlay
+        Menu
     }
 
     private void checkPlayerAndCableInWhater(bool playerIsInWhater, bool cableIsInWhater, bool electricityIsActive)
