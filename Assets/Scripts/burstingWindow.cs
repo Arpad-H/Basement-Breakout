@@ -8,25 +8,10 @@ public class burstingWindow : MonoBehaviour
     
     [SerializeField] GameObject solidWindow;
     [SerializeField] GameObject shatteredWindow;
-   
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+    public void BurstWindow() {
+        StartCoroutine(BurstWindowCorutine());
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-       
-    }
-    public void BurstWindow()
-    {
-            StartCoroutine(BurstWindowCorutine());
-      
-    }
-    IEnumerator BurstWindowCorutine()
-    {
+    IEnumerator BurstWindowCorutine() {
         shatteredWindow.SetActive(true);
         Destroy(solidWindow);
         foreach (MeshCollider mc in GetComponentsInChildren<MeshCollider>())
