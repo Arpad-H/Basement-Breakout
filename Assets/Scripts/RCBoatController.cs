@@ -17,6 +17,8 @@ public class RCBoatController : MonoBehaviour
     [SerializeField] private Transform rightHand;
     [SerializeField] private UnityEvent<Vector2> moving;
     [SerializeField] private GameObject locomotion;
+    [SerializeField] private GameObject teleportIndicator1;
+    [SerializeField] private GameObject teleportIndicator2;
     [SerializeField] private GrabInteractable grabInteractable;
     
     void Update()
@@ -28,6 +30,8 @@ public class RCBoatController : MonoBehaviour
             leftHanded = OVRInput.Get(OVRInput.Button.PrimaryHandTrigger);
             rightHanded = OVRInput.Get(OVRInput.Button.SecondaryHandTrigger);
             locomotion.SetActive(false);
+            teleportIndicator1.SetActive(false);
+            teleportIndicator2.SetActive(false);
             if (rightHanded)
             {
                 direction = OVRInput.Get(OVRInput.RawAxis2D.RThumbstick);
@@ -43,6 +47,8 @@ public class RCBoatController : MonoBehaviour
         }
         else {
             locomotion.SetActive(true);
+            teleportIndicator1.SetActive(true);
+            teleportIndicator2.SetActive(true);
             direction = Vector2.zero;
         }
         moving.Invoke(direction);
