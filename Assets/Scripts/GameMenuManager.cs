@@ -30,6 +30,7 @@ public class GameMenuManager : MonoBehaviour
     }
 
     void Update() {
+        //TODO: Funktiniert nicht
         if (showMenuButton.action.WasPressedThisFrame() || menuActive) {
             //menu.SetActive(!menu.activeSelf);
             Debug.Log($"GameMenuManager : {menuActive}");
