@@ -24,6 +24,7 @@ public class GameManager : MonoBehaviour
         CollisionEventHandler.OnWaterStateChangedPlayer += OnWaterStateChangedPlayer;
         LeverInteractable.onLeverAction += OnLeverAction;
         TVBehavior.gameStateChanged += UpdateGameState;
+        CustomCollisionEventHandler.gameStateChanged += UpdateGameState;
     }
 
     private void OnDestroy()
@@ -32,6 +33,7 @@ public class GameManager : MonoBehaviour
         CollisionEventHandler.OnWaterStateChangedPlayer -= OnWaterStateChangedPlayer;
         LeverInteractable.onLeverAction -= OnLeverAction;
         TVBehavior.gameStateChanged -= UpdateGameState;
+        CustomCollisionEventHandler.gameStateChanged -= UpdateGameState;
     }
 
 
