@@ -89,6 +89,7 @@ public class GameManager : MonoBehaviour
         Beam,
         Tutorial,
         Game,
+        LoadGamePlay
     }
 
     private void checkPlayerAndCableInWhater(bool playerIsInWhater, bool cableIsInWhater, bool electricityIsActive)
