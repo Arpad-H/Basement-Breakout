@@ -6,11 +6,26 @@ public class UnderwaterAudioReverbZone : MonoBehaviour
 {
     [SerializeField] private Transform waterPos;
     [SerializeField] private Transform playerPos;
-    AudioReverbZone audioReverbZone;
+    [SerializeField] private AudioSource ambientRain;
+    [SerializeField] private AudioSource ambientWaterSlow;
+    [SerializeField] private AudioSource underwaterAudio;
+    private AudioReverbZone audioReverbZone;
+    private bool isUnderwater = false;
+    private bool wasUnderwater = false;
+    private bool fadeToUnderwater = false;
+    private bool fadeToAboveWater = false;
     void Start() {
         audioReverbZone = GetComponent<AudioReverbZone>();
     }
     void Update() {
-        audioReverbZone.enabled = playerPos.position.y < waterPos.position.y;
+        isUnderwater = playerPos.position.y < waterPos.position.y;
+        if (isUnderwater) {
+            audioReverbZone.enabled = underwaterAudio.enabled = true;
+            ambientRain.enabled = ambientWaterSlow.enabled = false;
+        } else {
+            audioReverbZone.enabled = underwaterAudio.enabled  = false;
+            ambientRain.enabled = ambientWaterSlow.enabled = true;
+        }
+        wasUnderwater = isUnderwater;
     }
 }
