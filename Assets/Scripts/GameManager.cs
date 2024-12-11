@@ -41,6 +41,7 @@ public class GameManager : MonoBehaviour
         cableISinWater = state;
         checkPlayerAndCableInWhater(playerIsInWhater, cableISinWater, electricityIsActive);
     }
+    
 
     private void OnWaterStateChangedPlayer(bool state)
     {
