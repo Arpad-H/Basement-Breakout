@@ -36,15 +36,15 @@ public class TVBehavior : MonoBehaviour
 
     private IEnumerator SubscribeToGameManagerEvent()
     {
-        while (gameManager == null)
+        while (!gameManager)
         {
             gameManager = FindObjectOfType<GameManager>();
-            Debug.Log("TVBehavior: Searching for GameManager...");
+           // Debug.Log("TVBehavior: Searching for GameManager...");
             yield return null;
         }
 
         GameManager.OnGameStateChanged += HandleGameStateChanged;
-        Debug.Log("TVBehavior: Successfully subscribed to GameManager events.");
+     //   Debug.Log("TVBehavior: Successfully subscribed to GameManager events.");
     }
 
     private void OnDestroy()

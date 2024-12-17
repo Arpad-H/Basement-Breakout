@@ -23,6 +23,7 @@ public class ElectricictyManager : MonoBehaviour
     [Header("other Lights")] 
     public List<GameObject> fluorescentLights;
     public Material fluorescentLightsMaterialOn;
+    public GameObject electricitySparks;
     private void Awake()
     {
         
@@ -38,11 +39,13 @@ public class ElectricictyManager : MonoBehaviour
         {
            enableAllLights(); 
            enableTV();
+           electricitySparks.SetActive(true);
         }
         else
         {
             disableAllLights();
             disableTV();
+            electricitySparks.SetActive(false);
         }
     }
 
