@@ -33,7 +33,7 @@ public class ElectricictyManager : MonoBehaviour
 
     private void LeverInteractableOnonLeverAction(bool state)
     {
-        Debug.Log($"[ElectricityManager] Lever Interactable is on {state}");
+        //Debug.Log($"[ElectricityManager] Lever Interactable is on {state}");
         if (state)
         {
            enableAllLights(); 
@@ -108,7 +108,7 @@ public class ElectricictyManager : MonoBehaviour
         foreach (Light light in lights)
         {
             light.enabled = true;
-            Debug.Log($"[ElectricityManager] Light {light.name} is enabled");
+            //Debug.Log($"[ElectricityManager] Light {light.name} is enabled");
         }
         faerieLightsMaterialOn.SetInt("Emission" , 1);
         // foreach (GameObject faerieLight in faerieLights)
