@@ -23,8 +23,9 @@ public class GameManager : MonoBehaviour
         CollisionEventHandler.OnWaterStateChangedCable += OnWaterStateChangedCable;
         CollisionEventHandler.OnWaterStateChangedPlayer += OnWaterStateChangedPlayer;
         LeverInteractable.onLeverAction += OnLeverAction;
-        TVBehavior.gameStateChanged += UpdateGameState;
-        CustomCollisionEventHandler.gameStateChanged += UpdateGameState;
+        TVBehavior.gameStateChangedTVBehavior += UpdateGameState;
+        CustomCollisionEventHandler.GameStateChangedCostomCollisionEventHandler += UpdateGameState;
+        PlayerManager.GameStateChangedPlayer += UpdateGameState;
     }
 
     private void OnDestroy()
@@ -32,8 +33,9 @@ public class GameManager : MonoBehaviour
         CollisionEventHandler.OnWaterStateChangedCable -= OnWaterStateChangedCable;
         CollisionEventHandler.OnWaterStateChangedPlayer -= OnWaterStateChangedPlayer;
         LeverInteractable.onLeverAction -= OnLeverAction;
-        TVBehavior.gameStateChanged -= UpdateGameState;
-        CustomCollisionEventHandler.gameStateChanged -= UpdateGameState;
+        TVBehavior.gameStateChangedTVBehavior -= UpdateGameState;
+        CustomCollisionEventHandler.GameStateChangedCostomCollisionEventHandler -= UpdateGameState;
+        PlayerManager.GameStateChangedPlayer -= UpdateGameState;
     }
 
     private void Start()
@@ -44,7 +46,7 @@ public class GameManager : MonoBehaviour
 
     private void OnWaterStateChangedCable(bool state)
     {
-        Debug.Log($"[GameManager]: OnWaterStateChangedCable: + {state}");
+        Debug.LogError($"[GameManager]: OnWaterStateChangedCable: + {state}");
         cableISinWater = state;
         checkPlayerAndCableInWhater(playerIsInWhater, cableISinWater, electricityIsActive);
     }
@@ -52,7 +54,7 @@ public class GameManager : MonoBehaviour
 
     private void OnWaterStateChangedPlayer(bool state)
     {
-        Debug.Log("[GameManager]: OnWaterStateChangedPlayer: " + state);
+        Debug.LogError("[GameManager]: OnWaterStateChangedPlayer: " + state);
         playerIsInWhater = state;
         checkPlayerAndCableInWhater(playerIsInWhater, cableISinWater, electricityIsActive);
     }
@@ -60,7 +62,7 @@ public class GameManager : MonoBehaviour
 
     private void OnLeverAction(bool state)
     {
-        Debug.Log("[GameManager]: electricityIsActive: " + state);
+        Debug.LogError("[GameManager]: electricityIsActive: " + state);
         electricityIsActive = state;
         checkPlayerAndCableInWhater(playerIsInWhater, cableISinWater, electricityIsActive);
     }
@@ -103,9 +105,10 @@ public class GameManager : MonoBehaviour
     {
         if (playerIsInWhater == true && cableIsInWhater == true && electricityIsActive == true)
         {
+            //TODO: Water Hight loest nicht Trigger aus in CollisonCOllider Script
             Debug.Log("[GameManager]: OnWaterStateChangedPlayerAndCableInWhater: " );
-            //TODO: GameOverScene
-            SceneManager.LoadScene("startMenuScene");
+           UpdateGameState(GameState.ElectricShock);
+           
         }
     }
 }
