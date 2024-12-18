@@ -36,20 +36,7 @@ public class WaterBehaviour : MonoBehaviour
         {
             waterSim.transform.Translate(Vector3.down * (Time.deltaTime * floodingSpeed*2));
         }
-
-        if (PlayerHead.transform.position.y < heightPlane.transform.position.y)
-        {
-            timeUnderWater += Time.deltaTime;
-        }
-        else
-        {
-            timeUnderWater = 0;
-        }
-
-        if (timeUnderWater > drowningtime)
-        {
-            Player.transform.position = new Vector3(50, 10, 0);
-        }
+        
     }
 
     public void HandleGameStateChanged(GameManager.GameState newState)
