@@ -21,10 +21,12 @@ public class UnderwaterAudioReverbZone : MonoBehaviour
         isUnderwater = playerPos.position.y < waterPos.position.y;
         if (isUnderwater) {
             audioReverbZone.enabled = underwaterAudio.enabled = true;
-            ambientRain.enabled = ambientWaterSlow.enabled = false;
+            ambientRain.volume = Mathf.Lerp(ambientRain.volume, 0, Time.deltaTime);
+            underwaterAudio.volume = Mathf.Lerp(underwaterAudio.volume, 1, Time.deltaTime);
         } else {
             audioReverbZone.enabled = underwaterAudio.enabled  = false;
-            ambientRain.enabled = ambientWaterSlow.enabled = true;
+            ambientRain.volume = Mathf.Lerp(ambientRain.volume, 1, Time.deltaTime);
+            underwaterAudio.volume = Mathf.Lerp(underwaterAudio.volume, 0, Time.deltaTime);
         }
         wasUnderwater = isUnderwater;
     }

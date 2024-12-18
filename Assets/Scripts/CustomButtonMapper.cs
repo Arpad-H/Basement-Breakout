@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
-
+[ExecuteAlways]
 public class CustomButtonMapper : MonoBehaviour
 {
     private bool leftControlable = false;
@@ -98,5 +98,13 @@ public class CustomButtonMapper : MonoBehaviour
         {
             rightControlable = false;
         }
+    }
+    public void AddActiveListener(UnityAction action)
+    {
+        active.AddListener(action);
+    }
+    public void AddUnactiveListener(UnityAction action)
+    {
+        unactive.AddListener(action);
     }
 }
