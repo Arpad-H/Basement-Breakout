@@ -2,8 +2,9 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.PlayerLoop;
 
-public class teleportPlayer : MonoBehaviour
+public class PlayerManager : MonoBehaviour
 {
    private Vector3 STARTSCENEPOS = new Vector3(-2.364f, 3.97f, 8.326f);
    private Vector3 STARTMENUPOS = new Vector3(-2.364f, 3.97f, 8.326f);
@@ -11,6 +12,12 @@ public class teleportPlayer : MonoBehaviour
 
    [SerializeField] private GameObject[] rayInteractor;
    [SerializeField] private GameObject[] teleportInteractor;
+    [SerializeField] private GameObject PlayerHead;
+    [SerializeField] private GameObject WaterheightPlane;
+    
+    [SerializeField] private float DROWNINGTIME = 10f;
+    private float timeUnderWater = 0f;
+    public static event Action<GameManager.GameState> GameStateChangedPlayer;
 
 
    private void Awake()
@@ -23,7 +30,16 @@ public class teleportPlayer : MonoBehaviour
        GameManager.OnGameStateChanged -=HandleGameStateChanged;
    }
 
-   public void setPlayerPositionToStartGame()
+   private void Update()
+   {
+       if (drawing())
+       {
+           Debug.Log($"[PlayerManager]: Player is drowning");
+           GameStateChangedPlayer?.Invoke(GameManager.GameState.Drowned);
+       };
+   }
+
+   public void SetPlayerPositionToStartGame()
     {
         transform.position = STARTSCENEPOS;
     }
@@ -32,7 +48,7 @@ public class teleportPlayer : MonoBehaviour
     {
         deactivateRayInteractor();
         activateTeleportInteractor();
-        setPlayerPositionToStartGame();
+        SetPlayerPositionToStartGame();
     }
 
 
@@ -77,6 +93,20 @@ public class teleportPlayer : MonoBehaviour
     {
         transform.position = GAMEOVERMENUPOS;
     }
+    
+    public bool drawing()
+    {
+        if (PlayerHead.transform.position.y < WaterheightPlane.transform.position.y)
+        {
+            timeUnderWater += Time.deltaTime;
+        }
+        else
+        {
+            timeUnderWater = 0;
+        }
+
+        return timeUnderWater > DROWNINGTIME;
+    }
 
     private void HandleGameStateChanged(GameManager.GameState gameState)
     {
@@ -89,7 +119,7 @@ public class teleportPlayer : MonoBehaviour
         } else if (gameState == GameManager.GameState.Tutorial)
         {
             deactivateRayInteractor();
-           setPlayerPositionToStartGame();
+           SetPlayerPositionToStartGame();
         }
         
     }
