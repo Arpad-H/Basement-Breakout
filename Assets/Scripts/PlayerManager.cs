@@ -110,14 +110,16 @@ public class PlayerManager : MonoBehaviour
 
     private void HandleGameStateChanged(GameManager.GameState gameState)
     {
-        if (gameState == GameManager.GameState.Drowned || gameState == GameManager.GameState.Win ||
-            gameState == GameManager.GameState.ElectricShock)
+        Debug.LogError($"[PlayerManager]: GameState changed to {gameState}");
+        if (gameState is GameManager.GameState.Drowned or GameManager.GameState.Win or GameManager.GameState.ElectricShock)
         {
+            
             deactivateTeleportInteractor();
             activateRayInteractor();
             setPlayerPosToGameOverMenu();
         } else if (gameState == GameManager.GameState.Tutorial)
         {
+            Debug.LogError($"[PlayerManager]: GameState changed to {gameState}");
             deactivateRayInteractor();
            SetPlayerPositionToStartGame();
         }

@@ -86,7 +86,7 @@ public class GameManager : MonoBehaviour
 
         // Andere GameObjekte können hierrauf reagieren
         OnGameStateChanged?.Invoke(newState);
-        Debug.Log("updating game state");
+        Debug.Log($"[Game Manager] updating game state to {newState}");
     }
 
 

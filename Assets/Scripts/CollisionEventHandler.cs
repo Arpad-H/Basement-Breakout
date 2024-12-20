@@ -6,15 +6,17 @@ public class CollisionEventHandler : MonoBehaviour
     [SerializeField] private GameObject targetObject;
     [SerializeField] private Objecttype objecttypeselection;
 
-    private CollisionEventHandler Instance;
+    private CollisionEventHandler _instance;
 
     public static event Action<bool> OnWaterStateChangedCable;
     public static event Action<bool> OnWaterStateChangedPlayer;
 
     //private bool hasCollided  = false;
 
-    private bool playerIsInWhater = false;
-    private bool cableISinWater = false;
+    private bool _playerIsInWhater = false;
+    private bool _cableISinWater = false;
+    
+    private bool _previousState = false;
 
 
     private void Awake()
@@ -22,6 +24,25 @@ public class CollisionEventHandler : MonoBehaviour
         //Instance = this;
     }
 
+    private void Update()
+    {
+        
+
+        bool currentState = CheckedCollisonAboveHeight();
+    
+        if (_previousState != currentState && objecttypeselection == Objecttype.Cable)
+        {
+            Debug.Log($"[CollisionEventHandler] curentstae: {currentState} previousstate: {_previousState}");;
+            EventsHandler(currentState);
+            _previousState = currentState;
+        }
+        
+       
+       
+       
+       
+       
+    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -29,8 +50,8 @@ public class CollisionEventHandler : MonoBehaviour
         //Debug.Log("[CollisionEventHandler] Object entered: " + true + nameof(objecttypeselection));
         if (other.gameObject == targetObject)
         {
-            eventsHandler(true);
-            Debug.LogError($"[CollisionEventHandler]Object entered : {other.gameObject.name} { (objecttypeselection)}" + true);
+            EventsHandler(true);
+            Debug.Log($"[CollisionEventHandler]Object entered : {other.gameObject.name} { (objecttypeselection)}" + true);
             
         }
     }
@@ -39,9 +60,15 @@ public class CollisionEventHandler : MonoBehaviour
     {
         if (other.gameObject == targetObject)
         {
-            eventsHandler(false);
-            Debug.LogError($"[CollisionEventHandler] Object exited: {other.gameObject.name} {objecttypeselection}" + false);
+            EventsHandler(false);
+            Debug.Log($"[CollisionEventHandler] Object exited: {other.gameObject.name} {objecttypeselection}" + false);
         }
+    }
+
+    private bool CheckedCollisonAboveHeight()
+    {
+        //Debug.Log($"[CollisionEventHandler] CheckedCollisonAboveHeight: {gameObject.transform.position.y < targetObject.transform.position.y}");
+        return gameObject.transform.position.y < targetObject.transform.position.y;
     }
 
 
@@ -58,12 +85,14 @@ public class CollisionEventHandler : MonoBehaviour
     }
 
 
-    void eventsHandler(bool state)
+    void EventsHandler(bool state)
     {
+        Debug.Log($"[CollisionEventHandler] EventsHandler: : {state}");
         switch (objecttypeselection)
         {
             case Objecttype.Cable:
                 OnWaterStateChangedCable?.Invoke(state);
+                Debug.Log($"[CollisionEventHandler] EventsHandler: OnWaterStateChangedCable: {state}");
                 break;
             case Objecttype.Player:
                 OnWaterStateChangedPlayer?.Invoke(state);
