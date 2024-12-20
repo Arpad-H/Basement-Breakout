@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4351743596747679566}
-  - component: {fileID: 4390401286268406329}
   m_Layer: 0
   m_Name: Tank
   m_TagString: Untagged
@@ -33,37 +32,6 @@ Transform:
   - {fileID: 5507818683314871235}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4390401286268406329
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 585356436096142437}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6e84e33ca74693147a575919234e7f92, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tankHole: {fileID: 5869352553163797515}
-  fueled:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 829404216742919394, guid: 7e07047b3137c044f87c4b3ea2a21e2c, type: 3}
-        m_TargetAssemblyTypeName: SliceObject, Assembly-CSharp
-        m_MethodName: fueledUp
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 1
-  fueling:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1 &712302312213433105
 GameObject:
   m_ObjectHideFlags: 0
@@ -546,6 +514,7 @@ GameObject:
   - component: {fileID: 3208075523457916606}
   - component: {fileID: 4774838975548863107}
   - component: {fileID: 206556947182876805}
+  - component: {fileID: 7239249437864376549}
   m_Layer: 0
   m_Name: surface06_geo_low.001
   m_TagString: Untagged
@@ -639,6 +608,37 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.04, y: 0.04, z: 0.03}
   m_Center: {x: -0.17, y: 0.42, z: 0}
+--- !u!114 &7239249437864376549
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1648278780623368381}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e84e33ca74693147a575919234e7f92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tankHole: {fileID: 5869352553163797515}
+  fueled:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 829404216742919394, guid: 7e07047b3137c044f87c4b3ea2a21e2c, type: 3}
+        m_TargetAssemblyTypeName: SliceObject, Assembly-CSharp
+        m_MethodName: fueledUp
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
+  fueling:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &4021267245799143741
 GameObject:
   m_ObjectHideFlags: 0
@@ -1206,7 +1206,7 @@ MonoBehaviour:
   _maxSelectingInteractors: -1
   _data: {fileID: 0}
   _pointableElement: {fileID: 319272089046337746}
-  _rigidbody: {fileID: 0}
+  _rigidbody: {fileID: 5142074156045741091}
   _physicsGrabbable: {fileID: 0}
   _resetGrabOnGrabsUpdated: 1
   _scoringModifier:

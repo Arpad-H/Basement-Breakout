@@ -41,9 +41,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6763076097398921253}
-  - component: {fileID: 8317200079421103566}
   - component: {fileID: 226384234335332897}
-  - component: {fileID: 1129180696669009079}
   m_Layer: 0
   m_Name: Battery
   m_TagString: Untagged
@@ -67,21 +65,6 @@ Transform:
   - {fileID: 1982642754083966420}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8317200079421103566
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5131686548302406853}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7e80954a632749147b7f2ebdd62af2dd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  insertBattery:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!114 &226384234335332897
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -100,27 +83,6 @@ MonoBehaviour:
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
---- !u!65 &1129180696669009079
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5131686548302406853}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.025, y: 0.025, z: 0.075}
-  m_Center: {x: 0, y: 0, z: -0.00010957569}
 --- !u!1 &6847909528293708225
 GameObject:
   m_ObjectHideFlags: 0
@@ -138,6 +100,8 @@ GameObject:
   - component: {fileID: 7107973448511594920}
   - component: {fileID: 8234267403080729763}
   - component: {fileID: 4911607811042385723}
+  - component: {fileID: 2330755718183439827}
+  - component: {fileID: 1256773491838069647}
   m_Layer: 0
   m_Name: aa-battery
   m_TagString: Untagged
@@ -399,6 +363,42 @@ HingeJoint:
   m_EnablePreprocessing: 1
   m_MassScale: 1
   m_ConnectedMassScale: 1
+--- !u!114 &2330755718183439827
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6847909528293708225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e80954a632749147b7f2ebdd62af2dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  insertBattery:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!65 &1256773491838069647
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6847909528293708225}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.00625, y: 0.00625, z: 0.01875}
+  m_Center: {x: 0, y: 0, z: -0.00010957569}
 --- !u!1 &7814005477506711857
 GameObject:
   m_ObjectHideFlags: 0
@@ -447,7 +447,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blockId: f8766c17-aaf8-4b55-9431-de8deea83842
-  instanceId: 21826c74-f14a-45b3-bb3a-9d1d08eda593
+  instanceId: cdb8c3d5-828f-4c69-bf80-eea0d8e42c01
   version: 1
   installationRoutineCheckpoint:
     _installationRoutineId: f8338144-8280-4ff6-9455-ae2bb9c20fe8
