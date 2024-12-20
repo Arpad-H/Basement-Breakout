@@ -39,7 +39,7 @@ public class GameMenuManager : MonoBehaviour
         //TODO: Funktiniert nicht
         if (showMenuButton.action.WasPressedThisFrame() || menuActive) {
             //menu.SetActive(!menu.activeSelf);
-            Debug.Log($"GameMenuManager : {menuActive}");
+            //Debug.Log($"GameMenuManager : {menuActive}");
            // menu.transform.position = head.position + new Vector3(head.forward.x, head.forward.y, head.forward.z).normalized * menuDistance;
              menu.transform.position = head.position + head.forward * menuDistance;
         }

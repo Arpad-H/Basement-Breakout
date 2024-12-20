@@ -44,7 +44,7 @@ public class GameManager : MonoBehaviour
 
     private void OnWaterStateChangedCable(bool state)
     {
-        Debug.Log($"[GameManager]: OnWaterStateChangedCable: + {state}");
+        //Debug.Log($"[GameManager]: OnWaterStateChangedCable: + {state}");
         cableISinWater = state;
         checkPlayerAndCableInWhater(playerIsInWhater, cableISinWater, electricityIsActive);
     }
@@ -52,7 +52,7 @@ public class GameManager : MonoBehaviour
 
     private void OnWaterStateChangedPlayer(bool state)
     {
-        Debug.Log("[GameManager]: OnWaterStateChangedPlayer: " + state);
+        //Debug.Log("[GameManager]: OnWaterStateChangedPlayer: " + state);
         playerIsInWhater = state;
         checkPlayerAndCableInWhater(playerIsInWhater, cableISinWater, electricityIsActive);
     }
@@ -60,7 +60,7 @@ public class GameManager : MonoBehaviour
 
     private void OnLeverAction(bool state)
     {
-        Debug.Log("[GameManager]: electricityIsActive: " + state);
+        //Debug.Log("[GameManager]: electricityIsActive: " + state);
         electricityIsActive = state;
         checkPlayerAndCableInWhater(playerIsInWhater, cableISinWater, electricityIsActive);
     }
@@ -84,7 +84,7 @@ public class GameManager : MonoBehaviour
 
         // Andere GameObjekte können hierrauf reagieren
         OnGameStateChanged?.Invoke(newState);
-        Debug.Log("updating game state");
+        //Debug.Log("updating game state");
     }
 
 
@@ -103,7 +103,7 @@ public class GameManager : MonoBehaviour
     {
         if (playerIsInWhater == true && cableIsInWhater == true && electricityIsActive == true)
         {
-            Debug.Log("[GameManager]: OnWaterStateChangedPlayerAndCableInWhater: " );
+            //Debug.Log("[GameManager]: OnWaterStateChangedPlayerAndCableInWhater: " );
             //TODO: GameOverScene
             SceneManager.LoadScene("startMenuScene");
         }
