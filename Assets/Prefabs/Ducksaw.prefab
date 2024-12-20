@@ -480,6 +480,9 @@ GameObject:
   - component: {fileID: 9180131021483594264}
   - component: {fileID: 592528243746783705}
   - component: {fileID: 7029516178904331206}
+  - component: {fileID: 4847655666436735257}
+  - component: {fileID: 4073877144209505627}
+  - component: {fileID: 1383744556531011062}
   m_Layer: 0
   m_Name: Collider
   m_TagString: Untagged
@@ -589,11 +592,128 @@ SpringJoint:
   m_AutoConfigureConnectedAnchor: 1
   m_ConnectedAnchor: {x: -3.781129, y: -1.5026782, z: -4.0892534}
   serializedVersion: 2
-  m_Spring: 3.4028233e+38
-  m_Damper: 0
+  m_Spring: 100
+  m_Damper: 9000
   m_MinDistance: 0
   m_MaxDistance: 0
   m_Tolerance: 0.025
+  m_BreakForce: Infinity
+  m_BreakTorque: Infinity
+  m_EnableCollision: 0
+  m_EnablePreprocessing: 1
+  m_MassScale: 1
+  m_ConnectedMassScale: 1
+--- !u!59 &4847655666436735257
+HingeJoint:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4595378512533933490}
+  m_ConnectedBody: {fileID: 1675300865490478143}
+  m_ConnectedArticulationBody: {fileID: 0}
+  m_Anchor: {x: 0, y: 0, z: 0}
+  m_Axis: {x: 1, y: 0, z: 0}
+  m_AutoConfigureConnectedAnchor: 1
+  m_ConnectedAnchor: {x: 0, y: 0, z: 0}
+  serializedVersion: 2
+  m_UseSpring: 0
+  m_Spring:
+    spring: 250
+    damper: 0
+    targetPosition: 0
+  m_UseMotor: 0
+  m_Motor:
+    targetVelocity: 0
+    force: 0
+    freeSpin: 0
+  m_UseLimits: 0
+  m_ExtendedLimits: 0
+  m_UseAcceleration: 0
+  m_Limits:
+    min: 0
+    max: 0
+    bounciness: 0
+    bounceMinVelocity: 0.2
+    contactDistance: 0
+  m_BreakForce: Infinity
+  m_BreakTorque: Infinity
+  m_EnableCollision: 0
+  m_EnablePreprocessing: 1
+  m_MassScale: 1
+  m_ConnectedMassScale: 1
+--- !u!59 &4073877144209505627
+HingeJoint:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4595378512533933490}
+  m_ConnectedBody: {fileID: 1675300865490478143}
+  m_ConnectedArticulationBody: {fileID: 0}
+  m_Anchor: {x: 0, y: 0, z: 0}
+  m_Axis: {x: 0, y: 1, z: 0}
+  m_AutoConfigureConnectedAnchor: 1
+  m_ConnectedAnchor: {x: 0, y: 0, z: 0}
+  serializedVersion: 2
+  m_UseSpring: 0
+  m_Spring:
+    spring: 250
+    damper: 0
+    targetPosition: 0
+  m_UseMotor: 0
+  m_Motor:
+    targetVelocity: 0
+    force: 0
+    freeSpin: 0
+  m_UseLimits: 0
+  m_ExtendedLimits: 0
+  m_UseAcceleration: 0
+  m_Limits:
+    min: 0
+    max: 0
+    bounciness: 0
+    bounceMinVelocity: 0.2
+    contactDistance: 0
+  m_BreakForce: Infinity
+  m_BreakTorque: Infinity
+  m_EnableCollision: 0
+  m_EnablePreprocessing: 1
+  m_MassScale: 1
+  m_ConnectedMassScale: 1
+--- !u!59 &1383744556531011062
+HingeJoint:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4595378512533933490}
+  m_ConnectedBody: {fileID: 1675300865490478143}
+  m_ConnectedArticulationBody: {fileID: 0}
+  m_Anchor: {x: 0, y: 0, z: 0}
+  m_Axis: {x: 0, y: 0, z: 1}
+  m_AutoConfigureConnectedAnchor: 1
+  m_ConnectedAnchor: {x: 0, y: 0, z: 0}
+  serializedVersion: 2
+  m_UseSpring: 0
+  m_Spring:
+    spring: 250
+    damper: 0
+    targetPosition: 0
+  m_UseMotor: 0
+  m_Motor:
+    targetVelocity: 0
+    force: 0
+    freeSpin: 0
+  m_UseLimits: 0
+  m_ExtendedLimits: 0
+  m_UseAcceleration: 0
+  m_Limits:
+    min: 0
+    max: 0
+    bounciness: 0
+    bounceMinVelocity: 0.2
+    contactDistance: 0
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
   m_EnableCollision: 0
@@ -723,7 +843,6 @@ GameObject:
   - component: {fileID: 780129849666425575}
   - component: {fileID: 6950021897969804529}
   - component: {fileID: 2761174090173929237}
-  - component: {fileID: 4160363221049325406}
   m_Layer: 0
   m_Name: Ducksaw
   m_TagString: Untagged
@@ -1061,69 +1180,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &4160363221049325406
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6045873690304899379}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7dfa3196966e7bf4fa20377c0f32700f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  active:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2662663139574317706}
-        m_TargetAssemblyTypeName: SliceObject, Assembly-CSharp
-        m_MethodName: sawing
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  unactive:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2662663139574317706}
-        m_TargetAssemblyTypeName: SliceObject, Assembly-CSharp
-        m_MethodName: notSawing
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  leftGrab:
-    m_PersistentCalls:
-      m_Calls: []
-  leftUngrab:
-    m_PersistentCalls:
-      m_Calls: []
-  rightGrab:
-    m_PersistentCalls:
-      m_Calls: []
-  rightUngrab:
-    m_PersistentCalls:
-      m_Calls: []
-  justActive:
-    m_PersistentCalls:
-      m_Calls: []
-  justLeftGrab:
-    m_PersistentCalls:
-      m_Calls: []
-  justRightGrab:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1 &6111593137279671003
 GameObject:
   m_ObjectHideFlags: 0
@@ -1302,7 +1358,7 @@ MonoBehaviour:
   _data: {fileID: 0}
   _pointableElement: {fileID: 8970568443751400174}
   _rigidbody: {fileID: 1675300865490478143}
-  _grabSource: {fileID: 0}
+  _grabSource: {fileID: 1354611677550148303}
   _useClosestPointAsGrabSource: 0
   _releaseDistance: 0
   _resetGrabOnGrabsUpdated: 1
@@ -1437,6 +1493,37 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &8307564649606917717
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1354611677550148303}
+  m_Layer: 0
+  m_Name: Grabpoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1354611677550148303
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8307564649606917717}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.7047186, y: -0.058067348, z: -0.70471853, w: 0.05806723}
+  m_LocalPosition: {x: -0.0524, y: 0.0227, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7290252197247927641}
+  m_LocalEulerAnglesHint: {x: -170.579, y: -90, z: 0}
 --- !u!1 &8449145914108492835
 GameObject:
   m_ObjectHideFlags: 0
@@ -1483,6 +1570,7 @@ GameObject:
   - component: {fileID: 1675300865490478143}
   - component: {fileID: 332033699197818843}
   - component: {fileID: 7606897486239771974}
+  - component: {fileID: 5781489171086785287}
   m_Layer: 0
   m_Name: Grab
   m_TagString: Untagged
@@ -1505,6 +1593,7 @@ Transform:
   m_Children:
   - {fileID: 1971482138244005440}
   - {fileID: 6209370897188442236}
+  - {fileID: 1354611677550148303}
   m_Father: {fileID: 7427172545186742082}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &1675300865490478143
@@ -1576,6 +1665,69 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.03, y: 0.03, z: 0.02}
   m_Center: {x: -0.07, y: 0.03, z: 0}
+--- !u!114 &5781489171086785287
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8481813890859278651}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7dfa3196966e7bf4fa20377c0f32700f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  active:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2662663139574317706}
+        m_TargetAssemblyTypeName: SliceObject, Assembly-CSharp
+        m_MethodName: sawing
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  unactive:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2662663139574317706}
+        m_TargetAssemblyTypeName: SliceObject, Assembly-CSharp
+        m_MethodName: notSawing
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  leftGrab:
+    m_PersistentCalls:
+      m_Calls: []
+  leftUngrab:
+    m_PersistentCalls:
+      m_Calls: []
+  rightGrab:
+    m_PersistentCalls:
+      m_Calls: []
+  rightUngrab:
+    m_PersistentCalls:
+      m_Calls: []
+  justActive:
+    m_PersistentCalls:
+      m_Calls: []
+  justLeftGrab:
+    m_PersistentCalls:
+      m_Calls: []
+  justRightGrab:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &8493018905007211625
 GameObject:
   m_ObjectHideFlags: 0
