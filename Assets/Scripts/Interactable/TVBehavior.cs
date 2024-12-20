@@ -27,7 +27,7 @@ public class TVBehavior : MonoBehaviour
     private bool hasChangedStateAfterClip = false;
 
     // Action zur Benachrichtigung anderer Objekte
-    public static event Action<GameManager.GameState> gameStateChanged;
+    public static event Action<GameManager.GameState> gameStateChangedTVBehavior;
 
     private void Awake()
     {
@@ -107,7 +107,7 @@ public class TVBehavior : MonoBehaviour
                 {
                     StartCoroutine(StartFlooding());
                     Debug.Log("TVBehavior: Changing GameState to 'Game' after first clip switch.");
-                    gameStateChanged?.Invoke(GameManager.GameState.Game); // Action auslösen
+                    gameStateChangedTVBehavior?.Invoke(GameManager.GameState.Game); // Action auslösen
                     hasChangedStateAfterClip = true; // Verhindert weitere Änderungen
                 }
 

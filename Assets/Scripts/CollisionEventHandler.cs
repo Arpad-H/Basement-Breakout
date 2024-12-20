@@ -30,7 +30,7 @@ public class CollisionEventHandler : MonoBehaviour
         if (other.gameObject == targetObject)
         {
             eventsHandler(true);
-            Debug.Log($"[CollisionEventHandler]Object entered : {other.gameObject.name} { nameof(objecttypeselection)}" + true);
+            Debug.LogError($"[CollisionEventHandler]Object entered : {other.gameObject.name} { (objecttypeselection)}" + true);
             
         }
     }
@@ -40,7 +40,7 @@ public class CollisionEventHandler : MonoBehaviour
         if (other.gameObject == targetObject)
         {
             eventsHandler(false);
-            Debug.Log($"[CollisionEventHandler] Object exited: {other.gameObject.name} {nameof(objecttypeselection)}" + false);
+            Debug.LogError($"[CollisionEventHandler] Object exited: {other.gameObject.name} {objecttypeselection}" + false);
         }
     }
 
@@ -62,10 +62,10 @@ public class CollisionEventHandler : MonoBehaviour
     {
         switch (objecttypeselection)
         {
-            case Objecttype.Player:
+            case Objecttype.Cable:
                 OnWaterStateChangedCable?.Invoke(state);
                 break;
-            case Objecttype.Cable:
+            case Objecttype.Player:
                 OnWaterStateChangedPlayer?.Invoke(state);
                 break;
             default:
