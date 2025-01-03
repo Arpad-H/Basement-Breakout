@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5923129499294967213}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42,7 +42,8 @@ GameObject:
   m_Component:
   - component: {fileID: 6763076097398921253}
   - component: {fileID: 226384234335332897}
-  m_Layer: 0
+  - component: {fileID: 6655031553274091704}
+  m_Layer: 8
   m_Name: Battery
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -83,6 +84,18 @@ MonoBehaviour:
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
+--- !u!114 &6655031553274091704
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5131686548302406853}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e80954a632749147b7f2ebdd62af2dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6847909528293708225
 GameObject:
   m_ObjectHideFlags: 0
@@ -100,9 +113,8 @@ GameObject:
   - component: {fileID: 7107973448511594920}
   - component: {fileID: 8234267403080729763}
   - component: {fileID: 4911607811042385723}
-  - component: {fileID: 2330755718183439827}
   - component: {fileID: 1256773491838069647}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: aa-battery
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -363,21 +375,6 @@ HingeJoint:
   m_EnablePreprocessing: 1
   m_MassScale: 1
   m_ConnectedMassScale: 1
---- !u!114 &2330755718183439827
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6847909528293708225}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7e80954a632749147b7f2ebdd62af2dd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  insertBattery:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!65 &1256773491838069647
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -412,7 +409,7 @@ GameObject:
   - component: {fileID: 2798740757750586169}
   - component: {fileID: 3999656969237893177}
   - component: {fileID: 1504508732532961102}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: '[BuildingBlock] HandGrab'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -447,7 +444,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blockId: f8766c17-aaf8-4b55-9431-de8deea83842
-  instanceId: cdb8c3d5-828f-4c69-bf80-eea0d8e42c01
+  instanceId: f8ecf511-e644-43a1-a65f-38993a2528c8
   version: 1
   installationRoutineCheckpoint:
     _installationRoutineId: f8338144-8280-4ff6-9455-ae2bb9c20fe8
@@ -551,7 +548,7 @@ GameObject:
   - component: {fileID: 1982642754083966420}
   - component: {fileID: 4909674509650252599}
   - component: {fileID: 3922519955784490839}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: aa-battery
   m_TagString: Untagged
   m_Icon: {fileID: 0}
