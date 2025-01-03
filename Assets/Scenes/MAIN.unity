@@ -4093,10 +4093,10 @@ Transform:
   - {fileID: 1518677907}
   - {fileID: 542736077}
   - {fileID: 1682636628}
-  - {fileID: 929155006}
   - {fileID: 299166371}
   - {fileID: 92853879}
   - {fileID: 198339495}
+  - {fileID: 1924074700}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &181246524
@@ -24679,137 +24679,6 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: ab6f095d187854a0ba98f456900b27f9, type: 3}
   m_PrefabInstance: {fileID: 925088961}
-  m_PrefabAsset: {fileID: 0}
---- !u!1001 &929155005
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 180429858}
-    m_Modifications:
-    - target: {fileID: 2330755718183439827, guid: 3570301ba61666b49a5ba90c684a2e43, type: 3}
-      propertyPath: insertBattery.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2330755718183439827, guid: 3570301ba61666b49a5ba90c684a2e43, type: 3}
-      propertyPath: insertBattery.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2330755718183439827, guid: 3570301ba61666b49a5ba90c684a2e43, type: 3}
-      propertyPath: insertBattery.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1682636627}
-    - target: {fileID: 2330755718183439827, guid: 3570301ba61666b49a5ba90c684a2e43, type: 3}
-      propertyPath: insertBattery.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2330755718183439827, guid: 3570301ba61666b49a5ba90c684a2e43, type: 3}
-      propertyPath: insertBattery.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: batteryInserted
-      objectReference: {fileID: 0}
-    - target: {fileID: 2330755718183439827, guid: 3570301ba61666b49a5ba90c684a2e43, type: 3}
-      propertyPath: insertBattery.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: AudioDetection, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 2330755718183439827, guid: 3570301ba61666b49a5ba90c684a2e43, type: 3}
-      propertyPath: insertBattery.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 5131686548302406853, guid: 3570301ba61666b49a5ba90c684a2e43, type: 3}
-      propertyPath: m_Name
-      value: Battery
-      objectReference: {fileID: 0}
-    - target: {fileID: 5131686548302406853, guid: 3570301ba61666b49a5ba90c684a2e43, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6194568451900392323, guid: 3570301ba61666b49a5ba90c684a2e43, type: 3}
-      propertyPath: m_IsTrigger
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6763076097398921253, guid: 3570301ba61666b49a5ba90c684a2e43, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -0.685
-      objectReference: {fileID: 0}
-    - target: {fileID: 6763076097398921253, guid: 3570301ba61666b49a5ba90c684a2e43, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -1.09
-      objectReference: {fileID: 0}
-    - target: {fileID: 6763076097398921253, guid: 3570301ba61666b49a5ba90c684a2e43, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 3.432
-      objectReference: {fileID: 0}
-    - target: {fileID: 6763076097398921253, guid: 3570301ba61666b49a5ba90c684a2e43, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6763076097398921253, guid: 3570301ba61666b49a5ba90c684a2e43, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6763076097398921253, guid: 3570301ba61666b49a5ba90c684a2e43, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6763076097398921253, guid: 3570301ba61666b49a5ba90c684a2e43, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6763076097398921253, guid: 3570301ba61666b49a5ba90c684a2e43, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6763076097398921253, guid: 3570301ba61666b49a5ba90c684a2e43, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6763076097398921253, guid: 3570301ba61666b49a5ba90c684a2e43, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6847909528293708225, guid: 3570301ba61666b49a5ba90c684a2e43, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8317200079421103566, guid: 3570301ba61666b49a5ba90c684a2e43, type: 3}
-      propertyPath: insertBattery.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8317200079421103566, guid: 3570301ba61666b49a5ba90c684a2e43, type: 3}
-      propertyPath: insertBattery.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8317200079421103566, guid: 3570301ba61666b49a5ba90c684a2e43, type: 3}
-      propertyPath: insertBattery.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1682636627}
-    - target: {fileID: 8317200079421103566, guid: 3570301ba61666b49a5ba90c684a2e43, type: 3}
-      propertyPath: insertBattery.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8317200079421103566, guid: 3570301ba61666b49a5ba90c684a2e43, type: 3}
-      propertyPath: insertBattery.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: batteryInserted
-      objectReference: {fileID: 0}
-    - target: {fileID: 8317200079421103566, guid: 3570301ba61666b49a5ba90c684a2e43, type: 3}
-      propertyPath: insertBattery.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: AudioDetection, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 8317200079421103566, guid: 3570301ba61666b49a5ba90c684a2e43, type: 3}
-      propertyPath: insertBattery.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 6655031553274091704, guid: 3570301ba61666b49a5ba90c684a2e43, type: 3}
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 3570301ba61666b49a5ba90c684a2e43, type: 3}
---- !u!4 &929155006 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6763076097398921253, guid: 3570301ba61666b49a5ba90c684a2e43, type: 3}
-  m_PrefabInstance: {fileID: 929155005}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &935392318
 PrefabInstance:
@@ -50039,17 +49908,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0e349627c21d95a40ae2705e9043e063, type: 3}
---- !u!114 &1682636627 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 308297043390501585, guid: 0e349627c21d95a40ae2705e9043e063, type: 3}
-  m_PrefabInstance: {fileID: 1682636626}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e27a79c467389c54abbebb920a1bad08, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &1682636628 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3168147921493430017, guid: 0e349627c21d95a40ae2705e9043e063, type: 3}
@@ -59660,6 +59518,11 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.019999998, y: 0.019999994, z: 2.2275516e-16}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!4 &1924074700 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7835901582273018814, guid: 9c7de319b9ea1424da23573c8bcb06a0, type: 3}
+  m_PrefabInstance: {fileID: 4975412499759609101}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1925936039
 GameObject:
   m_ObjectHideFlags: 0
@@ -85307,6 +85170,63 @@ MonoBehaviour:
   _radiusBottomRight: 0.3
   _borderInnerRadius: 0
   _borderOuterRadius: 0
+--- !u!1001 &4975412499759609101
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 180429858}
+    m_Modifications:
+    - target: {fileID: 2582394663984717541, guid: 9c7de319b9ea1424da23573c8bcb06a0, type: 3}
+      propertyPath: m_Name
+      value: MarbleMaze
+      objectReference: {fileID: 0}
+    - target: {fileID: 7835901582273018814, guid: 9c7de319b9ea1424da23573c8bcb06a0, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.651
+      objectReference: {fileID: 0}
+    - target: {fileID: 7835901582273018814, guid: 9c7de319b9ea1424da23573c8bcb06a0, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.178
+      objectReference: {fileID: 0}
+    - target: {fileID: 7835901582273018814, guid: 9c7de319b9ea1424da23573c8bcb06a0, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 3.753
+      objectReference: {fileID: 0}
+    - target: {fileID: 7835901582273018814, guid: 9c7de319b9ea1424da23573c8bcb06a0, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7835901582273018814, guid: 9c7de319b9ea1424da23573c8bcb06a0, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7835901582273018814, guid: 9c7de319b9ea1424da23573c8bcb06a0, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7835901582273018814, guid: 9c7de319b9ea1424da23573c8bcb06a0, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7835901582273018814, guid: 9c7de319b9ea1424da23573c8bcb06a0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7835901582273018814, guid: 9c7de319b9ea1424da23573c8bcb06a0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7835901582273018814, guid: 9c7de319b9ea1424da23573c8bcb06a0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 9c7de319b9ea1424da23573c8bcb06a0, type: 3}
 --- !u!33 &4976583468551818280
 MeshFilter:
   m_ObjectHideFlags: 0
