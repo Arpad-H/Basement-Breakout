@@ -22,7 +22,7 @@ public class SliceObject : MonoBehaviour {
     [SerializeField] private AudioSource chainsawIdleSound;
     [SerializeField] private HapticClip hapticClip;
 
-    [SerializeField] private Animator animator;
+    //[SerializeField] private Animator animator; //Auskommentiert, weil error
     private float chainsawRefuelSoundLength;
     private bool canCut = false;
     private bool hasFuel = false;
@@ -40,7 +40,7 @@ public class SliceObject : MonoBehaviour {
         if (!chainsawIdleSound.isPlaying && canCut && hasFuel && noWaterDamage) {
             chainsawIdleSound.Play();
             hapticClipPlayer.Play(Controller.Both);
-            animator.SetBool("isSawing", true);
+            //animator.SetBool("isSawing", true);
         }
         bool hasHit = Physics.Linecast(startSlicePoint.position, endSlicePoint.position, out RaycastHit hit, slicableLayer);
         if (hasHit && canCut && hasFuel && noWaterDamage) {
@@ -108,6 +108,6 @@ public class SliceObject : MonoBehaviour {
     
     public void notSawing() {
         canCut = false;
-        animator.SetBool("isSawing", false);
+        //animator.SetBool("isSawing", false);
     }
 }
