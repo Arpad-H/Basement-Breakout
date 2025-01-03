@@ -20,13 +20,23 @@ public class RCBoatController : MonoBehaviour
     [SerializeField] private GameObject teleportIndicator1;
     [SerializeField] private GameObject teleportIndicator2;
     [SerializeField] private GrabInteractable grabInteractable;
-    
+
+    private GameObject battery;
+    private GameObject emptyIndicator;
+    private bool hasBattery = false;
+
+    void Start()
+    {
+        battery = GameObject.Find("InsertedBatteryController");
+        battery.SetActive(false);
+        emptyIndicator = GameObject.Find("EmptyBattery");
+    }
     void Update()
     {
         //OVRInput.Update();
         //.FixedUpdate();
         
-        if (drive) {
+        if (drive && hasBattery) {
             leftHanded = OVRInput.Get(OVRInput.Button.PrimaryHandTrigger);
             rightHanded = OVRInput.Get(OVRInput.Button.SecondaryHandTrigger);
             locomotion.SetActive(false);
@@ -71,6 +81,13 @@ public class RCBoatController : MonoBehaviour
     public void setGrabPointRight()
     {
         grabInteractable.InjectOptionalGrabSource(rightHand);
+    }
+    
+    public void isFull()
+    {
+        hasBattery = true;
+        battery.SetActive(true);
+        emptyIndicator.SetActive(false);
     }
     
 }

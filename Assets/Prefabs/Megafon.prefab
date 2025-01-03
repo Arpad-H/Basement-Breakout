@@ -366,7 +366,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3302542920850097315}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: SlotIndicator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -710,7 +710,7 @@ GameObject:
   - component: {fileID: 4832077784384727977}
   - component: {fileID: 1841541315367434807}
   - component: {fileID: 8213818583904478798}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Minus
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1025,7 +1025,7 @@ GameObject:
   - component: {fileID: 3681358000314168450}
   - component: {fileID: 2392503525672051308}
   - component: {fileID: 6260598911750947696}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Plus2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1108,7 +1108,7 @@ GameObject:
   - component: {fileID: 6517346531632214933}
   - component: {fileID: 7864593673725460583}
   - component: {fileID: 7578374269259157205}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Plus1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1343,7 +1343,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blockId: f8766c17-aaf8-4b55-9431-de8deea83842
-  instanceId: ae5cf2f0-3c98-4b8e-9e40-8d912ad8ca69
+  instanceId: f4290fbd-a925-46aa-884d-6765b5033b0c
   version: 1
   installationRoutineCheckpoint:
     _installationRoutineId: f8338144-8280-4ff6-9455-ae2bb9c20fe8
@@ -1446,7 +1446,8 @@ GameObject:
   m_Component:
   - component: {fileID: 8646767850762314347}
   - component: {fileID: 6777820284268063303}
-  m_Layer: 8
+  - component: {fileID: 7546876406883694098}
+  m_Layer: 0
   m_Name: Batteryslot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1492,3 +1493,30 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.05, y: 0.05, z: 0.01}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &7546876406883694098
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8825725305404642938}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9a49d66efa887545b7791d3745f79c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  insertBattery:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 308297043390501585}
+        m_TargetAssemblyTypeName: AudioDetection, Assembly-CSharp
+        m_MethodName: batteryInserted
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
