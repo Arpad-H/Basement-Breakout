@@ -7,8 +7,8 @@ using UnityEngine.PlayerLoop;
 public class PlayerManager : MonoBehaviour
 {
    private Vector3 STARTSCENEPOS = new Vector3(-2.364f, 3.97f, 8.326f);
-   private Vector3 STARTMENUPOS = new Vector3(-2.364f, 3.97f, 8.326f);
-   private Vector3 GAMEOVERMENUPOS = new Vector3(55.5f, 10f, 0f);
+   private Vector3 STARTMENUPOS = new Vector3(49.8f, 10.4f, -1.866f);
+   private Vector3 GAMEOVERMENUPOS = new Vector3(54f, 10f, 1f);
 
    [SerializeField] private GameObject[] rayInteractor;
    [SerializeField] private GameObject[] teleportInteractor;
@@ -110,7 +110,7 @@ public class PlayerManager : MonoBehaviour
 
     private void HandleGameStateChanged(GameManager.GameState gameState)
     {
-        Debug.LogError($"[PlayerManager]: GameState changed to {gameState}");
+        Debug.Log($"[PlayerManager]: GameState changed to {gameState}");
         if (gameState is GameManager.GameState.Drowned or GameManager.GameState.Win or GameManager.GameState.ElectricShock)
         {
             
