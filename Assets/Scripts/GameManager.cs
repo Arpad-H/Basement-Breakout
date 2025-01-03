@@ -111,5 +111,11 @@ public class GameManager : MonoBehaviour
            
         }
     }
+    
+    
+    public void RestartGame()
+    {
+        SceneManager.LoadScene("MAIN");
+    }
 }
 

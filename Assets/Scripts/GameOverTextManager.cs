@@ -7,11 +7,16 @@ using UnityEngine.Experimental.Rendering;
 
 public class GameOverTextManager : MonoBehaviour
 {
-    
+    private TextMeshProUGUI text;
     
     private void Awake()
     {
         GameManager.OnGameStateChanged += OnGameStateChanged;
+    }
+
+    private void Start()
+    {
+        text  = GetComponent<TextMeshProUGUI>();
     }
 
     private void OnDestroy()
@@ -22,16 +27,18 @@ public class GameOverTextManager : MonoBehaviour
     
     private void OnGameStateChanged(GameManager.GameState obj)
     {
+        Debug.Log($"[GameOverTextManager]: {obj}");
         switch (obj)
         {
             case GameManager.GameState.Drowned:
-                showDeathMessage(composeDeathMessage("Ertrinken"));
+                showDeathMessage(composeDeathMessage(" Ertrinken"));
                 break;
             case GameManager.GameState.ElectricShock:
-                showDeathMessage(composeDeathMessage("Elektroschock"));
+                showDeathMessage(composeDeathMessage(" Elektroschock"));
                 break;
             case GameManager.GameState.Win:
                 showDeathMessage(composeWinMessage());
+                text.color = Color.green;
                 break;
             default:
                 break;
@@ -42,8 +49,8 @@ public class GameOverTextManager : MonoBehaviour
     
     private void showDeathMessage(string message)
     {
-        TextMeshPro text = GetComponent<TextMeshPro>();
-        text.SetText(message);
+        Debug.Log($"[GameOverTextManager]: {message}");
+        text.text = message;
     }
     
     private string composeDeathMessage(string message)

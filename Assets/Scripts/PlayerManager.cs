@@ -7,8 +7,8 @@ using UnityEngine.PlayerLoop;
 public class PlayerManager : MonoBehaviour
 {
    private Vector3 STARTSCENEPOS = new Vector3(-2.364f, 3.97f, 8.326f);
-   private Vector3 STARTMENUPOS = new Vector3(-2.364f, 3.97f, 8.326f);
-   private Vector3 GAMEOVERMENUPOS = new Vector3(55.5f, 10f, 0f);
+   private Vector3 STARTMENUPOS = new Vector3(49.8f, 10.4f, -1.866f);
+   private Vector3 GAMEOVERMENUPOS = new Vector3(54f, 10f, 1f);
 
    [SerializeField] private GameObject[] rayInteractor;
    [SerializeField] private GameObject[] teleportInteractor;
@@ -16,7 +16,7 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] private GameObject WaterheightPlane;
     
     [SerializeField] private float DROWNINGTIME = 10f;
-    private float timeUnderWater = 0f;
+    private float _timeUnderWater = 0f;
     public static event Action<GameManager.GameState> GameStateChangedPlayer;
 
 
@@ -32,7 +32,7 @@ public class PlayerManager : MonoBehaviour
 
    private void Update()
    {
-       if (drawing())
+       if (Drawing())
        {
            Debug.Log($"[PlayerManager]: Player is drowning");
            GameStateChangedPlayer?.Invoke(GameManager.GameState.Drowned);
@@ -46,8 +46,8 @@ public class PlayerManager : MonoBehaviour
 
     public void loadGamePlayScene()
     {
-        deactivateRayInteractor();
-        activateTeleportInteractor();
+        DeactivateRayInteractor();
+        ActivateTeleportInteractor();
         SetPlayerPositionToStartGame();
     }
 
@@ -57,7 +57,7 @@ public class PlayerManager : MonoBehaviour
         transform.position = STARTMENUPOS;
     }
 
-    private void deactivateRayInteractor()
+    private void DeactivateRayInteractor()
     {
         foreach (GameObject gameObject in rayInteractor)
         {
@@ -65,7 +65,7 @@ public class PlayerManager : MonoBehaviour
         }
     }
 
-    private void activateRayInteractor()
+    private void ActivateRayInteractor()
     {
         foreach (GameObject gameObject in rayInteractor)
         {
@@ -73,7 +73,7 @@ public class PlayerManager : MonoBehaviour
         }
     }
 
-    private void deactivateTeleportInteractor()
+    private void DeactivateTeleportInteractor()
     {
         foreach (GameObject gameObject in teleportInteractor)
         {
@@ -81,7 +81,7 @@ public class PlayerManager : MonoBehaviour
         }
     }
 
-    private void activateTeleportInteractor()
+    private void ActivateTeleportInteractor()
     {
         foreach (GameObject gameObject in teleportInteractor)
         {
@@ -89,38 +89,38 @@ public class PlayerManager : MonoBehaviour
         }
     }
 
-    public void setPlayerPosToGameOverMenu()
+    public void SetPlayerPosToGameOverMenu()
     {
         transform.position = GAMEOVERMENUPOS;
     }
     
-    public bool drawing()
+    public bool Drawing()
     {
         if (PlayerHead.transform.position.y < WaterheightPlane.transform.position.y)
         {
-            timeUnderWater += Time.deltaTime;
+            _timeUnderWater += Time.deltaTime;
         }
         else
         {
-            timeUnderWater = 0;
+            _timeUnderWater = 0;
         }
 
-        return timeUnderWater > DROWNINGTIME;
+        return _timeUnderWater > DROWNINGTIME;
     }
 
     private void HandleGameStateChanged(GameManager.GameState gameState)
     {
-        Debug.LogError($"[PlayerManager]: GameState changed to {gameState}");
+        Debug.Log($"[PlayerManager]: GameState changed to {gameState}");
         if (gameState is GameManager.GameState.Drowned or GameManager.GameState.Win or GameManager.GameState.ElectricShock)
         {
             
-            deactivateTeleportInteractor();
-            activateRayInteractor();
-            setPlayerPosToGameOverMenu();
+            DeactivateTeleportInteractor();
+            ActivateRayInteractor();
+            SetPlayerPosToGameOverMenu();
         } else if (gameState == GameManager.GameState.Tutorial)
         {
-            Debug.LogError($"[PlayerManager]: GameState changed to {gameState}");
-            deactivateRayInteractor();
+           
+            DeactivateRayInteractor();
            SetPlayerPositionToStartGame();
         }
         
