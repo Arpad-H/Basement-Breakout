@@ -16,7 +16,6 @@ public class Marble : MonoBehaviour
             Destroy(gameObject);
         }
         float length = (new Vector2(centerTransform.position.x, centerTransform.position.z) - new Vector2(transform.position.x, transform.position.z)).magnitude;
-        print(length);
         if (length > 0.2f)
         {
             transform.position = startTransform.position;
