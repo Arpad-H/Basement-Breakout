@@ -834,6 +834,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startTransform: {fileID: 3083131025470131982}
+  centerTransform: {fileID: 7106606032134685199}
 --- !u!1 &1388260706324756985
 GameObject:
   m_ObjectHideFlags: 0
@@ -2317,9 +2318,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c2f847e6eec4684b862e19fe3ef8b47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  door: {fileID: 873878140411715346}
-  self: {fileID: 0}
+  deletable: {fileID: 873878140411715346}
   battery: {fileID: 0}
+  oldBattery: {fileID: 0}
 --- !u!1 &4029614080742383063
 GameObject:
   m_ObjectHideFlags: 0
@@ -2753,9 +2754,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c2f847e6eec4684b862e19fe3ef8b47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  door: {fileID: 5562251658076938922}
-  self: {fileID: 0}
+  deletable: {fileID: 5562251658076938922}
   battery: {fileID: 0}
+  oldBattery: {fileID: 0}
 --- !u!1 &5170762759676588057
 GameObject:
   m_ObjectHideFlags: 0
@@ -2804,7 +2805,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blockId: f8766c17-aaf8-4b55-9431-de8deea83842
-  instanceId: 2f23bc77-9d62-4fee-9d7b-2f34cd77ca79
+  instanceId: c15e0e62-a0e0-463b-bacb-23f9fb72c388
   version: 1
   installationRoutineCheckpoint:
     _installationRoutineId: f8338144-8280-4ff6-9455-ae2bb9c20fe8
@@ -3120,9 +3121,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c2f847e6eec4684b862e19fe3ef8b47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  door: {fileID: 0}
-  self: {fileID: 2582394663984717541}
+  deletable: {fileID: 2773910737273057721}
   battery: {fileID: 5131686548302406853, guid: 3570301ba61666b49a5ba90c684a2e43, type: 3}
+  oldBattery: {fileID: 8401833225188481153}
 --- !u!1 &5498756210496102769
 GameObject:
   m_ObjectHideFlags: 0
@@ -3648,59 +3649,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!1 &6148014675918122369
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 5924218885731196829}
-  - component: {fileID: 1957404770774775623}
-  m_Layer: 28
-  m_Name: AntiMarbleGlitch
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &5924218885731196829
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6148014675918122369}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 5917509802853928212}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &1957404770774775623
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6148014675918122369}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.3, y: 0.05, z: 0.3}
-  m_Center: {x: 0, y: 0.02, z: 0}
 --- !u!1 &6172683093866657514
 GameObject:
   m_ObjectHideFlags: 0
@@ -4449,9 +4397,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c2f847e6eec4684b862e19fe3ef8b47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  door: {fileID: 7678071776013889625}
-  self: {fileID: 0}
+  deletable: {fileID: 7678071776013889625}
   battery: {fileID: 0}
+  oldBattery: {fileID: 0}
 --- !u!1 &7891758774863784774
 GameObject:
   m_ObjectHideFlags: 0
@@ -4597,7 +4545,6 @@ Transform:
   - {fileID: 3083131025470131982}
   - {fileID: 5140742032346469668}
   - {fileID: 7106606032134685199}
-  - {fileID: 5924218885731196829}
   m_Father: {fileID: 6266698466367199056}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &728986129252955647
