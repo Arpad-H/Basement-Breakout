@@ -4,17 +4,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-[ExecuteAlways]
+
 public class VoiceoverHints : MonoBehaviour
 {
     
     // public delegate void OnPickupVoicedItem(VoiceoverHints voiceoverHints);
     // public delegate void OnDropVoicedItem();
     public AudioSource HintVoiceClip;
-    private float timeSincePickup = 0;
+    public float timeSincePickup = 0;
     public bool isPickedUp = false;
     public float TimeUntilHint = 10f;
-    private void Awake()
+    public bool isHintPlayed = false;
+    [ExecuteAlways] private void Awake()
     {
         CustomButtonMapper customButtonMapper = GetComponent<CustomButtonMapper>();
         if (customButtonMapper)
@@ -26,7 +27,7 @@ public class VoiceoverHints : MonoBehaviour
     }
     private void Update()
     {
-        if (isPickedUp)
+        if (isPickedUp && !isHintPlayed)
         {
             timeSincePickup += Time.deltaTime;
             if (timeSincePickup >= TimeUntilHint)
@@ -47,7 +48,6 @@ public class VoiceoverHints : MonoBehaviour
     }
     public void PlayHintVoice()
     {
-     
         HintVoiceClip.Play();
     }
 }
