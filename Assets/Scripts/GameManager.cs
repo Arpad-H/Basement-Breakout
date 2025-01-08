@@ -80,13 +80,19 @@ public class GameManager : MonoBehaviour
                 break;
             case GameState.Beam:
                 break;
+            case GameState.Game:
+                break;
+            case GameState.Tutorial:
+                break;
+            case GameState.Menu:
+                break;
             default:
                 throw new ArgumentOutOfRangeException(nameof(newState), newState, null);
         }
 
-        // Andere GameObjekte können hierrauf reagieren
+        Debug.LogError($"[Game Manager] updating game state to {newState}");
         OnGameStateChanged?.Invoke(newState);
-        Debug.Log($"[Game Manager] updating game state to {newState}");
+        
     }
 
 

@@ -6,7 +6,7 @@ using UnityEngine.PlayerLoop;
 
 public class PlayerManager : MonoBehaviour
 {
-   private Vector3 STARTSCENEPOS = new Vector3(-2.364f, 3.97f, 8.326f);
+   private Vector3 STARTSCENEPOS = new Vector3(-2.364f, 3.22f, 7.93f);
    private Vector3 STARTMENUPOS = new Vector3(49.8f, 10.4f, -1.866f);
    private Vector3 GAMEOVERMENUPOS = new Vector3(54f, 10f, 1f);
 
@@ -23,6 +23,11 @@ public class PlayerManager : MonoBehaviour
    private void Awake()
    {
        GameManager.OnGameStateChanged +=HandleGameStateChanged;
+   }
+
+   private void Start()
+   {
+       DeactivateTeleportInteractor();
    }
 
    private void OnDestroy()
@@ -46,8 +51,9 @@ public class PlayerManager : MonoBehaviour
 
     public void loadGamePlayScene()
     {
-        DeactivateRayInteractor();
-        ActivateTeleportInteractor();
+        
+        //ActivateTeleportInteractor();
+        DeactivateTeleportInteractor();
         SetPlayerPositionToStartGame();
     }
 
@@ -121,8 +127,13 @@ public class PlayerManager : MonoBehaviour
         {
            
             DeactivateRayInteractor();
-           SetPlayerPositionToStartGame();
+            SetPlayerPositionToStartGame();
         }
+        else if (gameState == GameManager.GameState.Game)
+        {
+            ActivateTeleportInteractor();
+        }
+        
         
     }
     
