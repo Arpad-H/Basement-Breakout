@@ -101,10 +101,26 @@ public class CustomButtonMapper : MonoBehaviour
     }
     public void AddActiveListener(UnityAction action)
     {
-        active.AddListener(action);
+        if (leftControlable)
+        {
+            leftGrab.AddListener(action);
+        }
+        else
+        {
+            rightGrab.AddListener(action);
+        }
+       
+       
     }
     public void AddUnactiveListener(UnityAction action)
     {
-        unactive.AddListener(action);
+        if (leftControlable)
+        {
+            leftUngrab.AddListener(action);
+        }
+        else
+        {
+            rightUngrab.AddListener(action);
+        }
     }
 }
