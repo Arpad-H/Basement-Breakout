@@ -62,6 +62,7 @@ public class PlayerManager : MonoBehaviour
         //ActivateTeleportInteractor();
         DeactivateTeleportInteractor();
         SetPlayerPositionToStartGame();
+        DeactivateRayInteractor();
         _audioSource.Play();
         
         
