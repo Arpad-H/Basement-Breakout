@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Oculus.Interaction;
@@ -20,10 +21,16 @@ public class RCBoatController : MonoBehaviour
     [SerializeField] private GameObject teleportIndicator1;
     [SerializeField] private GameObject teleportIndicator2;
     [SerializeField] private GrabInteractable grabInteractable;
+    [SerializeField] private GameObject camera;
 
     private GameObject battery;
     private GameObject emptyIndicator;
     private bool hasBattery = false;
+
+    private void Awake()
+    {
+        camera.SetActive(false);
+    }
 
     void Start()
     {
@@ -85,6 +92,7 @@ public class RCBoatController : MonoBehaviour
     
     public void isFull()
     {
+        camera.SetActive(true);
         hasBattery = true;
         battery.SetActive(true);
         emptyIndicator.SetActive(false);
