@@ -14,10 +14,10 @@ OcclusionCullingSettings:
 RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 9
-  m_Fog: 0
+  m_Fog: 1
   m_FogColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   m_FogMode: 3
-  m_FogDensity: 0.01
+  m_FogDensity: 0.05
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
   m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
@@ -1514,7 +1514,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _version: 0
-  _radiusMultiplier: 78.3
+  _radiusMultiplier: 12.66
 --- !u!114 &66955884
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25422,9 +25422,9 @@ MonoBehaviour:
   _minScale: 4
   _maxScale: 4
   _dropDetailHeightBasedOnWaves: 0.2
-  _lodDataResolution: 512
+  _lodDataResolution: 128
   _geometryDownSampleFactor: 2
-  _lodCount: 4
+  _lodCount: 3
   _extentsSizeMultiplier: 100
   _simSettingsAnimatedWaves: {fileID: 0}
   _createSeaFloorDepthData: 1
@@ -26256,7 +26256,7 @@ Transform:
   m_GameObject: {fileID: 991192401}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 9.54, y: 0.88, z: 47.23}
+  m_LocalPosition: {x: -12, y: 0.88, z: 47.23}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -26275,7 +26275,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _version: 0
-  _radiusMultiplier: 65.77
+  _radiusMultiplier: 21
 --- !u!114 &991192404
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28850,7 +28850,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _version: 0
-  _radiusMultiplier: 65.77
+  _radiusMultiplier: 12.66
 --- !u!114 &1085609555
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -47009,6 +47009,60 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1495796532}
   m_Mesh: {fileID: -8645471496873946288, guid: 23e61219cbfe3f843aade97850504a65, type: 3}
+--- !u!1 &1496813133
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1496813134}
+  - component: {fileID: 1496813135}
+  m_Layer: 0
+  m_Name: WaterPlaneMask
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1496813134
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1496813133}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -9.73, y: 3.43, z: 6.84}
+  m_LocalScale: {x: 18.68, y: 18.68, z: 18.68}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 1993196778}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1496813135
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1496813133}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cdff4e1b753d044b5a7dcf91a7e7b863, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _checkShaderName: 1
+  _checkShaderPasses: 1
+  _disableRenderer: 1
+  _version: 1
+  _mode: 1
+  _primitive: 3
+  _order: 0
+  _inverted: 1
+  _disableClipSurfaceWhenTooFarFromSurface: 0
+  _animatedWavesDisplacementSamplingIterations: 4
 --- !u!1001 &1505776332
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -50177,7 +50231,7 @@ Transform:
   m_GameObject: {fileID: 1660174321}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 9.54, y: 1.7, z: -63.4}
+  m_LocalPosition: {x: -12.000001, y: 1.7, z: -63.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -50196,7 +50250,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _version: 0
-  _radiusMultiplier: 78.3
+  _radiusMultiplier: 21
 --- !u!114 &1660174324
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -62638,6 +62692,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1496813134}
   - {fileID: 1329974879}
   - {fileID: 1815471871}
   - {fileID: 1477692923}
