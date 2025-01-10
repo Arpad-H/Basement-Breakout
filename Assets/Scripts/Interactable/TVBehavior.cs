@@ -106,7 +106,7 @@ public class TVBehavior : MonoBehaviour
                 if (!hasChangedStateAfterClip)
                 {
                     StartCoroutine(StartFlooding());
-                    Debug.LogError("TVBehavior: Changing GameState to 'Game' after first clip switch.");
+                    Debug.Log("TVBehavior: Changing GameState to 'Game' after first clip switch.");
                     gameStateChangedTVBehavior?.Invoke(GameManager.GameState.Game); // Action auslösen
                     hasChangedStateAfterClip = true; // Verhindert weitere Änderungen
                 }
@@ -119,6 +119,7 @@ public class TVBehavior : MonoBehaviour
     IEnumerator StartFlooding()
     {
         yield return new WaitForSeconds(10);
+        
         waterBehaviour.HandleGameStateChanged(GameManager.GameState.Game);
     }
 
