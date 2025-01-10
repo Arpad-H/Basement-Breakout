@@ -21,12 +21,16 @@ public class SliceObject : MonoBehaviour {
     [SerializeField] private AudioSource chainsawStartUpSound;
     [SerializeField] private AudioSource chainsawIdleSound;
     [SerializeField] private HapticClip hapticClip;
+    [SerializeField] private LineRenderer pullLine;
+    [SerializeField] private Transform pullPos1;
+    [SerializeField] private Transform pullPos2;
 
     //[SerializeField] private Animator animator; //Auskommentiert, weil error
     private float chainsawRefuelSoundLength;
     private bool canCut = false;
     private bool hasFuel = false;
     private bool noWaterDamage = true;
+    private bool started = false;
     private GameObject Fuelpointer;
     private HapticClipPlayer hapticClipPlayer;
     
@@ -34,9 +38,16 @@ public class SliceObject : MonoBehaviour {
         hapticClipPlayer = new HapticClipPlayer(hapticClip);
         chainsawRefuelSoundLength = chainsawRefuelSound.length;
         Fuelpointer = GameObject.Find("FuelSpin");
+        pullLine.positionCount = 2;
     }
 
     void FixedUpdate() {
+        pullLine.SetPosition(0, pullPos1.position);
+        pullLine.SetPosition(1, pullPos2.position);
+        if (!started && (pullPos1.position - pullPos2.position).magnitude > 0.3f)
+        {
+            started = true;
+        }
         if (!chainsawIdleSound.isPlaying && canCut && hasFuel && noWaterDamage) {
             chainsawIdleSound.Play();
             hapticClipPlayer.Play(Controller.Both);
@@ -103,7 +114,8 @@ public class SliceObject : MonoBehaviour {
     }
 
     public void sawing() {
-        canCut = true;
+        if(started)
+            canCut = true;
     }
     
     public void notSawing() {
