@@ -33,20 +33,26 @@ public class SliceObject : MonoBehaviour {
     private bool started = false;
     private GameObject Fuelpointer;
     private HapticClipPlayer hapticClipPlayer;
+    private GameObject PullMeterPointer;
     
     void Start() {
         hapticClipPlayer = new HapticClipPlayer(hapticClip);
         chainsawRefuelSoundLength = chainsawRefuelSound.length;
         Fuelpointer = GameObject.Find("FuelSpin");
+        PullMeterPointer = GameObject.Find("PullMeterPointer");
         pullLine.positionCount = 2;
     }
 
     void FixedUpdate() {
         pullLine.SetPosition(0, pullPos1.position);
         pullLine.SetPosition(1, pullPos2.position);
-        if (!started && (pullPos1.position - pullPos2.position).magnitude > 0.3f)
+        if (!started)
         {
-            started = true;
+            PullMeterPointer.transform.localPosition = new Vector3(-(pullPos1.position - pullPos2.position).magnitude/50, 0, 0);
+            if ((pullPos1.position - pullPos2.position).magnitude > 0.3f)
+            {
+                started = true;
+            }
         }
         if (!chainsawIdleSound.isPlaying && canCut && hasFuel && noWaterDamage) {
             chainsawIdleSound.Play();
