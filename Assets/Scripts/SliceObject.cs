@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -29,6 +30,8 @@ public class SliceObject : MonoBehaviour {
     private bool noWaterDamage = true;
     private GameObject Fuelpointer;
     private HapticClipPlayer hapticClipPlayer;
+    
+    public static event Action<bool> OnHasFuelChanged; 
     
     void Start() {
         hapticClipPlayer = new HapticClipPlayer(hapticClip);
@@ -87,6 +90,7 @@ public class SliceObject : MonoBehaviour {
 
     public void fueledUp() {
         hasFuel = true;
+        OnHasFuelChanged?.Invoke(hasFuel);
     }
     
     float timePlaying = 0;
