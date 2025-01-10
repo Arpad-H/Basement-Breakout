@@ -26,6 +26,7 @@ public class GameManager : MonoBehaviour
         TVBehavior.gameStateChangedTVBehavior += UpdateGameState;
         CustomCollisionEventHandler.GameStateChangedCostomCollisionEventHandler += UpdateGameState;
         PlayerManager.GameStateChangedPlayer += UpdateGameState;
+        WinCollision.GameStateChangedWinCollision += UpdateGameState;
     }
 
     private void OnDestroy()
@@ -36,6 +37,7 @@ public class GameManager : MonoBehaviour
         TVBehavior.gameStateChangedTVBehavior -= UpdateGameState;
         CustomCollisionEventHandler.GameStateChangedCostomCollisionEventHandler -= UpdateGameState;
         PlayerManager.GameStateChangedPlayer -= UpdateGameState;
+        WinCollision.GameStateChangedWinCollision -= UpdateGameState;
     }
 
     private void Start()
