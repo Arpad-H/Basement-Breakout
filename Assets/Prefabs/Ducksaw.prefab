@@ -1132,7 +1132,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blockId: f8766c17-aaf8-4b55-9431-de8deea83842
-  instanceId: b6517aed-4975-445a-8d72-b3d0260f097c
+  instanceId: c3e0394a-055b-45ca-9749-d142818c888f
   version: 1
   installationRoutineCheckpoint:
     _installationRoutineId: f8338144-8280-4ff6-9455-ae2bb9c20fe8
@@ -2723,8 +2723,8 @@ GameObject:
   - component: {fileID: 332033699197818843}
   - component: {fileID: 7606897486239771974}
   - component: {fileID: 5781489171086785287}
-  - component: {fileID: 571413544222761491}
   - component: {fileID: 5005578634811890113}
+  - component: {fileID: 571413544222761491}
   m_Layer: 0
   m_Name: Grab
   m_TagString: Untagged
@@ -2882,22 +2882,6 @@ MonoBehaviour:
   justRightGrab:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &571413544222761491
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8481813890859278651}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 68e9214602f3a304f8976909ebdda2bd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  HintVoiceClip: {fileID: 5005578634811890113}
-  isPickedUp: 0
-  TimeUntilHint: 5
-  isHintPlayed: 0
 --- !u!82 &5005578634811890113
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2916,7 +2900,7 @@ AudioSource:
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 100
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
@@ -2994,6 +2978,22 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &571413544222761491
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8481813890859278651}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68e9214602f3a304f8976909ebdda2bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HintVoiceClip: {fileID: 5005578634811890113}
+  isPickedUp: 0
+  TimeUntilHint: 5
+  isHintPlayed: 0
 --- !u!1 &8493018905007211625
 GameObject:
   m_ObjectHideFlags: 0
