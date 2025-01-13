@@ -71,6 +71,7 @@ public class WaterBehaviour : MonoBehaviour
     }
     public void StartWaveGen()
     {
+        Debug.Log("StartWaveGen");
         WaveGen.SetActive(true);
     }
 }
