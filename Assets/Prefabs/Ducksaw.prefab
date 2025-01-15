@@ -1383,11 +1383,11 @@ AudioSource:
   m_Pitch: 1
   Loop: 0
   Mute: 0
-  Spatialize: 0
+  Spatialize: 1
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 1
+  MinDistance: 10
   MaxDistance: 500
   Pan2D: 0
   rolloffMode: 0
@@ -1438,7 +1438,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 0.055555556
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -2993,7 +2993,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HintVoiceClip: {fileID: 5005578634811890113}
   isPickedUp: 0
-  TimeUntilHint: 5
+  TimeUntilHint: 3
   isHintPlayed: 0
 --- !u!82 &2779194203110893246
 AudioSource:
