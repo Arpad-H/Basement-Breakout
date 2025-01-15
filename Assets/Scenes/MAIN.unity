@@ -6335,25 +6335,9 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 314778121037291519, guid: 680a1893667fa4e45b2bd0b8a0d4b692, type: 3}
-      propertyPath: PlayerHead
-      value: 
-      objectReference: {fileID: 1397293275}
-    - target: {fileID: 314778121037291519, guid: 680a1893667fa4e45b2bd0b8a0d4b692, type: 3}
-      propertyPath: DROWNINGTIME
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 314778121037291519, guid: 680a1893667fa4e45b2bd0b8a0d4b692, type: 3}
       propertyPath: WaterheightPlane
       value: 
       objectReference: {fileID: 1815471870}
-    - target: {fileID: 314778121037291519, guid: 680a1893667fa4e45b2bd0b8a0d4b692, type: 3}
-      propertyPath: teleportInteractor.Array.data[1]
-      value: 
-      objectReference: {fileID: 796387838}
-    - target: {fileID: 314778121037291519, guid: 680a1893667fa4e45b2bd0b8a0d4b692, type: 3}
-      propertyPath: teleportInteractor.Array.data[2]
-      value: 
-      objectReference: {fileID: 925594421}
     - target: {fileID: 2458291129228688996, guid: 680a1893667fa4e45b2bd0b8a0d4b692, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.3
@@ -6409,6 +6393,10 @@ PrefabInstance:
     - target: {fileID: 3915303052712763000, guid: 680a1893667fa4e45b2bd0b8a0d4b692, type: 3}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6367527383525147554, guid: 680a1893667fa4e45b2bd0b8a0d4b692, type: 3}
+      propertyPath: isInsightPassthroughEnabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7219672683773144912, guid: 680a1893667fa4e45b2bd0b8a0d4b692, type: 3}
       propertyPath: m_Enabled
@@ -22478,11 +22466,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1030984328, guid: abc00000000016295355412601224947, type: 3}
   m_PrefabInstance: {fileID: 791988336}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &796387838 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6986860501275895146, guid: 680a1893667fa4e45b2bd0b8a0d4b692, type: 3}
-  m_PrefabInstance: {fileID: 289722499}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &805179443
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -25110,11 +25093,6 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: ab6f095d187854a0ba98f456900b27f9, type: 3}
   m_PrefabInstance: {fileID: 925088961}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &925594421 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6139185394405375300, guid: 680a1893667fa4e45b2bd0b8a0d4b692, type: 3}
-  m_PrefabInstance: {fileID: 289722499}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &926362449 stripped
 Transform:
