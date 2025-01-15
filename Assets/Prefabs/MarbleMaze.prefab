@@ -1253,6 +1253,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7835901582273018814}
   - component: {fileID: 6117155359093527051}
+  - component: {fileID: 1569076432260065094}
   m_Layer: 0
   m_Name: MarbleMaze
   m_TagString: Untagged
@@ -1291,6 +1292,24 @@ MonoBehaviour:
   leftHand: {fileID: 1849457436288339852}
   rightHand: {fileID: 6946231529477885466}
   grabInteractable: {fileID: 8359556227020857950}
+--- !u!114 &1569076432260065094
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2582394663984717541}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  outlineColor: {r: 1, g: 1, b: 1, a: 1}
+  outlineWidth: 2
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
 --- !u!1 &2679326463507047738
 GameObject:
   m_ObjectHideFlags: 0
@@ -2805,7 +2824,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blockId: f8766c17-aaf8-4b55-9431-de8deea83842
-  instanceId: 0ddf626b-05fe-408c-a3e5-6a63ff1c58ef
+  instanceId: f5a78337-9226-4bac-a91a-65e82d37b437
   version: 1
   installationRoutineCheckpoint:
     _installationRoutineId: f8338144-8280-4ff6-9455-ae2bb9c20fe8
