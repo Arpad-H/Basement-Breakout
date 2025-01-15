@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using System.Collections;
 
 namespace VarietyFX
@@ -9,11 +10,11 @@ namespace VarietyFX
         public GameObject chosenEffect;
         public float loopTimeLimit = 2.0f;
 
-        void Start()
-        {
-            PlayEffect();
-        }
-
+        // void Start()
+        // {
+        //     PlayEffect();
+        // }
+        
 
         public void PlayEffect()
         {
@@ -23,18 +24,19 @@ namespace VarietyFX
 
         IEnumerator EffectLoop()
         {
-            //GameObject effectPlayer = (GameObject)Instantiate(chosenEffect, transform.position, transform.rotation);
+            while (true) // Infinite loop to keep the effect running
+            {
+                GameObject effectPlayer = Instantiate(chosenEffect);
+                effectPlayer.transform.position = transform.position;
 
-            GameObject effectPlayer = (GameObject)Instantiate(chosenEffect);
-            effectPlayer.transform.position = transform.position;
-            //effectPlayer.transform.rotation = Quaternion.Euler(new Vector3(0, 90, 0));
+                Debug.Log(
+                    "VarietyLoop: PlayEffect: effectPlayer.transform.position: " + effectPlayer.transform.position);
 
+                yield return new WaitForSeconds(loopTimeLimit);
 
-
-            yield return new WaitForSeconds(loopTimeLimit);
-
-            Destroy(effectPlayer);
-            PlayEffect();
+                Debug.Log("Destroying effectPlayer");
+                Destroy(effectPlayer);
+            }
         }
     }
 }
