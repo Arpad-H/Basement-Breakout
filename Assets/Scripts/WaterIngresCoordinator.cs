@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 //using UnityEditor.ShaderGraph;
 using UnityEngine;
+using VarietyFX;
 
 public class WaterIngresCoordinator : MonoBehaviour
 {
@@ -96,6 +97,7 @@ public class WaterIngresCoordinator : MonoBehaviour
     
         // Activate the lightning spark effect
         lighningSpark.SetActive(true);
+        lighningSpark.GetComponent<VarietyLoop>().PlayEffect();
     }
 
     private IEnumerator LerpMaterialColor(Material material, string colorProperty, float targetAlpha, float duration)
