@@ -21,6 +21,7 @@ public class PlayerManager : MonoBehaviour
     //TODO: nicht schoen implemtiert => AudioManger
     private AudioSource _audioSource;
     private AudioClip _introducingTVClip;
+    private OVRManager _ovrManager;
 
 
    private void Awake()
@@ -32,6 +33,7 @@ public class PlayerManager : MonoBehaviour
    {
        DeactivateTeleportInteractor();
        _audioSource = GetComponent<AudioSource>();
+       _ovrManager = GetComponent<OVRManager>();
        //_introducingTV = Resources.Load<AudioClip>("Audio/voice/Line1fin.mp3");
        //_audioSource.clip = _introducingTV;
        
@@ -63,6 +65,7 @@ public class PlayerManager : MonoBehaviour
         DeactivateTeleportInteractor();
         SetPlayerPositionToStartGame();
         DeactivateRayInteractor();
+        //DeactivatePassthrough();
         _audioSource.Play();
         
         
@@ -105,6 +108,13 @@ public class PlayerManager : MonoBehaviour
             gameObject.SetActive(true);
         }
     }
+    
+    private void AcivatePassthrough(){
+        _ovrManager.isInsightPassthroughEnabled = true;
+    }
+    private void DeactivatePassthrough(){
+        _ovrManager.isInsightPassthroughEnabled = false;
+    }
 
     public void SetPlayerPosToGameOverMenu()
     {
@@ -130,13 +140,13 @@ public class PlayerManager : MonoBehaviour
         Debug.Log($"[PlayerManager]: GameState changed to {gameState}");
         if (gameState is GameManager.GameState.Drowned or GameManager.GameState.Win or GameManager.GameState.ElectricShock)
         {
-            
+            //AcivatePassthrough();
             DeactivateTeleportInteractor();
             ActivateRayInteractor();
             SetPlayerPosToGameOverMenu();
         } else if (gameState == GameManager.GameState.Tutorial)
         {
-           
+           //DeactivatePassthrough();
             DeactivateRayInteractor();
             SetPlayerPositionToStartGame();
         }
