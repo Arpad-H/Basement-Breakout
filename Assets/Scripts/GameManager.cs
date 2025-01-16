@@ -11,11 +11,11 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
     public static event Action<GameState> OnGameStateChanged;
-    
+
     private bool playerIsInWhater = false;
     private bool cableISinWater = false;
     private bool electricityIsActive = true;
-   
+
 
     void Awake()
     {
@@ -26,6 +26,7 @@ public class GameManager : MonoBehaviour
         TVBehavior.gameStateChangedTVBehavior += UpdateGameState;
         CustomCollisionEventHandler.GameStateChangedCostomCollisionEventHandler += UpdateGameState;
         PlayerManager.GameStateChangedPlayer += UpdateGameState;
+        WinCollision.GameStateChangedWinCollision += UpdateGameState;
     }
 
     private void OnDestroy()
@@ -36,6 +37,7 @@ public class GameManager : MonoBehaviour
         TVBehavior.gameStateChangedTVBehavior -= UpdateGameState;
         CustomCollisionEventHandler.GameStateChangedCostomCollisionEventHandler -= UpdateGameState;
         PlayerManager.GameStateChangedPlayer -= UpdateGameState;
+        WinCollision.GameStateChangedWinCollision -= UpdateGameState;
     }
 
     private void Start()
@@ -50,7 +52,7 @@ public class GameManager : MonoBehaviour
         cableISinWater = state;
         checkPlayerAndCableInWhater(playerIsInWhater, cableISinWater, electricityIsActive);
     }
-    
+
 
     private void OnWaterStateChangedPlayer(bool state)
     {
@@ -92,7 +94,6 @@ public class GameManager : MonoBehaviour
 
         Debug.LogError($"[Game Manager] updating game state to {newState}");
         OnGameStateChanged?.Invoke(newState);
-        
     }
 
 
@@ -112,16 +113,14 @@ public class GameManager : MonoBehaviour
         if (playerIsInWhater == true && cableIsInWhater == true && electricityIsActive == true)
         {
             //TODO: Water Hight loest nicht Trigger aus in CollisonCOllider Script
-            Debug.Log("[GameManager]: OnWaterStateChangedPlayerAndCableInWhater: " );
-           UpdateGameState(GameState.ElectricShock);
-           
+            Debug.Log("[GameManager]: OnWaterStateChangedPlayerAndCableInWhater: ");
+            UpdateGameState(GameState.ElectricShock);
         }
     }
-    
-    
+
+
     public void RestartGame()
     {
         SceneManager.LoadScene("MAIN");
     }
 }
-

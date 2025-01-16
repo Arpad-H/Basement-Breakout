@@ -6,66 +6,69 @@ using UnityEngine.PlayerLoop;
 
 public class PlayerManager : MonoBehaviour
 {
-   private Vector3 STARTSCENEPOS = new Vector3(-2.364f, 3.22f, 7.93f);
-   private Vector3 STARTMENUPOS = new Vector3(49.8f, 10.4f, -1.866f);
-   private Vector3 GAMEOVERMENUPOS = new Vector3(54f, 10f, 1f);
+    private Vector3 STARTSCENEPOS = new Vector3(-2.364f, 3.22f, 7.93f);
+    private Vector3 STARTMENUPOS = new Vector3(49.8f, 10.4f, -1.866f);
+    private Vector3 GAMEOVERMENUPOS = new Vector3(54f, 10f, 1f);
 
-   [SerializeField] private GameObject[] rayInteractor;
-   [SerializeField] private GameObject[] teleportInteractor;
+    [SerializeField] private GameObject[] rayInteractor;
+    [SerializeField] private GameObject[] teleportInteractor;
     [SerializeField] private GameObject PlayerHead;
     [SerializeField] private GameObject WaterheightPlane;
-    
+
     [SerializeField] private float DROWNINGTIME = 10f;
     private float _timeUnderWater = 0f;
+
     public static event Action<GameManager.GameState> GameStateChangedPlayer;
+
     //TODO: nicht schoen implemtiert => AudioManger
     private AudioSource _audioSource;
     private AudioClip _introducingTVClip;
+    private OVRManager _ovrManager;
 
 
-   private void Awake()
-   {
-       GameManager.OnGameStateChanged +=HandleGameStateChanged;
-   }
+    private void Awake()
+    {
+        GameManager.OnGameStateChanged += HandleGameStateChanged;
+    }
 
-   private void Start()
-   {
-       DeactivateTeleportInteractor();
-       _audioSource = GetComponent<AudioSource>();
-       //_introducingTV = Resources.Load<AudioClip>("Audio/voice/Line1fin.mp3");
-       //_audioSource.clip = _introducingTV;
-       
-   }
+    private void Start()
+    {
+        DeactivateTeleportInteractor();
+        _audioSource = GetComponent<AudioSource>();
+        _ovrManager = GetComponent<OVRManager>();
+        //_introducingTV = Resources.Load<AudioClip>("Audio/voice/Line1fin.mp3");
+        //_audioSource.clip = _introducingTV;
+    }
 
-   private void OnDestroy()
-   {
-       GameManager.OnGameStateChanged -=HandleGameStateChanged;
-   }
+    private void OnDestroy()
+    {
+        GameManager.OnGameStateChanged -= HandleGameStateChanged;
+    }
 
-   private void Update()
-   {
-       if (Drawing())
-       {
-           Debug.Log($"[PlayerManager]: Player is drowning");
-           GameStateChangedPlayer?.Invoke(GameManager.GameState.Drowned);
-       };
-   }
+    private void Update()
+    {
+        if (Drawing())
+        {
+            Debug.Log($"[PlayerManager]: Player is drowning");
+            GameStateChangedPlayer?.Invoke(GameManager.GameState.Drowned);
+        }
 
-   public void SetPlayerPositionToStartGame()
+        ;
+    }
+
+    public void SetPlayerPositionToStartGame()
     {
         transform.position = STARTSCENEPOS;
     }
 
     public void loadGamePlayScene()
     {
-        
         //ActivateTeleportInteractor();
         DeactivateTeleportInteractor();
         SetPlayerPositionToStartGame();
         DeactivateRayInteractor();
+        //DeactivatePassthrough();
         _audioSource.Play();
-        
-        
     }
 
 
@@ -106,11 +109,21 @@ public class PlayerManager : MonoBehaviour
         }
     }
 
+    private void AcivatePassthrough()
+    {
+        _ovrManager.isInsightPassthroughEnabled = true;
+    }
+
+    private void DeactivatePassthrough()
+    {
+        _ovrManager.isInsightPassthroughEnabled = false;
+    }
+
     public void SetPlayerPosToGameOverMenu()
     {
         transform.position = GAMEOVERMENUPOS;
     }
-    
+
     public bool Drawing()
     {
         if (PlayerHead.transform.position.y < WaterheightPlane.transform.position.y)
@@ -128,15 +141,17 @@ public class PlayerManager : MonoBehaviour
     private void HandleGameStateChanged(GameManager.GameState gameState)
     {
         Debug.Log($"[PlayerManager]: GameState changed to {gameState}");
-        if (gameState is GameManager.GameState.Drowned or GameManager.GameState.Win or GameManager.GameState.ElectricShock)
+        if (gameState is GameManager.GameState.Drowned or GameManager.GameState.Win
+            or GameManager.GameState.ElectricShock)
         {
-            
+            //AcivatePassthrough();
             DeactivateTeleportInteractor();
             ActivateRayInteractor();
             SetPlayerPosToGameOverMenu();
-        } else if (gameState == GameManager.GameState.Tutorial)
+        }
+        else if (gameState == GameManager.GameState.Tutorial)
         {
-           
+            //DeactivatePassthrough();
             DeactivateRayInteractor();
             SetPlayerPositionToStartGame();
         }
@@ -144,9 +159,5 @@ public class PlayerManager : MonoBehaviour
         {
             ActivateTeleportInteractor();
         }
-        
-        
     }
-    
-    
 }

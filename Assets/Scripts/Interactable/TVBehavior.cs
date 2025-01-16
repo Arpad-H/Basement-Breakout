@@ -12,6 +12,8 @@ public class TVBehavior : MonoBehaviour
     [SerializeField] private AudioSource switchStationSound;
     [SerializeField] private HapticClip hapticClip;
     [SerializeField] private WaterBehaviour waterBehaviour;
+    [SerializeField] public AudioSource HintVoiceClip;
+    [SerializeField] public int timeGameStarts = 10;
 
 
     private VideoClip currentClip;
@@ -118,9 +120,12 @@ public class TVBehavior : MonoBehaviour
 
     IEnumerator StartFlooding()
     {
-        yield return new WaitForSeconds(10);
+        yield return new WaitForSeconds(timeGameStarts);
         
         waterBehaviour.HandleGameStateChanged(GameManager.GameState.Game);
+        HintVoiceClip.Play();
+        
+        
     }
 
     public void updateClipOnQuad()
