@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Text;
 using Oculus.Interaction;
+using TMPro;
 using UnityEngine;
 
 public class Lock : MonoBehaviour
@@ -10,8 +12,9 @@ public class Lock : MonoBehaviour
     [SerializeField] private GameObject tank;
     [SerializeField] private GameObject leftHand;
     [SerializeField] private GameObject rightHand;
+    [SerializeField] private TMPro.TextMeshProUGUI text;
     //private GameObject key;
-    private const int code = 0451;
+    private readonly string code = "0451";
     
     void Start()
     {
@@ -24,6 +27,37 @@ public class Lock : MonoBehaviour
         rightHand.SetActive(false);
     }
 
+    public void keyPressed(char number)
+    {
+        for (int i = 0; i < text.text.Length; i++)
+        {
+            if (text.text[i] == '-')
+            {
+                StringBuilder sb = new StringBuilder(text.text);
+                sb[i] = number;
+                text.text = sb.ToString();
+                break;
+            }
+        }
+    }
+    
+    public void keyDeleted()
+    {
+        text.text = "----";
+    }
+
+    public void keyCheck()
+    {
+        if (text.text == code)
+        {
+            unlocked();
+        }
+        else
+        {
+            keyDeleted();
+        }
+    }
+    
     private void unlocked()
     {
         door.SetActive(true);
@@ -35,7 +69,7 @@ public class Lock : MonoBehaviour
         //Destroy(other);
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
         if (other.gameObject.layer == 21)
         {
