@@ -6,9 +6,9 @@ using UnityEngine.InputSystem;
 public class GameMenuManager : MonoBehaviour
 {
     [SerializeField] private Transform head;
-    [SerializeField] private float menuDistance;
+    [SerializeField] private float menuDistance = 2f;
     [SerializeField] private GameObject menu;
-    public InputActionProperty showMenuButton;
+    //public InputActionProperty showMenuButton;
     bool menuActive = true;
 
     private void Awake()
@@ -16,37 +16,48 @@ public class GameMenuManager : MonoBehaviour
         GameManager.OnGameStateChanged += GameManagerOnOnGameStateChanged;
     }
 
+    private void Start()
+    {
+        PositionMenuInFrontOfHead();
+    }
+
     private void OnDestroy()
     {
         GameManager.OnGameStateChanged -= GameManagerOnOnGameStateChanged;
     }
 
+    private void OnBecameVisible()
+    {
+       
+            //PositionMenuInFrontOfHead();
+    }
+
     private void GameManagerOnOnGameStateChanged(GameManager.GameState obj)
     {
-        if (obj== GameManager.GameState.Menu)
+        if (obj is GameManager.GameState.Tutorial or GameManager.GameState.Game)
+        {
+            menuActive = false;
+        }
+        else
         {
             menuActive = true;
         }
     }
-    //TODO: richtigen Zeitpunkt finden, wann der Spieler auch wirklich das menü sieht
-    private void OnEnable()
-    {
-        menuActive = true;
+    
+
+    void Update() {
+        PositionMenuInFrontOfHead();
     }
-
-
-    // void Update() {
-    //     //TODO: Funktiniert nicht
-    //     if (showMenuButton.action.WasPressedThisFrame() || menuActive) {
-    //         //menu.SetActive(!menu.activeSelf);
-    //         //Debug.Log($"GameMenuManager : {menuActive}");
-    //        // menu.transform.position = head.position + new Vector3(head.forward.x, head.forward.y, head.forward.z).normalized * menuDistance;
-    //          menu.transform.position = head.position + head.forward * menuDistance;
-    //     }
-    //     
-    //   
-    //     menu.transform.LookAt(new Vector3(head.position.x, menu.transform.position.y, head.position.z));
-    //     menu.transform.forward *= -1;
-    //     menuActive = false;
-    // }
+    
+    private void PositionMenuInFrontOfHead()
+    {
+        
+            Vector3 newPosition = head.position + head.forward * menuDistance;
+            menu.transform.position = newPosition;
+            menu.transform.rotation = head.transform.rotation;
+        
+        
+    }
+    
+    
 }

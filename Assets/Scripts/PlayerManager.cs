@@ -3,11 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.PlayerLoop;
+using UnityEngine.XR;
 
 public class PlayerManager : MonoBehaviour
 {
     private Vector3 STARTSCENEPOS = new Vector3(-2.364f, 3.22f, 7.93f);
-    private Vector3 STARTMENUPOS = new Vector3(49.8f, 10.4f, -1.866f);
+    private Vector3 STARTMENUPOS = new Vector3(50f, 10f, 0f);
     private Vector3 GAMEOVERMENUPOS = new Vector3(54f, 10f, 1f);
 
     [SerializeField] private GameObject[] rayInteractor;
@@ -36,6 +37,7 @@ public class PlayerManager : MonoBehaviour
         DeactivateTeleportInteractor();
         _audioSource = GetComponent<AudioSource>();
         _ovrManager = GetComponent<OVRManager>();
+        
         //_introducingTV = Resources.Load<AudioClip>("Audio/voice/Line1fin.mp3");
         //_audioSource.clip = _introducingTV;
     }
@@ -69,6 +71,7 @@ public class PlayerManager : MonoBehaviour
         DeactivateRayInteractor();
         //DeactivatePassthrough();
         _audioSource.Play();
+        GameStateChangedPlayer?.Invoke(GameManager.GameState.Tutorial);
     }
 
 
