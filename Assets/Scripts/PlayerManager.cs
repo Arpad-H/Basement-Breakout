@@ -15,13 +15,15 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] private GameObject[] teleportInteractor;
     [SerializeField] private GameObject PlayerHead;
     [SerializeField] private GameObject WaterheightPlane;
+    public OVRCameraRig cameraRig;
+    
 
     [SerializeField] private float DROWNINGTIME = 10f;
     private float _timeUnderWater = 0f;
 
     public static event Action<GameManager.GameState> GameStateChangedPlayer;
 
-    //TODO: nicht schoen implemtiert => AudioManger
+    
     private AudioSource _audioSource;
     private AudioClip _introducingTVClip;
     private OVRManager _ovrManager;
@@ -37,6 +39,8 @@ public class PlayerManager : MonoBehaviour
         DeactivateTeleportInteractor();
         _audioSource = GetComponent<AudioSource>();
         _ovrManager = GetComponent<OVRManager>();
+        setPlayerPosToStartMenu();
+        ReserRoation();
         
         //_introducingTV = Resources.Load<AudioClip>("Audio/voice/Line1fin.mp3");
         //_audioSource.clip = _introducingTV;
@@ -54,13 +58,12 @@ public class PlayerManager : MonoBehaviour
             Debug.Log($"[PlayerManager]: Player is drowning");
             GameStateChangedPlayer?.Invoke(GameManager.GameState.Drowned);
         }
-
-        ;
     }
 
     public void SetPlayerPositionToStartGame()
     {
         transform.position = STARTSCENEPOS;
+        InputTracking.Recenter();
     }
 
     public void loadGamePlayScene()
@@ -78,6 +81,7 @@ public class PlayerManager : MonoBehaviour
     public void setPlayerPosToStartMenu()
     {
         transform.position = STARTMENUPOS;
+        InputTracking.Recenter();
     }
 
     private void DeactivateRayInteractor()
@@ -125,6 +129,7 @@ public class PlayerManager : MonoBehaviour
     public void SetPlayerPosToGameOverMenu()
     {
         transform.position = GAMEOVERMENUPOS;
+        InputTracking.Recenter();
     }
 
     public bool Drawing()
@@ -163,4 +168,11 @@ public class PlayerManager : MonoBehaviour
             ActivateTeleportInteractor();
         }
     }
+
+    private void ReserRoation()
+    {
+        transform.Rotate(0, -1*transform.rotation.eulerAngles.y, 0);
+        
+    }
+    
 }

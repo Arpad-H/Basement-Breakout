@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 5900634023048899337}
   - component: {fileID: 6896000984290660434}
   - component: {fileID: 346841579813845156}
+  - component: {fileID: 6331765553865543150}
   m_Layer: 5
   m_Name: GameMenuInteractable
   m_TagString: Untagged
@@ -153,6 +154,22 @@ MonoBehaviour:
   _selectSurface: {fileID: 0}
   _movementProvider: {fileID: 0}
   _tiebreakerScore: 0
+--- !u!114 &6331765553865543150
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 98862166196011779}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8de156e1174c2c746bdba767854b4247, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  head: {fileID: 0}
+  menuDistance: 1
+  menu: {fileID: 98862166196011779}
+  menutype: 1
 --- !u!1 &392232525340314779
 GameObject:
   m_ObjectHideFlags: 0

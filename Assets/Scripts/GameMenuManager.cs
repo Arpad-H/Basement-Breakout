@@ -8,6 +8,7 @@ public class GameMenuManager : MonoBehaviour
     [SerializeField] private Transform head;
     [SerializeField] private float menuDistance = 2f;
     [SerializeField] private GameObject menu;
+    [SerializeField] private Menutype menutype;
     //public InputActionProperty showMenuButton;
     bool menuActive = true;
 
@@ -18,7 +19,15 @@ public class GameMenuManager : MonoBehaviour
 
     private void Start()
     {
-        PositionMenuInFrontOfHead();
+        if (menutype is Menutype.GameOverMenu)
+        {
+            menu.SetActive(false);
+        }
+        else
+        {
+            menu.SetActive(true);
+        }
+        //PositionMenuInFrontOfHead();
     }
 
     private void OnDestroy()
@@ -28,25 +37,34 @@ public class GameMenuManager : MonoBehaviour
 
     private void OnBecameVisible()
     {
-       
-            //PositionMenuInFrontOfHead();
+        StartCoroutine(WaitTobeVisible());
+    }
+
+    private IEnumerator WaitTobeVisible()
+    {
+        yield return new WaitForSeconds(20);
+        //PositionMenuInFrontOfHead();
     }
 
     private void GameManagerOnOnGameStateChanged(GameManager.GameState obj)
     {
         if (obj is GameManager.GameState.Tutorial or GameManager.GameState.Game)
         {
-            menuActive = false;
+            gameObject.SetActive(false);
         }
         else
         {
-            menuActive = true;
+            gameObject.SetActive(true);
         }
     }
     
 
     void Update() {
-        PositionMenuInFrontOfHead();
+        if (gameObject.activeSelf)
+        {
+            PositionMenuInFrontOfHead();
+        }
+        
     }
     
     private void PositionMenuInFrontOfHead()
@@ -57,6 +75,12 @@ public class GameMenuManager : MonoBehaviour
             menu.transform.rotation = head.transform.rotation;
         
         
+    }
+    
+    public enum Menutype
+    {
+        StartMenu,
+        GameOverMenu
     }
     
     
