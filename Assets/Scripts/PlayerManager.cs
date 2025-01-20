@@ -16,6 +16,7 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] private GameObject PlayerHead;
     [SerializeField] private GameObject WaterheightPlane;
     public OVRCameraRig cameraRig;
+    public bool startAtMenu = true;
     
 
     [SerializeField] private float DROWNINGTIME = 10f;
@@ -39,7 +40,10 @@ public class PlayerManager : MonoBehaviour
         DeactivateTeleportInteractor();
         _audioSource = GetComponent<AudioSource>();
         _ovrManager = GetComponent<OVRManager>();
-        setPlayerPosToStartMenu();
+        if (startAtMenu)
+        {
+            setPlayerPosToStartMenu();
+        }
         ReserRoation();
         
         //_introducingTV = Resources.Load<AudioClip>("Audio/voice/Line1fin.mp3");
