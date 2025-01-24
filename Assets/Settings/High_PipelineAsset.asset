@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf2edee5c58d82540a51f03df9d42094, type: 3}
   m_Name: High_PipelineAsset
   m_EditorClassIdentifier: 
+  m_DefaultShader: {fileID: 0}
   k_AssetVersion: 11
   k_AssetPreviousVersion: 11
   m_RendererType: 1
@@ -19,8 +20,8 @@ MonoBehaviour:
   m_RendererDataList:
   - {fileID: 11400000, guid: 4dc5bde1772d54b6a937aef937f36644, type: 2}
   m_DefaultRendererIndex: 0
-  m_RequireDepthTexture: 0
-  m_RequireOpaqueTexture: 0
+  m_RequireDepthTexture: 1
+  m_RequireOpaqueTexture: 1
   m_OpaqueDownsampling: 1
   m_SupportsTerrainHoles: 1
   m_SupportsHDR: 1
@@ -79,9 +80,7 @@ MonoBehaviour:
   m_MaxPixelLights: 0
   m_ShadowAtlasResolution: 256
   m_VolumeFrameworkUpdateMode: 0
-  m_Textures:
-    blueNoise64LTex: {fileID: 0}
-    bayerMatrixTex: {fileID: 0}
+  m_Textures: {blueNoise64LTex: {fileID: 0}, bayerMatrixTex: {fileID: 0}}
   m_PrefilteringModeMainLightShadows: 1
   m_PrefilteringModeAdditionalLight: 4
   m_PrefilteringModeAdditionalLightShadows: 1
