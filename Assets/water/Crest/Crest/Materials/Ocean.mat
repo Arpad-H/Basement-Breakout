@@ -13,19 +13,13 @@ Material:
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
   - _ALBEDO_ON
-  - _CAUSTICS_ON
   - _CLIPSURFACE_ON
-  - _COMPUTEDIRECTIONALLIGHT_ON
   - _DEBUGVISUALISE_NONE
-  - _FLOW_ON
   - _FOAM_ON
-  - _SUBSURFACESCATTERING_ON
-  - _TRANSPARENCY_ON
-  - _UNDERWATER_ON
+  - _PROJECTION_PERSPECTIVE
   m_InvalidKeywords:
   - _COMPILESHADERWITHDEBUGINFO_ON
   - _DEBUGMULTIPLYBYLIGHT0COLOR_ON
-  - _PROJECTION_BOTH
   - _SUBSURFACEHEIGHTLERP_ON
   m_LightmapFlags: 5
   m_EnableInstancingVariants: 1
@@ -99,7 +93,7 @@ Material:
     - _ApplyFlowToNormals: 0
     - _ApplyNormalMapping: 0
     - _BumpAmt: 0.514
-    - _Caustics: 1
+    - _Caustics: 0
     - _CausticsBase: 0.07
     - _CausticsBias: 0.7
     - _CausticsDepthOfField: 0.33
@@ -112,8 +106,8 @@ Material:
     - _ClipSurface: 1
     - _ClipUnderTerrain: 0
     - _CompileShaderWithDebugInfo: 0
-    - _ComputeDirectionalLight: 1
-    - _CullMode: 0
+    - _ComputeDirectionalLight: 0
+    - _CullMode: 2
     - _DebugDisableMultiplyByLight0Color: 0
     - _DebugDisableShapeTextures: 0
     - _DebugDisableSmoothLOD: 0
@@ -127,7 +121,7 @@ Material:
     - _DirectionalLightFallOffFar: 42
     - _DirectionalLightFarDistance: 137
     - _DirectionalLightVaryRoughness: 0
-    - _Flow: 1
+    - _Flow: 0
     - _Foam: 1
     - _Foam3DLighting: 0
     - _FoamBubbleParallax: 0.1
@@ -146,7 +140,7 @@ Material:
     - _PlanarReflectionNormalsStrength: 1
     - _PlanarReflections: 0
     - _ProceduralSky: 0
-    - _Projection: 0
+    - _Projection: 1
     - _RefractAmt: 0
     - _RefractionStrength: 1
     - _RefractiveIndexOfAir: 1
@@ -165,14 +159,14 @@ Material:
     - _SubSurfaceHeightLerp: 1
     - _SubSurfaceHeightMax: 24.9
     - _SubSurfaceHeightPower: 1.68
-    - _SubSurfaceScattering: 1
+    - _SubSurfaceScattering: 0
     - _SubSurfaceShallowColour: 0
     - _SubSurfaceSun: 4.43
     - _SubSurfaceSunFallOff: 7.11
     - _TexelSize: 0.125
     - _TextureRes: 1024
-    - _Transparency: 1
-    - _Underwater: 1
+    - _Transparency: 0
+    - _Underwater: 0
     - _Update: 0.083
     - _WaveFoamBubblesCoverage: 1.68
     - _WaveFoamBubblesFeather: 0.32
