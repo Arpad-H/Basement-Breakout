@@ -17,6 +17,25 @@ MonoBehaviour:
     causticScale: 0.25
     debug: 0
   causticShader: {fileID: 4800000, guid: 2a5cb9ce0adce1b4bac7788d9d06f6fe, type: 3}
+--- !u!114 &-904749048371656289
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: adbe377f4f72c497faee64bc3f0580b9, type: 3}
+  m_Name: WaterSystemFeature
+  m_EditorClassIdentifier: 
+  m_Active: 1
+  settings:
+    causticScale: 0.25
+    causticBlendDistance: 3
+    debug: 0
+  causticShader: {fileID: 4800000, guid: 2a5cb9ce0adce1b4bac7788d9d06f6fe, type: 3}
+  causticTexture: {fileID: 0}
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33,8 +52,8 @@ MonoBehaviour:
     debugReplacementPS: {fileID: 4800000, guid: cf852408f2e174538bcd9b7fda1c5ae7, type: 3}
     hdrDebugViewPS: {fileID: 4800000, guid: 573620ae32aec764abd4d728906d2587, type: 3}
   m_RendererFeatures:
-  - {fileID: -1593614330051930531}
-  m_RendererFeatureMap: 5d5648cc3558e2e9
+  - {fileID: -904749048371656289}
+  m_RendererFeatureMap: 9f49efb888af71f3
   m_UseNativeRenderPass: 1
   postProcessData: {fileID: 11400000, guid: 41439944d30ece34e96484bdb6645b55, type: 2}
   xrSystemData: {fileID: 11400000, guid: 60e1133243b97e347b653163a8c01b64, type: 2}
@@ -73,3 +92,22 @@ MonoBehaviour:
   m_CopyDepthMode: 0
   m_AccurateGbufferNormals: 0
   m_IntermediateTextureMode: 0
+--- !u!114 &119933654610121911
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2618e0bd5db0a145ae1abd74901bc2e, type: 3}
+  m_Name: WaterSystemFeature
+  m_EditorClassIdentifier: 
+  m_Active: 1
+  settings:
+    causticScale: 0.25
+    causticBlendDistance: 3
+    debug: 0
+  causticShader: {fileID: 4800000, guid: 2a5cb9ce0adce1b4bac7788d9d06f6fe, type: 3}
+  causticTexture: {fileID: 0}
