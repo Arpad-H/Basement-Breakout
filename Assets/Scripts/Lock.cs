@@ -65,7 +65,7 @@ public class Lock : MonoBehaviour
         //key.SetActive(true);
         //door.GetComponent<Grabbable>().enabled = true;
         Destroy(tankDummy);
-        GetComponent<Rigidbody>().isKinematic = false;
+        //GetComponent<Rigidbody>().isKinematic = false;
         //Destroy(other);
     }
 

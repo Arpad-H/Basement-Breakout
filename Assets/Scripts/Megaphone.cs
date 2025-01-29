@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using System;
 
 public class AudioDetection : MonoBehaviour
 {
@@ -11,6 +12,11 @@ public class AudioDetection : MonoBehaviour
     private GameObject battery;
     private bool hasEnergy = false;
     //private AudioHighPassFilter filter;
+    [SerializeField] private Transform winPos;
+    [SerializeField] private float winDistance = 10.0f;
+    [SerializeField] private float winTimer = 3.0f;
+    private float timer = 0;
+    public static event Action<GameManager.GameState> GameStateChangedMegaPhone;
     
     void Start()
     {
@@ -41,6 +47,12 @@ public class AudioDetection : MonoBehaviour
 
     void Update()
     {
+        if ((transform.position - winPos.transform.position).magnitude < winDistance && !audioSource.mute)
+        {
+            timer += Time.deltaTime;
+            if(timer > winTimer)
+                GameStateChangedMegaPhone?.Invoke(GameManager.GameState.Win);
+        }
         /*if ((OVRInput.Get(OVRInput.Button.PrimaryHandTrigger) || OVRInput.Get(OVRInput.Button.SecondaryHandTrigger)) &&
             (OVRInput.Get(OVRInput.Button.PrimaryIndexTrigger) || OVRInput.Get(OVRInput.Button.SecondaryIndexTrigger))) {
             PlaySound();
