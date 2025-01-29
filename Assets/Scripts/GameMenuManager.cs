@@ -19,13 +19,13 @@ public class GameMenuManager : MonoBehaviour
 
     private void Start()
     {
-        if (menutype is Menutype.GameOverMenu)
+        if (menutype == Menutype.GameOverMenu)
         {
-            menu.SetActive(false);
+            gameObject.SetActive(false);
         }
         else
         {
-            menu.SetActive(true);
+            gameObject.SetActive(true);
         }
         //PositionMenuInFrontOfHead();
     }
@@ -52,7 +52,7 @@ public class GameMenuManager : MonoBehaviour
         {
             gameObject.SetActive(false);
         }
-        else
+        else if (Menutype.GameOverMenu == menutype)
         {
             gameObject.SetActive(true);
         }
