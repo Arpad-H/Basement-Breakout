@@ -1473,6 +1473,11 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
+--- !u!4 &90847378 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8700007469853687988, guid: 680a1893667fa4e45b2bd0b8a0d4b692, type: 3}
+  m_PrefabInstance: {fileID: 90847367}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &90988250
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3289,7 +3294,7 @@ PrefabInstance:
     - target: {fileID: 2662663139574317706, guid: fde1d2c83f3f41b42ba66903f0cc2236, type: 3}
       propertyPath: waterPos
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 326717012}
     - target: {fileID: 3017936449073190157, guid: fde1d2c83f3f41b42ba66903f0cc2236, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 0
@@ -3985,6 +3990,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1015499191777110, guid: ced7faacc4e0d27498aa169aeb3e35b0, type: 3}
   m_PrefabInstance: {fileID: 399895392}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &326717012 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4554327062270080, guid: ced7faacc4e0d27498aa169aeb3e35b0, type: 3}
+  m_PrefabInstance: {fileID: 399895392}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &333241234
 GameObject:
   m_ObjectHideFlags: 0
@@ -4555,7 +4565,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1015499191777110, guid: ced7faacc4e0d27498aa169aeb3e35b0, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1016157926411260, guid: ced7faacc4e0d27498aa169aeb3e35b0, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -4671,7 +4681,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4554327062270080, guid: ced7faacc4e0d27498aa169aeb3e35b0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.739
+      value: 0.322
       objectReference: {fileID: 0}
     - target: {fileID: 4554327062270080, guid: ced7faacc4e0d27498aa169aeb3e35b0, type: 3}
       propertyPath: m_LocalPosition.z
@@ -7342,6 +7352,44 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3669658876340927424, guid: 5f3a38d534e5b9a4fa9cd3b3ec81dfb2, type: 3}
   m_PrefabInstance: {fileID: 658857748}
   m_PrefabAsset: {fileID: 0}
+--- !u!84 &660694179
+RenderTexture:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: WaterDepthMap
+  m_ImageContentsHash:
+    serializedVersion: 2
+    Hash: 00000000000000000000000000000000
+  m_ForcedFallbackFormat: 4
+  m_DownscaleFallback: 0
+  m_IsAlphaChannelOptional: 0
+  serializedVersion: 5
+  m_Width: 1024
+  m_Height: 1024
+  m_AntiAliasing: 1
+  m_MipCount: -1
+  m_DepthStencilFormat: 94
+  m_ColorFormat: 0
+  m_MipMap: 0
+  m_GenerateMips: 1
+  m_SRGB: 0
+  m_UseDynamicScale: 0
+  m_BindMS: 0
+  m_EnableCompatibleFormat: 1
+  m_EnableRandomWrite: 0
+  m_TextureSettings:
+    serializedVersion: 2
+    m_FilterMode: 1
+    m_Aniso: 1
+    m_MipBias: 0
+    m_WrapU: 1
+    m_WrapV: 1
+    m_WrapW: 1
+  m_Dimension: 2
+  m_VolumeDepth: 1
+  m_ShadowSamplingMode: 2
 --- !u!1001 &666172381
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8792,7 +8840,7 @@ Light:
   m_Type: 3
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 0.59
+  m_Intensity: 0.36
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -14279,43 +14327,43 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3168147921493430017, guid: 0e349627c21d95a40ae2705e9043e063, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5.03
+      value: 0.8882524
       objectReference: {fileID: 0}
     - target: {fileID: 3168147921493430017, guid: 0e349627c21d95a40ae2705e9043e063, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.8249998
+      value: -3.7698298
       objectReference: {fileID: 0}
     - target: {fileID: 3168147921493430017, guid: 0e349627c21d95a40ae2705e9043e063, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 17.44
+      value: 14.123
       objectReference: {fileID: 0}
     - target: {fileID: 3168147921493430017, guid: 0e349627c21d95a40ae2705e9043e063, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.68301994
       objectReference: {fileID: 0}
     - target: {fileID: 3168147921493430017, guid: 0e349627c21d95a40ae2705e9043e063, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: -0.40776393
       objectReference: {fileID: 0}
     - target: {fileID: 3168147921493430017, guid: 0e349627c21d95a40ae2705e9043e063, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: -0.29712135
       objectReference: {fileID: 0}
     - target: {fileID: 3168147921493430017, guid: 0e349627c21d95a40ae2705e9043e063, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0.5281395
       objectReference: {fileID: 0}
     - target: {fileID: 3168147921493430017, guid: 0e349627c21d95a40ae2705e9043e063, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
+      value: -14.074
       objectReference: {fileID: 0}
     - target: {fileID: 3168147921493430017, guid: 0e349627c21d95a40ae2705e9043e063, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: -59.596
       objectReference: {fileID: 0}
     - target: {fileID: 3168147921493430017, guid: 0e349627c21d95a40ae2705e9043e063, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
+      value: 83.513
       objectReference: {fileID: 0}
     - target: {fileID: 3654626500326494126, guid: 0e349627c21d95a40ae2705e9043e063, type: 3}
       propertyPath: m_CastShadows
@@ -17427,11 +17475,11 @@ PrefabInstance:
     - target: {fileID: 4929733625448321200, guid: bf4d9c94d9ab509458d1e78eca998bb4, type: 3}
       propertyPath: waterPos
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 326717012}
     - target: {fileID: 4929733625448321200, guid: bf4d9c94d9ab509458d1e78eca998bb4, type: 3}
       propertyPath: playerPos
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 90847378}
     - target: {fileID: 4929733625448321200, guid: bf4d9c94d9ab509458d1e78eca998bb4, type: 3}
       propertyPath: ambientRain
       value: 

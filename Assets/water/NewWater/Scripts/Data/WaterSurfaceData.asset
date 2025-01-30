@@ -16,9 +16,9 @@ MonoBehaviour:
   _absorptionRamp:
     serializedVersion: 2
     key0: {r: 1, g: 1, b: 1, a: 1}
-    key1: {r: 0.22, g: 0.87, b: 0.87, a: 1}
-    key2: {r: 0, g: 0.47, b: 0.49, a: 0}
-    key3: {r: 0, g: 0.275, b: 0.44, a: 0}
+    key1: {r: 0.23773581, g: 0.22209455, b: 0.20947665, a: 1}
+    key2: {r: 0.3735848, g: 0.30318287, b: 0.26996788, a: 0}
+    key3: {r: 0.2905661, g: 0.19272885, b: 0.1507654, a: 0}
     key4: {r: 0, g: 0, b: 0, a: 0}
     key5: {r: 0, g: 0, b: 0, a: 0}
     key6: {r: 0, g: 0, b: 0, a: 0}
@@ -28,7 +28,7 @@ MonoBehaviour:
     ctime2: 20840
     ctime3: 43581
     ctime4: 65535
-    ctime5: 0
+    ctime5: 65535
     ctime6: 0
     ctime7: 0
     atime0: 0
@@ -40,7 +40,7 @@ MonoBehaviour:
     atime6: 0
     atime7: 0
     m_Mode: 0
-    m_ColorSpace: -1
+    m_ColorSpace: 0
     m_NumColorKeys: 5
     m_NumAlphaKeys: 2
   _scatterRamp:
@@ -75,7 +75,7 @@ MonoBehaviour:
     m_NumAlphaKeys: 2
   _waves: []
   _customWaves: 0
-  randomSeed: 42867
+  randomSeed: 36432
   _basicWaveSettings:
     numWaves: 6
     amplitude: 0.1
@@ -88,21 +88,21 @@ MonoBehaviour:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0
+        value: 1
         inSlope: 0
         outSlope: 0
-        tangentMode: 0
+        tangentMode: 34
         weightedMode: 0
         inWeight: 0
-        outWeight: 0
+        outWeight: 0.33333334
       - serializedVersion: 3
         time: 1
         value: 1
-        inSlope: 2
-        outSlope: 2
-        tangentMode: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 34
         weightedMode: 0
-        inWeight: 0
+        inWeight: 0.33333334
         outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
