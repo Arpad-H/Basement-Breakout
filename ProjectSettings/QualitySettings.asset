@@ -54,7 +54,11 @@ QualitySettings:
     terrainBillboardStart: 50
     terrainFadeLength: 5
     terrainMaxTrees: 50
-    excludedTargetPlatforms: []
+    excludedTargetPlatforms:
+    - Android
+    - Standalone
+    - Server
+    - Windows Store Apps
   - serializedVersion: 3
     name: Low
     pixelLightCount: 0
@@ -103,7 +107,11 @@ QualitySettings:
     terrainBillboardStart: 50
     terrainFadeLength: 5
     terrainMaxTrees: 50
-    excludedTargetPlatforms: []
+    excludedTargetPlatforms:
+    - Android
+    - Server
+    - Standalone
+    - Windows Store Apps
   - serializedVersion: 3
     name: Medium
     pixelLightCount: 1
@@ -201,7 +209,11 @@ QualitySettings:
     terrainBillboardStart: 50
     terrainFadeLength: 5
     terrainMaxTrees: 50
-    excludedTargetPlatforms: []
+    excludedTargetPlatforms:
+    - Standalone
+    - Server
+    - Android
+    - Windows Store Apps
   - serializedVersion: 3
     name: Very High
     pixelLightCount: 3
@@ -250,7 +262,11 @@ QualitySettings:
     terrainBillboardStart: 50
     terrainFadeLength: 5
     terrainMaxTrees: 50
-    excludedTargetPlatforms: []
+    excludedTargetPlatforms:
+    - Standalone
+    - Server
+    - Android
+    - Windows Store Apps
   - serializedVersion: 3
     name: Ultra
     pixelLightCount: 4
@@ -299,7 +315,11 @@ QualitySettings:
     terrainBillboardStart: 50
     terrainFadeLength: 5
     terrainMaxTrees: 50
-    excludedTargetPlatforms: []
+    excludedTargetPlatforms:
+    - Standalone
+    - Server
+    - Android
+    - Windows Store Apps
   - serializedVersion: 3
     name: Quest 3
     pixelLightCount: 1
@@ -351,9 +371,11 @@ QualitySettings:
     excludedTargetPlatforms:
     - Server
     - Windows Store Apps
+    - Android
+    - Standalone
   m_TextureMipmapLimitGroupNames: []
   m_PerPlatformDefaultQuality:
     Android: 2
-    Server: 0
+    Server: 2
     Standalone: 2
-    Windows Store Apps: 0
+    Windows Store Apps: 2
