@@ -7,11 +7,11 @@ using VarietyFX;
 public class WaterIngresCoordinator : MonoBehaviour
 {
     [Header("Objects affected by ingress")]
-    public GameObject bookshelf;
-
-    public GameObject burstWindow;
-    public GameObject guitar;
-    public GameObject beanbag;
+    // public GameObject bookshelf;
+    //
+    // public GameObject burstWindow;
+    // public GameObject guitar;
+    // public GameObject beanbag;
 
     [Header("WaterParticles")] 
     public Material fallingWater;
@@ -61,25 +61,25 @@ public class WaterIngresCoordinator : MonoBehaviour
     {
     }
 
-    public void TipOverBookshelf()
-    {
-        bookshelf.GetComponent<Rigidbody>().AddForce(Vector3.right * 10000);
-    }
-
-    public void BurstWindow()
-    {
-        burstWindow.GetComponent<burstingWindow>().BurstWindow();
-    }
-
-    public void DropGuitar()
-    {
-        guitar.GetComponent<Rigidbody>().useGravity = true;
-    }
-
-    public void PushBeanbag()
-    {
-        beanbag.GetComponent<Rigidbody>().AddForce(Vector3.forward * 50000);
-    }
+    // public void TipOverBookshelf()
+    // {
+    //     bookshelf.GetComponent<Rigidbody>().AddForce(Vector3.right * 10000);
+    // }
+    //
+    // public void BurstWindow()
+    // {
+    //     burstWindow.GetComponent<burstingWindow>().BurstWindow();
+    // }
+    //
+    // public void DropGuitar()
+    // {
+    //     guitar.GetComponent<Rigidbody>().useGravity = true;
+    // }
+    //
+    // public void PushBeanbag()
+    // {
+    //     beanbag.GetComponent<Rigidbody>().AddForce(Vector3.forward * 50000);
+    // }
     public void StartParticles()
     {
         // Define target alpha for the colors
