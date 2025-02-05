@@ -9,6 +9,7 @@ public class GameMenuManager : MonoBehaviour
     [SerializeField] private float menuDistance = 2f;
     [SerializeField] private GameObject menu;
     [SerializeField] private Menutype menutype;
+    [SerializeField] private GameObject environmentParent;
     //public InputActionProperty showMenuButton;
     bool menuActive = true;
 
@@ -27,6 +28,8 @@ public class GameMenuManager : MonoBehaviour
         {
             gameObject.SetActive(true);
         }
+        
+        RotateEnvironment(head, environmentParent.transform);
         //PositionMenuInFrontOfHead();
     }
 
@@ -81,6 +84,16 @@ public class GameMenuManager : MonoBehaviour
     {
         StartMenu,
         GameOverMenu
+    }
+
+    public void RotateEnvironment(Transform head, Transform environmentParent)
+    {
+        environmentParent.Rotate(0, -1*head.rotation.eulerAngles.y, 0);
+    }
+    
+    public void CenterEnvironment(Transform head, Transform environmentParent, Transform targetPosition)
+    {
+        environmentParent.position += targetPosition.position - head.position;
     }
     
     
