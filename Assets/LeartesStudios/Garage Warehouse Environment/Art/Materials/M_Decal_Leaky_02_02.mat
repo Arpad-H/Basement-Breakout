@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  version: 5
+  version: 7
 --- !u!114 &-1590381520097853028
 MonoBehaviour:
   m_ObjectHideFlags: 11
@@ -38,15 +38,15 @@ Material:
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
+  - _BUILTIN_SURFACE_TYPE_TRANSPARENT
   - _SURFACE_TYPE_TRANSPARENT
   m_InvalidKeywords:
-  - _BUILTIN_SURFACE_TYPE_TRANSPARENT
   - _MATERIAL_AFFECTS_ALBEDO
   - _MATERIAL_AFFECTS_NORMAL
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 1
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: 2000
+  m_CustomRenderQueue: 3000
   stringTagMap:
     RenderType: Transparent
   disabledShaderPasses:
@@ -57,10 +57,6 @@ Material:
     m_TexEnvs:
     - _Albedo:
         m_Texture: {fileID: 2800000, guid: 470bc390f7c84a445b6934ae287026f5, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _DFG:
-        m_Texture: {fileID: 2800000, guid: 83d5abfd23f37a645bb0bc0e39aae43a, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Normals:
@@ -90,6 +86,7 @@ Material:
     - _AffectNormal: 1
     - _AffectSmoothness: 0
     - _AlphaClip: 0
+    - _AlphaToMask: 0
     - _BUILTIN_AlphaClip: 0
     - _BUILTIN_Blend: 0
     - _BUILTIN_CullMode: 2
@@ -102,6 +99,7 @@ Material:
     - _BUILTIN_ZWrite: 0
     - _BUILTIN_ZWriteControl: 0
     - _Blend: 0
+    - _BlendModePreserveSpecular: 0
     - _CastShadows: 1
     - _Cull: 2
     - _DecalColorMask0: 15
@@ -116,7 +114,6 @@ Material:
     - _DrawOrder: 0
     - _DstBlend: 10
     - _Float: 0
-    - _GlossyReflections: 1
     - _Hue_Intensity: 0
     - _OpacityIntensity: 0.5
     - _QueueControl: 1
@@ -124,7 +121,6 @@ Material:
     - _ReceiveShadows: 1
     - _Roughness: 0
     - _Roughness_Intensity: 1
-    - _SpecularHighlights: 1
     - _SrcBlend: 5
     - _Surface: 1
     - _U_Tile: 0.5

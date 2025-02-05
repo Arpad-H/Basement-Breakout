@@ -1,0 +1,112 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2330210649136312976
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2330210649136312978}
+  - component: {fileID: 2330210649136312979}
+  m_Layer: 0
+  m_Name: Prefab_VFX_TrailSpinner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2330210649136312978
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2330210649136312976}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 40.04, y: 4.87, z: -3.84}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 2330210649950268020}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!111 &2330210649136312979
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2330210649136312976}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: fee5f92c70145c646bff1381180d8b89, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: fee5f92c70145c646bff1381180d8b89, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
+--- !u!1001 &1812558668620931590
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 2330210649136312978}
+    m_Modifications:
+    - target: {fileID: 4139110131254855794, guid: 26720d4697eff204bbd861249b9b4582, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4139110131254855794, guid: 26720d4697eff204bbd861249b9b4582, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 4.78
+      objectReference: {fileID: 0}
+    - target: {fileID: 4139110131254855794, guid: 26720d4697eff204bbd861249b9b4582, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4139110131254855794, guid: 26720d4697eff204bbd861249b9b4582, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4139110131254855794, guid: 26720d4697eff204bbd861249b9b4582, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4139110131254855794, guid: 26720d4697eff204bbd861249b9b4582, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4139110131254855794, guid: 26720d4697eff204bbd861249b9b4582, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4139110131254855794, guid: 26720d4697eff204bbd861249b9b4582, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4139110131254855794, guid: 26720d4697eff204bbd861249b9b4582, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 4139110131254855794, guid: 26720d4697eff204bbd861249b9b4582, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4139110131254855794, guid: 26720d4697eff204bbd861249b9b4582, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4139110131254855795, guid: 26720d4697eff204bbd861249b9b4582, type: 3}
+      propertyPath: m_Name
+      value: Prefab_VFX_Trail_Emitter
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 26720d4697eff204bbd861249b9b4582, type: 3}
+--- !u!4 &2330210649950268020 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4139110131254855794, guid: 26720d4697eff204bbd861249b9b4582, type: 3}
+  m_PrefabInstance: {fileID: 1812558668620931590}
+  m_PrefabAsset: {fileID: 0}

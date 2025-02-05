@@ -37,7 +37,9 @@ public class PlayerManager : MonoBehaviour
 
     private void Start()
     {
-        DeactivateTeleportInteractor();
+        //DeactivateTeleportInteractor();
+        ActivateTeleportInteractor();
+        DeactivateRayInteractor();
         _audioSource = GetComponent<AudioSource>();
         _ovrManager = GetComponent<OVRManager>();
         if (startAtMenu)

@@ -4,7 +4,7 @@
 QualitySettings:
   m_ObjectHideFlags: 0
   serializedVersion: 5
-  m_CurrentQuality: 6
+  m_CurrentQuality: 2
   m_QualitySettings:
   - serializedVersion: 3
     name: Very Low
@@ -22,7 +22,7 @@ QualitySettings:
     globalTextureMipmapLimit: 1
     textureMipmapLimitSettings: []
     anisotropicTextures: 0
-    antiAliasing: 0
+    antiAliasing: 4
     softParticles: 0
     softVegetation: 0
     realtimeReflectionProbes: 0
@@ -32,7 +32,7 @@ QualitySettings:
     realtimeGICPUUsage: 25
     lodBias: 0.3
     maximumLODLevel: 0
-    enableLODCrossFade: 1
+    enableLODCrossFade: 0
     streamingMipmapsActive: 0
     streamingMipmapsAddAllCameras: 1
     streamingMipmapsMemoryBudget: 512
@@ -54,7 +54,11 @@ QualitySettings:
     terrainBillboardStart: 50
     terrainFadeLength: 5
     terrainMaxTrees: 50
-    excludedTargetPlatforms: []
+    excludedTargetPlatforms:
+    - Android
+    - Standalone
+    - Server
+    - Windows Store Apps
   - serializedVersion: 3
     name: Low
     pixelLightCount: 0
@@ -103,7 +107,11 @@ QualitySettings:
     terrainBillboardStart: 50
     terrainFadeLength: 5
     terrainMaxTrees: 50
-    excludedTargetPlatforms: []
+    excludedTargetPlatforms:
+    - Android
+    - Server
+    - Standalone
+    - Windows Store Apps
   - serializedVersion: 3
     name: Medium
     pixelLightCount: 1
@@ -120,13 +128,13 @@ QualitySettings:
     globalTextureMipmapLimit: 0
     textureMipmapLimitSettings: []
     anisotropicTextures: 1
-    antiAliasing: 0
+    antiAliasing: 2
     softParticles: 0
     softVegetation: 0
     realtimeReflectionProbes: 0
     billboardsFaceCameraPosition: 0
     useLegacyDetailDistribution: 1
-    vSyncCount: 1
+    vSyncCount: 0
     realtimeGICPUUsage: 25
     lodBias: 0.7
     maximumLODLevel: 0
@@ -142,7 +150,7 @@ QualitySettings:
     asyncUploadBufferSize: 16
     asyncUploadPersistentBuffer: 1
     resolutionScalingFixedDPIFactor: 1
-    customRenderPipeline: {fileID: 11400000, guid: 31af77951a5364b1ab135ca397ff14db, type: 2}
+    customRenderPipeline: {fileID: 11400000, guid: 19ba41d7c0026c3459d37c2fe90c55a0, type: 2}
     terrainQualityOverrides: 0
     terrainPixelError: 1
     terrainDetailDensityScale: 1
@@ -201,7 +209,11 @@ QualitySettings:
     terrainBillboardStart: 50
     terrainFadeLength: 5
     terrainMaxTrees: 50
-    excludedTargetPlatforms: []
+    excludedTargetPlatforms:
+    - Standalone
+    - Server
+    - Android
+    - Windows Store Apps
   - serializedVersion: 3
     name: Very High
     pixelLightCount: 3
@@ -250,7 +262,11 @@ QualitySettings:
     terrainBillboardStart: 50
     terrainFadeLength: 5
     terrainMaxTrees: 50
-    excludedTargetPlatforms: []
+    excludedTargetPlatforms:
+    - Standalone
+    - Server
+    - Android
+    - Windows Store Apps
   - serializedVersion: 3
     name: Ultra
     pixelLightCount: 4
@@ -273,11 +289,11 @@ QualitySettings:
     realtimeReflectionProbes: 1
     billboardsFaceCameraPosition: 1
     useLegacyDetailDistribution: 1
-    vSyncCount: 1
+    vSyncCount: 0
     realtimeGICPUUsage: 100
     lodBias: 2
     maximumLODLevel: 0
-    enableLODCrossFade: 1
+    enableLODCrossFade: 0
     streamingMipmapsActive: 0
     streamingMipmapsAddAllCameras: 1
     streamingMipmapsMemoryBudget: 512
@@ -299,7 +315,11 @@ QualitySettings:
     terrainBillboardStart: 50
     terrainFadeLength: 5
     terrainMaxTrees: 50
-    excludedTargetPlatforms: []
+    excludedTargetPlatforms:
+    - Standalone
+    - Server
+    - Android
+    - Windows Store Apps
   - serializedVersion: 3
     name: Quest 3
     pixelLightCount: 1
@@ -326,7 +346,7 @@ QualitySettings:
     realtimeGICPUUsage: 100
     lodBias: 2
     maximumLODLevel: 0
-    enableLODCrossFade: 1
+    enableLODCrossFade: 0
     streamingMipmapsActive: 0
     streamingMipmapsAddAllCameras: 1
     streamingMipmapsMemoryBudget: 512
@@ -351,9 +371,11 @@ QualitySettings:
     excludedTargetPlatforms:
     - Server
     - Windows Store Apps
+    - Android
+    - Standalone
   m_TextureMipmapLimitGroupNames: []
   m_PerPlatformDefaultQuality:
-    Android: 6
-    Server: 0
-    Standalone: 6
-    Windows Store Apps: 0
+    Android: 2
+    Server: 2
+    Standalone: 2
+    Windows Store Apps: 2

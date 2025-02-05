@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  version: 5
+  version: 7
 --- !u!114 &-1344427204013200778
 MonoBehaviour:
   m_ObjectHideFlags: 11
@@ -45,7 +45,7 @@ Material:
   - _DISABLE_SSR_TRANSPARENT
   - _DOUBLESIDED_ON
   m_LightmapFlags: 4
-  m_EnableInstancingVariants: 1
+  m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 1
   m_CustomRenderQueue: 2225
   stringTagMap:
@@ -67,10 +67,6 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _Color_Mask01:
         m_Texture: {fileID: 2800000, guid: 07406c14c1986774bbe4d728ecc55914, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _DFG:
-        m_Texture: {fileID: 2800000, guid: 83d5abfd23f37a645bb0bc0e39aae43a, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Emission_Mask01:
@@ -171,6 +167,7 @@ Material:
     - _BUILTIN_ZWriteControl: 0
     - _Blend: 0
     - _BlendMode: 0
+    - _BlendModePreserveSpecular: 0
     - _CastShadows: 1
     - _ConservativeDepthOffsetEnable: 0
     - _Cull: 2
@@ -196,7 +193,6 @@ Material:
     - _Enable_Rim_Color: 0
     - _Enable_Rim_Mask_from_Texture: 0
     - _Enable_Secondary_Material: 0
-    - _GlossyReflections: 1
     - _MaxRoughness: 0.95
     - _MinRoughness: 0.2
     - _Normal_Strength: 1
@@ -215,7 +211,6 @@ Material:
     - _Rim_Falloff: 5
     - _Rim_Opacity: 1
     - _Roughness_Strength: 1
-    - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _StencilRef: 0
     - _StencilRefDepth: 8

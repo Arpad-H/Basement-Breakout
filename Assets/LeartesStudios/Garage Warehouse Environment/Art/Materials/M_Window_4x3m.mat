@@ -28,14 +28,14 @@ Material:
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
+  - _BUILTIN_SURFACE_TYPE_TRANSPARENT
   - _SURFACE_TYPE_TRANSPARENT
   m_InvalidKeywords:
-  - _BUILTIN_SURFACE_TYPE_TRANSPARENT
   - _DISABLE_SSR_TRANSPARENT
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: 2983
+  m_CustomRenderQueue: 3000
   stringTagMap:
     MotionVector: User
     RenderType: Transparent
@@ -50,10 +50,6 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
-    - _DFG:
-        m_Texture: {fileID: 2800000, guid: 83d5abfd23f37a645bb0bc0e39aae43a, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
     - _Mask_3:
         m_Texture: {fileID: 2800000, guid: bb3ed3d9bab967d4da4b02dcc9625923, type: 3}
         m_Scale: {x: 1, y: 1}
@@ -93,6 +89,7 @@ Material:
     - _B_Intensity: 1
     - _Blend: 0
     - _BlendMode: 0
+    - _BlendModePreserveSpecular: 0
     - _CastShadows: 1
     - _ConservativeDepthOffsetEnable: 0
     - _Cull: 2
@@ -106,7 +103,6 @@ Material:
     - _EnableBlendModePreserveSpecularLighting: 1
     - _EnableFogOnTransparent: 0
     - _G_Intensity: 1.5
-    - _GlossyReflections: 1
     - _GlowStrength: 0
     - _Mask: 1
     - _Mask_opacity: 1.3
@@ -126,8 +122,7 @@ Material:
     - _RenderQueueType: 4
     - _RequireSplitLighting: 0
     - _Roughness: 0.5
-    - _SpecularHighlights: 1
-    - _SrcBlend: 1
+    - _SrcBlend: 5
     - _StencilRef: 0
     - _StencilRefDepth: 0
     - _StencilRefDistortionVec: 4
@@ -189,4 +184,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  version: 5
+  version: 7
