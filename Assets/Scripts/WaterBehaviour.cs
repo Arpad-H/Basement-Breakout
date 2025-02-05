@@ -34,7 +34,7 @@ public class WaterBehaviour : MonoBehaviour
         }
         if (lowerSim)
         {
-            waterSim.transform.Translate(Vector3.down * (Time.deltaTime * floodingSpeed*2));
+            waterSim.transform.Translate(Vector3.down * (Time.deltaTime * floodingSpeed));
         }
         
     }
@@ -67,7 +67,7 @@ public class WaterBehaviour : MonoBehaviour
         lowerSim = true;
         isFlooding = true;
      
-        floodingSpeed = 0.04f;
+        floodingSpeed = 0.08f;
     }
     // public void StartWaveGen()
     // {
