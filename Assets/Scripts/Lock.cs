@@ -60,6 +60,7 @@ public class Lock : MonoBehaviour
     
     private void unlocked()
     {
+        text.text = "OPEN";
         door.SetActive(true);
         tank.SetActive(true);
         //key.SetActive(true);
