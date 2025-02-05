@@ -6,7 +6,7 @@ public class WaterBehaviour : MonoBehaviour
     [SerializeField] private float floodingSpeed = 0.5f;
     [SerializeField] private GameObject heightPlane;
     [SerializeField] private GameObject waterSim;
-    [SerializeField] private GameObject WaveGen;
+    // [SerializeField] private GameObject WaveGen;
     [SerializeField] private GameObject PlayerHead;
     [SerializeField] private GameObject Player;
     float drowningtime = 10f;
@@ -69,9 +69,9 @@ public class WaterBehaviour : MonoBehaviour
      
         floodingSpeed = 0.04f;
     }
-    public void StartWaveGen()
-    {
-        Debug.Log("StartWaveGen");
-        WaveGen.SetActive(true);
-    }
+    // public void StartWaveGen()
+    // {
+    //     Debug.Log("StartWaveGen");
+    //     WaveGen.SetActive(true);
+    // }
 }

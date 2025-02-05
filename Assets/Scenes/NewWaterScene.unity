@@ -6638,7 +6638,7 @@ PrefabInstance:
     - target: {fileID: 2662663139574317706, guid: fde1d2c83f3f41b42ba66903f0cc2236, type: 3}
       propertyPath: waterPos
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1012455266}
     - target: {fileID: 3017936449073190157, guid: fde1d2c83f3f41b42ba66903f0cc2236, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 0
@@ -7362,6 +7362,52 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1030984342, guid: abc00000000006027517406918236001, type: 3}
   m_PrefabInstance: {fileID: 308267822}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &310085547
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 310085549}
+  - component: {fileID: 310085548}
+  m_Layer: 0
+  m_Name: ExplosionLoop
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &310085548
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 310085547}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ce4c7ea2beb99341a64350d357d0588, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chosenEffect: {fileID: 955907416608812762, guid: 7ed1ff4c6312824458989bec03506f19, type: 3}
+  loopTimeLimit: 0.8
+--- !u!4 &310085549
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 310085547}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: -0.587, y: 1.41, z: 0.444}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!1001 &310207572
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15707,6 +15753,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1030979282, guid: abc00000000015268877657361957083, type: 3}
   m_PrefabInstance: {fileID: 798386863}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &800227227 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8388639224674664262, guid: 680a1893667fa4e45b2bd0b8a0d4b692, type: 3}
+  m_PrefabInstance: {fileID: 90847367}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &806358412
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -20625,6 +20676,33 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 1030978502, guid: abc00000000002640183551224724086, type: 3}
   m_PrefabInstance: {fileID: 1012141551}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1012455261 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4376571994961851003, guid: 2b92f0cf6f7b1f54a84412040493ddc2, type: 3}
+  m_PrefabInstance: {fileID: 1702898510}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1012455262
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1012455261}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b131a10b96db74242a5ba91246ba8c34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  floodingSpeed: 0.5
+  heightPlane: {fileID: 1012455261}
+  waterSim: {fileID: 1548121449}
+  PlayerHead: {fileID: 90847368}
+  Player: {fileID: 800227227}
+--- !u!4 &1012455266 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4032803755227343041, guid: 2b92f0cf6f7b1f54a84412040493ddc2, type: 3}
+  m_PrefabInstance: {fileID: 1702898510}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1014699886
 PrefabInstance:
@@ -27321,18 +27399,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0c417ed7a7df164fa8ae1a01ebe5465, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bookshelf: {fileID: 0}
-  burstWindow: {fileID: 0}
-  guitar: {fileID: 0}
-  beanbag: {fileID: 0}
-  fallingWater: {fileID: 0}
-  groundWaterSplash: {fileID: 0}
-  groundWaterDrop: {fileID: 0}
-  runningWaterSheet: {fileID: 0}
-  waterStream: {fileID: 0}
-  waterDroplets: {fileID: 0}
-  groundWaterRings: {fileID: 0}
-  lighningSpark: {fileID: 0}
+  fallingWater: {fileID: 2100000, guid: 9ed926e0b9eb8994db20451ea45ca07a, type: 2}
+  groundWaterSplash: {fileID: 2100000, guid: 781724f8b080c074f97d8214baa1ea7c, type: 2}
+  groundWaterDrop: {fileID: 2100000, guid: 097ea874012101a46ad17c0c42718688, type: 2}
+  runningWaterSheet: {fileID: 2100000, guid: 38df8f9ef3941214ca713fda46e1a0e6, type: 2}
+  waterStream: {fileID: 2100000, guid: 3e6593b6cd534bd489b3cbdf43740f10, type: 2}
+  waterDroplets: {fileID: 2100000, guid: c6efeb5006d5d1443b716f15da0fdca7, type: 2}
+  groundWaterRings: {fileID: 2100000, guid: 5215bd00f96ddb24ca56804c2e083903, type: 2}
+  lighningSpark: {fileID: 310085547}
 --- !u!114 &1508869451
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27855,31 +27929,31 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -9149447711496635013, guid: 2b474f9437780d742b73672554b1d765, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -3.240079
       objectReference: {fileID: 0}
     - target: {fileID: -9149447711496635013, guid: 2b474f9437780d742b73672554b1d765, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.029999971
       objectReference: {fileID: 0}
     - target: {fileID: -9149447711496635013, guid: 2b474f9437780d742b73672554b1d765, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -5.5611258
       objectReference: {fileID: 0}
     - target: {fileID: -9149447711496635013, guid: 2b474f9437780d742b73672554b1d765, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.0000029504295
       objectReference: {fileID: 0}
     - target: {fileID: -9149447711496635013, guid: 2b474f9437780d742b73672554b1d765, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -9149447711496635013, guid: 2b474f9437780d742b73672554b1d765, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: -9149447711496635013, guid: 2b474f9437780d742b73672554b1d765, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -9149447711496635013, guid: 2b474f9437780d742b73672554b1d765, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -27887,7 +27961,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -9149447711496635013, guid: 2b474f9437780d742b73672554b1d765, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: -180
       objectReference: {fileID: 0}
     - target: {fileID: -9149447711496635013, guid: 2b474f9437780d742b73672554b1d765, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -31100,7 +31174,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4032803755227343041, guid: 2b92f0cf6f7b1f54a84412040493ddc2, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.498
+      value: -0.05
       objectReference: {fileID: 0}
     - target: {fileID: 4032803755227343041, guid: 2b92f0cf6f7b1f54a84412040493ddc2, type: 3}
       propertyPath: m_LocalPosition.z
@@ -31145,7 +31219,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4376571994961851003, guid: 2b92f0cf6f7b1f54a84412040493ddc2, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1012455262}
   m_SourcePrefab: {fileID: 100100000, guid: 2b92f0cf6f7b1f54a84412040493ddc2, type: 3}
 --- !u!1001 &1703164726
 PrefabInstance:
@@ -36913,7 +36990,7 @@ PrefabInstance:
     - target: {fileID: 4929733625448321200, guid: bf4d9c94d9ab509458d1e78eca998bb4, type: 3}
       propertyPath: waterPos
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1012455266}
     - target: {fileID: 4929733625448321200, guid: bf4d9c94d9ab509458d1e78eca998bb4, type: 3}
       propertyPath: playerPos
       value: 
@@ -38671,3 +38748,4 @@ SceneRoots:
   - {fileID: 176700912}
   - {fileID: 2056450151}
   - {fileID: 1548121448}
+  - {fileID: 310085549}
