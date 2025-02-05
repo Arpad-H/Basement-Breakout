@@ -3,7 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.PlayerLoop;
+using UnityEngine.UIElements;
 using UnityEngine.XR;
+
+
+//TODO raum drrhen ausprobieren
 
 public class PlayerManager : MonoBehaviour
 {
@@ -15,6 +19,8 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] private GameObject[] teleportInteractor;
     [SerializeField] private GameObject PlayerHead;
     [SerializeField] private GameObject WaterheightPlane;
+    [SerializeField] public Transform GameMenuRoom;
+    [SerializeField] public Transform SceneRoom;
     public OVRCameraRig cameraRig;
     public bool startAtMenu = true;
     
@@ -46,7 +52,6 @@ public class PlayerManager : MonoBehaviour
         {
             setPlayerPosToStartMenu();
         }
-        ReserRoation();
         
         //_introducingTV = Resources.Load<AudioClip>("Audio/voice/Line1fin.mp3");
         //_audioSource.clip = _introducingTV;
@@ -69,7 +74,8 @@ public class PlayerManager : MonoBehaviour
     public void SetPlayerPositionToStartGame()
     {
         transform.position = STARTSCENEPOS;
-        InputTracking.Recenter();
+        RotateEnvironment(SceneRoom);
+        CenterEnvironment(STARTSCENEPOS, SceneRoom);
     }
 
     public void loadGamePlayScene()
@@ -86,6 +92,8 @@ public class PlayerManager : MonoBehaviour
 
     public void setPlayerPosToStartMenu()
     {
+        CenterEnvironment(STARTMENUPOS, GameMenuRoom);
+        RotateEnvironment(GameMenuRoom);
         transform.position = STARTMENUPOS;
         InputTracking.Recenter();
     }
@@ -134,8 +142,10 @@ public class PlayerManager : MonoBehaviour
 
     public void SetPlayerPosToGameOverMenu()
     {
+        CenterEnvironment(GAMEOVERMENUPOS, GameMenuRoom);
+        RotateEnvironment(GameMenuRoom);
         transform.position = GAMEOVERMENUPOS;
-        InputTracking.Recenter();
+        
     }
 
     public bool Drawing()
@@ -175,10 +185,18 @@ public class PlayerManager : MonoBehaviour
         }
     }
 
-    private void ReserRoation()
+    
+    
+    public void RotateEnvironment(Transform environmentParent)
     {
-        transform.Rotate(0, -1*transform.rotation.eulerAngles.y, 0);
-        
+        environmentParent.Rotate(0, -1*transform.rotation.eulerAngles.y, 0);
     }
+    
+    public void CenterEnvironment(Vector3 targetPosition, Transform environmentParent)
+    {
+        environmentParent.position += targetPosition - transform.position;
+    }
+    
+    
     
 }
