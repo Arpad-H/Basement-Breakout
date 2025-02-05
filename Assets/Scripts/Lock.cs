@@ -13,6 +13,8 @@ public class Lock : MonoBehaviour
     [SerializeField] private GameObject leftHand;
     [SerializeField] private GameObject rightHand;
     [SerializeField] private TMPro.TextMeshProUGUI text;
+    [SerializeField] private Material green;
+    [SerializeField] private GameObject LCD;
     //private GameObject key;
     private readonly string code = "0451";
     
@@ -60,6 +62,8 @@ public class Lock : MonoBehaviour
     
     private void unlocked()
     {
+        text.text = "OPEN";
+        LCD.GetComponent<MeshRenderer>().material = green;
         door.SetActive(true);
         tank.SetActive(true);
         //key.SetActive(true);
