@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Pinwheel.Poseidon;
+//using Pinwheel.Poseidon;
 
 /*
 	Simple Buoyancy Script for Poseidon water system
@@ -12,7 +12,7 @@ using Pinwheel.Poseidon;
 [ExecuteInEditMode]
 public class AdvancedBuoyController : MonoBehaviour {
 
-	private PWater water;
+	//private PWater water;
 	public bool applyRipple;
 	
 	[SerializeField] float front;
@@ -25,12 +25,12 @@ public class AdvancedBuoyController : MonoBehaviour {
 	[SerializeField, Range(0f,20f)] float rollDynamic = 2.5f;
 
 	void Start() {
-		water = GameObject.FindFirstObjectByType<PWater>();
+		//water = GameObject.FindFirstObjectByType<PWater>();
 	}
 
 
 	public void Update() {
-		if (water == null) return;
+		//if (water == null) return;
 
 		float frontHeight = GetWaterHeight(transform.position + transform.forward * front);
 		float backHeight = GetWaterHeight(transform.position - transform.forward * back);
@@ -54,9 +54,10 @@ public class AdvancedBuoyController : MonoBehaviour {
 	}
 
 	float GetWaterHeight(Vector3 pos) {
-		Vector3 myPos = water.transform.InverseTransformPoint(pos);
-		myPos = water.GetLocalVertexPosition(myPos, applyRipple);
-		return water.transform.TransformPoint(myPos).y;
+	//	Vector3 myPos = water.transform.InverseTransformPoint(pos);
+//		myPos = water.GetLocalVertexPosition(myPos, applyRipple);
+//		return water.transform.TransformPoint(myPos).y;
+		return 0;
 	}
 
 	void OnDrawGizmos() {
