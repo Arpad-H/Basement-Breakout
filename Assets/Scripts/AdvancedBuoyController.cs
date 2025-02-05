@@ -12,7 +12,7 @@ using UnityEngine;
 [ExecuteInEditMode]
 public class AdvancedBuoyController : MonoBehaviour {
 
-	//private PWater water;
+	private WaterBehaviour water;
 	public bool applyRipple;
 	
 	[SerializeField] float front;
@@ -30,7 +30,7 @@ public class AdvancedBuoyController : MonoBehaviour {
 
 
 	public void Update() {
-		//if (water == null) return;
+		if (water == null) return;
 
 		float frontHeight = GetWaterHeight(transform.position + transform.forward * front);
 		float backHeight = GetWaterHeight(transform.position - transform.forward * back);

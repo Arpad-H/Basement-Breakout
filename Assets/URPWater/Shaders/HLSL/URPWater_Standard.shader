@@ -107,6 +107,7 @@ Shader "URPWater/Standard"
 
 		//[Header(Reflections)]
 		[KeywordEnum(Off,CubeMap,Probes,RealTime)]
+		[KeywordEnum(Off,CubeMap,Probes,RealTime)]
 		_ReflectionMode("Reflection: Mode", Float) = 0
 		_CubemapTexture("Reflection: Cubemap", CUBE) = "" {}
 		_ReflectionFresnel("Reflection: Fresnel", Range(0,16)) = 4
