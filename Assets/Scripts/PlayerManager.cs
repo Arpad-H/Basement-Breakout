@@ -12,8 +12,8 @@ using UnityEngine.XR;
 public class PlayerManager : MonoBehaviour
 {
    
-    private Vector3 STARTSCENEPOS = new Vector3(-1.6f, 1f, 2f);
-    private Vector3 STARTMENUPOS = new Vector3(50f, 10f, 0f);
+    private Vector3 STARTSCENEPOS = new Vector3(-1.545f, 0.0f, 2.23f);
+    private Vector3 STARTMENUPOS = new Vector3(-15.5f, 2.88f, 3.41f);
     private Vector3 GAMEOVERMENUPOS = new Vector3(54f, 10f, 1f);
 
     [SerializeField] private GameObject[] rayInteractor;
