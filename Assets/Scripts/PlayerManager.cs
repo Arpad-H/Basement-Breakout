@@ -11,7 +11,8 @@ using UnityEngine.XR;
 
 public class PlayerManager : MonoBehaviour
 {
-    private Vector3 STARTSCENEPOS = new Vector3(-2.364f, 3.22f, 7.93f);
+   
+    private Vector3 STARTSCENEPOS = new Vector3(-1.6f, 1f, 2f);
     private Vector3 STARTMENUPOS = new Vector3(50f, 10f, 0f);
     private Vector3 GAMEOVERMENUPOS = new Vector3(54f, 10f, 1f);
 
@@ -21,8 +22,8 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] private GameObject WaterheightPlane;
     [SerializeField] public Transform GameMenuRoom;
     [SerializeField] public Transform SceneRoom;
-    public OVRCameraRig cameraRig;
-    public bool startAtMenu = true;
+    [SerializeField] public OVRCameraRig cameraRig;
+    [SerializeField] public bool startAtMenu = true;
     
 
     [SerializeField] private float DROWNINGTIME = 10f;
@@ -48,9 +49,12 @@ public class PlayerManager : MonoBehaviour
         DeactivateRayInteractor();
         _audioSource = GetComponent<AudioSource>();
         _ovrManager = GetComponent<OVRManager>();
-        if (startAtMenu)
+        if (startAtMenu && startAtMenu)
         {
-            setPlayerPosToStartMenu();
+            //setPlayerPosToStartMenu();
+        }else if (!startAtMenu)
+        {
+            loadGamePlayScene();
         }
         
         //_introducingTV = Resources.Load<AudioClip>("Audio/voice/Line1fin.mp3");
@@ -61,18 +65,21 @@ public class PlayerManager : MonoBehaviour
     {
         GameManager.OnGameStateChanged -= HandleGameStateChanged;
     }
-
+    int _counter = 0;
     private void Update()
     {
         if (Drawing())
         {
-            Debug.Log($"[PlayerManager]: Player is drowning");
             GameStateChangedPlayer?.Invoke(GameManager.GameState.Drowned);
         }
+
+        Debug.LogWarning($" [PlayerManager] currentAngle Y: {cameraRig.centerEyeAnchor.rotation.eulerAngles.y} //  Frame: {_counter}");
+        _counter++;
     }
 
     public void SetPlayerPositionToStartGame()
     {
+        
         transform.position = STARTSCENEPOS;
         RotateEnvironment(SceneRoom);
         CenterEnvironment(STARTSCENEPOS, SceneRoom);
@@ -80,11 +87,11 @@ public class PlayerManager : MonoBehaviour
 
     public void loadGamePlayScene()
     {
-        //ActivateTeleportInteractor();
-        DeactivateTeleportInteractor();
-        SetPlayerPositionToStartGame();
-        DeactivateRayInteractor();
-        //DeactivatePassthrough();
+        // //ActivateTeleportInteractor();
+        // DeactivateTeleportInteractor();
+        // //SetPlayerPositionToStartGame();
+        // DeactivateRayInteractor();
+        // //DeactivatePassthrough();
         _audioSource.Play();
         GameStateChangedPlayer?.Invoke(GameManager.GameState.Tutorial);
     }
@@ -187,14 +194,19 @@ public class PlayerManager : MonoBehaviour
 
     
     
-    public void RotateEnvironment(Transform environmentParent)
+    private void RotateEnvironment(Transform environmentParent)
     {
-        environmentParent.Rotate(0, -1*transform.rotation.eulerAngles.y, 0);
+        Quaternion targetRotation = Quaternion.Euler(0, 180, 0);
+        float currentYRotation = cameraRig.centerEyeAnchor.rotation.eulerAngles.y;
+        Quaternion currentRotation = Quaternion.Euler(0, currentYRotation, 0);
+        Quaternion deltaRotation = targetRotation * Quaternion.Inverse(currentRotation);
+        environmentParent.rotation = deltaRotation;
+        Debug.LogWarning($"[PlayerManager]: Rotating environment by {environmentParent.rotation.eulerAngles} // DelatRotation: {deltaRotation.eulerAngles} // CurrentRotation: {currentRotation.eulerAngles}");
     }
     
     public void CenterEnvironment(Vector3 targetPosition, Transform environmentParent)
     {
-        environmentParent.position += targetPosition - transform.position;
+        //environmentParent.position += targetPosition - transform.position;
     }
     
     
