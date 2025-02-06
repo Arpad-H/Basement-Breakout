@@ -25,7 +25,10 @@ public class AdvancedBuoyController : MonoBehaviour {
 	[SerializeField, Range(0f,20f)] float rollDynamic = 2.5f;
 
 	void Start() {
-		//water = GameObject.FindFirstObjectByType<PWater>();
+		water = FindObjectOfType<WaterBehaviour>();
+		if (water == null) {
+			Debug.LogError("No WaterBehaviour found in scene");
+		}
 	}
 
 
@@ -54,9 +57,12 @@ public class AdvancedBuoyController : MonoBehaviour {
 	}
 
 	float GetWaterHeight(Vector3 pos) {
-		Vector3 myPos = water.transform.InverseTransformPoint(pos);
-		myPos = water.GetLocalVertexPosition(myPos, applyRipple);
-		return water.transform.TransformPoint(myPos).y;
+		// Vector3 myPos = water.transform.InverseTransformPoint(pos);
+		// myPos = water.GetLocalVertexPosition(myPos, applyRipple);
+		Vector3 worldPos = transform.position;
+		worldPos.y = water.GetWaveDisplacement(worldPos, Time.time).y;
+		// return water.transform.TransformPoint(myPos).y;
+		return worldPos.y;
 		return 0;
 	}
 

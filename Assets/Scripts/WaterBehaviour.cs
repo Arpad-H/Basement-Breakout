@@ -127,7 +127,7 @@ public class WaterBehaviour : MonoBehaviour
             displacement.z += direction.y * (a * cosF);
             displacement.y += a * sinF;
         }
-
-        return displacement;
+        Debug.Log("Displacement: " + displacement);
+        return displacement + transform.position;
     }
 }
