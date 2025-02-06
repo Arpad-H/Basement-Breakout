@@ -13,8 +13,8 @@ public class LeverInteractable : MonoBehaviour
 
 
     private Quaternion initialRotation;
-    private bool isActivated = false;
-    private bool wasOverThreshold = false;
+    private bool previousState = false;
+
     
     private OneGrabRotateTransformer rotateTransform;
 
@@ -45,17 +45,22 @@ public class LeverInteractable : MonoBehaviour
         Quaternion currentRotation = transform.localRotation;
         float angle = Quaternion.Angle(initialRotation, currentRotation);
         
-       
+      
         
-        bool overThreshold = angle > angleThreshold;
-        
-        if (isActivated != overThreshold)
+        bool state = angle < angleThreshold;
+        if (state != previousState)
         {
-            Debug.Log($"[Lever interactable] changed to: {isActivated} Angle: {angle} Threshold: {angleThreshold}");
-            onLeverAction?.Invoke(isActivated);
+            Debug.Log($"[LeverInteractable] Lever state changed to {state}");
+            previousState = state;
+            onLeverAction?.Invoke(state);
         }
         
-        isActivated = overThreshold;
+      
+           
+        
+       
+        
+    
         
         
     }
