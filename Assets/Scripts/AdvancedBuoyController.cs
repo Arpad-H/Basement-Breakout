@@ -54,9 +54,9 @@ public class AdvancedBuoyController : MonoBehaviour {
 	}
 
 	float GetWaterHeight(Vector3 pos) {
-	//	Vector3 myPos = water.transform.InverseTransformPoint(pos);
-//		myPos = water.GetLocalVertexPosition(myPos, applyRipple);
-//		return water.transform.TransformPoint(myPos).y;
+		Vector3 myPos = water.transform.InverseTransformPoint(pos);
+		myPos = water.GetLocalVertexPosition(myPos, applyRipple);
+		return water.transform.TransformPoint(myPos).y;
 		return 0;
 	}
 

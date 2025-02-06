@@ -28,10 +28,10 @@ public class WaterIngresCoordinator : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Vector4 colFallingWater = fallingWater.GetColor("_Color");
-        Vector4 colGroundWaterSplash = groundWaterSplash.GetColor("_Color");
-        Vector4 colGroundWaterDrop = groundWaterDrop.GetColor("_Color");
-        Vector4 colRunningWaterSheet = runningWaterSheet.GetColor("_Color");
+        Vector4 colFallingWater = fallingWater.GetColor("_BaseColor");
+        Vector4 colGroundWaterSplash = groundWaterSplash.GetColor("_BaseColor");
+        Vector4 colGroundWaterDrop = groundWaterDrop.GetColor("_BaseColor");
+        Vector4 colRunningWaterSheet = runningWaterSheet.GetColor("_BaseColor");
         Vector4 colWaterStream = waterStream.GetColor("_Color");
         Vector4 colWaterDroplets = waterDroplets.GetColor("_Color");
         Vector4 colGroundWaterRings = groundWaterRings.GetColor("_Color");
@@ -44,10 +44,10 @@ public class WaterIngresCoordinator : MonoBehaviour
         colWaterDroplets.w = 0f;
         colGroundWaterRings.w = 0f;
        
-        fallingWater.SetColor("_Color", colFallingWater);
-        groundWaterSplash.SetColor("_Color", colGroundWaterSplash);
-        groundWaterDrop.SetColor("_Color", colGroundWaterDrop);
-        runningWaterSheet.SetColor("_Color", colRunningWaterSheet);
+        fallingWater.SetColor("_BaseColor", colFallingWater);
+        groundWaterSplash.SetColor("_BaseColor", colGroundWaterSplash);
+        groundWaterDrop.SetColor("_BaseColor", colGroundWaterDrop);
+        runningWaterSheet.SetColor("_BaseColor", colRunningWaterSheet);
         waterStream.SetColor("_Color", colWaterStream);
         waterDroplets.SetColor("_Color", colWaterDroplets);
         groundWaterRings.SetColor("_Color", colGroundWaterRings);
@@ -87,10 +87,10 @@ public class WaterIngresCoordinator : MonoBehaviour
         float lerpDuration = 6f; // Duration of the lerp in seconds
     
         // Start coroutines for each color transition
-        StartCoroutine(LerpMaterialColor(fallingWater, "_Color", targetAlpha, lerpDuration));
-        StartCoroutine(LerpMaterialColor(groundWaterSplash, "_Color", targetAlpha, lerpDuration));
-        StartCoroutine(LerpMaterialColor(groundWaterDrop, "_Color", targetAlpha, lerpDuration));
-        StartCoroutine(LerpMaterialColor(runningWaterSheet, "_Color", targetAlpha, lerpDuration));
+        StartCoroutine(LerpMaterialColor(fallingWater, "_BaseColor", targetAlpha, lerpDuration));
+        StartCoroutine(LerpMaterialColor(groundWaterSplash, "_BaseColor", targetAlpha, lerpDuration));
+        StartCoroutine(LerpMaterialColor(groundWaterDrop, "_BaseColor", targetAlpha, lerpDuration));
+        StartCoroutine(LerpMaterialColor(runningWaterSheet, "_BaseColor", targetAlpha, lerpDuration));
         StartCoroutine(LerpMaterialColor(waterStream, "_Color", targetAlpha, lerpDuration));
         StartCoroutine(LerpMaterialColor(waterDroplets, "_Color", targetAlpha, lerpDuration));
         StartCoroutine(LerpMaterialColor(groundWaterRings, "_Color", targetAlpha, lerpDuration));
