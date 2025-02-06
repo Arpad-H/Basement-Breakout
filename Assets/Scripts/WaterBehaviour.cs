@@ -23,6 +23,8 @@ public class WaterBehaviour : MonoBehaviour
     [SerializeField] private float waveSpeed = 20f;
     [SerializeField] private float Amplitude = 1;
 
+    static uint DCount = 7;
+
     [SerializeField] private Vector2[] waveDirections =
     {
         new Vector2(0.53f, 0.45f),
@@ -32,6 +34,59 @@ public class WaterBehaviour : MonoBehaviour
         new Vector2(-0.729f, -0.694f),
         new Vector2(-0.248f, 0.968f),
         new Vector2(0.844f, -0.538f)
+    };
+
+    private static uint LCount = 6;
+
+    private static float[] Lengths =
+    {
+        3.56f,
+        2.85f,
+        2.10f,
+        1.30f,
+        1.10f,
+        1.2f
+    };
+
+    static uint SCount = 5;
+
+    static float[] SteepnessRange =
+    {
+        1.0f,
+        1.8f,
+        1.6f,
+        1.25f,
+        0.5f
+    };
+
+    static uint SpCount = 9;
+
+    static float[] Speeds =
+    {
+        0.62f,
+        -0.8f,
+        0.45f,
+        -0.75f,
+        0.88f,
+        0.70f,
+        -0.56f,
+        0.35f,
+        -0.71f
+    };
+
+    struct WaveData
+    {
+        Vector4 wave;
+        float speed;
+    };
+
+    struct Wave
+    {
+        float Length;
+        float Steepness;
+        float Speed;
+        float Amplitude;
+        Vector2 Direction;
     };
 
     private const float GRAVITY = 9.81f;
@@ -62,16 +117,16 @@ public class WaterBehaviour : MonoBehaviour
 
     public void HandleGameStateChanged(GameManager.GameState newState)
     {
-        Debug.Log("WaterBehaviour: GameState changed to " + newState);
+        // Debug.Log("WaterBehaviour: GameState changed to " + newState);
         if (newState == GameManager.GameState.Game)
         {
-            Debug.Log("WaterBehaviour: GameState is now 'Game'. Starting flooding.");
+            // Debug.Log("WaterBehaviour: GameState is now 'Game'. Starting flooding.");
             waterSim.SetActive(true);
             isFlooding = true;
         }
         else
         {
-            Debug.Log($"WaterBehaviour: GameState changed to {newState}. Flooding stopped.");
+            // Debug.Log($"WaterBehaviour: GameState changed to {newState}. Flooding stopped.");
             isFlooding = false;
         }
     }
@@ -108,10 +163,11 @@ public class WaterBehaviour : MonoBehaviour
 
         for (int i = 0; i < waveCount; i++)
         {
-            float length = waveLength;
-            float steepness = waveSteepness;
-            float speed = waveSpeed;
-            Vector2 direction = waveDirections[i];
+            float steepnessMul = Mathf.Lerp(1.0f, 0.1f, (1.0f / 32.0f) * i);
+            float length = Lengths[i % LCount] * waveLength;
+            float steepness = SteepnessRange[i % SCount] * waveSteepness * steepnessMul;
+            float speed = Speeds[i % SpCount] * waveSpeed;
+            Vector2 direction = waveDirections[i % DCount].normalized;
 
             float dispersion = 6.28318f / length;
             float c = Mathf.Sqrt(GRAVITY / dispersion) * speed;
@@ -127,7 +183,8 @@ public class WaterBehaviour : MonoBehaviour
             displacement.z += direction.y * (a * cosF);
             displacement.y += a * sinF;
         }
+
         Debug.Log("Displacement: " + displacement);
-        return displacement + transform.position;
+        return Amplitude * displacement + transform.position;
     }
 }
