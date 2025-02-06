@@ -56,7 +56,7 @@ public class GameManager : MonoBehaviour
 
     private void OnWaterStateChangedPlayer(bool state)
     {
-        Debug.LogError("[GameManager]: OnWaterStateChangedPlayer: " + state);
+       
         playerIsInWhater = state;
         checkPlayerAndCableInWhater(playerIsInWhater, cableISinWater, electricityIsActive);
     }
@@ -64,7 +64,7 @@ public class GameManager : MonoBehaviour
 
     private void OnLeverAction(bool state)
     {
-        Debug.LogError("[GameManager]: electricityIsActive: " + state);
+  
         electricityIsActive = state;
         checkPlayerAndCableInWhater(playerIsInWhater, cableISinWater, electricityIsActive);
     }

@@ -8,33 +8,30 @@ using UnityEngine.Video;
 
 public class ElectricictyManager : MonoBehaviour
 {
-    /*
-     * TODO: TV disablen
-     */
     
-    private List<Light> lights = new List<Light>();
+    
+    
     private GameObject tv;
     private VideoPlayer Videoplayer;
     
-    [Header("Faerie Lights")] 
-    public List<GameObject> faerieLights;
-    public Material faerieLightsMaterialOn;
-    public Material faerieLightsMaterialOff;
-    [Header("other Lights")] 
-    public List<GameObject> fluorescentLights;
-    public Material fluorescentLightsMaterialOn;
+    [Header("LitScene")] 
+    public Texture2D[] lightmapColorLit, lightmapDirLit;
+    private LightmapData[] lightmapLit;
+    
+    [Header("DarkScene")] 
+    public Texture2D[] lightmapColorDark, lightmapDirDark;
+    private LightmapData[] lightmapDark;
+    
+    [Header("Other")] 
     public GameObject electricitySparks;
     private void Awake()
     {
-        
-        
         LeverInteractable.onLeverAction += LeverInteractableOnonLeverAction;
-        
     }
 
     private void LeverInteractableOnonLeverAction(bool state)
     {
-        //Debug.Log($"[ElectricityManager] Lever Interactable is on {state}");
+        
         if (state)
         {
            enableAllLights(); 
@@ -51,8 +48,9 @@ public class ElectricictyManager : MonoBehaviour
 
     private void Start()
     {
-        
-        findAllLights();
+        InitLightmaps();
+
+
         tv = GameObject.Find("TV Demo");
         if (tv != null)
         {
@@ -63,70 +61,47 @@ public class ElectricictyManager : MonoBehaviour
         {
             Debug.LogError("[ElectricityManager] GamObject tv is null");
         }
-       
+        // lightmapSet1 = CreateLightmapData(lightmapColor1);
+        // lightmapSet2 = CreateLightmapData(lightmapColor2);
+
+      
     }
 
-
-    private void findAllLights()
+    private void InitLightmaps()
     {
-        GameObject[] lightsObjects = GameObject.FindGameObjectsWithTag("Light");
-        foreach (GameObject lightObject in lightsObjects)
+        List<LightmapData> dlightmap = new List<LightmapData>();
+        for (int i = 0; i < lightmapColorDark.Length; i++)
         {
-            Light lightComponent = lightObject.GetComponent<Light>();
-            if (lightComponent != null)
-            {
-                lights.Add(lightComponent);
-            }
+            LightmapData lmd = new LightmapData();
+            lmd.lightmapColor = lightmapColorDark[i];
+            lmd.lightmapDir = lightmapDirDark[i];
+            dlightmap.Add(lmd);
         }
+        lightmapDark = dlightmap.ToArray();
+        
+        List<LightmapData> llightmap = new List<LightmapData>();
+        for (int i = 0; i < lightmapColorLit.Length; i++)
+        {
+            LightmapData lmd = new LightmapData();
+            lmd.lightmapColor = lightmapColorLit[i];
+            lmd.lightmapDir = lightmapDirLit[i];
+            llightmap.Add(lmd);
+        }
+        lightmapLit = llightmap.ToArray();
+        
+        LightmapSettings.lightmaps = lightmapLit;
     }
 
     private void disableAllLights()
     {
-        foreach (Light light in lights)
-        {
-            light.enabled = false;
-        }
-        
-        faerieLightsMaterialOn.SetInt("Emission" , 0);
-        // foreach (GameObject faerieLight in faerieLights)
-        // {
-        //     MeshRenderer[] meshRenderers = faerieLight.GetComponentsInChildren<MeshRenderer>();
-        //     meshRenderers = meshRenderers.Skip(1).ToArray();
-        //     foreach (MeshRenderer mr in meshRenderers )
-        //     {
-        //         mr.material = faerieLightsMaterialOff;
-        //     }
-        // }
-        //
-        // foreach (GameObject fluorescentLight in fluorescentLights)
-        // {
-        //     // fluorescentLight.GetComponentInChildren<MeshRenderer>().material = fluorescentLightsMaterialOff;
-        // }
-     
-        
+       LightmapSettings.lightmaps = lightmapDark;
+       // Debug.Log("Disable all lights");
     }
 
     private void enableAllLights()
     {
-        foreach (Light light in lights)
-        {
-            light.enabled = true;
-            //Debug.Log($"[ElectricityManager] Light {light.name} is enabled");
-        }
-        faerieLightsMaterialOn.SetInt("Emission" , 1);
-        // foreach (GameObject faerieLight in faerieLights)
-        // {
-        //     MeshRenderer[] meshRenderers = faerieLight.GetComponentsInChildren<MeshRenderer>();
-        //     meshRenderers = meshRenderers.Skip(1).ToArray();
-        //     foreach (MeshRenderer mr in  meshRenderers)
-        //     {
-        //         mr.material = faerieLightsMaterialOn;
-        //     }
-        // }
-        // foreach (GameObject fluorescentLight in fluorescentLights)
-        // {
-        //     fluorescentLight.GetComponentInChildren<MeshRenderer>().material = fluorescentLightsMaterialOn;
-        // }
+        LightmapSettings.lightmaps = lightmapLit;
+        // Debug.Log("Enable all lights");
     }
 
 
