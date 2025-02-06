@@ -31,7 +31,7 @@ public class ElectricictyManager : MonoBehaviour
 
     private void LeverInteractableOnonLeverAction(bool state)
     {
-        Debug.Log($"[ElectricityManager] Lever Interactable is on {state}");
+        
         if (state)
         {
            enableAllLights(); 
@@ -47,6 +47,27 @@ public class ElectricictyManager : MonoBehaviour
     }
 
     private void Start()
+    {
+        InitLightmaps();
+
+
+        tv = GameObject.Find("TV Demo");
+        if (tv != null)
+        {
+            Videoplayer = tv.GetComponent<VideoPlayer>();
+            
+        }
+        else
+        {
+            Debug.LogError("[ElectricityManager] GamObject tv is null");
+        }
+        // lightmapSet1 = CreateLightmapData(lightmapColor1);
+        // lightmapSet2 = CreateLightmapData(lightmapColor2);
+
+      
+    }
+
+    private void InitLightmaps()
     {
         List<LightmapData> dlightmap = new List<LightmapData>();
         for (int i = 0; i < lightmapColorDark.Length; i++)
@@ -68,23 +89,9 @@ public class ElectricictyManager : MonoBehaviour
         }
         lightmapLit = llightmap.ToArray();
         
-        
-        tv = GameObject.Find("TV Demo");
-        if (tv != null)
-        {
-            Videoplayer = tv.GetComponent<VideoPlayer>();
-            
-        }
-        else
-        {
-            Debug.LogError("[ElectricityManager] GamObject tv is null");
-        }
-        // lightmapSet1 = CreateLightmapData(lightmapColor1);
-        // lightmapSet2 = CreateLightmapData(lightmapColor2);
-
-       LightmapSettings.lightmaps = lightmapLit;
+        LightmapSettings.lightmaps = lightmapLit;
     }
-    
+
     private void disableAllLights()
     {
        LightmapSettings.lightmaps = lightmapDark;
@@ -107,9 +114,5 @@ public class ElectricictyManager : MonoBehaviour
     private void enableTV()
     {
         Videoplayer.enabled = true;
-    }
-    private void ApplyLightmap(LightmapData[] newLightmaps)
-    {
-        LightmapSettings.lightmaps = newLightmaps;
     }
 }
