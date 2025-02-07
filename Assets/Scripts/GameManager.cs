@@ -27,6 +27,7 @@ public class GameManager : MonoBehaviour
         CustomCollisionEventHandler.GameStateChangedCostomCollisionEventHandler += UpdateGameState;
         PlayerManager.GameStateChangedPlayer += UpdateGameState;
         WinCollision.GameStateChangedWinCollision += UpdateGameState;
+        TriggerGameStateOnCollsion.GameStateChangedTriggerGameStateOnCollsion += UpdateGameState;
     }
 
     private void OnDestroy()
@@ -38,6 +39,7 @@ public class GameManager : MonoBehaviour
         CustomCollisionEventHandler.GameStateChangedCostomCollisionEventHandler -= UpdateGameState;
         PlayerManager.GameStateChangedPlayer -= UpdateGameState;
         WinCollision.GameStateChangedWinCollision -= UpdateGameState;
+        TriggerGameStateOnCollsion.GameStateChangedTriggerGameStateOnCollsion -= UpdateGameState;
     }
 
     private void Start()
