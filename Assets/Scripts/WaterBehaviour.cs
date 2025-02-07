@@ -184,7 +184,7 @@ public class WaterBehaviour : MonoBehaviour
             displacement.y += a * sinF;
         }
 
-        Debug.Log("Displacement: " + displacement);
+      
         return Amplitude * displacement + transform.position;
     }
 }
