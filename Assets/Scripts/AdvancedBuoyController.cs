@@ -15,16 +15,20 @@ public class AdvancedBuoyController : MonoBehaviour {
 	private WaterBehaviour water;
 	public bool applyRipple;
 	
+	
 	[SerializeField] float front;
 	[SerializeField] float back;
 	[SerializeField] float sides;
-	[SerializeField] Transform container;
+	// [SerializeField] Transform container;
+	[SerializeField] Rigidbody rb;
 	[SerializeField] float heightOffset = 0f;
 	[SerializeField, Range(0f,20f)] float floatDynamic = 10f;
 	[SerializeField, Range(0f,20f)] float pitchDynamic = 5f;
 	[SerializeField, Range(0f,20f)] float rollDynamic = 2.5f;
+	
 
 	void Start() {
+		rb = this.GetComponent<Rigidbody>();
 		water = FindObjectOfType<WaterBehaviour>();
 		if (water == null) {
 			Debug.LogError("No WaterBehaviour found in scene");
@@ -33,33 +37,52 @@ public class AdvancedBuoyController : MonoBehaviour {
 
 
 	public void Update() {
-
+		// if (water.transform.position.y+0.09f < this.transform.position.y)
+		// {
+		// 	return;
+		// }
 		float frontHeight = GetWaterHeight(transform.position + transform.forward * front);
 		float backHeight = GetWaterHeight(transform.position - transform.forward * back);
 		float rightHeight = GetWaterHeight(transform.position + transform.right * sides);
 		float leftHeight = GetWaterHeight(transform.position - transform.right * sides);
 		
-		Debug.Log("frontHeight: " + frontHeight);
-		Debug.Log("backHeight: " + backHeight);
-		Debug.Log("rightHeight: " + rightHeight);
-		Debug.Log("leftHeight: " + leftHeight);
 		
-		
-		float pitch = backHeight - frontHeight;
-		float roll = rightHeight - leftHeight;
+		// float pitch = backHeight - frontHeight;
+		// float roll = rightHeight - leftHeight;
 		
 		float minHeight = Mathf.Min(frontHeight, backHeight, rightHeight, leftHeight);
 		float lowAvgHeight = (frontHeight + backHeight + rightHeight + leftHeight + minHeight) / 5f;
 		lowAvgHeight += heightOffset;
 		
-		container.position = Vector3.Lerp(container.position, new Vector3(container.position.x, lowAvgHeight, container.position.z), floatDynamic * Time.deltaTime);
+		float waterLevel = lowAvgHeight;
+		float objectHeight = transform.position.y;
+		
+		if (objectHeight < waterLevel) // Object is submerged
+		{
+			float depth = waterLevel - objectHeight;
+			Vector3 buoyancyForce = new Vector3(0f, depth * floatDynamic, 0f);
+			rb.AddForce(buoyancyForce, ForceMode.Acceleration);
+		}
+		else
+		{
+			Vector3 buoyancyForce = new Vector3(0f, 0f, 0f);
+			rb.AddForce(buoyancyForce, ForceMode.Acceleration);
+		}
 
-		container.localEulerAngles = new Vector3(
-			Mathf.LerpAngle(container.localEulerAngles.x, pitch * pitchDynamic, Time.deltaTime), 
+		// Compute pitch and roll
+		float pitch = backHeight - frontHeight;
+		float roll = rightHeight - leftHeight;
+
+		Vector3 torque = new Vector3(
+			pitch * pitchDynamic, 
 			0f, 
-			Mathf.LerpAngle(container.localEulerAngles.z, roll * rollDynamic, Time.deltaTime)
+			roll * rollDynamic
 		);
+
+		//rb.AddTorque(torque, ForceMode.Acceleration);
 	}
+
+	
 
 	float GetWaterHeight(Vector3 pos) {
 		Vector3 myPos = water.transform.InverseTransformPoint(pos);
@@ -71,9 +94,9 @@ public class AdvancedBuoyController : MonoBehaviour {
 
 	void OnDrawGizmos() {
 		Gizmos.color = Color.yellow;
-		Gizmos.DrawSphere(transform.position + transform.forward * front, 0.5f);
-		Gizmos.DrawSphere(transform.position - transform.forward * back, 0.5f);
-		Gizmos.DrawSphere(transform.position + transform.right * sides, 0.5f);
-		Gizmos.DrawSphere(transform.position - transform.right * sides, 0.5f);
+		Gizmos.DrawSphere(transform.position + transform.forward * front, 0.05f);
+		Gizmos.DrawSphere(transform.position - transform.forward * back, 0.05f);
+		Gizmos.DrawSphere(transform.position + transform.right * sides, 0.05f);
+		Gizmos.DrawSphere(transform.position - transform.right * sides, 0.05f);
 	}
 }
