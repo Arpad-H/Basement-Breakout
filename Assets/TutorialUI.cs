@@ -15,6 +15,13 @@ public class TutorialUI : MonoBehaviour
         "Schritt 2: Greife Objekte mit dem Trigger...",
         "Schritt 3: Nutze die A-Taste, um Aktionen auszuführen..."
     };
+    
+    void Start()
+    {
+        CanvasGroup canvasGroup = GetComponent<CanvasGroup>();
+        canvasGroup.alpha = Mathf.Lerp(canvasGroup.alpha, 1, Time.deltaTime * 3);
+
+    }
 
     void Update()
     {

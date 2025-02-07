@@ -12,9 +12,9 @@ using UnityEngine.XR;
 public class PlayerManager : MonoBehaviour
 {
    
-    private Vector3 STARTSCENEPOS = new Vector3(-1.545f, 0.0f, 2.23f);
+    private Vector3 STARTSCENEPOS = new Vector3(-1.818f, 0.463f, 1.315f);
     private Vector3 STARTMENUPOS = new Vector3(-15.5f, 2.88f, 3.41f);
-    private Vector3 GAMEOVERMENUPOS = new Vector3(54f, 10f, 1f);
+    private Vector3 GAMEOVERMENUPOS = new Vector3(-15.5f, 2.88f, 3.41f);
 
     [SerializeField] private GameObject[] rayInteractor;
     [SerializeField] private GameObject[] teleportInteractor;
@@ -49,12 +49,12 @@ public class PlayerManager : MonoBehaviour
         DeactivateRayInteractor();
         _audioSource = GetComponent<AudioSource>();
         _ovrManager = GetComponent<OVRManager>();
-        if (startAtMenu && startAtMenu)
+        if (startAtMenu)
         {
-            //setPlayerPosToStartMenu();
+            setPlayerPosToStartMenu();
         }else if (!startAtMenu)
         {
-            loadGamePlayScene();
+            GameStateChangedPlayer?.Invoke(GameManager.GameState.Tutorial);
         }
         
         //_introducingTV = Resources.Load<AudioClip>("Audio/voice/Line1fin.mp3");
@@ -85,16 +85,7 @@ public class PlayerManager : MonoBehaviour
         CenterEnvironment(STARTSCENEPOS, SceneRoom);
     }
 
-    public void loadGamePlayScene()
-    {
-        // //ActivateTeleportInteractor();
-        // DeactivateTeleportInteractor();
-        // //SetPlayerPositionToStartGame();
-        // DeactivateRayInteractor();
-        // //DeactivatePassthrough();
-        _audioSource.Play();
-        GameStateChangedPlayer?.Invoke(GameManager.GameState.Tutorial);
-    }
+    
 
 
     public void setPlayerPosToStartMenu()
@@ -182,7 +173,7 @@ public class PlayerManager : MonoBehaviour
         }
         else if (gameState == GameManager.GameState.Tutorial)
         {
-            //DeactivatePassthrough();
+            _audioSource.Play();
             DeactivateRayInteractor();
             SetPlayerPositionToStartGame();
         }
@@ -196,12 +187,12 @@ public class PlayerManager : MonoBehaviour
     
     private void RotateEnvironment(Transform environmentParent)
     {
-        Quaternion targetRotation = Quaternion.Euler(0, 180, 0);
-        float currentYRotation = cameraRig.centerEyeAnchor.rotation.eulerAngles.y;
-        Quaternion currentRotation = Quaternion.Euler(0, currentYRotation, 0);
-        Quaternion deltaRotation = targetRotation * Quaternion.Inverse(currentRotation);
-        environmentParent.rotation = deltaRotation;
-        Debug.LogWarning($"[PlayerManager]: Rotating environment by {environmentParent.rotation.eulerAngles} // DelatRotation: {deltaRotation.eulerAngles} // CurrentRotation: {currentRotation.eulerAngles}");
+        // Quaternion targetRotation = Quaternion.Euler(0, 180, 0);
+        // float currentYRotation = cameraRig.centerEyeAnchor.rotation.eulerAngles.y;
+        // Quaternion currentRotation = Quaternion.Euler(0, currentYRotation, 0);
+        // Quaternion deltaRotation = targetRotation * Quaternion.Inverse(currentRotation);
+        // environmentParent.rotation = deltaRotation;
+        // Debug.LogWarning($"[PlayerManager]: Rotating environment by {environmentParent.rotation.eulerAngles} // DelatRotation: {deltaRotation.eulerAngles} // CurrentRotation: {currentRotation.eulerAngles}");
     }
     
     public void CenterEnvironment(Vector3 targetPosition, Transform environmentParent)
