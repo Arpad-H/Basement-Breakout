@@ -80,7 +80,7 @@ public class SliceObject : MonoBehaviour {
         }
 
         if (transform.position.y < waterPos.position.y) {
-            noWaterDamage = false;
+            //noWaterDamage = false;
         }
     }
     
