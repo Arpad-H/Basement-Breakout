@@ -8,12 +8,12 @@ public class Dart : MonoBehaviour
     {
         if (other.gameObject.layer == 25)
         {
-            gameObject.GetComponent<Rigidbody>().isKinematic = true;
+            gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
         }
     }
 
     public void isNotKinematic()
     {
-        gameObject.GetComponent<Rigidbody>().isKinematic = false;
+        gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
     }
 }
