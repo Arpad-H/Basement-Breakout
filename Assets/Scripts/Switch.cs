@@ -21,19 +21,16 @@ public class Switch : OneGrabRotateTransformer
     void Update()
     {
         float relativAngle = Mathf.DeltaAngle(0, (transform.rotation.eulerAngles.x - _vector3.x) -360);
-        Debug.Log($"[Switch] {relativAngle} // {transform.rotation.eulerAngles}");
         bool isAtMaxAngle = relativAngle >= rotateTransform.Constraints.MaxAngle.Value;
         bool isAtMinAngle = relativAngle <= rotateTransform.Constraints.MinAngle.Value;
 
         if (isAtMaxAngle && !_previousMaxAngleState) 
         {
-            Debug.Log($"[Switch] Switch is off {relativAngle}");
             switchObject.SetActive(false);
             _switchState = !_switchState;
         }
         else if (isAtMinAngle && !_previousMinAngleState)
         {
-            Debug.Log($"[Switch] Switch is on {relativAngle}");
             switchObject.SetActive(true);
             _switchState = !_switchState;
         }

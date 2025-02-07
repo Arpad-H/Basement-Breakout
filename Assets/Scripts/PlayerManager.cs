@@ -199,7 +199,23 @@ public class PlayerManager : MonoBehaviour
     {
         //environmentParent.position += targetPosition - transform.position;
     }
-    
-    
-    
+
+    void OnTriggerEnter(Collider other)
+    {
+        
+        if (other.gameObject.CompareTag("GameBorder"))
+        {
+            Debug.Log($"[PlayerManager]: Entering collision with {other.gameObject.name}");
+            AcivatePassthrough();
+        }
+    }
+
+    void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.CompareTag("GameBorder"))
+        {
+            Debug.Log($"[PlayerManager]: Exiting collision with {other.gameObject.name}");
+            DeactivatePassthrough();
+        }
+    }
 }
