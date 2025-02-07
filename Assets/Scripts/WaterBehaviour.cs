@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class WaterBehaviour : MonoBehaviour
 {
-    [SerializeField] private float floodingSpeed = 0.5f;
+    [SerializeField] private float floodingSpeed = 0.08f;
     [SerializeField] private GameObject heightPlane;
 
     [SerializeField] private GameObject waterSim;
