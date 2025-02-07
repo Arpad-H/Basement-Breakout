@@ -74,7 +74,7 @@ MonoBehaviour:
   _twoGrabTransformer: {fileID: 0}
   _targetTransform: {fileID: 3807752464124475891}
   _maxGrabPoints: -1
-  _rigidbody: {fileID: 3754028196475169927}
+  _rigidbody: {fileID: 0}
   _kinematicWhileSelected: 1
   _throwWhenUnselected: 1
 --- !u!114 &6797110628553493060
@@ -94,7 +94,7 @@ MonoBehaviour:
   _maxSelectingInteractors: -1
   _data: {fileID: 0}
   _pointableElement: {fileID: 6824839775708837738}
-  _rigidbody: {fileID: 3754028196475169927}
+  _rigidbody: {fileID: 0}
   _physicsGrabbable: {fileID: 0}
   _resetGrabOnGrabsUpdated: 1
   _scoringModifier:
@@ -135,7 +135,7 @@ MonoBehaviour:
   _maxSelectingInteractors: -1
   _data: {fileID: 0}
   _pointableElement: {fileID: 6824839775708837738}
-  _rigidbody: {fileID: 3754028196475169927}
+  _rigidbody: {fileID: 0}
   _grabSource: {fileID: 0}
   _useClosestPointAsGrabSource: 0
   _releaseDistance: 0
@@ -181,7 +181,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3807752464124475891}
-  - component: {fileID: 3754028196475169927}
   - component: {fileID: 5870136186464186610}
   - component: {fileID: 5676256767876566885}
   m_Layer: 0
@@ -210,33 +209,6 @@ Transform:
   - {fileID: 3418204511770141650}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 126.61, z: 0}
---- !u!54 &3754028196475169927
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3809577666620883163}
-  serializedVersion: 4
-  m_Mass: 32000
-  m_Drag: 0
-  m_AngularDrag: 1.5
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 1
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!114 &5870136186464186610
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -269,6 +241,7 @@ MonoBehaviour:
   back: 1
   sides: 1
   container: {fileID: 3807752464124475891}
+  rb: {fileID: 0}
   heightOffset: 0
   floatDynamic: 4.3
   pitchDynamic: 5
