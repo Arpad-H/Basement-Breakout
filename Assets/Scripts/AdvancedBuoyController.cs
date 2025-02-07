@@ -39,6 +39,12 @@ public class AdvancedBuoyController : MonoBehaviour {
 		float rightHeight = GetWaterHeight(transform.position + transform.right * sides);
 		float leftHeight = GetWaterHeight(transform.position - transform.right * sides);
 		
+		Debug.Log("frontHeight: " + frontHeight);
+		Debug.Log("backHeight: " + backHeight);
+		Debug.Log("rightHeight: " + rightHeight);
+		Debug.Log("leftHeight: " + leftHeight);
+		
+		
 		float pitch = backHeight - frontHeight;
 		float roll = rightHeight - leftHeight;
 		
@@ -57,8 +63,6 @@ public class AdvancedBuoyController : MonoBehaviour {
 
 	float GetWaterHeight(Vector3 pos) {
 		Vector3 myPos = water.transform.InverseTransformPoint(pos);
-		myPos = water.GetLocalVertexPosition(myPos, applyRipple);
-		// Vector3 worldPos = transform.position;
 		return water.GetWaveDisplacement(myPos, Time.time).y;
 		// return water.transform.TransformPoint(myPos).y;
 		// return worldPos.y;
