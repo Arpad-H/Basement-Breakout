@@ -63,6 +63,11 @@ public class AdvancedBuoyController : MonoBehaviour {
 			Vector3 buoyancyForce = new Vector3(0f, depth * floatDynamic, 0f);
 			rb.AddForce(buoyancyForce, ForceMode.Acceleration);
 		}
+		else
+		{
+			Vector3 buoyancyForce = new Vector3(0f, 0f, 0f);
+			rb.AddForce(buoyancyForce, ForceMode.Acceleration);
+		}
 
 		// Compute pitch and roll
 		float pitch = backHeight - frontHeight;
@@ -74,7 +79,7 @@ public class AdvancedBuoyController : MonoBehaviour {
 			roll * rollDynamic
 		);
 
-		rb.AddTorque(torque, ForceMode.Acceleration);
+		//rb.AddTorque(torque, ForceMode.Acceleration);
 	}
 
 	

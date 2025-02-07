@@ -71,7 +71,7 @@ public class RCBoatController : MonoBehaviour
             teleportIndicator2.SetActive(true);
             direction = Vector2.zero;
         }
-        moveBoat();
+        //moveBoat();
     }
 
     private void moveBoat()
