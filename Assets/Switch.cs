@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class Switch : MonoBehaviour
 {
-    [SerializeField] public OneGrabRotateTransformer rotateTransform;
+    /*[SerializeField] public OneGrabRotateTransformer rotateTransform;
     [SerializeField] public GameObject switchObject;
     private bool _switchState = false;
     
@@ -33,6 +33,6 @@ public class Switch : MonoBehaviour
 
         _previousMaxAngleState = isAtMaxAngle;
         _previousMinAngleState = isAtMinAngle;
-    }
+    }*/
 }
 
