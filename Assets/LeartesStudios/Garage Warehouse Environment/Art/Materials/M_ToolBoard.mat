@@ -21,16 +21,17 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: M_ToolBoard
-  m_Shader: {fileID: -6465566751694194690, guid: f0f3d15d48f17cf4483e9cb74790e26d, type: 3}
+  m_Shader: {fileID: 4800000, guid: 0ca6dca7396eb48e5849247ffd444914, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
-  m_ValidKeywords: []
+  m_ValidKeywords:
+  - _NORMALMAP
   m_InvalidKeywords:
-  - _DISABLE_SSR_TRANSPARENT
+  - _EMISSION
   m_LightmapFlags: 2
   m_EnableInstancingVariants: 1
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: 2225
+  m_CustomRenderQueue: -1
   stringTagMap:
     MotionVector: User
     RenderType: Opaque
@@ -44,8 +45,16 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - _BaseMap:
+        m_Texture: {fileID: 2800000, guid: 7a3573cc51a0bd946a21b943d27e285c, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _Base_Color:
         m_Texture: {fileID: 2800000, guid: 7a3573cc51a0bd946a21b943d27e285c, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _BumpMap:
+        m_Texture: {fileID: 2800000, guid: 4ce5d7ec0d636aa418d4300575dfa412, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Color_Mask01:
@@ -151,16 +160,19 @@ Material:
     - _Blend: 0
     - _BlendMode: 0
     - _BlendModePreserveSpecular: 0
+    - _BlendOp: 0
     - _CastShadows: 1
     - _ConservativeDepthOffsetEnable: 0
     - _Cull: 2
     - _CullMode: 2
     - _CullModeForward: 2
+    - _Cutoff: 0.5
     - _DepthOffsetEnable: 0
     - _DoubleSidedEnable: 0
     - _DoubleSidedGIMode: 0
     - _DoubleSidedNormalMode: 2
     - _DstBlend: 0
+    - _DstBlendAlpha: 0
     - _Dust_Tiling: 2.5
     - _Dust_on_top: 1
     - _Emission_Intensity: 0
@@ -196,6 +208,7 @@ Material:
     - _Rim_Opacity: 1
     - _Roughness_Strength: 1
     - _SrcBlend: 1
+    - _SrcBlendAlpha: 1
     - _StencilRef: 0
     - _StencilRefDepth: 8
     - _StencilRefDistortionVec: 4
@@ -237,6 +250,7 @@ Material:
     - _ZWrite: 1
     - _ZWriteControl: 0
     m_Colors:
+    - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color_Tint: {r: 0, g: 0, b: 0, a: 0}
     - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}
     - _Dust_Color: {r: 1, g: 1, b: 1, a: 0}
