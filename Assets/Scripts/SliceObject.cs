@@ -39,6 +39,9 @@ public class SliceObject : MonoBehaviour {
     private HapticClipPlayer pullHapticPlayer;
     private GameObject PullMeterPointer;
     
+    private bool leftGrabbed = false;
+    private bool rightGrabbed = false;
+    
     public static event Action<bool> OnHasFuelChanged; 
     
     void Start() {
@@ -77,30 +80,36 @@ public class SliceObject : MonoBehaviour {
     }
     
     public void HandleAudioAndHaptics() {
-        if (currentPullDistance > 0.3f && currentPullDistance > previousPullDistance) {
-            pullHapticPlayer.Play(Controller.Both);
-        }
-        previousPullDistance = currentPullDistance;
-        
-        if (started) {
-            runningHapticPlayer.Play(Controller.Both);
-            if (canCut) {
-                if (!chainsawCutSound.isPlaying) {
-                    chainsawCutSound.Play();
-                    chainsawIdleSound.Stop();
-                   
-                }
-            } else {
-                if (!chainsawIdleSound.isPlaying) {
-                    chainsawIdleSound.Play();
-                    chainsawCutSound.Stop();
-                }
-            }
+        if (!leftGrabbed && !rightGrabbed) {
+            started = false;
+            chainsawIdleSound.Stop();
+            chainsawCutSound.Stop();
+            runningHapticPlayer.Stop();
+            pullHapticPlayer.Stop();
         }
 
-        if (!noWaterDamage && !canCut) {
-            chainsawCutSound.Stop();
-            chainsawIdleSound.Stop();
+        if (leftGrabbed || rightGrabbed) {
+            if (currentPullDistance > 0.3f && currentPullDistance > previousPullDistance) {
+                pullHapticPlayer.Play(Controller.Both);
+            }
+
+            previousPullDistance = currentPullDistance;
+
+            if (started) {
+                runningHapticPlayer.Play(Controller.Both);
+                if (canCut) {
+                    if (!chainsawCutSound.isPlaying) {
+                        chainsawCutSound.Play();
+                        chainsawIdleSound.Stop();
+                    }
+                }
+                else {
+                    if (!chainsawIdleSound.isPlaying) {
+                        chainsawIdleSound.Play();
+                        chainsawCutSound.Stop();
+                    }
+                }
+            }
         }
     }
     
@@ -152,14 +161,31 @@ public class SliceObject : MonoBehaviour {
         
         Fuelpointer.transform.Rotate(0, fuel, 0);
     }
+    
+    
+    public void leftHandUngrabbed() {
+        leftGrabbed = false;
+    }
+    public void leftHandGrabbed() {
+        leftGrabbed = true;
+    }
+    
+    public void rightHandUngrabbed() {
+        rightGrabbed = false;
+    }
+    
+    public void rightHandGrabbed() {
+        rightGrabbed = true;
+    }
+
+    
 
     public void sawing() {
-        if(started)
-            canCut = true;
+        canCut = started;
     }
     
     public void notSawing() {
+        chainsawCutSound.Stop();
         canCut = false;
-        //animator.SetBool("isSawing", false);
     }
 }
