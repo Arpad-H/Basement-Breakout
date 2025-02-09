@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using EzySlice;
 using Oculus.Haptics;
+using Unity.VisualScripting;
 using UnityEngine.InputSystem;
 using UnityEngine.UIElements;
 using UnityEngine.XR;
@@ -19,7 +20,7 @@ public class SliceObject : MonoBehaviour {
     [SerializeField] private float cutForce = 20;
     [SerializeField] private Transform waterPos;
     [SerializeField] private AudioClip chainsawRefuelSound;
-    [SerializeField] private AudioSource chainsawStartUpSound;
+    [SerializeField] private AudioSource chainsawCutSound;
     [SerializeField] private AudioSource chainsawIdleSound;
     [SerializeField] private HapticClip chainsawRunningHapticClip;
     [SerializeField] private HapticClip chainsawPullHapticClip;
@@ -37,6 +38,9 @@ public class SliceObject : MonoBehaviour {
     private HapticClipPlayer runningHapticPlayer;
     private HapticClipPlayer pullHapticPlayer;
     private GameObject PullMeterPointer;
+    
+    private bool leftGrabbed = false;
+    private bool rightGrabbed = false;
     
     public static event Action<bool> OnHasFuelChanged; 
     
@@ -62,17 +66,8 @@ public class SliceObject : MonoBehaviour {
                 started = true;
             }
         }
+        HandleAudioAndHaptics();
         
-        if (currentPullDistance > 0.3f && currentPullDistance > previousPullDistance) {
-            pullHapticPlayer.Play(Controller.Both);
-        }
-        previousPullDistance = currentPullDistance;
-        
-        if (!chainsawIdleSound.isPlaying && canCut && hasFuel && noWaterDamage) {
-            chainsawIdleSound.Play();
-            runningHapticPlayer.Play(Controller.Both);
-            //animator.SetBool("isSawing", true);
-        }
         bool hasHit = Physics.Linecast(startSlicePoint.position, endSlicePoint.position, out RaycastHit hit, slicableLayer);
         if (hasHit && canCut && hasFuel && noWaterDamage) {
             GameObject target = hit.transform.gameObject;
@@ -84,10 +79,45 @@ public class SliceObject : MonoBehaviour {
         }
     }
     
+    public void HandleAudioAndHaptics() {
+        if (!leftGrabbed && !rightGrabbed) {
+            started = false;
+            chainsawIdleSound.Stop();
+            chainsawCutSound.Stop();
+            runningHapticPlayer.Stop();
+            pullHapticPlayer.Stop();
+        }
+
+        if (leftGrabbed || rightGrabbed) {
+            if (currentPullDistance > 0.3f && currentPullDistance > previousPullDistance) {
+                pullHapticPlayer.Play(Controller.Both);
+            }
+
+            previousPullDistance = currentPullDistance;
+
+            if (started) {
+                runningHapticPlayer.Play(Controller.Both);
+                if (canCut) {
+                    if (!chainsawCutSound.isPlaying) {
+                        chainsawCutSound.volume = 1;
+                        chainsawCutSound.Play();
+                    }
+                    chainsawIdleSound.volume = Mathf.Lerp(chainsawIdleSound.volume, 0, Time.deltaTime);
+                }
+                else {
+                    if (!chainsawIdleSound.isPlaying) {
+                        chainsawIdleSound.volume = 1;
+                        chainsawIdleSound.Play();
+                    }
+                    chainsawCutSound.volume = Mathf.Lerp(chainsawCutSound.volume, 0, Time.deltaTime);
+                }
+            }
+        }
+    }
+    
     public void Slice(GameObject target) {
-        if (!chainsawStartUpSound.isPlaying) {
-            chainsawStartUpSound.Play();
-            
+        if (!chainsawCutSound.isPlaying) {
+            // chainsawCutSound.Play();
         }
         Vector3 velocity = velocityEstimator.GetVelocityEstimate();
         Vector3 planeNormal = Vector3.Cross(endSlicePoint.position - startSlicePoint.position, velocity);
@@ -133,14 +163,31 @@ public class SliceObject : MonoBehaviour {
         
         Fuelpointer.transform.Rotate(0, fuel, 0);
     }
+    
+    
+    public void leftHandUngrabbed() {
+        leftGrabbed = false;
+    }
+    public void leftHandGrabbed() {
+        leftGrabbed = true;
+    }
+    
+    public void rightHandUngrabbed() {
+        rightGrabbed = false;
+    }
+    
+    public void rightHandGrabbed() {
+        rightGrabbed = true;
+    }
+
+    
 
     public void sawing() {
-        if(started)
-            canCut = true;
+        canCut = started;
     }
     
     public void notSawing() {
+        chainsawCutSound.Stop();
         canCut = false;
-        //animator.SetBool("isSawing", false);
     }
 }

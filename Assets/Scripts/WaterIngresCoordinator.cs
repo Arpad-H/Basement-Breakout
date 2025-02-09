@@ -9,7 +9,7 @@ public class WaterIngresCoordinator : MonoBehaviour
     [Header("Objects affected by ingress")]
     // public GameObject bookshelf;
     //
-    // public GameObject burstWindow;
+    public GameObject burstWindow;
     // public GameObject guitar;
     // public GameObject beanbag;
 
@@ -66,10 +66,10 @@ public class WaterIngresCoordinator : MonoBehaviour
     //     bookshelf.GetComponent<Rigidbody>().AddForce(Vector3.right * 10000);
     // }
     //
-    // public void BurstWindow()
-    // {
-    //     burstWindow.GetComponent<burstingWindow>().BurstWindow();
-    // }
+     public void BurstWindow()
+     {
+         burstWindow.GetComponent<burstingWindow>().BurstWindow();
+     }
     //
     // public void DropGuitar()
     // {

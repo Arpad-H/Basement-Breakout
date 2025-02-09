@@ -1198,7 +1198,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blockId: f8766c17-aaf8-4b55-9431-de8deea83842
-  instanceId: b7a28dff-3875-433e-a7e4-4bce73baed39
+  instanceId: 056a0924-ec30-4df5-b9c7-6301cf2a3ada
   version: 1
   installationRoutineCheckpoint:
     _installationRoutineId: f8338144-8280-4ff6-9455-ae2bb9c20fe8
@@ -1427,7 +1427,7 @@ MonoBehaviour:
   cutForce: 20
   waterPos: {fileID: 0}
   chainsawRefuelSound: {fileID: 8300000, guid: af4f368f2f8e48545865dae3f21a15f1, type: 3}
-  chainsawStartUpSound: {fileID: 6950021897969804529}
+  chainsawCutSound: {fileID: 6950021897969804529}
   chainsawIdleSound: {fileID: 780129849666425575}
   chainsawRunningHapticClip: {fileID: 2460798210113038985, guid: 5bda17866e0dad94bb2b5eeb54feff5b, type: 3}
   chainsawPullHapticClip: {fileID: 2460798210113038985, guid: 9d23078f3a5a9be4c9133fee034ccec7, type: 3}
@@ -1540,13 +1540,13 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: -4022930909100350339, guid: d09f38e0f944a2f4b90473f9b15c50cb, type: 2}
-  m_audioClip: {fileID: 8300000, guid: 2ba7f5956124e2046b93183a34c91b88, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 920dcd916d2f5e548b5b0ee01f90fa5e, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
   Mute: 0
-  Spatialize: 0
+  Spatialize: 1
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
@@ -1637,7 +1637,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: -4022930909100350339, guid: d09f38e0f944a2f4b90473f9b15c50cb, type: 2}
   m_audioClip: {fileID: 8300000, guid: 3eb3c59a966bef741b39be5f8e1f9624, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -2929,16 +2929,64 @@ MonoBehaviour:
         m_CallState: 2
   leftGrab:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2662663139574317706}
+        m_TargetAssemblyTypeName: SliceObject, Assembly-CSharp
+        m_MethodName: leftHandGrabbed
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   leftUngrab:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2662663139574317706}
+        m_TargetAssemblyTypeName: SliceObject, Assembly-CSharp
+        m_MethodName: leftHandUngrabbed
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   rightGrab:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2662663139574317706}
+        m_TargetAssemblyTypeName: SliceObject, Assembly-CSharp
+        m_MethodName: rightHandGrabbed
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   rightUngrab:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2662663139574317706}
+        m_TargetAssemblyTypeName: SliceObject, Assembly-CSharp
+        m_MethodName: rightHandUngrabbed
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   justActive:
     m_PersistentCalls:
       m_Calls: []
