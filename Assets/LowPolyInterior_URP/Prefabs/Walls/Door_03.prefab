@@ -155,7 +155,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _pivotTransform: {fileID: 0}
-  _rotationAxis: 2
+  _rotationAxis: 1
   _constraints:
     MinAngle:
       Constrain: 1
@@ -174,7 +174,7 @@ GameObject:
   - component: {fileID: 3011398908546815706}
   - component: {fileID: 3011398908545521402}
   - component: {fileID: 3011398908544521274}
-  - component: {fileID: 64379787294535336}
+  - component: {fileID: 6668621651388753082}
   - component: {fileID: 630037518651554403}
   m_Layer: 0
   m_Name: Door_03
@@ -250,8 +250,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &64379787294535336
-MeshCollider:
+--- !u!65 &6668621651388753082
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -265,13 +265,12 @@ MeshCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: 9cf681547e3ed87438c955f1fec6367a, type: 3}
+  serializedVersion: 3
+  m_Size: {x: 0.9150818, y: 2.0389848, z: 0.23796852}
+  m_Center: {x: 0.43028373, y: 1.0207198, z: 0.00000003725291}
 --- !u!54 &630037518651554403
 Rigidbody:
   m_ObjectHideFlags: 0
