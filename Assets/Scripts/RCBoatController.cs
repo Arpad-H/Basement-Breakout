@@ -24,7 +24,6 @@ public class RCBoatController : MonoBehaviour
     [SerializeField] private GameObject teleportIndicator2;
     [SerializeField] private GrabInteractable grabInteractable;
     [SerializeField] private GameObject camera;
-    [SerializeField] private GameObject OutsideArea;
 
     private GameObject battery;
     private GameObject emptyIndicator;
@@ -66,7 +65,6 @@ public class RCBoatController : MonoBehaviour
             }
         }
         else {
-            OutsideArea.SetActive(false);
             locomotion.SetActive(true);
             teleportIndicator1.SetActive(true);
             teleportIndicator2.SetActive(true);
@@ -102,7 +100,6 @@ public class RCBoatController : MonoBehaviour
     
     public void isFull()
     {
-        OutsideArea.SetActive(true);
         camera.SetActive(true);
         hasBattery = true;
         battery.SetActive(true);

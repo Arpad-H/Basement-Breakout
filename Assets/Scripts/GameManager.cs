@@ -28,6 +28,7 @@ public class GameManager : MonoBehaviour
         PlayerManager.GameStateChangedPlayer += UpdateGameState;
         WinCollision.GameStateChangedWinCollision += UpdateGameState;
         TriggerGameStateOnCollsion.GameStateChangedTriggerGameStateOnCollsion += UpdateGameState;
+        AudioDetection.GameStateChangedMegaPhone += UpdateGameState;
     }
 
     private void OnDestroy()
@@ -40,6 +41,7 @@ public class GameManager : MonoBehaviour
         PlayerManager.GameStateChangedPlayer -= UpdateGameState;
         WinCollision.GameStateChangedWinCollision -= UpdateGameState;
         TriggerGameStateOnCollsion.GameStateChangedTriggerGameStateOnCollsion -= UpdateGameState;
+        AudioDetection.GameStateChangedMegaPhone -= UpdateGameState;
     }
 
     private void Start()
