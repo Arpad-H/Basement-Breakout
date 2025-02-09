@@ -99,15 +99,17 @@ public class SliceObject : MonoBehaviour {
                 runningHapticPlayer.Play(Controller.Both);
                 if (canCut) {
                     if (!chainsawCutSound.isPlaying) {
+                        chainsawCutSound.volume = 1;
                         chainsawCutSound.Play();
-                        chainsawIdleSound.Stop();
                     }
+                    chainsawIdleSound.volume = Mathf.Lerp(chainsawIdleSound.volume, 0, Time.deltaTime);
                 }
                 else {
                     if (!chainsawIdleSound.isPlaying) {
+                        chainsawIdleSound.volume = 1;
                         chainsawIdleSound.Play();
-                        chainsawCutSound.Stop();
                     }
+                    chainsawCutSound.volume = Mathf.Lerp(chainsawCutSound.volume, 0, Time.deltaTime);
                 }
             }
         }
