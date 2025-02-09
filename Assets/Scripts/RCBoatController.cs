@@ -24,24 +24,23 @@ public class RCBoatController : MonoBehaviour
     [SerializeField] private GameObject teleportIndicator2;
     [SerializeField] private GrabInteractable grabInteractable;
     [SerializeField] private GameObject camera;
+    [SerializeField] private GameObject OutsideArea;
+    [SerializeField] private AudioSource boatSound;
 
     private GameObject battery;
     private GameObject emptyIndicator;
     private bool hasBattery = false;
 
-    private void Awake()
-    {
+    private void Awake() {
         camera.SetActive(false);
     }
 
-    void Start()
-    {
+    void Start() {
         battery = GameObject.Find("InsertedBatteryController");
         battery.SetActive(false);
         emptyIndicator = GameObject.Find("EmptyBattery");
     }
-    void Update()
-    {
+    void Update() {
         //OVRInput.Update();
         //.FixedUpdate();
         
@@ -51,20 +50,19 @@ public class RCBoatController : MonoBehaviour
             locomotion.SetActive(false);
             teleportIndicator1.SetActive(false);
             teleportIndicator2.SetActive(false);
-            if (rightHanded)
-            {
+            boatSound.volume = Mathf.Lerp(boatSound.volume, 1, Time.deltaTime);
+            if (rightHanded) {
                 direction = OVRInput.Get(OVRInput.RawAxis2D.RThumbstick);
             }
-            else if(leftHanded)
-            {
+            else if (leftHanded) {
                 direction = OVRInput.Get(OVRInput.RawAxis2D.LThumbstick);
-            }
-            else
-            {
+            } else {
                 direction = Vector2.zero;
             }
         }
         else {
+            boatSound.volume = Mathf.Lerp(boatSound.volume, 0, Time.deltaTime);
+            OutsideArea.SetActive(false);
             locomotion.SetActive(true);
             teleportIndicator1.SetActive(true);
             teleportIndicator2.SetActive(true);
@@ -100,6 +98,7 @@ public class RCBoatController : MonoBehaviour
     
     public void isFull()
     {
+        OutsideArea.SetActive(true);
         camera.SetActive(true);
         hasBattery = true;
         battery.SetActive(true);
