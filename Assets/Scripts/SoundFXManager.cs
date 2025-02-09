@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Meta.WitAi.Attributes;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class SoundFXManager : MonoBehaviour
 {
@@ -13,6 +14,7 @@ public class SoundFXManager : MonoBehaviour
     [SerializeField] private Transform windowBurstPosition;
     [SerializeField] private float windowBurstVolume;
     [SerializeField] private AudioSource windowBurstSound;
+    [SerializeField] private SoundMixerManager soundMixerManager;
 
     private void Awake() {
         if (instance == null) {
