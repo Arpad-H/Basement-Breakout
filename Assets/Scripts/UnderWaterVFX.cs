@@ -24,21 +24,28 @@ public class UnderWaterVFX : MonoBehaviour
     void Update()
     {
         float distance = parent.transform.position.y - waterPos.position.y;
+        Debug.Log("distnace: " + distance);
         if (parent.transform.position.y < waterPos.position.y)
+            
         {
             //gameObject.GetComponent<MeshRenderer>().enabled = true;
-            waterColor.a = maxAlpha + timer/drownTime;
+          //  waterColor.a = maxAlpha + timer/drownTime;
+            waterColor.a = maxAlpha;
             gameObject.GetComponent<MeshRenderer>().material.SetColor("_BaseColor", waterColor);
             timer += Time.deltaTime;
+            RenderSettings.fogDensity = Mathf.Min(0.7f, Mathf.Abs(distance)*3 );
+           
         }
         else if (distance <= transitionDistance)
         {
+            RenderSettings.fogDensity = distance * 0.1f;
             timer = 0;
             waterColor.a = maxAlpha - (distance * transitionStrength);
             gameObject.GetComponent<MeshRenderer>().material.SetColor("_BaseColor", waterColor);
         }
         else
         {
+            RenderSettings.fogDensity = 0.0f;
             timer = 0;
             //gameObject.GetComponent<MeshRenderer>().enabled = false;
             waterColor.a = 0.0f;

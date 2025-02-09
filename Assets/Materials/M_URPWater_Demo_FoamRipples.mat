@@ -12,9 +12,11 @@ Material:
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
-  - _CAUSTICSMODE_3D
+  - _CAUSTICSMODE_2D
+  - _CAUSTICS_ON
   - _COLORMODE_COLORS
   - _DISPLACEMENTMODE_GERSTNER
+  - _DOUBLE_SIDED_ON
   - _EDGEFADE_ON
   - _FOAM_ON
   - _FOAM_RIPPLE_ON
@@ -137,20 +139,20 @@ Material:
     - _CapsScatteringIntensity: 1
     - _CapsScatteringRangeMax: 1.823066
     - _CapsScatteringRangeMin: 0.12144117
-    - _Caustics: 0
+    - _Caustics: 1
     - _CausticsAngleMask: 0
     - _CausticsDirectionMask: 0
     - _CausticsDistortion: 0.351
     - _CausticsEnd: 4
     - _CausticsIntensity: 8
-    - _CausticsMode: 1
+    - _CausticsMode: 0
     - _CausticsStart: 0
     - _CausticsTiling3D: 0.5
     - _ClearCoatMask: 0
     - _ClearCoatSmoothness: 0
     - _ColorMode: 0
     - _Cull: 2
-    - _CullMode: 2
+    - _CullMode: 0
     - _CutOff: 0.5
     - _Cutoff: 0.5
     - _DepthEnd: 6
@@ -160,7 +162,7 @@ Material:
     - _DispMask: 0
     - _DisplacementMode: 1
     - _Distortion: 32
-    - _DoubleSided: 0
+    - _DoubleSided: 1
     - _DstBlend: 0
     - _DynamicDisplacement: 1
     - _DynamicEffects: 0
@@ -236,8 +238,8 @@ Material:
     - _CausticsSpeed: {r: 1, g: 1, b: -0.2, a: -0.33}
     - _CausticsSpeed3D: {r: 1, g: 1, b: 1, a: 1}
     - _CausticsTiling: {r: 0.2, g: 0.2, b: 0.3, a: 0.3}
-    - _Color: {r: 0.20478818, g: 0.735849, b: 0.5119423, a: 1}
-    - _DepthColor: {r: 0, g: 0.25999996, b: 0.39999998, a: 1}
+    - _Color: {r: 0.34901962, g: 0.29411763, b: 0.3607843, a: 1}
+    - _DepthColor: {r: 0.2784314, g: 0.30588236, b: 0.35294116, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _FlowTiling: {r: 1, g: 1, b: 0, a: 0}
     - _FoamColor: {r: 1, g: 1, b: 1, a: 1}
@@ -263,7 +265,7 @@ Material:
     - _RefractionKey8: {r: -1, g: -1, b: -1, a: -1}
     - _ScatteringColor: {r: 0.2783019, g: 1, b: 0.78321666, a: 1}
     - _SpecColor: {r: 1, g: 1, b: 1, a: 1}
-    - _UnderWaterColor: {r: 0.21226415, g: 0.46418187, b: 0.8490566, a: 0.1764706}
+    - _UnderWaterColor: {r: 0.08235294, g: 0.19607845, b: 0.21176472, a: 1}
   m_BuildTextureStacks: []
 --- !u!114 &3734885289509101253
 MonoBehaviour:
