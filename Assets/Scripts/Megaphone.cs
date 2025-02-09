@@ -49,6 +49,7 @@ public class AudioDetection : MonoBehaviour
     {
         if ((transform.position - winPos.transform.position).magnitude < winDistance && !audioSource.mute)
         {
+            print(timer > winTimer);
             timer += Time.deltaTime;
             if(timer > winTimer)
                 GameStateChangedMegaPhone?.Invoke(GameManager.GameState.Win);
