@@ -231,6 +231,9 @@ GameObject:
   - component: {fileID: 5187804742613364139}
   - component: {fileID: 3466176680630820593}
   - component: {fileID: 7515998165754985064}
+  - component: {fileID: 545950374616178165}
+  - component: {fileID: 1702887477346430190}
+  - component: {fileID: 4379658482572013043}
   m_Layer: 0
   m_Name: Lock
   m_TagString: Untagged
@@ -277,6 +280,9 @@ MonoBehaviour:
   text: {fileID: 6766927196148598365}
   green: {fileID: 2100000, guid: 3a2e3a7bc3b67bf42b1fe1a68d0a8c25, type: 2}
   LCD: {fileID: 8476700575776951743}
+  beep: {fileID: 545950374616178165}
+  unlock: {fileID: 1702887477346430190}
+  wrong: {fileID: 4379658482572013043}
 --- !u!54 &5187804742613364139
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -343,6 +349,294 @@ MonoBehaviour:
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
+--- !u!82 &545950374616178165
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 521776967467400304}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: -4022930909100350339, guid: d09f38e0f944a2f4b90473f9b15c50cb, type: 2}
+  m_audioClip: {fileID: 8300000, guid: bffaeeefe0ea4d143a71346225d68f49, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!82 &1702887477346430190
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 521776967467400304}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: -4022930909100350339, guid: d09f38e0f944a2f4b90473f9b15c50cb, type: 2}
+  m_audioClip: {fileID: 8300000, guid: 4a718a0bd1f678c41a8a851324db62be, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!82 &4379658482572013043
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 521776967467400304}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: -4022930909100350339, guid: d09f38e0f944a2f4b90473f9b15c50cb, type: 2}
+  m_audioClip: {fileID: 8300000, guid: 87994845e00d6c44eb502acc1a0682b4, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &596784125117898986
 GameObject:
   m_ObjectHideFlags: 0
@@ -1373,6 +1667,9 @@ MonoBehaviour:
   button: {fileID: 7877747935606909329}
   keypadRegular: {fileID: 2100000, guid: 7d10bd6901b89944eae664f64eb38963, type: 2}
   keypadPressed: {fileID: 2100000, guid: f63b646ffcb94b94fb206e664b04a4b1, type: 2}
+  beepHaptic: {fileID: 2460798210113038985, guid: 7ef05ac4ad18b8640b234f0ae9fe4a6c, type: 3}
+  unlockHaptic: {fileID: 2460798210113038985, guid: be4125e02e6d82c4eb735cdb54ee3e70, type: 3}
+  wrongHaptic: {fileID: 2460798210113038985, guid: 8c1c7bae7e2d135498f3f8ac5682a7cf, type: 3}
 --- !u!1 &2958575250443406024
 GameObject:
   m_ObjectHideFlags: 0
@@ -1727,6 +2024,9 @@ MonoBehaviour:
   button: {fileID: 653022850373267273}
   keypadRegular: {fileID: 2100000, guid: 7d10bd6901b89944eae664f64eb38963, type: 2}
   keypadPressed: {fileID: 2100000, guid: f63b646ffcb94b94fb206e664b04a4b1, type: 2}
+  beepHaptic: {fileID: 2460798210113038985, guid: 7ef05ac4ad18b8640b234f0ae9fe4a6c, type: 3}
+  unlockHaptic: {fileID: 2460798210113038985, guid: be4125e02e6d82c4eb735cdb54ee3e70, type: 3}
+  wrongHaptic: {fileID: 2460798210113038985, guid: 8c1c7bae7e2d135498f3f8ac5682a7cf, type: 3}
 --- !u!1 &4587080205605613089
 GameObject:
   m_ObjectHideFlags: 0
@@ -2115,6 +2415,9 @@ MonoBehaviour:
   button: {fileID: 8441563680863654537}
   keypadRegular: {fileID: 2100000, guid: 7d10bd6901b89944eae664f64eb38963, type: 2}
   keypadPressed: {fileID: 2100000, guid: f63b646ffcb94b94fb206e664b04a4b1, type: 2}
+  beepHaptic: {fileID: 2460798210113038985, guid: 7ef05ac4ad18b8640b234f0ae9fe4a6c, type: 3}
+  unlockHaptic: {fileID: 2460798210113038985, guid: be4125e02e6d82c4eb735cdb54ee3e70, type: 3}
+  wrongHaptic: {fileID: 2460798210113038985, guid: 8c1c7bae7e2d135498f3f8ac5682a7cf, type: 3}
 --- !u!1 &4935636061890824827
 GameObject:
   m_ObjectHideFlags: 0
@@ -2201,6 +2504,9 @@ MonoBehaviour:
   button: {fileID: 4645845145341060730}
   keypadRegular: {fileID: 2100000, guid: 7d10bd6901b89944eae664f64eb38963, type: 2}
   keypadPressed: {fileID: 2100000, guid: f63b646ffcb94b94fb206e664b04a4b1, type: 2}
+  beepHaptic: {fileID: 2460798210113038985, guid: 7ef05ac4ad18b8640b234f0ae9fe4a6c, type: 3}
+  unlockHaptic: {fileID: 2460798210113038985, guid: be4125e02e6d82c4eb735cdb54ee3e70, type: 3}
+  wrongHaptic: {fileID: 2460798210113038985, guid: 8c1c7bae7e2d135498f3f8ac5682a7cf, type: 3}
 --- !u!1 &5374145677398050902
 GameObject:
   m_ObjectHideFlags: 0
@@ -2845,6 +3151,9 @@ MonoBehaviour:
   button: {fileID: 2596960999411118467}
   keypadRegular: {fileID: 2100000, guid: 7d10bd6901b89944eae664f64eb38963, type: 2}
   keypadPressed: {fileID: 2100000, guid: f63b646ffcb94b94fb206e664b04a4b1, type: 2}
+  beepHaptic: {fileID: 2460798210113038985, guid: 7ef05ac4ad18b8640b234f0ae9fe4a6c, type: 3}
+  unlockHaptic: {fileID: 2460798210113038985, guid: be4125e02e6d82c4eb735cdb54ee3e70, type: 3}
+  wrongHaptic: {fileID: 2460798210113038985, guid: 8c1c7bae7e2d135498f3f8ac5682a7cf, type: 3}
 --- !u!1 &6040817996474806267
 GameObject:
   m_ObjectHideFlags: 0
@@ -3009,6 +3318,9 @@ MonoBehaviour:
   button: {fileID: 7954103727675727927}
   keypadRegular: {fileID: 2100000, guid: 7d10bd6901b89944eae664f64eb38963, type: 2}
   keypadPressed: {fileID: 2100000, guid: f63b646ffcb94b94fb206e664b04a4b1, type: 2}
+  beepHaptic: {fileID: 2460798210113038985, guid: 7ef05ac4ad18b8640b234f0ae9fe4a6c, type: 3}
+  unlockHaptic: {fileID: 2460798210113038985, guid: be4125e02e6d82c4eb735cdb54ee3e70, type: 3}
+  wrongHaptic: {fileID: 2460798210113038985, guid: 8c1c7bae7e2d135498f3f8ac5682a7cf, type: 3}
 --- !u!1 &6059844338131611754
 GameObject:
   m_ObjectHideFlags: 0
@@ -3095,6 +3407,9 @@ MonoBehaviour:
   button: {fileID: 216727529509113391}
   keypadRegular: {fileID: 2100000, guid: 7d10bd6901b89944eae664f64eb38963, type: 2}
   keypadPressed: {fileID: 2100000, guid: f63b646ffcb94b94fb206e664b04a4b1, type: 2}
+  beepHaptic: {fileID: 2460798210113038985, guid: 7ef05ac4ad18b8640b234f0ae9fe4a6c, type: 3}
+  unlockHaptic: {fileID: 2460798210113038985, guid: be4125e02e6d82c4eb735cdb54ee3e70, type: 3}
+  wrongHaptic: {fileID: 2460798210113038985, guid: 8c1c7bae7e2d135498f3f8ac5682a7cf, type: 3}
 --- !u!1 &6217864647071344241
 GameObject:
   m_ObjectHideFlags: 0
@@ -3181,6 +3496,9 @@ MonoBehaviour:
   button: {fileID: 7748449756547187706}
   keypadRegular: {fileID: 2100000, guid: 7d10bd6901b89944eae664f64eb38963, type: 2}
   keypadPressed: {fileID: 2100000, guid: f63b646ffcb94b94fb206e664b04a4b1, type: 2}
+  beepHaptic: {fileID: 2460798210113038985, guid: 7ef05ac4ad18b8640b234f0ae9fe4a6c, type: 3}
+  unlockHaptic: {fileID: 2460798210113038985, guid: be4125e02e6d82c4eb735cdb54ee3e70, type: 3}
+  wrongHaptic: {fileID: 2460798210113038985, guid: 8c1c7bae7e2d135498f3f8ac5682a7cf, type: 3}
 --- !u!1 &6693496963737040715
 GameObject:
   m_ObjectHideFlags: 0
@@ -3535,6 +3853,9 @@ MonoBehaviour:
   button: {fileID: 4587080205605613089}
   keypadRegular: {fileID: 2100000, guid: 3054e5ae11b568e4aa20150625d3f6da, type: 2}
   keypadPressed: {fileID: 2100000, guid: f63b646ffcb94b94fb206e664b04a4b1, type: 2}
+  beepHaptic: {fileID: 2460798210113038985, guid: 7ef05ac4ad18b8640b234f0ae9fe4a6c, type: 3}
+  unlockHaptic: {fileID: 2460798210113038985, guid: be4125e02e6d82c4eb735cdb54ee3e70, type: 3}
+  wrongHaptic: {fileID: 2460798210113038985, guid: 8c1c7bae7e2d135498f3f8ac5682a7cf, type: 3}
 --- !u!1 &6985680621569427961
 GameObject:
   m_ObjectHideFlags: 0
@@ -3804,6 +4125,9 @@ MonoBehaviour:
   button: {fileID: 1976148711175603316}
   keypadRegular: {fileID: 2100000, guid: 7d10bd6901b89944eae664f64eb38963, type: 2}
   keypadPressed: {fileID: 2100000, guid: f63b646ffcb94b94fb206e664b04a4b1, type: 2}
+  beepHaptic: {fileID: 2460798210113038985, guid: 7ef05ac4ad18b8640b234f0ae9fe4a6c, type: 3}
+  unlockHaptic: {fileID: 2460798210113038985, guid: be4125e02e6d82c4eb735cdb54ee3e70, type: 3}
+  wrongHaptic: {fileID: 2460798210113038985, guid: 8c1c7bae7e2d135498f3f8ac5682a7cf, type: 3}
 --- !u!1 &7748449756547187706
 GameObject:
   m_ObjectHideFlags: 0
@@ -4397,6 +4721,9 @@ MonoBehaviour:
   button: {fileID: 620922836352956094}
   keypadRegular: {fileID: 2100000, guid: 7d10bd6901b89944eae664f64eb38963, type: 2}
   keypadPressed: {fileID: 2100000, guid: f63b646ffcb94b94fb206e664b04a4b1, type: 2}
+  beepHaptic: {fileID: 2460798210113038985, guid: 7ef05ac4ad18b8640b234f0ae9fe4a6c, type: 3}
+  unlockHaptic: {fileID: 2460798210113038985, guid: be4125e02e6d82c4eb735cdb54ee3e70, type: 3}
+  wrongHaptic: {fileID: 2460798210113038985, guid: 8c1c7bae7e2d135498f3f8ac5682a7cf, type: 3}
 --- !u!1 &8304711421200374326
 GameObject:
   m_ObjectHideFlags: 0
@@ -4728,6 +5055,9 @@ MonoBehaviour:
   button: {fileID: 1991305823452981779}
   keypadRegular: {fileID: 2100000, guid: 3a2e3a7bc3b67bf42b1fe1a68d0a8c25, type: 2}
   keypadPressed: {fileID: 2100000, guid: f63b646ffcb94b94fb206e664b04a4b1, type: 2}
+  beepHaptic: {fileID: 2460798210113038985, guid: 7ef05ac4ad18b8640b234f0ae9fe4a6c, type: 3}
+  unlockHaptic: {fileID: 2460798210113038985, guid: be4125e02e6d82c4eb735cdb54ee3e70, type: 3}
+  wrongHaptic: {fileID: 2460798210113038985, guid: 8c1c7bae7e2d135498f3f8ac5682a7cf, type: 3}
 --- !u!1 &8689830462265449824
 GameObject:
   m_ObjectHideFlags: 0
