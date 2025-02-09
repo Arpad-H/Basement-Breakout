@@ -14,7 +14,8 @@ public class RCBoatController : MonoBehaviour
     private bool leftHanded = false;
     private bool rightHanded = false;
     Vector2 direction = Vector2.zero;
-    [SerializeField] private Transform boat;
+    [SerializeField] private Rigidbody boat;
+    [SerializeField] private float speed = 2f;
     [SerializeField] private Transform leftHand;
     [SerializeField] private Transform rightHand;
     //[SerializeField] private UnityEvent<Vector2> moving;
@@ -71,12 +72,13 @@ public class RCBoatController : MonoBehaviour
             teleportIndicator2.SetActive(true);
             direction = Vector2.zero;
         }
-        //moveBoat();
+        moveBoat();
     }
 
     private void moveBoat()
     {
-        boat.position += new Vector3(direction.x, 0, direction.y);
+        boat.AddRelativeForce(new Vector3(0, 0, direction.y * speed), ForceMode.Acceleration);
+        boat.AddRelativeTorque(new Vector3(0, direction.x, 0), ForceMode.Acceleration);
     }
     
     public void canDrive()
