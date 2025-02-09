@@ -2,56 +2,51 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class TutorialUI : MonoBehaviour
 {
-    // Textfelder
-    public TextMeshPro tutorialText;  // Anzeige des aktuellen Schrittes
-    public TextMeshPro pageNumber;    // z. B. "1 / 6"
-    public TextMeshPro headerText;    // Überschrift (Tutorial, Game Over, etc.)
-
-    // Bilder für den A-Button (drücke A)
-    public Image buttonPromptImage;       // Das Bild, das den A-Button zeigt
-    public Sprite normalButtonSprite;     // Standardzustand (A-Button nicht gedrückt)
-    public Sprite pressedButtonSprite;    // Gedrückter Zustand (A-Button gedrückt)
-    public AudioClip buttonSound;         // Sound, der beim Drücken abgespielt wird
-
-    // Bilder für den Controller-Button je Tutorial-Schritt
-    public Image tutorialControllerImage; // Anzeige für den Controller-Button pro Schritt
-    public Sprite[] tutorialControllerSprites; // Array mit Sprites für jeden Tutorial-Schritt
-
-    // Main Canvas
-    public Canvas mainCanvas;
+    // UI-Elemente (im Inspector zuweisen)
+    public TextMeshPro tutorialText;      // Text für den aktuellen Tutorial-Schritt
+    public TextMeshPro pageNumber;        // z. B. "1 / 6"
+    public TextMeshPro headerText;        // Überschrift (z. B. "Tutorial", "Game Over", "Gewonnen!")
     
-    // Optional: Falls du mehrere Panels/Pages hast, kannst du hier ein Array definieren
-    // public GameObject[] pages;
+    // Button-Feedback: Hier ein Bild, das den A-Button zeigt
+    public Image buttonPromptImage;           // Zeigt den A-Button (Standard und gedrückt)
+    public Sprite normalButtonSprite;         // Standardzustand (A-Button nicht gedrückt)
+    public Sprite pressedButtonSprite;        // Gedrückter Zustand (A-Button gedrückt)
+    public AudioClip buttonSound;             // Sound, der beim Drücken abgespielt wird
 
-    private CanvasGroup canvasGroup;
+    // Controller-Bild pro Tutorial-Schritt
+    public Image tutorialControllerImage;     // Bild, das den entsprechenden Controller-Button anzeigt
+    public Sprite[] tutorialControllerSprites;  // Array mit den Sprites für jeden Tutorial-Schritt
+
+    public CanvasGroup canvasGroup;           
+    
+    
+    // Private Variablen
     private int currentPage = 0;
-    private string[] steps;              // Tutorial-Schritte (Textinhalt)
-    private bool isGameOverMode = false; // Kennzeichnet, ob wir im GameOver-/Win-Modus sind
+    private string[] steps;                   // Tutorial-Schritte (Text)
+    private bool isGameOverMode = false;      // Kennzeichnet, ob wir im GameOver-/Win-Modus sind
     private GameManager.GameState currentGameState;
-
-    private AudioSource audioSource;     // Zum Abspielen des Button-Sounds
+    private AudioSource audioSource;          // Für den Button-Sound
 
     private void Awake()
     {
-        // Hole den CanvasGroup-Komponent, damit du die UI bequem ein-/ausblenden kannst
-        canvasGroup = GetComponent<CanvasGroup>();
-        HideUI();
-
-        // Stelle sicher, dass ein AudioSource vorhanden ist
+        // Stelle sicher, dass ein AudioSource vorhanden ist.
         audioSource = GetComponent<AudioSource>();
         if (audioSource == null)
         {
             audioSource = gameObject.AddComponent<AudioSource>();
         }
+
+        // Zu Beginn ausblenden (das GameObject, an dem dieses Script hängt, deaktivieren)
+        //HideUI();
     }
 
     private void OnEnable()
     {
-        // Abonniere das Event, um über GameState-Änderungen informiert zu werden
         GameManager.OnGameStateChanged += OnGameStateChanged;
     }
 
@@ -62,57 +57,55 @@ public class TutorialUI : MonoBehaviour
 
     private void Update()
     {
-        // Überprüfe, ob der A-Button (OVRInput.Button.One) gedrückt wurde.
-        // (Passe die Eingabemethode bei Bedarf an deine Steuerung an)
+        // Überprüfe, ob der A-Button gedrückt wurde (OVRInput; ggf. an deine Eingabe anpassen)
         if (OVRInput.GetDown(OVRInput.Button.One))
         {
-            // Starte die Coroutine, die zuerst den Bildwechsel & Sound abspielt und danach die Seite wechselt.
             StartCoroutine(HandleButtonPress());
         }
     }
 
     /// <summary>
-    /// Gibt beim Drücken des A-Buttons visuelles Feedback und spielt einen Sound ab,
-    /// bevor die nächste Seite aufgerufen wird.
+    /// Gibt beim Drücken des A-Buttons visuelles Feedback (Bildwechsel) und spielt einen Sound ab.
+    /// Anschließend wird zur nächsten Seite gewechselt.
     /// </summary>
     private IEnumerator HandleButtonPress()
     {
-        // Setze das Bild auf den gedrückten Zustand
+        // Setze das Buttonbild auf den gedrückten Zustand
         if (buttonPromptImage != null && pressedButtonSprite != null)
         {
             buttonPromptImage.sprite = pressedButtonSprite;
         }
 
-        // Spiele den Button-Sound ab
+        // Spiele den Sound ab
         if (audioSource != null && buttonSound != null)
         {
             audioSource.PlayOneShot(buttonSound);
         }
 
-        // Kurze Wartezeit (z. B. 0,1 Sekunden), damit der gedrückte Zustand sichtbar ist
+        // Kurze Wartezeit, damit der gedrückte Zustand sichtbar ist
         yield return new WaitForSeconds(0.1f);
 
-        // Setze das Bild wieder in den Normalzustand
+        // Setze das Buttonbild wieder in den Normalzustand
         if (buttonPromptImage != null && normalButtonSprite != null)
         {
             buttonPromptImage.sprite = normalButtonSprite;
         }
 
-        // Wechsel zur nächsten Seite
+        // Wechsle zur nächsten Seite
         NextPage();
     }
 
     /// <summary>
-    /// Reagiert auf GameState-Änderungen und lädt je nach Zustand den entsprechenden Content.
+    /// Wird aufgerufen, wenn sich der GameState ändert. Je nach Zustand (Tutorial, Win, Game Over)
+    /// wird der entsprechende Content in die UI geladen.
     /// </summary>
     private void OnGameStateChanged(GameManager.GameState newState)
     {
         currentGameState = newState;
 
-        if (newState == GameManager.GameState.Tutorial)
+        if (newState == GameManager.GameState.Menu)
         {
             isGameOverMode = false;
-            // Hier deine Tutorial-Schritte (Text)
             steps = new string[]
             {
                 "Hallo! Drücke A zum Fortfahren.",
@@ -122,7 +115,6 @@ public class TutorialUI : MonoBehaviour
                 "Interagiere mit Gegenständen durch Drücken der X-Taste.",
                 "So gewinnst du: Erreiche das Ziel!"
             };
-
             currentPage = 0;
             headerText.text = "Tutorial";
             UpdateUI();
@@ -137,7 +129,6 @@ public class TutorialUI : MonoBehaviour
                 "Du hast das Spiel gewonnen.",
                 "Drücke A zum Neustarten."
             };
-
             currentPage = 0;
             headerText.text = "Gewonnen!";
             UpdateUI();
@@ -152,7 +143,6 @@ public class TutorialUI : MonoBehaviour
                 "Du bist gestorben.",
                 "Drücke A zum Neustarten."
             };
-
             currentPage = 0;
             headerText.text = "Game Over";
             UpdateUI();
@@ -160,13 +150,13 @@ public class TutorialUI : MonoBehaviour
         }
         else
         {
-            // Bei anderen Zuständen wird die UI ausgeblendet.
+            // Für alle anderen Zustände: UI ausblenden
             HideUI();
         }
     }
 
     /// <summary>
-    /// Aktualisiert den angezeigten Text, den Seitenzähler und das Controller-Bild (falls vorhanden).
+    /// Aktualisiert den angezeigten Text, den Seitenzähler und das Controller-Bild für den aktuellen Schritt.
     /// </summary>
     private void UpdateUI()
     {
@@ -176,7 +166,7 @@ public class TutorialUI : MonoBehaviour
             pageNumber.text = $"{currentPage + 1} / {steps.Length}";
         }
 
-        // Aktualisiere das Bild für den aktuellen Tutorial-Schritt, sofern ein entsprechendes Sprite hinterlegt wurde.
+        // Aktualisiere das Controller-Bild, sofern ein entsprechendes Sprite vorhanden ist.
         if (tutorialControllerImage != null && tutorialControllerSprites != null && tutorialControllerSprites.Length > currentPage)
         {
             tutorialControllerImage.sprite = tutorialControllerSprites[currentPage];
@@ -184,8 +174,9 @@ public class TutorialUI : MonoBehaviour
     }
 
     /// <summary>
-    /// Schaltet zur nächsten Seite. Nach dem letzten Schritt wird im Tutorial-Modus
-    /// lediglich die UI ausgeblendet (statt den GameState zu ändern).
+    /// Wechselt zur nächsten Seite. Beim letzten Schritt:
+    /// - Im Tutorial-Modus: Wird die UI ausgeblendet.
+    /// - Im GameOver-/Win-Modus: Bleibt der Restart-Code (auskommentiert) erhalten.
     /// </summary>
     private void NextPage()
     {
@@ -199,47 +190,33 @@ public class TutorialUI : MonoBehaviour
         }
         else
         {
-            // kontrollausgabe der schritte um zusehen warum hideui nicht wirklich ausgeführt wird
-            
-            
-            
-            // Letzter Schritt erreicht.
+            // Letzter Schritt erreicht
             if (isGameOverMode)
             {
-                // Restart-State – derzeit auskommentiert, falls du ihn später aktivieren möchtest.
-                // GameManager.Instance.RestartGame();
+                // Restart-Code (derzeit auskommentiert, wie gewünscht)
+                SceneManager.LoadScene("NewWaterScene");
             }
             else
             {
-                // Im Tutorial: Nur die UI ausblenden.
+                // Im Tutorial: Nur die UI ausblenden
                 HideUI();
             }
         }
     }
 
     /// <summary>
-    /// Blendet die UI ein.
+    /// Blendet die UI ein, indem das gesamte GameObject aktiviert wird.
     /// </summary>
     private void ShowUI()
     {
-        if (canvasGroup != null)
-        {
-            canvasGroup.alpha = 1f;
-            canvasGroup.blocksRaycasts = true;
-            canvasGroup.interactable = true;
-        }
+        gameObject.transform.GetChild(0).gameObject.SetActive(true);
     }
 
     /// <summary>
-    /// Blendet die UI aus.
+    /// Blendet die UI aus, indem das gesamte GameObject deaktiviert wird.
     /// </summary>
     private void HideUI()
     {
-        if (canvasGroup != null)
-        {
-            canvasGroup.alpha = 0f;
-            canvasGroup.blocksRaycasts = false;
-            canvasGroup.interactable = false;
-        }
+        gameObject.transform.GetChild(0).gameObject.SetActive(false);
     }
 }
