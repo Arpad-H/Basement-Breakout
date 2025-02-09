@@ -21,21 +21,13 @@ public class Lock : MonoBehaviour
     [SerializeField] private AudioSource beep;
     [SerializeField] private AudioSource unlock;
     [SerializeField] private AudioSource wrong;
-    [SerializeField] private HapticClip beepHaptic;
-    [SerializeField] private HapticClip unlockHaptic;
-    [SerializeField] private HapticClip wrongHaptic;
     
-    private HapticClipPlayer beepHapticPlayer;
-    private HapticClipPlayer unlockHapticPlayer;
-    private HapticClipPlayer wrongHapticPlayer;
     
     //private GameObject key;
     private readonly string code = "0451";
     
     void Start() {
-        beepHapticPlayer = new HapticClipPlayer(beepHaptic);
-        unlockHapticPlayer = new HapticClipPlayer(unlockHaptic);
-        wrongHapticPlayer = new HapticClipPlayer(wrongHaptic);
+        
         
         tank.SetActive(false);
         //key = GameObject.Find("KeyInLock");
@@ -50,7 +42,6 @@ public class Lock : MonoBehaviour
         int z = Convert.ToInt32(new string(number, 1));
         float x = z / 20f;
         beep.pitch = 0.8f + x;
-        beepHapticPlayer.Play(Controller.Both);
         beep.Play();
         for (int i = 0; i < text.text.Length; i++) {
             if (text.text[i] == '-') {
@@ -65,7 +56,6 @@ public class Lock : MonoBehaviour
     public void keyDeleted() {
         text.text = "----";
         wrong.Play();
-        wrongHapticPlayer.Play(Controller.Both);
     }
 
     public void keyCheck() {
@@ -79,7 +69,6 @@ public class Lock : MonoBehaviour
     
     private void unlocked() {
         unlock.Play();
-        unlockHapticPlayer.Play(Controller.Both);
         text.text = "OPEN";
         LCD.GetComponent<MeshRenderer>().material = green;
         door.SetActive(true);
@@ -98,7 +87,6 @@ public class Lock : MonoBehaviour
 
         if (other.gameObject.layer == 22) {
             rightHand.SetActive(true);
-            
         }
     }
     
