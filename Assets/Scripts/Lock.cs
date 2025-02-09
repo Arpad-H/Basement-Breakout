@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Text;
+using Oculus.Haptics;
 using Oculus.Interaction;
 using TMPro;
 using UnityEngine;
@@ -20,11 +21,22 @@ public class Lock : MonoBehaviour
     [SerializeField] private AudioSource beep;
     [SerializeField] private AudioSource unlock;
     [SerializeField] private AudioSource wrong;
+    [SerializeField] private HapticClip beepHaptic;
+    [SerializeField] private HapticClip unlockHaptic;
+    [SerializeField] private HapticClip wrongHaptic;
+    
+    private HapticClipPlayer beepHapticPlayer;
+    private HapticClipPlayer unlockHapticPlayer;
+    private HapticClipPlayer wrongHapticPlayer;
+    
     //private GameObject key;
     private readonly string code = "0451";
     
-    void Start()
-    {
+    void Start() {
+        beepHapticPlayer = new HapticClipPlayer(beepHaptic);
+        unlockHapticPlayer = new HapticClipPlayer(unlockHaptic);
+        wrongHapticPlayer = new HapticClipPlayer(wrongHaptic);
+        
         tank.SetActive(false);
         //key = GameObject.Find("KeyInLock");
         //key.SetActive(false);
@@ -34,11 +46,11 @@ public class Lock : MonoBehaviour
         rightHand.SetActive(false);
     }
 
-    public void keyPressed(char number)
-    {
+    public void keyPressed(char number) {
         int z = Convert.ToInt32(new string(number, 1));
         float x = z / 20f;
         beep.pitch = 0.8f + x;
+        beepHapticPlayer.Play(Controller.Both);
         beep.Play();
         for (int i = 0; i < text.text.Length; i++) {
             if (text.text[i] == '-') {
@@ -53,10 +65,10 @@ public class Lock : MonoBehaviour
     public void keyDeleted() {
         text.text = "----";
         wrong.Play();
+        wrongHapticPlayer.Play(Controller.Both);
     }
 
-    public void keyCheck()
-    {
+    public void keyCheck() {
         if (text.text == code) {
             unlocked();
         }
@@ -65,9 +77,9 @@ public class Lock : MonoBehaviour
         }
     }
     
-    private void unlocked()
-    {
+    private void unlocked() {
         unlock.Play();
+        unlockHapticPlayer.Play(Controller.Both);
         text.text = "OPEN";
         LCD.GetComponent<MeshRenderer>().material = green;
         door.SetActive(true);
@@ -79,30 +91,23 @@ public class Lock : MonoBehaviour
         //Destroy(other);
     }
 
-    private void OnTriggerStay(Collider other)
-    {
-        if (other.gameObject.layer == 21)
-        {
+    private void OnTriggerStay(Collider other) {
+        if (other.gameObject.layer == 21) {
             leftHand.SetActive(true);
-            
         }
 
-        if (other.gameObject.layer == 22)
-        {
+        if (other.gameObject.layer == 22) {
             rightHand.SetActive(true);
             
         }
     }
     
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.gameObject.layer == 21)
-        {
+    private void OnTriggerExit(Collider other) {
+        if (other.gameObject.layer == 21) {
             leftHand.SetActive(false);
         }
 
-        if (other.gameObject.layer == 22)
-        {
+        if (other.gameObject.layer == 22) {
             rightHand.SetActive(false);
         }
     }
