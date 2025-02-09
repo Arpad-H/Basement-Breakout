@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using EzySlice;
 using Oculus.Haptics;
+using Unity.VisualScripting;
 using UnityEngine.InputSystem;
 using UnityEngine.UIElements;
 using UnityEngine.XR;
@@ -19,7 +20,7 @@ public class SliceObject : MonoBehaviour {
     [SerializeField] private float cutForce = 20;
     [SerializeField] private Transform waterPos;
     [SerializeField] private AudioClip chainsawRefuelSound;
-    [SerializeField] private AudioSource chainsawStartUpSound;
+    [SerializeField] private AudioSource chainsawCutSound;
     [SerializeField] private AudioSource chainsawIdleSound;
     [SerializeField] private HapticClip chainsawRunningHapticClip;
     [SerializeField] private HapticClip chainsawPullHapticClip;
@@ -62,17 +63,8 @@ public class SliceObject : MonoBehaviour {
                 started = true;
             }
         }
+        HandleAudioAndHaptics();
         
-        if (currentPullDistance > 0.3f && currentPullDistance > previousPullDistance) {
-            pullHapticPlayer.Play(Controller.Both);
-        }
-        previousPullDistance = currentPullDistance;
-        
-        if (!chainsawIdleSound.isPlaying && canCut && hasFuel && noWaterDamage) {
-            chainsawIdleSound.Play();
-            runningHapticPlayer.Play(Controller.Both);
-            //animator.SetBool("isSawing", true);
-        }
         bool hasHit = Physics.Linecast(startSlicePoint.position, endSlicePoint.position, out RaycastHit hit, slicableLayer);
         if (hasHit && canCut && hasFuel && noWaterDamage) {
             GameObject target = hit.transform.gameObject;
@@ -84,10 +76,37 @@ public class SliceObject : MonoBehaviour {
         }
     }
     
+    public void HandleAudioAndHaptics() {
+        if (currentPullDistance > 0.3f && currentPullDistance > previousPullDistance) {
+            pullHapticPlayer.Play(Controller.Both);
+        }
+        previousPullDistance = currentPullDistance;
+        
+        if (started) {
+            runningHapticPlayer.Play(Controller.Both);
+            if (canCut) {
+                if (!chainsawCutSound.isPlaying) {
+                    chainsawCutSound.Play();
+                    chainsawIdleSound.Stop();
+                   
+                }
+            } else {
+                if (!chainsawIdleSound.isPlaying) {
+                    chainsawIdleSound.Play();
+                    chainsawCutSound.Stop();
+                }
+            }
+        }
+
+        if (!noWaterDamage && !canCut) {
+            chainsawCutSound.Stop();
+            chainsawIdleSound.Stop();
+        }
+    }
+    
     public void Slice(GameObject target) {
-        if (!chainsawStartUpSound.isPlaying) {
-            chainsawStartUpSound.Play();
-            
+        if (!chainsawCutSound.isPlaying) {
+            // chainsawCutSound.Play();
         }
         Vector3 velocity = velocityEstimator.GetVelocityEstimate();
         Vector3 planeNormal = Vector3.Cross(endSlicePoint.position - startSlicePoint.position, velocity);
