@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b2db86121404754db890f4c8dfe81b2, type: 3}
   m_Name: Bloom
   m_EditorClassIdentifier: 
-  active: 1
+  active: 0
   skipIterations:
     m_OverrideState: 0
     m_Value: 1
@@ -30,7 +30,7 @@ MonoBehaviour:
     m_Value: 65472
   tint:
     m_OverrideState: 1
-    m_Value: {r: 1, g: 1, b: 1, a: 1}
+    m_Value: {r: 0, g: 0.42627668, b: 1, a: 1}
   highQualityFiltering:
     m_OverrideState: 0
     m_Value: 1
@@ -42,11 +42,11 @@ MonoBehaviour:
     m_Value: 6
   dirtTexture:
     m_OverrideState: 0
-    m_Value: {fileID: 0}
+    m_Value: {fileID: 2800000, guid: bd357bf0331325748a7c1bd168220b67, type: 3}
     dimension: 1
   dirtIntensity:
     m_OverrideState: 0
-    m_Value: 0
+    m_Value: 4.49
 --- !u!114 &-6400727598167296617
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -59,7 +59,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 558a8e2b6826cf840aae193990ba9f2e, type: 3}
   m_Name: ShadowsMidtonesHighlights
   m_EditorClassIdentifier: 
-  active: 1
+  active: 0
   shadows:
     m_OverrideState: 1
     m_Value: {x: 1, y: 0.9135129, z: 0.95870477, w: 0.033841692}
@@ -93,7 +93,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 221518ef91623a7438a71fef23660601, type: 3}
   m_Name: WhiteBalance
   m_EditorClassIdentifier: 
-  active: 1
+  active: 0
   temperature:
     m_OverrideState: 1
     m_Value: 6.8
@@ -112,7 +112,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 899c54efeace73346a0a16faa3afe726, type: 3}
   m_Name: Vignette
   m_EditorClassIdentifier: 
-  active: 1
+  active: 0
   color:
     m_OverrideState: 1
     m_Value: {r: 0, g: 0, b: 0, a: 1}
@@ -121,7 +121,7 @@ MonoBehaviour:
     m_Value: {x: 0.5, y: 0.5}
   intensity:
     m_OverrideState: 1
-    m_Value: 0.25
+    m_Value: 0
   smoothness:
     m_OverrideState: 1
     m_Value: 0.25
@@ -138,7 +138,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d7fd9488000d3734a9e00ee676215985, type: 3}
-  m_Name: LP_Interior_PostProcessing
+  m_Name: LP_underwater
   m_EditorClassIdentifier: 
   components:
   - {fileID: 6225611700357716665}
@@ -171,7 +171,7 @@ MonoBehaviour:
     m_Value: -7
   colorFilter:
     m_OverrideState: 1
-    m_Value: {r: 1, g: 1, b: 1, a: 1}
+    m_Value: {r: 0.5508323, g: 0.5508323, b: 0.6597539, a: 1}
   hueShift:
     m_OverrideState: 0
     m_Value: 0
@@ -193,10 +193,10 @@ MonoBehaviour:
   active: 1
   lift:
     m_OverrideState: 1
-    m_Value: {x: 1, y: 0.9404047, z: 0.97755814, w: 0.012492192}
+    m_Value: {x: 0.9378336, y: 1, z: 0.98527735, w: 0.012492192}
   gamma:
     m_OverrideState: 1
-    m_Value: {x: 1, y: 0.96635306, z: 0.9636922, w: 0}
+    m_Value: {x: 0.9871933, y: 1, z: 0.9893415, w: 0}
   gain:
     m_OverrideState: 1
     m_Value: {x: 0.929717, y: 0.96053654, z: 1, w: 0}
@@ -215,7 +215,7 @@ MonoBehaviour:
   active: 1
   intensity:
     m_OverrideState: 1
-    m_Value: 0.02
+    m_Value: 0.442
 --- !u!114 &6225611700357716665
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -228,7 +228,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97c23e3b12dc18c42a140437e53d3951, type: 3}
   m_Name: Tonemapping
   m_EditorClassIdentifier: 
-  active: 1
+  active: 0
   mode:
     m_OverrideState: 1
     m_Value: 2
@@ -268,16 +268,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c01700fd266d6914ababb731e09af2eb, type: 3}
   m_Name: DepthOfField
   m_EditorClassIdentifier: 
-  active: 1
+  active: 0
   mode:
     m_OverrideState: 1
     m_Value: 1
   gaussianStart:
     m_OverrideState: 1
-    m_Value: 30
+    m_Value: 4.3
   gaussianEnd:
     m_OverrideState: 1
-    m_Value: 50
+    m_Value: 24.6
   gaussianMaxRadius:
     m_OverrideState: 1
     m_Value: 1
