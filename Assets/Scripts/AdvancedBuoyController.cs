@@ -13,6 +13,7 @@ using UnityEngine;
 [ExecuteInEditMode]
 public class AdvancedBuoyController : MonoBehaviour {
 
+	[SerializeField] bool cannotSpin = false;
 	private WaterBehaviour water;
 	//public bool applyRipple;
 	
@@ -69,12 +70,19 @@ public class AdvancedBuoyController : MonoBehaviour {
 		float depth = objectHeight - GetWaterHeight(transform.position) - heightOffset;
 		if (depth < 0) // Object is submerged
 		{
+			if (!cannotSpin)
+			{
+				rb.AddTorque(new Vector3(Random.Range(-4f, 4f), 0, Random.Range(-4f, 4f)), ForceMode.Acceleration);
+			}
 			rb.AddForceAtPosition(Vector3.up * floatDynamic * Mathf.Abs(depth), transform.position, ForceMode.Force);
 			if (!underwater)
 			{
 				underwater = true;
 				switchState(true);
-				transform.rotation = Quaternion.Euler(0f, transform.rotation.y, 0f);
+				if (cannotSpin)
+				{
+					transform.rotation = Quaternion.Euler(0f, transform.rotation.y, 0f);
+				}
 			}
 		}
 		else if (underwater)
