@@ -68,6 +68,7 @@ public class WaterIngresCoordinator : MonoBehaviour
     //
      public void BurstWindow()
      {
+         burstWindow.SetActive(true);
          burstWindow.GetComponent<burstingWindow>().BurstWindow();
      }
     //
@@ -97,7 +98,7 @@ public class WaterIngresCoordinator : MonoBehaviour
     
         // Activate the lightning spark effect
         lighningSpark.SetActive(true);
-        lighningSpark.GetComponent<VarietyLoop>().PlayEffect();
+       // lighningSpark.GetComponent<VarietyLoop>().PlayEffect();
     }
 
     private IEnumerator LerpMaterialColor(Material material, string colorProperty, float targetAlpha, float duration)

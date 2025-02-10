@@ -131,12 +131,12 @@ public class PlayerManager : MonoBehaviour
 
     private void AcivatePassthrough()
     {
-        _ovrManager.isInsightPassthroughEnabled = true;
+        //_ovrManager.isInsightPassthroughEnabled = true;
     }
 
     private void DeactivatePassthrough()
     {
-        _ovrManager.isInsightPassthroughEnabled = false;
+        // _ovrManager.isInsightPassthroughEnabled = false;
     }
 
     public void SetPlayerPosToGameOverMenu()
