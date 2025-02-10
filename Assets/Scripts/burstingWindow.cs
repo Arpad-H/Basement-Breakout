@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -9,12 +10,13 @@ public class burstingWindow : MonoBehaviour
     // [SerializeField] GameObject solidWindow;
     [SerializeField] GameObject shatteredWindow;
     ParticleSystem ps;
-    public void Start()
+
+    private void Awake()
     {
         ps = shatteredWindow.GetComponent<ParticleSystem>();
-        shatteredWindow.SetActive(false);
     }
     public void BurstWindow() {
+        Debug.LogError("Bursting window");
         ps.Play();
         // StartCoroutine(BurstWindowCorutine());
     }

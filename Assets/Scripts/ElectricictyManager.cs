@@ -13,6 +13,7 @@ public class ElectricictyManager : MonoBehaviour
     
     private GameObject tv;
     private VideoPlayer Videoplayer;
+    public bool flooding = false;
     
     [Header("LitScene")] 
     public Texture2D[] lightmapColorLit, lightmapDirLit;
@@ -36,7 +37,11 @@ public class ElectricictyManager : MonoBehaviour
         {
            enableAllLights(); 
            enableTV();
-           electricitySparks.SetActive(true);
+           if (flooding)
+           {
+               electricitySparks.SetActive(true);
+           }
+           
         }
         else
         {

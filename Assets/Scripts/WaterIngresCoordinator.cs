@@ -22,6 +22,7 @@ public class WaterIngresCoordinator : MonoBehaviour
     public Material waterDroplets;
     public Material groundWaterRings;
     public GameObject lighningSpark;
+    public ElectricictyManager electricityManager;
    
     
 
@@ -68,6 +69,7 @@ public class WaterIngresCoordinator : MonoBehaviour
     //
      public void BurstWindow()
      {
+         electricityManager.flooding = true;
          burstWindow.SetActive(true);
          burstWindow.GetComponent<burstingWindow>().BurstWindow();
      }
