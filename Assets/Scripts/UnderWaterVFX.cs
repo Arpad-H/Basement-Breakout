@@ -13,6 +13,10 @@ public class UnderWaterVFX : MonoBehaviour
     [SerializeField] private VolumeProfile underwaterProfile;
     [SerializeField] private VolumeProfile aboveWaterProfile;
     [SerializeField] private Volume volume;
+    [SerializeField] private Material distortionMaterial;
+    [SerializeField] private float distortionStrength = 0.1f;
+    private float currentDistortion = 0.0f;
+    
     
     private Color waterColor;// = new Color(0f, 0.6f, 1f, 0.77f);
     private float maxAlpha;
@@ -42,6 +46,7 @@ public class UnderWaterVFX : MonoBehaviour
             volume.enabled = true;
             StartCoroutine(FadePostProcessing(true, 0.5f));
             volume.weight = 1;
+            distortionMaterial.SetFloat("_blend", 0.1f);
 
 
         }
@@ -54,6 +59,7 @@ public class UnderWaterVFX : MonoBehaviour
         }
         else
         {
+            distortionMaterial.SetFloat("_blend", 0.0f);
           StartCoroutine(FadePostProcessing(false, 1f));
             RenderSettings.fogDensity = 0.0f;
             timer = 0;
@@ -66,15 +72,20 @@ public class UnderWaterVFX : MonoBehaviour
     {
         float startWeight = volume.weight;
         float targetWeight = enable ? 1f : 0f;
+        float targetDistortion = enable ? distortionStrength : 0f;
+        float startDistortion = enable ? 0f : distortionStrength;
         float time = 0;
+        
 
         while (time < duration)
         {
+       //     distortionMaterial.SetFloat("_blend", Mathf.Lerp(startDistortion, targetDistortion, time / duration));
             volume.weight = Mathf.Lerp(startWeight, targetWeight, time / duration);
             time += Time.deltaTime;
             yield return null;
         }
         volume.enabled = enable;
+       // distortionMaterial.SetFloat("_blend", targetDistortion);  // Ensure final value is set
         volume.weight = targetWeight;  // Ensure final value is set
         
     }

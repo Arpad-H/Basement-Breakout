@@ -1,14 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-//using Pinwheel.Poseidon;
 
-/*
-	Simple Buoyancy Script for Poseidon water system
-	to adapt to any other water system, just edit the GetWaterHeight() method to whatever your water system uses to get the wave/water height of a given point
-	the container should sit at the center of the ship for best effect
-	with help of: https://www.youtube.com/watch?v=iasDPyC0QOg
-*/
 
 [ExecuteInEditMode]
 public class AdvancedBuoyController : MonoBehaviour {

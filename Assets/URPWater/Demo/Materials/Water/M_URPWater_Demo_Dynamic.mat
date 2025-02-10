@@ -15,11 +15,12 @@ Material:
   - _CAUSTICSMODE_2D
   - _CAUSTICS_ON
   - _COLORMODE_COLORS
+  - _DISPLACEMENT_MASK_ON
+  - _DYNAMIC_EFFECTS_ON
   - _FOAM_ON
   - _FOAM_RIPPLE_ON
   - _NORMALSMODE_SINGLE
   - _REFLECTIONMODE_REALTIME
-  - _ZWRITE_ON
   m_InvalidKeywords:
   - _DISPLACEMENTMODE_OFF
   m_LightmapFlags: 4
@@ -90,12 +91,12 @@ Material:
     - _CullMode: 2
     - _DepthEnd: 1
     - _DepthStart: 0
-    - _DispMask: 0
+    - _DispMask: 1
     - _DisplacementMode: 0
     - _Distortion: 32
     - _DoubleSided: 0
     - _DynamicDisplacement: 1
-    - _DynamicEffects: 0
+    - _DynamicEffects: 1
     - _DynamicFoam: 1
     - _DynamicNormal: 1
     - _EdgeFade: 0
@@ -142,7 +143,7 @@ Material:
     - _WaveStartDistance: 0
     - _WaveSteepness: 0.5
     - _WorldUV: 0
-    - _ZWrite: 1
+    - _ZWrite: 0
     m_Colors:
     - _CausticsSpeed: {r: 1, g: 1, b: -1, a: -1}
     - _CausticsSpeed3D: {r: 1, g: 1, b: 1, a: 1}
