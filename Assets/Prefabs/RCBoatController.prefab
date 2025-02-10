@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 147903096197614948}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.0001, z: 0}
   m_LocalScale: {x: 0.175, y: 0.175, z: 0.175}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -447,7 +447,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blockId: f8766c17-aaf8-4b55-9431-de8deea83842
-  instanceId: f016a4fd-672d-4db4-a7b7-4adbc423f582
+  instanceId: b8c93f15-0859-4493-b0dc-f3f361f234d3
   version: 1
   installationRoutineCheckpoint:
     _installationRoutineId: f8338144-8280-4ff6-9455-ae2bb9c20fe8
@@ -565,7 +565,7 @@ Transform:
   m_GameObject: {fileID: 3540537956426485140}
   serializedVersion: 2
   m_LocalRotation: {x: 0.093160816, y: -0, z: -0, w: 0.9956511}
-  m_LocalPosition: {x: 0.15, y: 0.0145, z: 0}
+  m_LocalPosition: {x: 0.21, y: 0.0145, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -763,7 +763,7 @@ Transform:
   m_GameObject: {fileID: 4739475745212528933}
   serializedVersion: 2
   m_LocalRotation: {x: 0.093160816, y: -0, z: -0, w: 0.9956511}
-  m_LocalPosition: {x: -0.2094, y: 0.0145, z: 0}
+  m_LocalPosition: {x: -0.21, y: 0.0145, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -833,7 +833,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1510880426382271932}
   - {fileID: 4178770436877927389}
   - {fileID: 728003332398252128}
   - {fileID: 8102343301657114182}
@@ -859,7 +858,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.3, y: 0.03, z: 0.2}
+  m_Size: {x: 0.45, y: 0.0355, z: 0.2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &3834289513469211144
 Rigidbody:
@@ -1557,6 +1556,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1510880426382271932}
   - {fileID: 4198860603414529373}
   - {fileID: 5389964291953679459}
   - {fileID: 4311569665541446336}
@@ -1621,7 +1621,7 @@ SpringJoint:
   m_ConnectedArticulationBody: {fileID: 0}
   m_Anchor: {x: 0, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0, y: 0, z: 0.2644}
+  m_ConnectedAnchor: {x: 0, y: 0.008, z: -0.0045999885}
   serializedVersion: 2
   m_Spring: 100
   m_Damper: 9000
@@ -1646,7 +1646,7 @@ HingeJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0, y: 0, z: 0.2644}
+  m_ConnectedAnchor: {x: 0, y: 0.008, z: -0.0045999885}
   serializedVersion: 2
   m_UseSpring: 0
   m_Spring:
@@ -1685,7 +1685,7 @@ HingeJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 0, y: 1, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0, y: 0, z: 0.2644}
+  m_ConnectedAnchor: {x: 0, y: 0.008, z: -0.0045999885}
   serializedVersion: 2
   m_UseSpring: 0
   m_Spring:
@@ -1724,7 +1724,7 @@ HingeJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 0, y: 0, z: 1}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0, y: 0, z: 0.2644}
+  m_ConnectedAnchor: {x: 0, y: 0.008, z: -0.0045999885}
   serializedVersion: 2
   m_UseSpring: 0
   m_Spring:
@@ -1757,15 +1757,15 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 3949458033767836619}
+    m_TransformParent: {fileID: 962076971276158098}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 9ddb2adf40e45bf4d84256028bab151d, type: 3}
       propertyPath: m_LocalScale.x
-      value: 10.88
+      value: 10.880001
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9ddb2adf40e45bf4d84256028bab151d, type: 3}
       propertyPath: m_LocalScale.y
-      value: 10.88
+      value: 10.879999
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9ddb2adf40e45bf4d84256028bab151d, type: 3}
       propertyPath: m_LocalScale.z
@@ -1777,11 +1777,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9ddb2adf40e45bf4d84256028bab151d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.008
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9ddb2adf40e45bf4d84256028bab151d, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 0.0045999885
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9ddb2adf40e45bf4d84256028bab151d, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1826,6 +1826,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 9ddb2adf40e45bf4d84256028bab151d, type: 3}
       propertyPath: m_Name
       value: RCcontroller
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 9ddb2adf40e45bf4d84256028bab151d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
