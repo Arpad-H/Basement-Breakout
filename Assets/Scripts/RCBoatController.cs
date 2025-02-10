@@ -25,6 +25,7 @@ public class RCBoatController : MonoBehaviour
     [SerializeField] private GrabInteractable grabInteractable;
     [SerializeField] private GameObject camera;
     [SerializeField] private AudioSource boatSound;
+    [SerializeField] private GameObject winBox;
 
     private GameObject battery;
     private GameObject emptyIndicator;
@@ -35,6 +36,7 @@ public class RCBoatController : MonoBehaviour
     }
 
     void Start() {
+        winBox.SetActive(false);
         battery = GameObject.Find("InsertedBatteryController");
         battery.SetActive(false);
         emptyIndicator = GameObject.Find("EmptyBattery");
@@ -96,6 +98,7 @@ public class RCBoatController : MonoBehaviour
     
     public void isFull()
     {
+        winBox.SetActive(true);
         camera.SetActive(true);
         hasBattery = true;
         battery.SetActive(true);
