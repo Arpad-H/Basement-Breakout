@@ -2,43 +2,221 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class TutorialUI : MonoBehaviour
 {
-    public TextMeshPro tutorialText;
-    public TextMeshPro pageNumber;
-    public GameObject[] pages; // Falls du mehrere Panels hast
+    // UI-Elemente (im Inspector zuweisen)
+    public TextMeshPro tutorialText;      // Text für den aktuellen Tutorial-Schritt
+    public TextMeshPro pageNumber;        // z. B. "1 / 6"
+    public TextMeshPro headerText;        // Überschrift (z. B. "Tutorial", "Game Over", "Gewonnen!")
     
+    // Button-Feedback: Hier ein Bild, das den A-Button zeigt
+    public Image buttonPromptImage;           // Zeigt den A-Button (Standard und gedrückt)
+    public Sprite normalButtonSprite;         // Standardzustand (A-Button nicht gedrückt)
+    public Sprite pressedButtonSprite;        // Gedrückter Zustand (A-Button gedrückt)
+    public AudioClip buttonSound;             // Sound, der beim Drücken abgespielt wird
+
+    // Controller-Bild pro Tutorial-Schritt
+    public Image tutorialControllerImage;     // Bild, das den entsprechenden Controller-Button anzeigt
+    public Sprite[] tutorialControllerSprites;  // Array mit den Sprites für jeden Tutorial-Schritt
+
+    public CanvasGroup canvasGroup;           
+    
+    
+    // Private Variablen
     private int currentPage = 0;
-    private string[] tutorialSteps = {
-        "Schritt 1: Bewege dich mit dem linken Stick...",
-        "Schritt 2: Greife Objekte mit dem Trigger...",
-        "Schritt 3: Nutze die A-Taste, um Aktionen auszuführen..."
-    };
-    
-    void Start()
-    {
-        CanvasGroup canvasGroup = GetComponent<CanvasGroup>();
-        canvasGroup.alpha = Mathf.Lerp(canvasGroup.alpha, 1, Time.deltaTime * 3);
+    private string[] steps;                   // Tutorial-Schritte (Text)
+    private bool isGameOverMode = false;      // Kennzeichnet, ob wir im GameOver-/Win-Modus sind
+    private GameManager.GameState currentGameState;
+    private AudioSource audioSource;          // Für den Button-Sound
 
-    }
-
-    void Update()
+    private void Awake()
     {
-        if (OVRInput.GetDown(OVRInput.Button.One)) // "A"-Taste auf dem Quest-Controller
+        // Stelle sicher, dass ein AudioSource vorhanden ist.
+        audioSource = GetComponent<AudioSource>();
+        if (audioSource == null)
         {
-            NextPage();
+            audioSource = gameObject.AddComponent<AudioSource>();
         }
 
+        // Zu Beginn ausblenden (das GameObject, an dem dieses Script hängt, deaktivieren)
+        //HideUI();
     }
 
-    void NextPage()
+    private void OnEnable()
     {
-        if (currentPage < tutorialSteps.Length - 1)
+        GameManager.OnGameStateChanged += OnGameStateChanged;
+    }
+
+    private void OnDisable()
+    {
+        GameManager.OnGameStateChanged -= OnGameStateChanged;
+    }
+
+    private void Update()
+    {
+        // Überprüfe, ob der A-Button gedrückt wurde (OVRInput; ggf. an deine Eingabe anpassen)
+        if (OVRInput.GetDown(OVRInput.Button.One))
+        {
+            StartCoroutine(HandleButtonPress());
+        }
+    }
+
+    /// <summary>
+    /// Gibt beim Drücken des A-Buttons visuelles Feedback (Bildwechsel) und spielt einen Sound ab.
+    /// Anschließend wird zur nächsten Seite gewechselt.
+    /// </summary>
+    private IEnumerator HandleButtonPress()
+    {
+        // Setze das Buttonbild auf den gedrückten Zustand
+        if (buttonPromptImage != null && pressedButtonSprite != null)
+        {
+            buttonPromptImage.sprite = pressedButtonSprite;
+        }
+
+        // Spiele den Sound ab
+        if (audioSource != null && buttonSound != null)
+        {
+            audioSource.PlayOneShot(buttonSound);
+        }
+
+        // Kurze Wartezeit, damit der gedrückte Zustand sichtbar ist
+        yield return new WaitForSeconds(0.1f);
+
+        // Setze das Buttonbild wieder in den Normalzustand
+        if (buttonPromptImage != null && normalButtonSprite != null)
+        {
+            buttonPromptImage.sprite = normalButtonSprite;
+        }
+
+        // Wechsle zur nächsten Seite
+        NextPage();
+    }
+
+    /// <summary>
+    /// Wird aufgerufen, wenn sich der GameState ändert. Je nach Zustand (Tutorial, Win, Game Over)
+    /// wird der entsprechende Content in die UI geladen.
+    /// </summary>
+    private void OnGameStateChanged(GameManager.GameState newState)
+    {
+        currentGameState = newState;
+
+        if (newState == GameManager.GameState.Menu)
+        {
+            isGameOverMode = false;
+            steps = new string[]
+            {
+                "Hallo! Drücke A zum Fortfahren.",
+                "Bewege dich mit dem linken Stick.",
+                "Drehe die Kamera mit dem rechten Stick.",
+                "Greife Objekte mit dem Trigger.",
+                "Interagiere mit Gegenständen durch Drücken der X-Taste.",
+                "So gewinnst du: Erreiche das Ziel!"
+            };
+            currentPage = 0;
+            headerText.text = "Tutorial";
+            UpdateUI();
+            ShowUI();
+        }
+        else if (newState == GameManager.GameState.Win)
+        {
+            isGameOverMode = true;
+            steps = new string[]
+            {
+                "Herzlichen Glückwunsch!",
+                "Du hast das Spiel gewonnen.",
+                "Drücke A zum Neustarten."
+            };
+            currentPage = 0;
+            headerText.text = "Gewonnen!";
+            UpdateUI();
+            ShowUI();
+        }
+        else if (newState == GameManager.GameState.Drowned || newState == GameManager.GameState.ElectricShock)
+        {
+            isGameOverMode = true;
+            steps = new string[]
+            {
+                "Oh nein!",
+                "Du bist gestorben.",
+                "Drücke A zum Neustarten."
+            };
+            currentPage = 0;
+            headerText.text = "Game Over";
+            UpdateUI();
+            ShowUI();
+        }
+        else
+        {
+            // Für alle anderen Zustände: UI ausblenden
+            HideUI();
+        }
+    }
+
+    /// <summary>
+    /// Aktualisiert den angezeigten Text, den Seitenzähler und das Controller-Bild für den aktuellen Schritt.
+    /// </summary>
+    private void UpdateUI()
+    {
+        if (steps != null && steps.Length > 0)
+        {
+            tutorialText.text = steps[currentPage];
+            pageNumber.text = $"{currentPage + 1} / {steps.Length}";
+        }
+
+        // Aktualisiere das Controller-Bild, sofern ein entsprechendes Sprite vorhanden ist.
+        if (tutorialControllerImage != null && tutorialControllerSprites != null && tutorialControllerSprites.Length > currentPage)
+        {
+            tutorialControllerImage.sprite = tutorialControllerSprites[currentPage];
+        }
+    }
+
+    /// <summary>
+    /// Wechselt zur nächsten Seite. Beim letzten Schritt:
+    /// - Im Tutorial-Modus: Wird die UI ausgeblendet.
+    /// - Im GameOver-/Win-Modus: Bleibt der Restart-Code (auskommentiert) erhalten.
+    /// </summary>
+    private void NextPage()
+    {
+        if (steps == null || steps.Length == 0)
+            return;
+
+        if (currentPage < steps.Length - 1)
         {
             currentPage++;
-            tutorialText.text = tutorialSteps[currentPage];
-            pageNumber.text = $"{currentPage + 1}/{tutorialSteps.Length}";
+            UpdateUI();
         }
+        else
+        {
+            // Letzter Schritt erreicht
+            if (isGameOverMode)
+            {
+                // Restart-Code (derzeit auskommentiert, wie gewünscht)
+                SceneManager.LoadScene("NewWaterScene");
+            }
+            else
+            {
+                // Im Tutorial: Nur die UI ausblenden
+                HideUI();
+            }
+        }
+    }
+
+    /// <summary>
+    /// Blendet die UI ein, indem das gesamte GameObject aktiviert wird.
+    /// </summary>
+    private void ShowUI()
+    {
+        gameObject.transform.GetChild(0).gameObject.SetActive(true);
+    }
+
+    /// <summary>
+    /// Blendet die UI aus, indem das gesamte GameObject deaktiviert wird.
+    /// </summary>
+    private void HideUI()
+    {
+        gameObject.transform.GetChild(0).gameObject.SetActive(false);
     }
 }

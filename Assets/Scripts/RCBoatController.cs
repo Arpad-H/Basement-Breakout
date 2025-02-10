@@ -14,7 +14,8 @@ public class RCBoatController : MonoBehaviour
     private bool leftHanded = false;
     private bool rightHanded = false;
     Vector2 direction = Vector2.zero;
-    [SerializeField] private Transform boat;
+    [SerializeField] private Rigidbody boat;
+    [SerializeField] private float speed = 2f;
     [SerializeField] private Transform leftHand;
     [SerializeField] private Transform rightHand;
     //[SerializeField] private UnityEvent<Vector2> moving;
@@ -23,25 +24,22 @@ public class RCBoatController : MonoBehaviour
     [SerializeField] private GameObject teleportIndicator2;
     [SerializeField] private GrabInteractable grabInteractable;
     [SerializeField] private GameObject camera;
-    [SerializeField] private GameObject OutsideArea;
+    [SerializeField] private AudioSource boatSound;
 
     private GameObject battery;
     private GameObject emptyIndicator;
     private bool hasBattery = false;
 
-    private void Awake()
-    {
+    private void Awake() {
         camera.SetActive(false);
     }
 
-    void Start()
-    {
+    void Start() {
         battery = GameObject.Find("InsertedBatteryController");
         battery.SetActive(false);
         emptyIndicator = GameObject.Find("EmptyBattery");
     }
-    void Update()
-    {
+    void Update() {
         //OVRInput.Update();
         //.FixedUpdate();
         
@@ -51,32 +49,30 @@ public class RCBoatController : MonoBehaviour
             locomotion.SetActive(false);
             teleportIndicator1.SetActive(false);
             teleportIndicator2.SetActive(false);
-            if (rightHanded)
-            {
+            boatSound.volume = Mathf.Lerp(boatSound.volume, 1, Time.deltaTime);
+            if (rightHanded) {
                 direction = OVRInput.Get(OVRInput.RawAxis2D.RThumbstick);
             }
-            else if(leftHanded)
-            {
+            else if (leftHanded) {
                 direction = OVRInput.Get(OVRInput.RawAxis2D.LThumbstick);
-            }
-            else
-            {
+            } else {
                 direction = Vector2.zero;
             }
         }
         else {
-            OutsideArea.SetActive(false);
+            boatSound.volume = Mathf.Lerp(boatSound.volume, 0, Time.deltaTime);
             locomotion.SetActive(true);
             teleportIndicator1.SetActive(true);
             teleportIndicator2.SetActive(true);
             direction = Vector2.zero;
         }
-        //moveBoat();
+        moveBoat();
     }
 
     private void moveBoat()
     {
-        boat.position += new Vector3(direction.x, 0, direction.y);
+        boat.AddRelativeForce(new Vector3(0, 0, direction.y * speed), ForceMode.Acceleration);
+        boat.AddRelativeTorque(new Vector3(0, direction.x, 0), ForceMode.Acceleration);
     }
     
     public void canDrive()
@@ -100,7 +96,6 @@ public class RCBoatController : MonoBehaviour
     
     public void isFull()
     {
-        OutsideArea.SetActive(true);
         camera.SetActive(true);
         hasBattery = true;
         battery.SetActive(true);

@@ -29,6 +29,7 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] private float DROWNINGTIME = 10f;
     private float _timeUnderWater = 0f;
 
+    [SerializeField] private GameObject waterPlane;
     public static event Action<GameManager.GameState> GameStateChangedPlayer;
 
     
