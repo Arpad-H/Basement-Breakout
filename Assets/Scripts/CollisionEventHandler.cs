@@ -3,9 +3,11 @@ using System;
 
 public class CollisionEventHandler : MonoBehaviour
 {
+    //wasser als targetobject
     [SerializeField] private GameObject targetObject;
     [SerializeField] private Objecttype objecttypeselection;
 
+  
     private CollisionEventHandler _instance;
 
     public static event Action<bool> OnWaterStateChangedCable;

@@ -52,7 +52,7 @@ public class GameManager : MonoBehaviour
 
     private void OnWaterStateChangedCable(bool state)
     {
-        Debug.LogError($"[GameManager]: OnWaterStateChangedCable: + {state}");
+        Debug.Log($"[GameManager]: OnWaterStateChangedCable: + {state}");
         cableISinWater = state;
         checkPlayerAndCableInWhater(playerIsInWhater, cableISinWater, electricityIsActive);
     }

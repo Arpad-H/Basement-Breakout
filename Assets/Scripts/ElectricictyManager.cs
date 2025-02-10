@@ -113,11 +113,19 @@ public class ElectricictyManager : MonoBehaviour
 
     private void disableTV()
     {
+        if (Videoplayer == null)
+        {
+            return;
+        }
         Videoplayer.enabled = false;
     }
 
     private void enableTV()
     {
+        if (Videoplayer == null)
+        {
+            return;
+        }
         Videoplayer.enabled = true;
     }
 }
