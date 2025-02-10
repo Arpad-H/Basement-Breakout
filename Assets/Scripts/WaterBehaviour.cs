@@ -11,6 +11,7 @@ public class WaterBehaviour : MonoBehaviour
     // [SerializeField] private GameObject WaveGen;
     [SerializeField] private GameObject PlayerHead;
     [SerializeField] private GameObject Player;
+    [SerializeField] private float MaxHeight = 6;
     float drowningtime = 10f;
     float timeUnderWater = 0f;
 
@@ -22,6 +23,7 @@ public class WaterBehaviour : MonoBehaviour
     [SerializeField] private float waveSteepness = 0.094f;
     [SerializeField] private float waveSpeed = 20f;
     [SerializeField] private float Amplitude = 1;
+    
 
     static uint DCount = 7;
 
@@ -104,7 +106,7 @@ public class WaterBehaviour : MonoBehaviour
 
     private void Update()
     {
-        if (isFlooding)
+        if (isFlooding && heightPlane.transform.position.y < MaxHeight)
         {
             heightPlane.transform.Translate(Vector3.up * (Time.deltaTime * floodingSpeed));
         }
