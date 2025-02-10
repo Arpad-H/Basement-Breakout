@@ -109,11 +109,11 @@ public class TutorialUI : MonoBehaviour
             steps = new string[]
             {
                 "Hallo! Drücke A zum Fortfahren.",
-                "Bewege dich mit dem linken Stick.",
-                "Drehe die Kamera mit dem rechten Stick.",
-                "Greife Objekte mit dem Trigger.",
-                "Interagiere mit Gegenständen durch Drücken der X-Taste.",
-                "So gewinnst du: Erreiche das Ziel!"
+                "Du kannst dich bewegen indem du einen der Analog-Sticks nach vor drückst, achte dafür auf den Indikator.",
+                "Die Kamerea wird durch eine seitliche bewegung der analog sticks bewegt.",
+                "Greife Objekte mit der unteren Taste.",
+                "Interagiere mit Gegenständen durch Drücken Schultertaste während du es hälst",
+                "Gehe durch die Tür um das Spiel zu starten!"
             };
             currentPage = 0;
             headerText.text = "Tutorial";
