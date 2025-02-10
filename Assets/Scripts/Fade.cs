@@ -1,55 +1,88 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class Fade : MonoBehaviour
 {
     
-    [SerializeField] private Image fadeImage;
-    [SerializeField] private float fadeDistanceThreshold = 0.5f;
-    [SerializeField] private float fadeSpeed = 2.0f;
-    [SerializeField] public OVRCameraRig cameraRig;
-    
-    
-    private float targetAlpha = 0f;
-    
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        Color currentColor = fadeImage.color;
-        currentColor.a = Mathf.Lerp(currentColor.a, targetAlpha, fadeSpeed * Time.deltaTime);
-        fadeImage.color = currentColor;
-    }
+    [SerializeField] private OVRScreenFade fader;
+    private bool _isInPlayArea = true;
 
 
-    private void OnCollisionStay(Collision other)
+    // private void OnCollisionStay(Collision other)
+    // {
+    //     Debug.Log($"[Fade] On Coolision stay {other.gameObject.tag}");
+    //     
+    // }
+    //
+    // private void OnTriggerEnter(Collider other)
+    // {
+    //     Debug.Log($"[Fade] On Trigger stay {other.gameObject.tag}");
+    //     if (other.gameObject.CompareTag("GameBorder"))
+    //     {
+    //         fader.FadeOut();
+    //     }
+    // }
+
+    private void OnTriggerEnter(Collider other)
     {
-        Debug.Log($"[Fade] On Coolision stay {other.gameObject.tag}");
-        if (other.gameObject.CompareTag("GameBorder"))
+        //Debug.Log($"[Fade] On Trigger stay {other.gameObject.tag}");
+        if (other.gameObject.CompareTag("PlayArea"))
         {
-            Vector3 playerPos = cameraRig.centerEyeAnchor.position;
-            Vector3 closetPoint = other.collider.ClosestPoint(playerPos);
-            float distance = Vector3.Distance(closetPoint, playerPos);
-            float fadeFacotor = 1f- Mathf.Clamp01(distance / fadeDistanceThreshold);
-            targetAlpha = fadeFacotor;
-            
+            if (_isInPlayArea)
+            {
+                Debug.Log($"[Fade] On Trigger stay Fade in");
+                _isInPlayArea = false;
+                fader.FadeOut();
+                
+            }
         }
     }
 
-    private void OnCollisionExit(Collision other)
+
+    private void Update()
     {
-        Debug.Log($"[Fade] On Coolision exist {other.gameObject.tag}");
-        if (other.gameObject.CompareTag("GameBorder"))
+        // if (!_isInPlayArea)
+        // {
+        //     //Debug.Log($"[Fade] update Fade out");
+        //     _isInPlayArea = false;
+        //     // fader.FadeOut();
+        // }
+        // else
+        // {
+        //     
+        // }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        Debug.Log($"[Fade] On Trigger exit {other.gameObject.tag}");
+        if (other.gameObject.CompareTag("PlayArea"))
         {
-            targetAlpha = 0f;
+            if (!_isInPlayArea)
+            {
+                _isInPlayArea = true;
+
+                fader.FadeIn();
+            }
         }
     }
+
+    // private void OnTriggerExit(Collider other)
+    // {
+    //     Debug.Log($"[Fade] On Trigger exit {other.gameObject.tag}");
+    //     if (other.gameObject.CompareTag("GameBorder"))
+    //     {
+    //         fader.FadeIn();
+    //     }
+    // }
+    //
+    // private void OnCollisionExit(Collision other)
+    // {
+    //     Debug.Log($"[Fade] On Coolision exist {other.gameObject.tag}");
+    //     
+    // }
 }
