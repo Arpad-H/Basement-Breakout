@@ -14,6 +14,8 @@ public class TVBehavior : MonoBehaviour
     [SerializeField] private WaterBehaviour waterBehaviour;
     [SerializeField] public AudioSource HintVoiceClip;
     [SerializeField] public int timeGameStarts = 10;
+    [SerializeField] private VideoClip blackScreenClip;
+    [SerializeField] private AudioSource tvDamageSound;
 
 
     private VideoClip currentClip;
@@ -21,12 +23,17 @@ public class TVBehavior : MonoBehaviour
     private AudioSource videoAudio;
 
     private GameManager gameManager;
+    private bool _tvIsDamaged = false;
 
     // Dictionaries für Wiedergabezeiten
     private Dictionary<VideoClip, double> clipLastPlayTime = new Dictionary<VideoClip, double>();
     private Dictionary<VideoClip, double> clipLastUpdateTime = new Dictionary<VideoClip, double>();
+    
+   
 
     private bool hasChangedStateAfterClip = false;
+
+    private float lowestYVideoQuad;
 
     // Action zur Benachrichtigung anderer Objekte
     public static event Action<GameManager.GameState> gameStateChangedTVBehavior;
@@ -64,6 +71,8 @@ public class TVBehavior : MonoBehaviour
 
         videoPlayer.audioOutputMode = VideoAudioOutputMode.AudioSource;
         videoPlayer.SetTargetAudioSource(0, videoAudio);
+        
+        lowestYVideoQuad = VideoQuad.GetComponent<Renderer>().bounds.min.y;
 
         currentClip = clips[0];
         videoPlayer.clip = currentClip;
@@ -73,6 +82,16 @@ public class TVBehavior : MonoBehaviour
         {
             clipLastPlayTime[clip] = 0.0;
             clipLastUpdateTime[clip] = Time.time;
+        }
+    }
+
+  
+    void Update()
+    {
+        if ((waterBehaviour.transform.position.y > lowestYVideoQuad) && !_tvIsDamaged)
+        {
+            WaterDamage(videoPlayer, tvDamageSound);
+            _tvIsDamaged = true;
         }
     }
 
@@ -153,4 +172,20 @@ public class TVBehavior : MonoBehaviour
             Debug.Log("TVBehavior: Game state detected.");
         }
     }
+
+    private void WaterDamage( VideoPlayer videoPlayer, AudioSource audioSource)
+    {
+        
+
+        
+            Debug.Log("TVBehavior: water damage detected.");
+            videoPlayer.clip = blackScreenClip;
+            videoPlayer.isLooping = true;
+            videoPlayer.Play();
+            tvDamageSound.loop = false;
+            tvDamageSound.Play();
+            Debug.Log($"TVBehavior: water damage sound {tvDamageSound.clip.name} // {tvDamageSound.isPlaying}");
+        
+    }
+    
 }
