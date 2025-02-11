@@ -72,10 +72,6 @@ public class AdvancedBuoyController : MonoBehaviour {
 			{
 				underwater = true;
 				switchState(true);
-				if (cannotSpin)
-				{
-					transform.rotation = Quaternion.Euler(0f, transform.rotation.y, 0f);
-				}
 			}
 		}
 		else if (underwater)
