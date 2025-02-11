@@ -867,7 +867,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blockId: f8766c17-aaf8-4b55-9431-de8deea83842
-  instanceId: dacc4c48-0a19-43b1-8cf6-e6329e308809
+  instanceId: e8edc77e-b72c-4b31-8284-bd6031c76f4d
   version: 1
   installationRoutineCheckpoint:
     _installationRoutineId: f8338144-8280-4ff6-9455-ae2bb9c20fe8
@@ -1092,7 +1092,7 @@ MonoBehaviour:
   slicableLayer:
     serializedVersion: 2
     m_Bits: 64
-  crossSectionMaterial: {fileID: 2100000, guid: 3054e5ae11b568e4aa20150625d3f6da, type: 2}
+  crossSectionMaterial: {fileID: 2100000, guid: a31f539b1993b1646994e9bc086fb7a3, type: 2}
   cutForce: 20
   waterPos: {fileID: 0}
   chainsawRefuelSound: {fileID: 8300000, guid: af4f368f2f8e48545865dae3f21a15f1, type: 3}
@@ -1103,6 +1103,7 @@ MonoBehaviour:
   pullLine: {fileID: 3001195522521748532}
   pullPos1: {fileID: 5113071302326190735}
   pullPos2: {fileID: 1396348777370790319}
+  grabbable: {fileID: 4386680062748483014}
 --- !u!82 &780129849666425575
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2296,64 +2297,16 @@ MonoBehaviour:
         m_CallState: 2
   leftGrab:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2662663139574317706}
-        m_TargetAssemblyTypeName: SliceObject, Assembly-CSharp
-        m_MethodName: leftHandGrabbed
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   leftUngrab:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2662663139574317706}
-        m_TargetAssemblyTypeName: SliceObject, Assembly-CSharp
-        m_MethodName: leftHandUngrabbed
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   rightGrab:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2662663139574317706}
-        m_TargetAssemblyTypeName: SliceObject, Assembly-CSharp
-        m_MethodName: rightHandGrabbed
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   rightUngrab:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2662663139574317706}
-        m_TargetAssemblyTypeName: SliceObject, Assembly-CSharp
-        m_MethodName: rightHandUngrabbed
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   justActive:
     m_PersistentCalls:
       m_Calls: []

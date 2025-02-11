@@ -4,13 +4,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using EzySlice;
 using Oculus.Haptics;
+using Oculus.Interaction;
 using Unity.VisualScripting;
 using UnityEngine.InputSystem;
 using UnityEngine.UIElements;
 using UnityEngine.XR;
 using Plane = UnityEngine.Plane;
 
-//Credits, Code by: https://www.youtube.com/watch?v=GQzW6ZJFQ94
+//Credits, Code with help of: https://www.youtube.com/watch?v=GQzW6ZJFQ94
 public class SliceObject : MonoBehaviour {
     [SerializeField] private Transform startSlicePoint;
     [SerializeField] private Transform endSlicePoint;
@@ -27,6 +28,7 @@ public class SliceObject : MonoBehaviour {
     [SerializeField] private LineRenderer pullLine;
     [SerializeField] private Transform pullPos1;
     [SerializeField] private Transform pullPos2;
+    [SerializeField] private GrabInteractable grabbable;
 
     //[SerializeField] private Animator animator; //Auskommentiert, weil error
     private float chainsawRefuelSoundLength;
@@ -76,7 +78,7 @@ public class SliceObject : MonoBehaviour {
     }
     
     public void HandleAudioAndHaptics() {
-        if (!leftGrabbed && !rightGrabbed) {
+        if (grabbable.State != InteractableState.Select) {
             started = false;
             chainsawIdleSound.Stop();
             chainsawCutSound.Stop();
@@ -84,7 +86,7 @@ public class SliceObject : MonoBehaviour {
             pullHapticPlayer.Stop();
         }
 
-        if (leftGrabbed || rightGrabbed) {
+        if (grabbable.State == InteractableState.Select) {
             if (currentPullDistance > 0.3f && currentPullDistance > previousPullDistance) {
                 pullHapticPlayer.Play(Controller.Both);
             }
@@ -98,7 +100,7 @@ public class SliceObject : MonoBehaviour {
                         chainsawCutSound.volume = 1;
                         chainsawCutSound.Play();
                     }
-                    chainsawIdleSound.volume = Mathf.Lerp(chainsawIdleSound.volume, 0, Time.deltaTime);
+                    //chainsawIdleSound.volume = Mathf.Lerp(chainsawIdleSound.volume, 0, Time.deltaTime);
                 }
                 else {
                     if (!chainsawIdleSound.isPlaying) {
@@ -159,24 +161,6 @@ public class SliceObject : MonoBehaviour {
         
         Fuelpointer.transform.Rotate(0, fuel, 0);
     }
-    
-    
-    public void leftHandUngrabbed() {
-        leftGrabbed = false;
-    }
-    public void leftHandGrabbed() {
-        leftGrabbed = true;
-    }
-    
-    public void rightHandUngrabbed() {
-        rightGrabbed = false;
-    }
-    
-    public void rightHandGrabbed() {
-        rightGrabbed = true;
-    }
-
-    
 
     public void sawing() {
         canCut = started;
