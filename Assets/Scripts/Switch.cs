@@ -26,11 +26,13 @@ public class Switch : OneGrabRotateTransformer
 
         if (isAtMaxAngle && !_previousMaxAngleState) 
         {
+            Debug.Log($"Switch State: {_switchState} Light disable");
             switchObject.SetActive(false);
             _switchState = !_switchState;
         }
         else if (isAtMinAngle && !_previousMinAngleState)
         {
+            Debug.Log($"Switch State: {_switchState} Light enable");
             switchObject.SetActive(true);
             _switchState = !_switchState;
         }
