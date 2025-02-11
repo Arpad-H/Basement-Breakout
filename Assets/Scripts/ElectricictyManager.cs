@@ -27,7 +27,7 @@ public class ElectricictyManager : MonoBehaviour
     public GameObject electricitySparks;
     private void Awake()
     {
-        LeverInteractable.onLeverAction += LeverInteractableOnonLeverAction;
+        LeverInteractable.OnLeverAction += LeverInteractableOnonLeverAction;
     }
 
     private void LeverInteractableOnonLeverAction(bool state)
@@ -36,7 +36,6 @@ public class ElectricictyManager : MonoBehaviour
         if (state)
         {
            enableAllLights(); 
-           enableTV();
            if (flooding)
            {
                electricitySparks.SetActive(true);
@@ -46,7 +45,6 @@ public class ElectricictyManager : MonoBehaviour
         else
         {
             disableAllLights();
-            disableTV();
             electricitySparks.SetActive(false);
         }
     }
@@ -54,18 +52,6 @@ public class ElectricictyManager : MonoBehaviour
     private void Start()
     {
         InitLightmaps();
-
-
-        tv = GameObject.Find("TV Demo");
-        if (tv != null)
-        {
-            Videoplayer = tv.GetComponent<VideoPlayer>();
-            
-        }
-        else
-        {
-            Debug.LogError("[ElectricityManager] GamObject tv is null");
-        }
         // lightmapSet1 = CreateLightmapData(lightmapColor1);
         // lightmapSet2 = CreateLightmapData(lightmapColor2);
 
@@ -107,25 +93,5 @@ public class ElectricictyManager : MonoBehaviour
     {
         LightmapSettings.lightmaps = lightmapLit;
         // Debug.Log("Enable all lights");
-    }
-
-
-
-    private void disableTV()
-    {
-        if (Videoplayer == null)
-        {
-            return;
-        }
-        Videoplayer.enabled = false;
-    }
-
-    private void enableTV()
-    {
-        if (Videoplayer == null)
-        {
-            return;
-        }
-        Videoplayer.enabled = true;
     }
 }

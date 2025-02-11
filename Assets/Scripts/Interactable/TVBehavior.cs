@@ -20,10 +20,11 @@ public class TVBehavior : MonoBehaviour
 
     private VideoClip currentClip;
     private VideoPlayer videoPlayer;
-    private AudioSource videoAudio;
+    [SerializeField] private AudioSource videoAudio;
 
     private GameManager gameManager;
     private bool _tvIsDamaged = false;
+    private bool _firstOnLeverAction = true;
 
     // Dictionaries für Wiedergabezeiten
     private Dictionary<VideoClip, double> clipLastPlayTime = new Dictionary<VideoClip, double>();
@@ -41,6 +42,30 @@ public class TVBehavior : MonoBehaviour
     private void Awake()
     {
         StartCoroutine(SubscribeToGameManagerEvent());
+        LeverInteractable.OnLeverAction += LeverInteractableOnOnLeverAction;
+    }
+
+   
+
+    private void LeverInteractableOnOnLeverAction(bool obj)
+    {
+        Debug.Log($"[TVBehavior] LeverInteractableOnOnLeverAction: {obj} // {(obj && _tvIsDamaged == false && _firstOnLeverAction == false)} // _tvIsDamaged = {_tvIsDamaged}] // _firstOnLeverAction = {_firstOnLeverAction}");
+        if (obj && _tvIsDamaged == false && _firstOnLeverAction == false)
+        {
+            Debug.Log($"[TVBehavior] LeverInteractableOnOnLeverAction: Enable TV");
+           changeClip(false);
+           
+        }
+        else if (!obj)
+        {
+            Debug.Log($"[TVBehavior] LeverInteractableOnOnLeverAction: Disable TV");
+            WaterDamage(videoPlayer, blackScreenClip);
+        }
+        else
+        {
+            _firstOnLeverAction = false;
+        }
+        
     }
 
     private IEnumerator SubscribeToGameManagerEvent()
@@ -62,12 +87,13 @@ public class TVBehavior : MonoBehaviour
         {
             GameManager.OnGameStateChanged -= HandleGameStateChanged;
         }
+        LeverInteractable.OnLeverAction -= LeverInteractableOnOnLeverAction;
     }
 
     private void Start()
     {
         videoPlayer = VideoQuad.GetComponent<VideoPlayer>();
-        videoAudio = VideoQuad.GetComponent<AudioSource>();
+        //videoAudio = VideoQuad.GetComponent<AudioSource>();
 
         videoPlayer.audioOutputMode = VideoAudioOutputMode.AudioSource;
         videoPlayer.SetTargetAudioSource(0, videoAudio);
@@ -90,12 +116,12 @@ public class TVBehavior : MonoBehaviour
     {
         if ((waterBehaviour.transform.position.y > lowestYVideoQuad) && !_tvIsDamaged)
         {
-            WaterDamage(videoPlayer, tvDamageSound);
+            WaterDamage(videoPlayer, tvDamageSound, blackScreenClip);
             _tvIsDamaged = true;
         }
     }
 
-    public void changeClip()
+    public void changeClip(bool sendGameState)
     {
         switchStationSound.pitch = UnityEngine.Random.Range(0.8f, 1.2f);
         switchStationSound.Play();
@@ -124,7 +150,7 @@ public class TVBehavior : MonoBehaviour
                 updateClipOnQuad();
 
                 // Ändere den GameState nur nach dem ersten Clipwechsel
-                if (!hasChangedStateAfterClip)
+                if (!hasChangedStateAfterClip && sendGameState)
                 {
                     StartCoroutine(StartFlooding());
                     Debug.Log("TVBehavior: Changing GameState to 'Game' after first clip switch.");
@@ -173,18 +199,23 @@ public class TVBehavior : MonoBehaviour
         }
     }
 
-    private void WaterDamage( VideoPlayer videoPlayer, AudioSource audioSource)
+    private void WaterDamage( VideoPlayer videoPlayer, AudioSource audioSource, VideoClip clip)
     {
-        
-
-        
             Debug.Log("TVBehavior: water damage detected.");
-            videoPlayer.clip = blackScreenClip;
+            videoPlayer.clip = clip;
             videoPlayer.isLooping = true;
             videoPlayer.Play();
             tvDamageSound.loop = false;
             tvDamageSound.Play();
             Debug.Log($"TVBehavior: water damage sound {tvDamageSound.clip.name} // {tvDamageSound.isPlaying}");
+        
+    }
+    private void WaterDamage( VideoPlayer videoPlayer, VideoClip clip )
+    {
+        Debug.Log("TVBehavior: water damage detected.");
+        videoPlayer.clip = clip;
+        videoPlayer.isLooping = true;
+        videoPlayer.Play();
         
     }
     

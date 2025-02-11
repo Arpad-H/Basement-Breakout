@@ -22,7 +22,7 @@ public class GameManager : MonoBehaviour
         //Instance = this;
         CollisionEventHandler.OnWaterStateChangedCable += OnWaterStateChangedCable;
         CollisionEventHandler.OnWaterStateChangedPlayer += OnWaterStateChangedPlayer;
-        LeverInteractable.onLeverAction += OnLeverAction;
+        LeverInteractable.OnLeverAction += OnLeverAction;
         TVBehavior.gameStateChangedTVBehavior += UpdateGameState;
         CustomCollisionEventHandler.GameStateChangedCostomCollisionEventHandler += UpdateGameState;
         PlayerManager.GameStateChangedPlayer += UpdateGameState;
@@ -35,7 +35,7 @@ public class GameManager : MonoBehaviour
     {
         CollisionEventHandler.OnWaterStateChangedCable -= OnWaterStateChangedCable;
         CollisionEventHandler.OnWaterStateChangedPlayer -= OnWaterStateChangedPlayer;
-        LeverInteractable.onLeverAction -= OnLeverAction;
+        LeverInteractable.OnLeverAction -= OnLeverAction;
         TVBehavior.gameStateChangedTVBehavior -= UpdateGameState;
         CustomCollisionEventHandler.GameStateChangedCostomCollisionEventHandler -= UpdateGameState;
         PlayerManager.GameStateChangedPlayer -= UpdateGameState;

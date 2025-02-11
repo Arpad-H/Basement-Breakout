@@ -9,7 +9,7 @@ public class LeverInteractable : MonoBehaviour
 {
     [SerializeField] private float angleThreshold = 45f;
 
-    public static event Action<bool> onLeverAction;
+    public static event Action<bool> OnLeverAction;
 
 
     private Quaternion initialRotation;
@@ -52,7 +52,7 @@ public class LeverInteractable : MonoBehaviour
         {
             Debug.Log($"[LeverInteractable] Lever state changed to {state}");
             previousState = state;
-            onLeverAction?.Invoke(state);
+            OnLeverAction?.Invoke(state);
         }
         
       

@@ -167,6 +167,7 @@ MonoBehaviour:
   timeGameStarts: 10
   blackScreenClip: {fileID: 32900000, guid: c03e3d10091788b408dd5b49fad38c57, type: 3}
   tvDamageSound: {fileID: 7531438428349323638}
+  videoAudio: {fileID: 8691119823818911951}
 --- !u!114 &7456124983537783493
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -203,14 +204,14 @@ MonoBehaviour:
       - m_Target: {fileID: 6933913890325083169}
         m_TargetAssemblyTypeName: TVBehavior, Assembly-CSharp
         m_MethodName: changeClip
-        m_Mode: 1
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 0
+          m_BoolArgument: 1
         m_CallState: 2
   justLeftGrab:
     m_PersistentCalls:
@@ -708,7 +709,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blockId: f8766c17-aaf8-4b55-9431-de8deea83842
-  instanceId: 7dbc3460-d977-4379-9c85-d8f14517d3c8
+  instanceId: ec9ea9e8-172e-431f-8c90-f515db42d366
   version: 1
   installationRoutineCheckpoint:
     _installationRoutineId: f8338144-8280-4ff6-9455-ae2bb9c20fe8
