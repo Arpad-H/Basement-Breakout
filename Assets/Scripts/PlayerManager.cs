@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.PlayerLoop;
 using UnityEngine.UIElements;
@@ -11,6 +12,18 @@ using UnityEngine.XR;
 
 public class PlayerManager : MonoBehaviour
 {
+    // try jan
+    [Header("recenter")]
+    [Tooltip("Center Eye Anchor des OVRCameraRig (Headset-Position)")]
+    public Transform Head; 
+
+    [Tooltip("Gesamter Spieler (Parent-Objekt von OVRCameraRig)")]
+    public Transform origin; 
+
+    [Tooltip("Ziel-Transform als Referenz für das Recentering")]
+    public Transform target; 
+    
+    // ender
    
     private Vector3 STARTSCENEPOS = new Vector3(-1.818f, 0.463f, 1.315f);
     private Vector3 STARTMENUPOS = new Vector3(-15.5f, 2.88f, 3.41f);
@@ -24,7 +37,6 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] public Transform SceneRoom;
     [SerializeField] public OVRCameraRig cameraRig;
     [SerializeField] public bool startAtMenu = true;
-    
 
     [SerializeField] private float DROWNINGTIME = 10f;
     private float _timeUnderWater = 0f;
@@ -76,6 +88,11 @@ public class PlayerManager : MonoBehaviour
 
         Debug.Log($" [PlayerManager] currentAngle Y: {cameraRig.centerEyeAnchor.rotation.eulerAngles.y} //  Frame: {_counter}");
         _counter++;
+        
+        if (OVRInput.GetDown(OVRInput.Button.One, OVRInput.Controller.RTouch))
+        {
+            recenterPlayer();
+        }
     }
 
     public void SetPlayerPositionToStartGame()
@@ -219,4 +236,28 @@ public class PlayerManager : MonoBehaviour
             DeactivatePassthrough();
         }
     }
+    
+    
+    /*
+     * Quelle
+     * https://www.youtube.com/watch?v=NOCXB_ETKrM
+     */
+    public void recenterPlayer()
+    {
+        Vector3 offset = Head.position - origin.position;
+        offset.y = 0; // keep the same height
+        origin.position = target.position - offset;
+        
+        // rotate
+        Vector3 targetForward = target.forward;
+        targetForward.y = 0;
+        Vector3 cameraForward = Head.forward;
+        cameraForward.y = 0;
+        
+        float angle = Vector3.SignedAngle(cameraForward, targetForward, Vector3.up);
+        
+        origin.RotateAround(target.position, Vector3.up, angle);
+        
+    }
+    
 }
