@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Cinemachine;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.PlayerLoop;
@@ -15,19 +16,22 @@ public class PlayerManager : MonoBehaviour
     // try jan
     [Header("recenter")]
     [Tooltip("Center Eye Anchor des OVRCameraRig (Headset-Position)")]
-    public Transform Head; 
+    [SerializeField] public Transform Head; 
 
     [Tooltip("Gesamter Spieler (Parent-Objekt von OVRCameraRig)")]
-    public Transform origin; 
+    [SerializeField] public Transform origin; 
 
     [Tooltip("Ziel-Transform als Referenz für das Recentering")]
-    public Transform target; 
+    [SerializeField] public Transform sceneMenueTarget;
     
-    // ender
-   
-    private Vector3 STARTSCENEPOS = new Vector3(-1.818f, 0.463f, 1.315f);
-    private Vector3 STARTMENUPOS = new Vector3(-15.5f, 2.88f, 3.41f);
-    private Vector3 GAMEOVERMENUPOS = new Vector3(-15.5f, 2.88f, 3.41f);
+    [SerializeField] public Transform startSceneTarget;
+    
+    
+    
+    private Vector3 STARTSCENEPOS = new Vector3(-1.13f, 0.9593f, 2.1740f);
+    private Vector3 STARTSCENEROTAION = new Vector3(0f, 180f, 0f);
+    private Vector3 STARTMENUPOS = new Vector3(-16.158f, 3.122f, 4.676f);
+    private Vector3 STARTMENUROTATION = new Vector3(0f, 90f, 0f);
 
     [SerializeField] private GameObject[] rayInteractor;
     [SerializeField] private GameObject[] teleportInteractor;
@@ -89,18 +93,16 @@ public class PlayerManager : MonoBehaviour
         Debug.Log($" [PlayerManager] currentAngle Y: {cameraRig.centerEyeAnchor.rotation.eulerAngles.y} //  Frame: {_counter}");
         _counter++;
         
-        if (OVRInput.GetDown(OVRInput.Button.One, OVRInput.Controller.RTouch))
-        {
-            recenterPlayer();
-        }
+        // if (OVRInput.GetDown(OVRInput.Button.One, OVRInput.Controller.RTouch))
+        // {
+        //     recenterPlayer(sceneMenueTarget);
+        // }
     }
 
     public void SetPlayerPositionToStartGame()
     {
         
-        transform.position = STARTSCENEPOS;
-        RotateEnvironment(SceneRoom);
-        CenterEnvironment(STARTSCENEPOS, SceneRoom);
+        recenterPlayer(startSceneTarget);
     }
 
     
@@ -108,10 +110,7 @@ public class PlayerManager : MonoBehaviour
 
     public void setPlayerPosToStartMenu()
     {
-        CenterEnvironment(STARTMENUPOS, GameMenuRoom);
-        RotateEnvironment(GameMenuRoom);
-        transform.position = STARTMENUPOS;
-        InputTracking.Recenter();
+        recenterPlayer(sceneMenueTarget);
     }
 
     private void DeactivateRayInteractor()
@@ -158,10 +157,7 @@ public class PlayerManager : MonoBehaviour
 
     public void SetPlayerPosToGameOverMenu()
     {
-        CenterEnvironment(GAMEOVERMENUPOS, GameMenuRoom);
-        RotateEnvironment(GameMenuRoom);
-        transform.position = GAMEOVERMENUPOS;
-        
+        recenterPlayer(sceneMenueTarget);
     }
 
     public bool Drawing()
@@ -203,20 +199,9 @@ public class PlayerManager : MonoBehaviour
 
     
     
-    private void RotateEnvironment(Transform environmentParent)
-    {
-        // Quaternion targetRotation = Quaternion.Euler(0, 180, 0);
-        // float currentYRotation = cameraRig.centerEyeAnchor.rotation.eulerAngles.y;
-        // Quaternion currentRotation = Quaternion.Euler(0, currentYRotation, 0);
-        // Quaternion deltaRotation = targetRotation * Quaternion.Inverse(currentRotation);
-        // environmentParent.rotation = deltaRotation;
-        // Debug.LogWarning($"[PlayerManager]: Rotating environment by {environmentParent.rotation.eulerAngles} // DelatRotation: {deltaRotation.eulerAngles} // CurrentRotation: {currentRotation.eulerAngles}");
-    }
+  
     
-    public void CenterEnvironment(Vector3 targetPosition, Transform environmentParent)
-    {
-        //environmentParent.position += targetPosition - transform.position;
-    }
+    
 
     void OnTriggerEnter(Collider other)
     {
@@ -242,7 +227,7 @@ public class PlayerManager : MonoBehaviour
      * Quelle
      * https://www.youtube.com/watch?v=NOCXB_ETKrM
      */
-    public void recenterPlayer()
+    public void recenterPlayer(Transform target)
     {
         Vector3 offset = Head.position - origin.position;
         offset.y = 0; // keep the same height
