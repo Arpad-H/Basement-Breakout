@@ -102,6 +102,8 @@ public class TVBehavior : MonoBehaviour
 
         currentClip = clips[0];
         videoPlayer.clip = currentClip;
+        
+        videoAudio.mute = true;
 
         // Initialize playtime and last update time for each clip
         foreach (var clip in clips)
@@ -123,6 +125,7 @@ public class TVBehavior : MonoBehaviour
 
     public void changeClip(bool sendGameState)
     {
+        videoAudio.mute = false;
         switchStationSound.pitch = UnityEngine.Random.Range(0.8f, 1.2f);
         switchStationSound.Play();
         HapticClipPlayer hapticClipPlayer = new HapticClipPlayer(hapticClip);
@@ -189,13 +192,14 @@ public class TVBehavior : MonoBehaviour
 
     private void HandleGameStateChanged(GameManager.GameState newState)
     {
-        if (newState == GameManager.GameState.Tutorial)
+        Debug.Log($"TVBehavior: Tutorial state detected. {newState}");
+        if (newState is GameManager.GameState.Tutorial or GameManager.GameState.Win)
         {
-            Debug.Log("TVBehavior: Tutorial state detected.");
+            videoAudio.mute = false;
         }
-        else if (newState == GameManager.GameState.Game)
+        else
         {
-            Debug.Log("TVBehavior: Game state detected.");
+            videoAudio.mute = true;
         }
     }
 
