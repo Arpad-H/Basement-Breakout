@@ -25,6 +25,7 @@ public class TVBehavior : MonoBehaviour
     private GameManager gameManager;
     private bool _tvIsDamaged = false;
     private bool _firstOnLeverAction = true;
+    private bool _electricityIsOn = true;
 
     // Dictionaries für Wiedergabezeiten
     private Dictionary<VideoClip, double> clipLastPlayTime = new Dictionary<VideoClip, double>();
@@ -49,10 +50,12 @@ public class TVBehavior : MonoBehaviour
 
     private void LeverInteractableOnOnLeverAction(bool obj)
     {
+        _electricityIsOn = obj;
         Debug.Log($"[TVBehavior] LeverInteractableOnOnLeverAction: {obj} // {(obj && _tvIsDamaged == false && _firstOnLeverAction == false)} // _tvIsDamaged = {_tvIsDamaged}] // _firstOnLeverAction = {_firstOnLeverAction}");
         if (obj && _tvIsDamaged == false && _firstOnLeverAction == false)
         {
             Debug.Log($"[TVBehavior] LeverInteractableOnOnLeverAction: Enable TV");
+      
            changeClip(false);
            
         }
@@ -116,7 +119,7 @@ public class TVBehavior : MonoBehaviour
   
     void Update()
     {
-        if ((waterBehaviour.transform.position.y > lowestYVideoQuad) && !_tvIsDamaged)
+        if ((waterBehaviour.transform.position.y > lowestYVideoQuad) && !_tvIsDamaged && _electricityIsOn)
         {
             WaterDamage(videoPlayer, tvDamageSound, blackScreenClip);
             _tvIsDamaged = true;
