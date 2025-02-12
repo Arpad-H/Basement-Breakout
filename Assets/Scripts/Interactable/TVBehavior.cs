@@ -16,6 +16,7 @@ public class TVBehavior : MonoBehaviour
     [SerializeField] public int timeGameStarts = 10;
     [SerializeField] private VideoClip blackScreenClip;
     [SerializeField] private AudioSource tvDamageSound;
+    [SerializeField] private GameObject timeline;
 
 
     private VideoClip currentClip;
@@ -172,8 +173,8 @@ public class TVBehavior : MonoBehaviour
     IEnumerator StartFlooding()
     {
         yield return new WaitForSeconds(timeGameStarts);
-        
-        waterBehaviour.HandleGameStateChanged(GameManager.GameState.Game);
+        timeline.SetActive(true);
+      //  waterBehaviour.HandleGameStateChanged(GameManager.GameState.Game);
         HintVoiceClip.Play();
         
         

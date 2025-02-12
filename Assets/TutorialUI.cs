@@ -195,6 +195,7 @@ public class TutorialUI : MonoBehaviour
             {
                 // Restart-Code (derzeit auskommentiert, wie gewünscht)
                 SceneManager.LoadScene("NewWaterScene");
+                //GameManager.restartGame();
             }
             else
             {
