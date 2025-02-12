@@ -129,45 +129,49 @@ public class TVBehavior : MonoBehaviour
 
     public void changeClip(bool sendGameState)
     {
-        videoAudio.mute = false;
-        switchStationSound.pitch = UnityEngine.Random.Range(0.8f, 1.2f);
-        switchStationSound.Play();
-        HapticClipPlayer hapticClipPlayer = new HapticClipPlayer(hapticClip);
-        hapticClipPlayer.Play(Controller.Right);
-        Debug.Log("Changing Clip");
-
-        for (int i = 0; i < clips.Length; i++)
+        if (_electricityIsOn && !_tvIsDamaged)
         {
-            if (clips[i] == currentClip)
+            videoAudio.mute = false;
+            switchStationSound.pitch = UnityEngine.Random.Range(0.8f, 1.2f);
+            switchStationSound.Play();
+            HapticClipPlayer hapticClipPlayer = new HapticClipPlayer(hapticClip);
+            hapticClipPlayer.Play(Controller.Right);
+            Debug.Log("Changing Clip");
+
+            for (int i = 0; i < clips.Length; i++)
             {
-                // Speichere den aktuellen Wiedergabestand
-                double elapsedTime = Time.time - clipLastUpdateTime[currentClip];
-                clipLastPlayTime[currentClip] += elapsedTime;
-                clipLastPlayTime[currentClip] %= currentClip.length;
-
-                if (i == clips.Length - 1)
+                if (clips[i] == currentClip)
                 {
-                    currentClip = clips[0];
-                }
-                else
-                {
-                    currentClip = clips[i + 1];
-                }
+                    // Speichere den aktuellen Wiedergabestand
+                    double elapsedTime = Time.time - clipLastUpdateTime[currentClip];
+                    clipLastPlayTime[currentClip] += elapsedTime;
+                    clipLastPlayTime[currentClip] %= currentClip.length;
 
-                updateClipOnQuad();
+                    if (i == clips.Length - 1)
+                    {
+                        currentClip = clips[0];
+                    }
+                    else
+                    {
+                        currentClip = clips[i + 1];
+                    }
 
-                // Ändere den GameState nur nach dem ersten Clipwechsel
-                if (!hasChangedStateAfterClip && sendGameState)
-                {
-                    StartCoroutine(StartFlooding());
-                    Debug.Log("TVBehavior: Changing GameState to 'Game' after first clip switch.");
-                    gameStateChangedTVBehavior?.Invoke(GameManager.GameState.Game); // Action auslösen
-                    hasChangedStateAfterClip = true; // Verhindert weitere Änderungen
+                    updateClipOnQuad();
+
+                    // Ändere den GameState nur nach dem ersten Clipwechsel
+                    if (!hasChangedStateAfterClip && sendGameState)
+                    {
+                        StartCoroutine(StartFlooding());
+                        Debug.Log("TVBehavior: Changing GameState to 'Game' after first clip switch.");
+                        gameStateChangedTVBehavior?.Invoke(GameManager.GameState.Game); // Action auslösen
+                        hasChangedStateAfterClip = true; // Verhindert weitere Änderungen
+                    }
+
+                    break;
                 }
-
-                break;
             }
         }
+       
     }
 
     IEnumerator StartFlooding()
