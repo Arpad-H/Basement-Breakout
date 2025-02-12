@@ -177,6 +177,7 @@ GameObject:
   - component: {fileID: 3877600785753526306}
   - component: {fileID: 721838133757070045}
   - component: {fileID: 9080637901203946413}
+  - component: {fileID: 8540143579690822355}
   m_Layer: 0
   m_Name: SM_Water_Bottle_LOD0
   m_TagString: Untagged
@@ -249,6 +250,27 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1885600607207276262}
   m_Mesh: {fileID: 4300000, guid: abc00000000013380591415029008740, type: 3}
+--- !u!65 &8540143579690822355
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1885600607207276262}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.0662611, y: 0.20035404, z: 0.06626131}
+  m_Center: {x: 0, y: 0.1079829, z: 0.002758485}
 --- !u!1 &2657490247244510684
 GameObject:
   m_ObjectHideFlags: 0
@@ -297,7 +319,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blockId: f8766c17-aaf8-4b55-9431-de8deea83842
-  instanceId: cb06fb1e-7929-4196-ab6e-9061af7e1d08
+  instanceId: fc3623b1-3eef-409c-8d21-878f976cac74
   version: 1
   installationRoutineCheckpoint:
     _installationRoutineId: f8338144-8280-4ff6-9455-ae2bb9c20fe8
@@ -400,7 +422,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1928271859638116841}
   - component: {fileID: 4771382023280506836}
-  - component: {fileID: 1717392347993186247}
   - component: {fileID: 3639302320144681150}
   m_Layer: 0
   m_Name: SM_Water_Bottle
@@ -460,29 +481,6 @@ LODGroup:
     renderers:
     - renderer: {fileID: 3078204854139858482}
   m_Enabled: 1
---- !u!136 &1717392347993186247
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2934743235739402481}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.033130646
-  m_Height: 0.20035404
-  m_Direction: 1
-  m_Center: {x: 0, y: 0.1079829, z: 0.0027584843}
 --- !u!54 &3639302320144681150
 Rigidbody:
   m_ObjectHideFlags: 0
