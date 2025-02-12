@@ -6,6 +6,7 @@ using EzySlice;
 using Oculus.Haptics;
 using Oculus.Interaction;
 using Unity.VisualScripting;
+using UnityEditor.Animations;
 using UnityEngine.InputSystem;
 using UnityEngine.UIElements;
 using UnityEngine.XR;
@@ -30,7 +31,7 @@ public class SliceObject : MonoBehaviour {
     [SerializeField] private Transform pullPos2;
     [SerializeField] private GrabInteractable grabbable;
 
-    //[SerializeField] private Animator animator; //Auskommentiert, weil error
+    [SerializeField] private Animator animator; //Auskommentiert, weil error
     private float chainsawRefuelSoundLength;
     private bool canCut = false;
     private bool hasFuel = false;
@@ -51,11 +52,13 @@ public class SliceObject : MonoBehaviour {
         chainsawRefuelSoundLength = chainsawRefuelSound.length;
         Fuelpointer = GameObject.Find("FuelSpin");
         pullLine.positionCount = 2;
+        animator.Play("sawing");
     }
     
     float previousPullDistance = 0;
     float currentPullDistance = 0;
     void FixedUpdate() {
+        animator.enabled = started;
         pullLine.SetPosition(0, pullPos1.position);
         pullLine.SetPosition(1, pullPos2.position);
         currentPullDistance = (pullPos1.position - pullPos2.position).magnitude;
@@ -164,9 +167,11 @@ public class SliceObject : MonoBehaviour {
 
     public void sawing() {
         canCut = started;
+        animator.SetFloat("Speed", 4f);
     }
     
     public void notSawing() {
+        animator.SetFloat("Speed", 0.5f);
         chainsawCutSound.Stop();
         canCut = false;
     }
