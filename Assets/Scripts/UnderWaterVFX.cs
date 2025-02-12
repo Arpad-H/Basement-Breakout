@@ -2,70 +2,79 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
 
 public class UnderWaterVFX : MonoBehaviour
 {
-    [SerializeField] private Transform waterPos;
-    [SerializeField] private Transform parent;
+   
+   [SerializeField] private Transform EyeHeight;
+   [SerializeField] private Transform waterPlane;
     [SerializeField] private float transitionDistance = 0.2f;
     [SerializeField] private float transitionStrength = 3.5f;
     [SerializeField] private float drownTime = 15f;
     [SerializeField] private VolumeProfile underwaterProfile;
     [SerializeField] private VolumeProfile aboveWaterProfile;
     [SerializeField] private Volume volume;
-    [SerializeField] private Material distortionMaterial;
+    // [SerializeField] private Material distortionMaterial;
+  
+    //VOLUME PP EFFECTS
+    private ColorAdjustments colorAdjustments;
+    private Vignette vignette;
+
+
+    public float avgDistance;
+    
     [SerializeField] private float distortionStrength = 0.1f;
     private float currentDistortion = 0.0f;
+    private WaterBehaviour waterBehaviour;
     
-    
-    private Color waterColor;// = new Color(0f, 0.6f, 1f, 0.77f);
-    private float maxAlpha;
+  
     private float timer = 0;
     void Start()
     {
-        //gameObject.GetComponent<MeshRenderer>().enabled = false;
-        waterColor = GetComponent<Renderer>().material.color;
-        maxAlpha = waterColor.a;
-        waterColor.a = 0.0f;
-        gameObject.GetComponent<MeshRenderer>().material.SetColor("_BaseColor", waterColor);
+        waterBehaviour = FindObjectOfType<WaterBehaviour>();
+        underwaterProfile.TryGet(out colorAdjustments);
+        colorAdjustments.contrast.overrideState = true;
+        underwaterProfile.TryGet(out vignette);
+      
     }
 
     void Update()
     {
-        float distance = parent.transform.position.y - waterPos.position.y;
-       // Debug.Log("distnace: " + distance);
-        if (parent.transform.position.y < waterPos.position.y)
-            
+        // Vector3 waterHeight = waterBehaviour.GetWaveDisplacement(transform.position, Time.time);
+        Vector3 waterHeight = waterPlane.position; 
+        float distance = EyeHeight.transform.position.y - waterHeight.y;
+         avgDistance = EyeHeight.transform.position.y - waterPlane.position.y;
+        if (EyeHeight.transform.position.y < waterHeight.y) //FULLY UNDERWATER
         {
-            //gameObject.GetComponent<MeshRenderer>().enabled = true;
-         //   waterColor.a = maxAlpha + timer/drownTime;
-            waterColor.a = maxAlpha;
-            gameObject.GetComponent<MeshRenderer>().material.SetColor("_BaseColor", waterColor);
+          
             timer += Time.deltaTime;
             RenderSettings.fogDensity = Mathf.Min(0.7f, Mathf.Abs(distance)*2 );
             volume.enabled = true;
-            StartCoroutine(FadePostProcessing(true, 0.5f));
+            // StartCoroutine(FadePostProcessing(true, 0.5f));
             volume.weight = 1;
-            distortionMaterial.SetFloat("_blend", 0.1f);
+            // distortionMaterial.SetFloat("_blend", 0.1f);
 
 
         }
-        else if (distance <= transitionDistance)
+        else if (Mathf.Abs(avgDistance) <= transitionDistance) //TRANSITION
         {
-            RenderSettings.fogDensity = distance * 0.1f;
-            timer = 0;
-            waterColor.a = maxAlpha - (distance * transitionStrength);
-            gameObject.GetComponent<MeshRenderer>().material.SetColor("_BaseColor", waterColor);
+            // RenderSettings.fogDensity = distance * 0.1f;
+            volume.enabled = true;
+            volume.weight = 1- avgDistance * transitionStrength;
+            colorAdjustments.contrast.Override(Mathf.Lerp(-60f, 0f, Mathf.Abs(avgDistance) * 5)); 
+                
         }
-        else
+        else //ABOVE WATER
         {
-            distortionMaterial.SetFloat("_blend", 0.0f);
-          StartCoroutine(FadePostProcessing(false, 1f));
+            // distortionMaterial.SetFloat("_blend", 0.0f);
+          // StartCoroutine(FadePostProcessing(false, 1f));
             RenderSettings.fogDensity = 0.0f;
             timer = 0;
+            volume.enabled = false;
+            volume.weight = 0;
             //gameObject.GetComponent<MeshRenderer>().enabled = false;
-            waterColor.a = 0.0f;
-            gameObject.GetComponent<MeshRenderer>().material.SetColor("_BaseColor", waterColor);
+           
         }
     }
     IEnumerator FadePostProcessing(bool enable, float duration)
