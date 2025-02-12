@@ -125,6 +125,7 @@ public class GameManager : MonoBehaviour
 
     public void RestartGame()
     {
-        SceneManager.LoadScene("MAIN");
+        //Debug.Log($"GameManager: Restart Game + {GameState.}");
+        SceneManager.LoadScene("NewWaterScene");
     }
 }
