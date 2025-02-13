@@ -90,7 +90,7 @@ public class PlayerManager : MonoBehaviour
             GameStateChangedPlayer?.Invoke(GameManager.GameState.Drowned);
         }
 
-        Debug.Log($" [PlayerManager] currentAngle Y: {cameraRig.centerEyeAnchor.rotation.eulerAngles.y} //  Frame: {_counter}");
+        //Debug.Log($" [PlayerManager] currentAngle Y: {cameraRig.centerEyeAnchor.rotation.eulerAngles.y} //  Frame: {_counter}");
         _counter++;
         
         // if (OVRInput.GetDown(OVRInput.Button.One, OVRInput.Controller.RTouch))

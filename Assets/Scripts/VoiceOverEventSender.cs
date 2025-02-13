@@ -37,6 +37,7 @@ public class VoiceOverEventSender : MonoBehaviour
     {
         if (type == ColliderOrGrabbable.GRABBABLE && _wasPlayed == false)
         {
+            Debug.Log("[VoiceOverEventSender] Grabbing");
            OnLeverAction?.Invoke(item);
            _wasPlayed = true;
         }

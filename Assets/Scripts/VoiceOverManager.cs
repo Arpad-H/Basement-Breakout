@@ -59,6 +59,7 @@ public class VoiceOverManager : MonoBehaviour
         if (_audioMap.TryGetValue(obj, out AudioSource audio))
         {
             // Spezialbehandlung für Trigger-Sounds
+            Debug.Log($"[VoiceOverManager] BOAT REMOTECONTRALLERBOAT {obj} //_boatRemoteControllerBoatWasPlayed {_boatRemoteControllerBoatWasPlayed} //_chainsawCanisterWasPlayed {_chainsawCanisterWasPlayed}");
             switch (obj)
             {
                 case item.CHAINSAW when !_chainsawCanisterWasPlayed:
@@ -69,6 +70,7 @@ public class VoiceOverManager : MonoBehaviour
             
                 case item.BOAT when !_boatRemoteControllerBoatWasPlayed:
                 case item.REMOTECONTROLLERBOAT when !_boatRemoteControllerBoatWasPlayed:
+                    Debug.Log($"[VoiceOverManager] BOAT REMOTECONTRALLERBOAT {obj} // {_boatRemoteControllerBoatWasPlayed}");
                     audio.Play();
                     _boatRemoteControllerBoatWasPlayed = true;
                     break;
@@ -80,7 +82,7 @@ public class VoiceOverManager : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning($"Keine AudioSource für {obj} registriert");
+            Debug.LogWarning($"[VoiceOverManager] Keine AudioSource für {obj} vorhanden");
         }
     }
 
