@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -19,30 +20,62 @@ public class VentilatorRotate : MonoBehaviour
 
     // Hilfsvariable zur Speicherung des aktuellen Drehwinkels (um die Y-Achse)
     private float currentRotation = 0f;
+    
+    private bool _isElectricityOn = true;
+    private bool  _previousState = false;
 
     void Start()
     {
+        LeverInteractable.OnLeverAction += LeverInteractableOnOnLeverAction;
         if (fanSound != null)
         {
             fanSound.Play();
         }
     }
 
+    private void OnDestroy()
+    {
+        LeverInteractable.OnLeverAction -= LeverInteractableOnOnLeverAction;
+    }
+
+    private void LeverInteractableOnOnLeverAction(bool obj)
+    {
+        Debug.Log($"[Ventilator] LeverInteractableOnOnLeverAction {obj}");
+        _isElectricityOn = obj;
+    }
+
     void Update()
     {
-        currentRotation += rotationSpeed * Time.deltaTime;
-        currentRotation %= 360f;  
+        
+        
+        
+        if (_isElectricityOn)
+        {
+            if (fanSound != null)
+            {
+                fanSound.mute = false;
+            }
+            currentRotation += rotationSpeed * Time.deltaTime;
+            currentRotation %= 360f;  
 
-        Quaternion mainRotation = Quaternion.Euler(0f, currentRotation, 0f);
+            Quaternion mainRotation = Quaternion.Euler(0f, currentRotation, 0f);
 
-        // 2. Berechne den Wackel-Effekt:
-        // Oszilliert um die X- und Z-Achse mit Sinus- bzw. Kosinus-Funktion
-        float wobbleX = wobbleAmplitude * Mathf.Sin(Time.time * wobbleFrequency * 2 * Mathf.PI);
-        float wobbleZ = wobbleAmplitude * Mathf.Cos(Time.time * wobbleFrequency * 2 * Mathf.PI);
-        Quaternion wobbleRotation = Quaternion.Euler(wobbleX, 0f, wobbleZ);
+            float wobbleX = wobbleAmplitude * Mathf.Sin(Time.time * wobbleFrequency * 2 * Mathf.PI);
+            float wobbleZ = wobbleAmplitude * Mathf.Cos(Time.time * wobbleFrequency * 2 * Mathf.PI);
+            Quaternion wobbleRotation = Quaternion.Euler(wobbleX, 0f, wobbleZ);
 
-        // 3. Wende beide Rotationen an:
-        // Zuerst die Hauptrotation, dann den Wackel-Effekt
-        transform.localRotation = mainRotation * wobbleRotation;
+            transform.localRotation = mainRotation * wobbleRotation;
+          
+            
+        }
+        else if (!_isElectricityOn)
+        {
+            
+            if (fanSound != null)
+            {
+                fanSound.mute = true;
+            }
+            
+        }
     }
 }
