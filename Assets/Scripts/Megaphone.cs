@@ -15,6 +15,7 @@ public class AudioDetection : MonoBehaviour
     [SerializeField] private Transform winPos;
     [SerializeField] private float winDistance = 10.0f;
     [SerializeField] private float winTimer = 3.0f;
+    [SerializeField] private GameObject highlighter;
     private float timer = 0;
     public static event Action<GameManager.GameState> GameStateChangedMegaPhone;
     
@@ -81,6 +82,7 @@ public class AudioDetection : MonoBehaviour
     {
         hasEnergy = true;
         battery.SetActive(true);
+        Destroy(highlighter);
     }
     
 }

@@ -117,6 +117,7 @@ GameObject:
   - component: {fileID: 5982812110674037215}
   - component: {fileID: 3280661934421736960}
   - component: {fileID: 2848729238700110457}
+  - component: {fileID: 398355915674060782}
   m_Layer: 0
   m_Name: Collider
   m_TagString: Untagged
@@ -254,6 +255,27 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!65 &398355915674060782
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 621186674409326466}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.3, y: 0.01, z: 0.3}
+  m_Center: {x: 0, y: 0.04, z: 0}
 --- !u!1 &794586437263913728
 GameObject:
   m_ObjectHideFlags: 0
@@ -2837,7 +2859,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blockId: f8766c17-aaf8-4b55-9431-de8deea83842
-  instanceId: 25273903-9cc8-4762-a20e-b2c8b4179b23
+  instanceId: 6f4d9f2d-41fb-4b1e-a983-7dfc02d48a73
   version: 1
   installationRoutineCheckpoint:
     _installationRoutineId: f8338144-8280-4ff6-9455-ae2bb9c20fe8

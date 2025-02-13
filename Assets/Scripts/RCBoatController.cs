@@ -27,6 +27,7 @@ public class RCBoatController : MonoBehaviour
     [SerializeField] private GameObject winBox;
     [SerializeField] private GameObject display;
     [SerializeField] private GameObject displayOff;
+    [SerializeField] private GameObject highlighter;
 
     private GameObject battery;
     private GameObject emptyIndicator;
@@ -106,6 +107,7 @@ public class RCBoatController : MonoBehaviour
         hasBattery = true;
         battery.SetActive(true);
         emptyIndicator.SetActive(false);
+        Destroy(highlighter);
     }
     
 }
