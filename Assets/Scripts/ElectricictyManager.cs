@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Unity.VisualScripting;
+using UnityEditorInternal;
 using UnityEngine;
 using UnityEngine.Video;
 
@@ -25,6 +26,10 @@ public class ElectricictyManager : MonoBehaviour
     
     [Header("Other")] 
     public GameObject electricitySparks;
+    [Header("Water Heigh")]
+    public Transform waterHeigh;
+    
+   
     private void Awake()
     {
         LeverInteractable.OnLeverAction += LeverInteractableOnonLeverAction;
@@ -36,7 +41,7 @@ public class ElectricictyManager : MonoBehaviour
         if (state)
         {
            enableAllLights(); 
-           if (flooding)
+           if (!flooding)
            {
                electricitySparks.SetActive(true);
            }
@@ -56,6 +61,15 @@ public class ElectricictyManager : MonoBehaviour
         // lightmapSet2 = CreateLightmapData(lightmapColor2);
 
       
+    }
+
+    private void Update()
+    {
+        if ((waterHeigh.position.y >= electricitySparks.transform.position.y))
+        {
+            flooding = true;
+            electricitySparks.SetActive(false);
+        }
     }
 
     private void InitLightmaps()
@@ -94,4 +108,6 @@ public class ElectricictyManager : MonoBehaviour
         LightmapSettings.lightmaps = lightmapLit;
         // Debug.Log("Enable all lights");
     }
+    
+  
 }
