@@ -107,7 +107,7 @@ public class RCBoatController : MonoBehaviour
         hasBattery = true;
         battery.SetActive(true);
         emptyIndicator.SetActive(false);
-        Destroy(highlighter);
+        highlighter.SetActive(false);
     }
     
 }

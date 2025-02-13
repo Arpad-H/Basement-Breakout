@@ -82,7 +82,7 @@ public class AudioDetection : MonoBehaviour
     {
         hasEnergy = true;
         battery.SetActive(true);
-        Destroy(highlighter);
+        highlighter.SetActive(false);
     }
     
 }
