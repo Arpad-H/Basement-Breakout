@@ -469,7 +469,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blockId: f8766c17-aaf8-4b55-9431-de8deea83842
-  instanceId: 9fb477f1-750a-46d8-82e4-6f1d32615315
+  instanceId: 8923f15e-a8de-4269-acd3-970bc5c218a4
   version: 1
   installationRoutineCheckpoint:
     _installationRoutineId: f8338144-8280-4ff6-9455-ae2bb9c20fe8
@@ -712,6 +712,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4532323109601814151, guid: aa70f82ba6bc4e64f8b9d77004fde085, type: 3}
       insertIndex: -1
       addedObject: {fileID: 8419265325136338999}
+    - targetCorrespondingSourceObject: {fileID: 4532323109601814151, guid: aa70f82ba6bc4e64f8b9d77004fde085, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6628014503457203953}
   m_SourcePrefab: {fileID: 100100000, guid: aa70f82ba6bc4e64f8b9d77004fde085, type: 3}
 --- !u!1 &3713129132182413113 stripped
 GameObject:
@@ -739,6 +742,24 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 7.281667, y: 1, z: 2.2281022}
   m_Center: {x: -0.45824993, y: 0.6, z: 0.0000076293313}
+--- !u!114 &6628014503457203953
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3713129132182413113}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  outlineColor: {r: 1, g: 1, b: 1, a: 1}
+  outlineWidth: 2
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
 --- !u!4 &4092786801324017027 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3867988955935571005, guid: aa70f82ba6bc4e64f8b9d77004fde085, type: 3}

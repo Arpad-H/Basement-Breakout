@@ -2260,6 +2260,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7059792170938824141}
+  - component: {fileID: 6602813605319867995}
   m_Layer: 0
   m_Name: Base
   m_TagString: Untagged
@@ -2288,6 +2289,24 @@ Transform:
   - {fileID: 5421188889030443802}
   m_Father: {fileID: 5917509802853928212}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6602813605319867995
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3802912481739763150}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  outlineColor: {r: 1, g: 1, b: 1, a: 1}
+  outlineWidth: 2
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
 --- !u!1 &3953603049461349531
 GameObject:
   m_ObjectHideFlags: 0
@@ -2925,7 +2944,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blockId: f8766c17-aaf8-4b55-9431-de8deea83842
-  instanceId: 22de3dbd-0ea6-4d3d-9a4a-64a818496e99
+  instanceId: 808b48f3-5051-4bd1-8bf7-ac6c115aee9f
   version: 1
   installationRoutineCheckpoint:
     _installationRoutineId: f8338144-8280-4ff6-9455-ae2bb9c20fe8
