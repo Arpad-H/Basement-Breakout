@@ -6,12 +6,12 @@ using UnityEngine;
 
 public class VoiceOverEventSender : MonoBehaviour
 {
-    [SerializeField] public VoiceOverManager.item item;
+    [SerializeField] public VoiceOverManager.Item item;
     [SerializeField] public ColliderOrGrabbable type;
     private GameObject _targetCollider;
     private bool _wasPlayed = false;
     
-    public static event Action<VoiceOverManager.item> OnLeverAction;
+    public static event Action<VoiceOverManager.Item> OnLeverAction;
 
 
     private void Start()

@@ -774,7 +774,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blockId: f8766c17-aaf8-4b55-9431-de8deea83842
-  instanceId: fda6331f-5024-40d6-ab76-09918559fbab
+  instanceId: 4dc09576-793f-4ab5-850f-9b860e47b324
   version: 1
   installationRoutineCheckpoint:
     _installationRoutineId: f8338144-8280-4ff6-9455-ae2bb9c20fe8
@@ -1224,6 +1224,7 @@ GameObject:
   - component: {fileID: 6931407192919493770}
   - component: {fileID: 3834289513469211144}
   - component: {fileID: 6617813816240134436}
+  - component: {fileID: 4748061253721801039}
   m_Layer: 0
   m_Name: Collider
   m_TagString: Untagged
@@ -1394,6 +1395,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 4748061253721801039}
+        m_TargetAssemblyTypeName: VoiceOverEventSender, Assembly-CSharp
+        m_MethodName: OnGrab
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   justRightGrab:
     m_PersistentCalls:
       m_Calls:
@@ -1409,6 +1422,32 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 4748061253721801039}
+        m_TargetAssemblyTypeName: VoiceOverEventSender, Assembly-CSharp
+        m_MethodName: OnGrab
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &4748061253721801039
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5287800269593328530}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 935469d94988acc4e8d5f69543dfc004, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item: 6
+  type: 0
 --- !u!1 &5538337834978380950
 GameObject:
   m_ObjectHideFlags: 0

@@ -84,7 +84,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blockId: f8766c17-aaf8-4b55-9431-de8deea83842
-  instanceId: 8f40c23e-6884-43a9-8439-9c13127b0786
+  instanceId: bfa17985-ba95-4c81-ba65-ad7b72a1e24f
   version: 1
   installationRoutineCheckpoint:
     _installationRoutineId: f8338144-8280-4ff6-9455-ae2bb9c20fe8
@@ -396,7 +396,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blockId: 85906e61-05be-4ea9-bfa6-139215b858df
-  instanceId: 9fc9fa9b-c300-445b-9763-164a65f3bd53
+  instanceId: 55f61a0e-24bd-4516-86b0-ff64fd872db2
   version: 1
   installationRoutineCheckpoint:
     _installationRoutineId: 5c49fca3-fb86-46fe-8728-fe25eb009af8
@@ -508,7 +508,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blockId: f8766c17-aaf8-4b55-9431-de8deea83842
-  instanceId: 0ba1ee45-e041-4cbe-9662-5b8f00d84071
+  instanceId: 66d4bc0c-c6ea-46d6-98df-335ec807f9f7
   version: 1
   installationRoutineCheckpoint:
     _installationRoutineId: f8338144-8280-4ff6-9455-ae2bb9c20fe8
@@ -926,7 +926,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blockId: 85906e61-05be-4ea9-bfa6-139215b858df
-  instanceId: 6f7ec2e5-9ac8-44dc-9883-e11113521a20
+  instanceId: caa2389c-67a5-4447-8c1a-f9b8409a8c76
   version: 1
   installationRoutineCheckpoint:
     _installationRoutineId: 5c49fca3-fb86-46fe-8728-fe25eb009af8
@@ -1037,7 +1037,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blockId: 85906e61-05be-4ea9-bfa6-139215b858df
-  instanceId: 2d026e6b-8b1a-4c1d-8fbd-45661d1e671a
+  instanceId: 22bfd210-6a28-4563-9bc4-6d3227dca600
   version: 1
   installationRoutineCheckpoint:
     _installationRoutineId: 5c49fca3-fb86-46fe-8728-fe25eb009af8
@@ -1113,6 +1113,8 @@ GameObject:
   - component: {fileID: 6936207430136644487}
   - component: {fileID: 352117754390465048}
   - component: {fileID: 8493918496971865456}
+  - component: {fileID: 9221923473000622185}
+  - component: {fileID: 3454878151453658429}
   m_Layer: 0
   m_Name: InteractiveFurniture8_01
   m_TagString: Untagged
@@ -1221,3 +1223,38 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _collider: {fileID: 352117754390465048}
+--- !u!65 &9221923473000622185
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8604914814133382536}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.0816901, y: 2.0138588, z: 1.8345925}
+  m_Center: {x: -0.14578801, y: 1.0101397, z: 0.5291175}
+--- !u!114 &3454878151453658429
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8604914814133382536}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 935469d94988acc4e8d5f69543dfc004, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item: 9
+  type: 1
