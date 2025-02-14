@@ -107,6 +107,8 @@ GameObject:
   - component: {fileID: 1030975623}
   - component: {fileID: 1030975624}
   - component: {fileID: 1030975625}
+  - component: {fileID: 1346099781835098423}
+  - component: {fileID: 4697006567769817702}
   m_Layer: 0
   m_Name: SM_Longwooden_Table_LOD0
   m_TagString: Untagged
@@ -179,6 +181,41 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1030975622}
   m_Mesh: {fileID: 4300000, guid: abc00000000008221042382933114740, type: 3}
+--- !u!65 &1346099781835098423
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1030975622}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 2.0234032, y: 1.0398021, z: 3.8466725}
+  m_Center: {x: 0.64016044, y: 0.5175506, z: 0.0015323544}
+--- !u!114 &4697006567769817702
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1030975622}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 935469d94988acc4e8d5f69543dfc004, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item: 10
+  type: 1
 --- !u!1 &1030975626
 GameObject:
   m_ObjectHideFlags: 0
