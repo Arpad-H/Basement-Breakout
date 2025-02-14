@@ -28,7 +28,6 @@ public class VoiceOverManager : MonoBehaviour
     
     [Header("Audio references for reminders")]
     [SerializeField] private AudioSource[] reminders;
-    [Header("Audio references for reminders")]
     [SerializeField] private float reminderTime = 60f;
     
     

@@ -135,8 +135,12 @@ public class TVBehavior : MonoBehaviour
         if (_electricityIsOn && !_tvIsDamaged)
         {
             videoAudio.mute = false;
-            switchStationSound.pitch = UnityEngine.Random.Range(0.8f, 1.2f);
-            switchStationSound.Play();
+            if (switchStationSound != null)
+            {
+                switchStationSound.pitch = UnityEngine.Random.Range(0.8f, 1.2f);
+                switchStationSound.Play();
+            }
+            
             HapticClipPlayer hapticClipPlayer = new HapticClipPlayer(hapticClip);
             hapticClipPlayer.Play(Controller.Right);
             Debug.Log("Changing Clip");
@@ -190,6 +194,9 @@ public class TVBehavior : MonoBehaviour
     public void updateClipOnQuad()
     {
         videoPlayer.clip = currentClip;
+        
+        videoPlayer.EnableAudioTrack(0, true);
+        videoPlayer.SetTargetAudioSource(0, videoAudio);
 
         // Berechne die virtuelle Zeit basierend auf der gespeicherten Zeit
         double elapsedTime = Time.time - clipLastUpdateTime[currentClip];

@@ -52,6 +52,7 @@ public class PlayerManager : MonoBehaviour
     private AudioSource _audioSource;
     private AudioClip _introducingTVClip;
     private OVRManager _ovrManager;
+    private bool _setPlayerAtStartMenue = false;
 
 
     private void Awake()
@@ -89,14 +90,12 @@ public class PlayerManager : MonoBehaviour
         {
             GameStateChangedPlayer?.Invoke(GameManager.GameState.Drowned);
         }
-
-        //Debug.Log($" [PlayerManager] currentAngle Y: {cameraRig.centerEyeAnchor.rotation.eulerAngles.y} //  Frame: {_counter}");
         _counter++;
-        
-        // if (OVRInput.GetDown(OVRInput.Button.One, OVRInput.Controller.RTouch))
-        // {
-        //     recenterPlayer(sceneMenueTarget);
-        // }
+        if (Head.position != origin.position && !_setPlayerAtStartMenue)
+        {
+            setPlayerPosToStartMenu();
+            _setPlayerAtStartMenue = true;
+        }
     }
 
     public void SetPlayerPositionToStartGame()
