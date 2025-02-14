@@ -104,6 +104,7 @@ public class VoiceOverManager : MonoBehaviour
             if (reminderTimer >= reminderTime)
             {
                 playARandomRiminder(reminders);
+                reminderTimer = 0f;
             }
         }
     }
@@ -117,8 +118,10 @@ public class VoiceOverManager : MonoBehaviour
         }
         Random r = new Random();
         int rInt = r.Next(0, audioSources.Length-1);
-        if (reminders[rInt] != null)
+        AudioSource audio = audioSources[rInt];
+        if (audio != null)
         {
+            Debug.Log($"[VoiceOverManager] audioSources[rInt].Play(); {audio.clip.name}");
             audioSources[rInt].Play();
         }
         
