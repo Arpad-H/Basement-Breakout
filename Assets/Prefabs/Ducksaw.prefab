@@ -44,9 +44,10 @@ GameObject:
   - component: {fileID: 3828425148916472388}
   - component: {fileID: 6534460331539193774}
   - component: {fileID: 749679295200830247}
+  - component: {fileID: 8684155289909727681}
   m_Layer: 7
   m_Name: Tank
-  m_TagString: Untagged
+  m_TagString: Outline
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -157,6 +158,21 @@ MonoBehaviour:
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
+--- !u!114 &8684155289909727681
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1389211926775509915}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a272edbcf2fd374479bc28c6800083e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  red: {fileID: 2100000, guid: 3054e5ae11b568e4aa20150625d3f6da, type: 2}
+  black: {fileID: 2100000, guid: 36c3c3b367334634b880e051d357e096, type: 2}
+  speed: 4
 --- !u!1 &1712492787573020063
 GameObject:
   m_ObjectHideFlags: 0
@@ -534,7 +550,7 @@ GameObject:
   - component: {fileID: 4705402382149843726}
   m_Layer: 0
   m_Name: chainsawNoHandle
-  m_TagString: Untagged
+  m_TagString: Outline
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1202,7 +1218,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blockId: f8766c17-aaf8-4b55-9431-de8deea83842
-  instanceId: aee214d0-60a6-4961-8b5c-990dbb1b6efe
+  instanceId: 49e40088-b521-44ca-b328-a27989e7fbbc
   version: 1
   installationRoutineCheckpoint:
     _installationRoutineId: f8338144-8280-4ff6-9455-ae2bb9c20fe8
@@ -1471,6 +1487,7 @@ MonoBehaviour:
   pullPos1: {fileID: 5113071302326190735}
   pullPos2: {fileID: 1396348777370790319}
   grabbable: {fileID: 4386680062748483014}
+  highlighter: {fileID: 8684155289909727681}
   animator: {fileID: 4705402382149843726}
 --- !u!82 &780129849666425575
 AudioSource:

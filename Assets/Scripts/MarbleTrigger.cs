@@ -13,15 +13,18 @@ public class MarbleTrigger : MonoBehaviour
     {
         if (other.gameObject.layer == 27)
         {
-            Destroy(gameObject);
+            gameObject.SetActive(false);
+            //Destroy(gameObject);
             if (deletable != null)
             {
-                Destroy(deletable);
+                deletable.SetActive(false);
+                //Destroy(deletable);
             }
             if (oldBattery != null)
             {
                 Instantiate(battery, oldBattery.transform.position, oldBattery.transform.rotation);
-                Destroy(oldBattery);
+                oldBattery.SetActive(false);
+                //Destroy(oldBattery);
             }
         }
     }

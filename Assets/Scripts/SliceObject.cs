@@ -29,6 +29,7 @@ public class SliceObject : MonoBehaviour {
     [SerializeField] private Transform pullPos1;
     [SerializeField] private Transform pullPos2;
     [SerializeField] private GrabInteractable grabbable;
+    [SerializeField] private Blinker highlighter;
 
     [SerializeField] private Animator animator; //Auskommentiert, weil error
     private float chainsawRefuelSoundLength;
@@ -148,6 +149,7 @@ public class SliceObject : MonoBehaviour {
 
     public void fueledUp() {
         hasFuel = true;
+        Destroy(highlighter);
         OnHasFuelChanged?.Invoke(hasFuel);
     }
     
