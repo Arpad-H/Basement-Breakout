@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -18,5 +19,10 @@ public class Blinker : MonoBehaviour
         }else if (oscillator < 0) {
             gameObject.GetComponent<MeshRenderer>().material = red;
         }
+    }
+
+    private void OnDisable()
+    {
+        gameObject.GetComponent<MeshRenderer>().material = black;
     }
 }
