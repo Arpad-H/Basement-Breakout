@@ -8,7 +8,15 @@ public class Marble : MonoBehaviour
 {
     [SerializeField] private Transform startTransform;
     [SerializeField] private Transform centerTransform;
+    private Rigidbody rb;
+    private AudioSource audioSource;
 
+    void Start()
+    {
+        rb = GetComponent<Rigidbody>();
+        audioSource = GetComponent<AudioSource>();
+    }
+    
     public void Update()
     {
         if (centerTransform == null)
@@ -19,6 +27,14 @@ public class Marble : MonoBehaviour
         if (length > 0.2f)
         {
             transform.position = startTransform.position;
+        }
+        if (rb.velocity.magnitude > 0.01f && rb.velocity.magnitude < 1f)
+        {
+            audioSource.mute = false;
+        }
+        else
+        {
+            audioSource.mute = true;
         }
     }
 }
