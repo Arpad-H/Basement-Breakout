@@ -6,7 +6,6 @@ using EzySlice;
 using Oculus.Haptics;
 using Oculus.Interaction;
 using Unity.VisualScripting;
-using UnityEditor.Animations;
 using UnityEngine.InputSystem;
 using UnityEngine.UIElements;
 using UnityEngine.XR;
