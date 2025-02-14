@@ -11,6 +11,7 @@ public class BatterySlot : MonoBehaviour
     {
         if (other.gameObject.layer == 8)
         {
+            GetComponent<AudioSource>().Play();
             insertBattery.Invoke();
             Destroy(other.gameObject);
         }
