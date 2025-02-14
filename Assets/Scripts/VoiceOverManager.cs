@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = System.Random;
 
 public class VoiceOverManager : MonoBehaviour
 {
@@ -9,7 +10,7 @@ public class VoiceOverManager : MonoBehaviour
     
     private bool _chainsawCanisterWasPlayed = false;
     private bool _boatRemoteControllerBoatWasPlayed = false;
-    [Header("Audio References")]
+    [Header("Audio references for items")]
     [SerializeField] private AudioSource audioLocker;
     [SerializeField] private AudioSource audioChainsaw;
     [SerializeField] private AudioSource audioCanister;
@@ -23,26 +24,38 @@ public class VoiceOverManager : MonoBehaviour
     [SerializeField] private AudioSource audioWorkbench;
     [SerializeField] private AudioSource audioLibrary;
     
-    private Dictionary<item, AudioSource> _audioMap;
+    
+    
+    [Header("Audio references for reminders")]
+    [SerializeField] private AudioSource[] reminders;
+    [Header("Audio references for reminders")]
+    [SerializeField] private float reminderTime = 60f;
+    
+    
+    private GameManager.GameState gameState;
+    private float reminderTimer = 0f;
+    private Dictionary<Item, AudioSource> _audioMap;
+    
 
 
     private void Awake()
     {
         VoiceOverEventSender.OnLeverAction += VoiceOverEventSenderOnOnLeverAction;
+        GameManager.OnGameStateChanged += SetgameState;
         _audioMap = new()
         {
-            { item.LOCKER, audioLocker },
-            { item.CHAINSAW, audioChainsaw },
-            { item.CANISTER, audioCanister },
-            { item.STAIRS, audioStairs },
-            { item.MEGAPHONE, audioMegaphone },
-            { item.BOAT, audioBoat },
-            { item.REMOTECONTROLLERBOAT, audioRemoteControllerBoat },
-            { item.FUSEBOX, audioFusebox },
-            { item.DARTBOAD, audioDartboad },
-            { item.FRIDGE, audioFridge },
-            { item.WORKBENCH, audioWorkbench },
-            { item.LIBRARY, audioLibrary }
+            { Item.Locker, audioLocker },
+            { Item.Chainsaw, audioChainsaw },
+            { Item.Canister, audioCanister },
+            { Item.Stairs, audioStairs },
+            { Item.Megaphone, audioMegaphone },
+            { Item.Boat, audioBoat },
+            { Item.Remotecontrollerboat, audioRemoteControllerBoat },
+            { Item.Fusebox, audioFusebox },
+            { Item.Dartboad, audioDartboad },
+            { Item.Fridge, audioFridge },
+            { Item.Workbench, audioWorkbench },
+            { Item.Library, audioLibrary }
         };
         
     }
@@ -50,57 +63,79 @@ public class VoiceOverManager : MonoBehaviour
     private void OnDestroy()
     {
         VoiceOverEventSender.OnLeverAction -= VoiceOverEventSenderOnOnLeverAction;
+        GameManager.OnGameStateChanged -= SetgameState;
     }
 
-    private void VoiceOverEventSenderOnOnLeverAction(item obj)
+    private void VoiceOverEventSenderOnOnLeverAction(Item obj)
     {
      
         
         if (_audioMap.TryGetValue(obj, out AudioSource audio))
         {
-            // Spezialbehandlung für Trigger-Sounds
-            Debug.Log($"[VoiceOverManager] BOAT REMOTECONTRALLERBOAT {obj} //_boatRemoteControllerBoatWasPlayed {_boatRemoteControllerBoatWasPlayed} //_chainsawCanisterWasPlayed {_chainsawCanisterWasPlayed}");
             switch (obj)
             {
-                case item.CHAINSAW when !_chainsawCanisterWasPlayed:
-                case item.CANISTER when !_chainsawCanisterWasPlayed:
-                    audio.Play();
-                    _chainsawCanisterWasPlayed = true;
+                case Item.Chainsaw :
+                case Item.Canister:
+                    if (!_chainsawCanisterWasPlayed)
+                    {
+                        audio.Play();
+                        _chainsawCanisterWasPlayed = true;
+                    }
                     break;
-            
-                case item.BOAT when !_boatRemoteControllerBoatWasPlayed:
-                case item.REMOTECONTROLLERBOAT when !_boatRemoteControllerBoatWasPlayed:
-                    Debug.Log($"[VoiceOverManager] BOAT REMOTECONTRALLERBOAT {obj} // {_boatRemoteControllerBoatWasPlayed}");
-                    audio.Play();
-                    _boatRemoteControllerBoatWasPlayed = true;
+                case Item.Boat:
+                case Item.Remotecontrollerboat:
+                    if (!_boatRemoteControllerBoatWasPlayed)
+                    {
+                        audio.Play();
+                        _boatRemoteControllerBoatWasPlayed = true;
+                    }
                     break;
-            
                 default:
                     audio.Play();
                     break;
             }
         }
-        else
+    }
+    void Update()
+    {
+        reminderTimer += Time.deltaTime;
+        if (gameState == GameManager.GameState.Tutorial)
         {
-            Debug.LogWarning($"[VoiceOverManager] Keine AudioSource für {obj} vorhanden");
+            if (reminderTimer >= reminderTime)
+            {
+                playARandomRiminder(reminders);
+                reminderTimer = 0f;
+            }
         }
     }
 
-    void Start()
+    private void playARandomRiminder(AudioSource[] audioSources)
     {
+        if(audioSources == null || audioSources.Length == 0)
+        {
+            Debug.LogWarning("[VoiceOverManager] Audio reminder array is empty!");
+            return;
+        }
+        Random r = new Random();
+        int rInt = r.Next(0, audioSources.Length-1);
+        AudioSource audio = audioSources[rInt];
+        if (audio != null)
+        {
+            Debug.Log($"[VoiceOverManager] audioSources[rInt].Play(); {audio.clip.name}");
+            audioSources[rInt].Play();
+        }
         
     }
 
-    // Update is called once per frame
-    void Update()
+    private void SetgameState(GameManager.GameState gameState)
     {
-        
+        this.gameState = gameState;
     }
     
     
-    public enum item
+    public enum Item
     {
-        LOCKER, CHAINSAW, CANISTER, STAIRS, MEGAPHONE, BOAT, REMOTECONTROLLERBOAT, FUSEBOX, DARTBOAD, FRIDGE, WORKBENCH, LIBRARY
+        Locker, Chainsaw, Canister, Stairs, Megaphone, Boat, Remotecontrollerboat, Fusebox, Dartboad, Fridge, Workbench, Library
     }
     
     
