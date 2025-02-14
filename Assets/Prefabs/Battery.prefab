@@ -42,10 +42,9 @@ GameObject:
   m_Component:
   - component: {fileID: 6763076097398921253}
   - component: {fileID: 226384234335332897}
-  - component: {fileID: 6655031553274091704}
   m_Layer: 8
   m_Name: Battery
-  m_TagString: Untagged
+  m_TagString: Outline
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -84,18 +83,6 @@ MonoBehaviour:
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
---- !u!114 &6655031553274091704
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5131686548302406853}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7e80954a632749147b7f2ebdd62af2dd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &6847909528293708225
 GameObject:
   m_ObjectHideFlags: 0
@@ -444,7 +431,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blockId: f8766c17-aaf8-4b55-9431-de8deea83842
-  instanceId: f8ecf511-e644-43a1-a65f-38993a2528c8
+  instanceId: 50189c67-961a-432f-a9d2-df9fbb1f07a1
   version: 1
   installationRoutineCheckpoint:
     _installationRoutineId: f8338144-8280-4ff6-9455-ae2bb9c20fe8
@@ -548,6 +535,7 @@ GameObject:
   - component: {fileID: 1982642754083966420}
   - component: {fileID: 4909674509650252599}
   - component: {fileID: 3922519955784490839}
+  - component: {fileID: 7762991804022075138}
   m_Layer: 8
   m_Name: aa-battery
   m_TagString: Untagged
@@ -620,3 +608,15 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &7762991804022075138
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8145595141844929883}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6376c6425ba791f4694a33e234cd301a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

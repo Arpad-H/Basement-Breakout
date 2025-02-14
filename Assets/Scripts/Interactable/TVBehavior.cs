@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Oculus.Haptics;
+using Oculus.Interaction;
 using UnityEngine;
 using UnityEngine.Video;
 
@@ -17,7 +18,9 @@ public class TVBehavior : MonoBehaviour
     [SerializeField] private VideoClip blackScreenClip;
     [SerializeField] private AudioSource tvDamageSound;
     [SerializeField] private GameObject timeline;
-
+    [SerializeField] private GrabInteractable grabber;
+    [SerializeField] private Transform leftGrabPoint;
+    [SerializeField] private Transform rightGrabPoint;
 
     private VideoClip currentClip;
     private VideoPlayer videoPlayer;
@@ -229,6 +232,15 @@ public class TVBehavior : MonoBehaviour
         videoPlayer.isLooping = true;
         videoPlayer.Play();
         
+    }
+
+    public void grabRight()
+    {
+        grabber.InjectOptionalGrabSource(rightGrabPoint);
+    }
+    public void grabLeft()
+    {
+        grabber.InjectOptionalGrabSource(leftGrabPoint);
     }
     
 }

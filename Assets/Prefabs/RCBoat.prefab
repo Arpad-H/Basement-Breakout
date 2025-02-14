@@ -171,8 +171,7 @@ GameObject:
   - component: {fileID: 5870136186464186610}
   - component: {fileID: 5676256767876566885}
   - component: {fileID: 2248293628030254388}
-  - component: {fileID: 7722447342880509337}
-  - component: {fileID: 3331383811193538391}
+  - component: {fileID: 1688609956378231994}
   m_Layer: 0
   m_Name: RCBoat
   m_TagString: Untagged
@@ -265,7 +264,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 0
---- !u!114 &7722447342880509337
+--- !u!114 &1688609956378231994
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -274,74 +273,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 3809577666620883163}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7dfa3196966e7bf4fa20377c0f32700f, type: 3}
+  m_Script: {fileID: 11500000, guid: 6376c6425ba791f4694a33e234cd301a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  active:
-    m_PersistentCalls:
-      m_Calls: []
-  unactive:
-    m_PersistentCalls:
-      m_Calls: []
-  leftGrab:
-    m_PersistentCalls:
-      m_Calls: []
-  leftUngrab:
-    m_PersistentCalls:
-      m_Calls: []
-  rightGrab:
-    m_PersistentCalls:
-      m_Calls: []
-  rightUngrab:
-    m_PersistentCalls:
-      m_Calls: []
-  justActive:
-    m_PersistentCalls:
-      m_Calls: []
-  justLeftGrab:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 3331383811193538391}
-        m_TargetAssemblyTypeName: VoiceOverEventSender, Assembly-CSharp
-        m_MethodName: OnGrab
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  justRightGrab:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 3331383811193538391}
-        m_TargetAssemblyTypeName: VoiceOverEventSender, Assembly-CSharp
-        m_MethodName: OnGrab
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &3331383811193538391
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3809577666620883163}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 935469d94988acc4e8d5f69543dfc004, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  item: 5
-  type: 0
 --- !u!1 &4342276277118199158
 GameObject:
   m_ObjectHideFlags: 0
@@ -548,7 +482,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blockId: f8766c17-aaf8-4b55-9431-de8deea83842
-  instanceId: f966b6ed-3278-4b49-be65-0da22a6fe12e
+  instanceId: a5432fdb-09b7-4bad-b6e6-d279a9fe90b7
   version: 1
   installationRoutineCheckpoint:
     _installationRoutineId: f8338144-8280-4ff6-9455-ae2bb9c20fe8
