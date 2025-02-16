@@ -191,9 +191,8 @@ public class PlayerManager : MonoBehaviour
         else if (gameState == GameManager.GameState.Tutorial)
         {
             StartCoroutine(TransitionToBlack()); //TODO potentially deactivate player movement
-            _audioSource.Play();
-            DeactivateRayInteractor();
-            SetPlayerPositionToStartGame();
+         
+            
         }
         else if (gameState == GameManager.GameState.Game)
         {
@@ -208,33 +207,34 @@ public class PlayerManager : MonoBehaviour
 
         // Play a different sound
         stairsSound.Play();
+        DeactivateRayInteractor();
+        SetPlayerPositionToStartGame();
 
         // Wait a few seconds
         yield return new WaitForSeconds(2f); // Adjust delay as needed
     stairsSound.Stop();
+    _audioSource.Play();
         // Fade back to normal
         yield return StartCoroutine(Fade(0f, 0.5f)); // Fade back over 0.5s
     }
 
     IEnumerator Fade(float targetAlpha, float duration)
     {
-        float startAlpha = screenMaterial.color.a;
+        float startAlpha = screenMaterial.GetFloat("_alpha");
         float elapsedTime = 0f;
     
         while (elapsedTime < duration)
         {
             elapsedTime += Time.deltaTime;
             float alpha = Mathf.Lerp(startAlpha, targetAlpha, elapsedTime / duration);
-            Color newColor = screenMaterial.color;
-            newColor.a = alpha;
-            screenMaterial.color = newColor;
+           
+            screenMaterial.SetFloat("_alpha", alpha);
             yield return null;
         }
 
         // Ensure final alpha is set
-        Color finalColor = screenMaterial.color;
-        finalColor.a = targetAlpha;
-        screenMaterial.color = finalColor;
+       
+        screenMaterial.SetFloat("_alpha", targetAlpha);
     }
 
 
