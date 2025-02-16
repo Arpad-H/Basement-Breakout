@@ -46,10 +46,12 @@ public class PlayerManager : MonoBehaviour
     private float _timeUnderWater = 0f;
 
     [SerializeField] private GameObject waterPlane;
+    [SerializeField] private Material screenMaterial;
     public static event Action<GameManager.GameState> GameStateChangedPlayer;
 
     
-    private AudioSource _audioSource;
+    [SerializeField]private AudioSource _audioSource;
+    [SerializeField]private AudioSource stairsSound;
     private AudioClip _introducingTVClip;
     private OVRManager _ovrManager;
     private bool _setPlayerAtStartMenue = false;
@@ -65,7 +67,8 @@ public class PlayerManager : MonoBehaviour
         //DeactivateTeleportInteractor();
         ActivateTeleportInteractor();
         DeactivateRayInteractor();
-        _audioSource = GetComponent<AudioSource>();
+      
+        
         _ovrManager = GetComponent<OVRManager>();
         if (startAtMenu)
         {
@@ -180,12 +183,14 @@ public class PlayerManager : MonoBehaviour
             or GameManager.GameState.ElectricShock)
         {
             //AcivatePassthrough();
+            
             DeactivateTeleportInteractor();
             ActivateRayInteractor();
             SetPlayerPosToGameOverMenu();
         }
         else if (gameState == GameManager.GameState.Tutorial)
         {
+            StartCoroutine(TransitionToBlack()); //TODO potentially deactivate player movement
             _audioSource.Play();
             DeactivateRayInteractor();
             SetPlayerPositionToStartGame();
@@ -195,6 +200,43 @@ public class PlayerManager : MonoBehaviour
             ActivateTeleportInteractor();
         }
     }
+    
+    IEnumerator TransitionToBlack()
+    {
+        // Fade to black
+        yield return StartCoroutine(Fade(1f, 0.5f)); // Fade to full black over 0.5s
+
+        // Play a different sound
+        stairsSound.Play();
+
+        // Wait a few seconds
+        yield return new WaitForSeconds(2f); // Adjust delay as needed
+    stairsSound.Stop();
+        // Fade back to normal
+        yield return StartCoroutine(Fade(0f, 0.5f)); // Fade back over 0.5s
+    }
+
+    IEnumerator Fade(float targetAlpha, float duration)
+    {
+        float startAlpha = screenMaterial.color.a;
+        float elapsedTime = 0f;
+    
+        while (elapsedTime < duration)
+        {
+            elapsedTime += Time.deltaTime;
+            float alpha = Mathf.Lerp(startAlpha, targetAlpha, elapsedTime / duration);
+            Color newColor = screenMaterial.color;
+            newColor.a = alpha;
+            screenMaterial.color = newColor;
+            yield return null;
+        }
+
+        // Ensure final alpha is set
+        Color finalColor = screenMaterial.color;
+        finalColor.a = targetAlpha;
+        screenMaterial.color = finalColor;
+    }
+
 
     
     
