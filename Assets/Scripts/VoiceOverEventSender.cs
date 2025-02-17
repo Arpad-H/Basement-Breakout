@@ -9,7 +9,7 @@ public class VoiceOverEventSender : MonoBehaviour
     [SerializeField] public VoiceOverManager.Item item;
     [SerializeField] public ColliderOrGrabbable type;
     private GameObject _targetCollider;
-    private bool _wasPlayed = false;
+    // private bool _wasPlayed = false;
     
     public static event Action<VoiceOverManager.Item> OnLeverAction;
 
@@ -26,20 +26,20 @@ public class VoiceOverEventSender : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (type == ColliderOrGrabbable.COLLIDER && _wasPlayed == false && other.gameObject == _targetCollider)
+        if (type == ColliderOrGrabbable.COLLIDER  && other.gameObject == _targetCollider)
         {
             OnLeverAction?.Invoke(item);
-            _wasPlayed = true;
+           
         }
     }
 
     public void OnGrab()
     {
-        if (type == ColliderOrGrabbable.GRABBABLE && _wasPlayed == false)
+        if (type == ColliderOrGrabbable.GRABBABLE)
         {
             Debug.Log("[VoiceOverEventSender] Grabbing");
            OnLeverAction?.Invoke(item);
-           _wasPlayed = true;
+          
         }
     }
     

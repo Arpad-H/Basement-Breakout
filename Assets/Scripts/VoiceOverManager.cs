@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Meta.XR.ImmersiveDebugger.UserInterface;
 using UnityEngine;
 using Random = System.Random;
 
@@ -70,7 +71,7 @@ public class VoiceOverManager : MonoBehaviour
             { Item.Fusebox, audioFuseboxGame },
             {Item.Canister, audioCanisterGame}
         };
-        _audioGameMap = new()
+        _audioTutorialMap = new()
         {
             { Item.Locker, audioLockerTutorial },
             { Item.Chainsaw, audioChainsawTutorial },
@@ -100,12 +101,12 @@ public class VoiceOverManager : MonoBehaviour
     private void VoiceOverEventSenderOnOnLeverAction(Item obj)
     {
 
-
+    Debug.Log($"[VoiceOverManager]On Lever Action {obj.ToString()} // Gamestate {gameState.ToString()}");
         if (gameState == GameManager.GameState.Game)
         {
             PlayVoice(obj, _audioGameMap, _audioStatelessMap);
         }
-        else
+        else if (gameState == GameManager.GameState.Tutorial)
         {
             PlayVoice(obj, _audioTutorialMap, _audioStatelessMap);
         }
@@ -124,34 +125,49 @@ public class VoiceOverManager : MonoBehaviour
 
     private void PlayVoice(Item obj, Dictionary<Item, AudioSource> audioMapState, Dictionary<Item, AudioSource> audioMapStateless)
     {
-        if (audioMapState.TryGetValue(obj, out AudioSource audio))
+        Debug.Log($"[VoiceOverManager] audioMapState.TryGetValue(obj, out AudioSource audio) {audioMapState.TryGetValue(obj, out AudioSource audio2)} //audio != null {audio2 != null}");
+        if (audioMapState.TryGetValue(obj, out AudioSource audio) && audio != null)
         {
-            switch (obj)
+            Debug.Log($"[VoiceOverManager] // _audioPlayedStatus.TryGetValue(audio, out bool wasPlayed) { _audioPlayedStatus.TryGetValue(audio, out bool wasPlayed2)} //!wasPlayed {wasPlayed2}; ");
+            if (_audioPlayedStatus.TryGetValue(audio, out bool wasPlayed) && !wasPlayed)
             {
-                case Item.Chainsaw :
-                case Item.Canister:
-                    if (!_chainsawCanisterWasPlayed)
-                    {
+                switch (obj)
+                {
+                    case Item.Chainsaw :
+                    case Item.Canister:
+                        if (!_chainsawCanisterWasPlayed)
+                        {
+                            audio.Play();
+                            _chainsawCanisterWasPlayed = true;
+                        }
+                        break;
+                    case Item.Boat:
+                    case Item.Remotecontrollerboat:
+                        if (!_boatRemoteControllerBoatWasPlayed)
+                        {
+                            audio.Play();
+                            _boatRemoteControllerBoatWasPlayed = true;
+                        }
+                        break;
+                    default:
                         audio.Play();
-                        _chainsawCanisterWasPlayed = true;
-                    }
-                    break;
-                case Item.Boat:
-                case Item.Remotecontrollerboat:
-                    if (!_boatRemoteControllerBoatWasPlayed)
-                    {
-                        audio.Play();
-                        _boatRemoteControllerBoatWasPlayed = true;
-                    }
-                    break;
-                default:
-                    audio.Play();
-                    break;
+                        break;
+                }
+                _audioPlayedStatus[audio] = true;
+                Debug.Log($"[VoiceOverManager] {obj.ToString()} // {audio}");
             }
+            
+                
         }
-        else if (audioMapStateless.TryGetValue(obj, out AudioSource audio1))
+        else if (audioMapStateless.TryGetValue(obj, out AudioSource audio1) && audio1 != null )
         {
-            audio1.Play();
+            if ( _audioPlayedStatus.TryGetValue(audio1, out bool wasPlayed1) && !wasPlayed1)
+            {
+                audio1.Play();
+                _audioPlayedStatus[audio1] = true;
+                Debug.Log($"[VoiceOverManager] {obj.ToString()} // {audio1}");
+            }
+           
         }
     }
     
@@ -163,13 +179,13 @@ public class VoiceOverManager : MonoBehaviour
         {
             if (reminderTimer >= reminderTime)
             {
-                playARandomRiminder(reminders);
+                PlayARandomRiminder(reminders);
                 reminderTimer = 0f;
             }
         }
     }
 
-    private void playARandomRiminder(AudioSource[] audioSources)
+    private static void PlayARandomRiminder(AudioSource[] audioSources)
     {
         if(audioSources == null || audioSources.Length == 0)
         {
@@ -190,6 +206,12 @@ public class VoiceOverManager : MonoBehaviour
     private void SetgameState(GameManager.GameState gameState)
     {
         this.gameState = gameState;
+
+        if (gameState == GameManager.GameState.Game)
+        {
+            _boatRemoteControllerBoatWasPlayed = false;
+            _chainsawCanisterWasPlayed = false;
+        }
     }
     
     
