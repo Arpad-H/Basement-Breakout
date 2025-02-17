@@ -9,12 +9,12 @@ public class Marble : MonoBehaviour
     [SerializeField] private Transform startTransform;
     [SerializeField] private Transform centerTransform;
     private Rigidbody rb;
-    private AudioSource audioSource;
+    [SerializeField] private AudioSource audioSourceRoll;
+    [SerializeField] private AudioSource audioSourceKick;
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        audioSource = GetComponent<AudioSource>();
     }
     
     public void Update()
@@ -28,13 +28,15 @@ public class Marble : MonoBehaviour
         {
             transform.position = startTransform.position;
         }
-        if (rb.velocity.magnitude > 0.01f && rb.velocity.magnitude < 1f)
+        if (rb.velocity.magnitude > 0.001f && rb.velocity.magnitude < 1f)
         {
-            audioSource.mute = false;
+            audioSourceRoll.mute = false;
         }
         else
         {
-            audioSource.mute = true;
+            //audioSource.pitch = Math.Clamp(2000f*rb.velocity.magnitude-1f, -0.5f, 2f);
+            audioSourceRoll.mute = true;
+            //audioSourceKick.Play();
         }
     }
 }
