@@ -28,7 +28,7 @@ public class Marble : MonoBehaviour
         {
             transform.position = startTransform.position;
         }
-        if (rb.velocity.magnitude > 0.001f && rb.velocity.magnitude < 1f)
+        if (rb.velocity.magnitude > 0.005f && rb.velocity.magnitude < 1f)
         {
             audioSourceRoll.mute = false;
         }

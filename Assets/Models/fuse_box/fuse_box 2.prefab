@@ -1094,7 +1094,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blockId: 85906e61-05be-4ea9-bfa6-139215b858df
-  instanceId: dadb5683-3e20-40fc-91b7-2932e9eab815
+  instanceId: dd5aad6e-39ae-4a30-8246-cf2093ea9cb9
   version: 1
   installationRoutineCheckpoint:
     _installationRoutineId: 5c49fca3-fb86-46fe-8728-fe25eb009af8
@@ -1323,7 +1323,6 @@ GameObject:
   - component: {fileID: 1172916230199124833}
   - component: {fileID: 3238433270478963180}
   - component: {fileID: 7139153513999379811}
-  - component: {fileID: 3363254299433211842}
   - component: {fileID: 6110140085407430798}
   m_Layer: 0
   m_Name: LeverLid
@@ -1661,22 +1660,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   angleThreshold: 90
---- !u!114 &3363254299433211842
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7011634041732199448}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4b8d05ea3484d64b93359b62015638a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  squeakSound:
-  - {fileID: 6110140085407430798}
-  xAxisCheck: 1
-  switchHaptic: {fileID: 2460798210113038985, guid: 0a4fbe78ad1785041a34ae0a5969223f, type: 3}
+  audio: {fileID: 6110140085407430798}
 --- !u!82 &6110140085407430798
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1693,7 +1677,7 @@ AudioSource:
   m_Pitch: 1
   Loop: 0
   Mute: 0
-  Spatialize: 0
+  Spatialize: 1
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
@@ -1821,7 +1805,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blockId: 85906e61-05be-4ea9-bfa6-139215b858df
-  instanceId: 552672b3-9e1e-4ce0-be62-d8d7b07e0861
+  instanceId: 932500c7-74a8-452a-9d4a-b9b606eafffb
   version: 1
   installationRoutineCheckpoint:
     _installationRoutineId: 5c49fca3-fb86-46fe-8728-fe25eb009af8

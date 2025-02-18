@@ -24,7 +24,7 @@ public class lockerDoorAudioPlayer : MonoBehaviour
         if (justSqueaked) squeakTimer -= Time.deltaTime;
         if (squeakTimer <= 0) {
             justSqueaked = false;
-            squeakTimer = 5f;
+            squeakTimer = 2.5f;
         }
         
         if (!xAxisCheck) currentRotation = transform.rotation.eulerAngles.y;

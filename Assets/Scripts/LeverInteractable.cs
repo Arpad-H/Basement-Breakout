@@ -8,12 +8,13 @@ using UnityEngine.Events;
 public class LeverInteractable : MonoBehaviour
 {
     [SerializeField] private float angleThreshold = 45f;
+    [SerializeField] private AudioSource audio;
 
     public static event Action<bool> OnLeverAction;
 
 
     private Quaternion initialRotation;
-    private bool previousState = false;
+    private bool previousState = true;
 
     
     private OneGrabRotateTransformer rotateTransform;
@@ -50,6 +51,7 @@ public class LeverInteractable : MonoBehaviour
         bool state = angle < angleThreshold;
         if (state != previousState)
         {
+            audio.Play();
             Debug.Log($"[LeverInteractable] Lever state changed to {state}");
             previousState = state;
             OnLeverAction?.Invoke(state);
