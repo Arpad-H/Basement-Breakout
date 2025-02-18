@@ -16,11 +16,24 @@ public class SoundFXManager : MonoBehaviour
     [SerializeField] private AudioSource windowBurstSound;
     [SerializeField] private SoundMixerManager soundMixerManager;
 
+    [Header("Water Sound FX")] [SerializeField]
+    private AudioSource waterSound;
+    [SerializeField] private float waterSoundVolume = 0.6f;
+    
+    
+
     private void Awake() {
         if (instance == null) {
             instance = this;
         }
     }
+
+    private void OnDestroy()
+    {
+       
+    }
+
+    
 
     public void PlaySoundFX(AudioClip audioClip, Transform spawnTransform, float volume) {
         AudioSource audioSource = Instantiate(soundFXObject, spawnTransform.position, Quaternion.identity);
@@ -35,5 +48,12 @@ public class SoundFXManager : MonoBehaviour
     public void PlayWindowBurstFX() {
         PlaySoundFX(windowBurstSound.clip, windowBurstPosition, windowBurstVolume);
     }
-    
+
+    public void PlayWaterSound()
+    {
+        Debug.Log($"[SoundFXManager] Playing water sound]");
+        waterSound.volume = waterSoundVolume;
+        waterSound.Play();
+    }
+
 }
