@@ -51,9 +51,10 @@ public class SoundFXManager : MonoBehaviour
 
     public void PlayWaterSound()
     {
-        Debug.Log($"[SoundFXManager] Playing water sound]");
+       
         waterSound.volume = waterSoundVolume;
         waterSound.Play();
+        Debug.Log($"[SoundFXManager] Playing water sound] {waterSound.clip.name}");
     }
 
 }
