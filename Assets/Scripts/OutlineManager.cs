@@ -42,11 +42,11 @@ public class OutlineManager : MonoBehaviour
     
     private void showOutlines(GameManager.GameState state)
     {
-        if (state == GameManager.GameState.Tutorial)
+        if (state == GameManager.GameState.Game)
         {
             enable();
         }
-        else if(state != GameManager.GameState.Tutorial || state == GameManager.GameState.Game)
+        else
         {
             disable();
         }

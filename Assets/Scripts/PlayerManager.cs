@@ -191,6 +191,7 @@ public class PlayerManager : MonoBehaviour
         else if (gameState == GameManager.GameState.Tutorial)
         {
             StartCoroutine(TransitionToBlack()); //TODO potentially deactivate player movement
+            DeactivateTeleportInteractor();
          
             
         }
@@ -213,6 +214,7 @@ public class PlayerManager : MonoBehaviour
         // Wait a few seconds
         yield return new WaitForSeconds(2f); // Adjust delay as needed
     stairsSound.Stop();
+    ActivateTeleportInteractor();
     _audioSource.Play();
         // Fade back to normal
         yield return StartCoroutine(Fade(0f, 0.5f)); // Fade back over 0.5s
@@ -220,6 +222,7 @@ public class PlayerManager : MonoBehaviour
 
     IEnumerator Fade(float targetAlpha, float duration)
     {
+        
         float startAlpha = screenMaterial.GetFloat("_alpha");
         float elapsedTime = 0f;
     
