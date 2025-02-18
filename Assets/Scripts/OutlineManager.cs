@@ -6,11 +6,6 @@ public class OutlineManager : MonoBehaviour
 {
     private GameObject[] gameObjects;
     private Outline[] outlines;
-
-    void Awake()
-    {
-        GameManager.OnGameStateChanged += showOutlines;
-    }
     
     void Start()
     {
@@ -26,6 +21,7 @@ public class OutlineManager : MonoBehaviour
                 ++i;
             }
         }
+        GameManager.OnGameStateChanged += showOutlines;
     }
 
     private void enable()

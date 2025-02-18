@@ -43,6 +43,7 @@ public class TutorialUI : MonoBehaviour
 
         // Zu Beginn ausblenden (das GameObject, an dem dieses Script hängt, deaktivieren)
         //HideUI();
+        GameManager.OnGameStateChanged += OnGameStateChanged;
     }
 
     private void OnEnable()
