@@ -423,6 +423,7 @@ GameObject:
   - component: {fileID: 1928271859638116841}
   - component: {fileID: 4771382023280506836}
   - component: {fileID: 3639302320144681150}
+  - component: {fileID: 8750933730198690982}
   m_Layer: 0
   m_Name: SM_Water_Bottle
   m_TagString: Untagged
@@ -508,6 +509,29 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &8750933730198690982
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2934743235739402481}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9290201a81611c468138773aadc5f0f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cannotSpin: 0
+  rb: {fileID: 3639302320144681150}
+  heightOffset: 0
+  floatDynamic: 120
+  pitchDynamic: 5
+  rollDynamic: 2.5
+  waterTransform: {fileID: 0}
+  underwaterDrag: 3
+  underwaterAngularDrag: 1
+  airDrag: 0
+  airAngularDrag: 0.05
 --- !u!1 &8811215627557484890
 GameObject:
   m_ObjectHideFlags: 0

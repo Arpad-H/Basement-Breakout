@@ -11,7 +11,7 @@ public class VoiceOverEventSender : MonoBehaviour
     private GameObject _targetCollider;
     // private bool _wasPlayed = false;
     
-    public static event Action<VoiceOverManager.Item> OnLeverAction;
+    public static event Action<VoiceOverManager.Item> OnAction;
 
 
     private void Start()
@@ -28,7 +28,7 @@ public class VoiceOverEventSender : MonoBehaviour
     {
         if (type == ColliderOrGrabbable.COLLIDER  && other.gameObject == _targetCollider)
         {
-            OnLeverAction?.Invoke(item);
+            OnAction?.Invoke(item);
            
         }
     }
@@ -38,7 +38,7 @@ public class VoiceOverEventSender : MonoBehaviour
         if (type == ColliderOrGrabbable.GRABBABLE)
         {
             Debug.Log("[VoiceOverEventSender] Grabbing");
-           OnLeverAction?.Invoke(item);
+           OnAction?.Invoke(item);
           
         }
     }

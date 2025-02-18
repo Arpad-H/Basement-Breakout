@@ -28,10 +28,24 @@ public class ElectricictyManager : MonoBehaviour
     [Header("Water Heigh")]
     public Transform waterHeigh;
     
+    GameManager.GameState gameState;
+    
    
     private void Awake()
     {
         LeverInteractable.OnLeverAction += LeverInteractableOnonLeverAction;
+        GameManager.OnGameStateChanged += GameManagerOnOnGameStateChanged;
+    }
+
+    private void OnDestroy()
+    {
+        LeverInteractable.OnLeverAction -= LeverInteractableOnonLeverAction;
+        GameManager.OnGameStateChanged -= GameManagerOnOnGameStateChanged;
+    }
+
+    private void GameManagerOnOnGameStateChanged(GameManager.GameState obj)
+    {
+        gameState = obj;
     }
 
     private void LeverInteractableOnonLeverAction(bool state)
@@ -40,7 +54,7 @@ public class ElectricictyManager : MonoBehaviour
         if (state)
         {
            enableAllLights(); 
-           if (!flooding)
+           if (!flooding && gameState == GameManager.GameState.Game)
            {
                electricitySparks.SetActive(true);
            }

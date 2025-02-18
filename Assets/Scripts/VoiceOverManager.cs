@@ -58,7 +58,7 @@ public class VoiceOverManager : MonoBehaviour
 
     private void Awake()
     {
-        VoiceOverEventSender.OnLeverAction += VoiceOverEventSenderOnOnLeverAction;
+        VoiceOverEventSender.OnAction += VoiceOverEventSenderOnOnAction;
         GameManager.OnGameStateChanged += SetgameState;
         _audioGameMap = new()
         {
@@ -94,11 +94,11 @@ public class VoiceOverManager : MonoBehaviour
 
     private void OnDestroy()
     {
-        VoiceOverEventSender.OnLeverAction -= VoiceOverEventSenderOnOnLeverAction;
+        VoiceOverEventSender.OnAction -= VoiceOverEventSenderOnOnAction;
         GameManager.OnGameStateChanged -= SetgameState;
     }
 
-    private void VoiceOverEventSenderOnOnLeverAction(Item obj)
+    private void VoiceOverEventSenderOnOnAction(Item obj)
     {
 
     Debug.Log($"[VoiceOverManager]On Lever Action {obj.ToString()} // Gamestate {gameState.ToString()}");
