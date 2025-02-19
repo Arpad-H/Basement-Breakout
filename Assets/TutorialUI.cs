@@ -96,65 +96,82 @@ public class TutorialUI : MonoBehaviour
         NextPage();
     }
 
-    /// <summary>
-    /// Wird aufgerufen, wenn sich der GameState ändert. Je nach Zustand (Tutorial, Win, Game Over)
-    /// wird der entsprechende Content in die UI geladen.
-    /// </summary>
-    private void OnGameStateChanged(GameManager.GameState newState)
-    {
-        currentGameState = newState;
+/// <summary>
+/// Wird aufgerufen, wenn sich der GameState ändert. Je nach Zustand (Tutorial, Win, Game Over)
+/// wird der entsprechende Inhalt in die UI geladen.
+/// </summary>
+private void OnGameStateChanged(GameManager.GameState newState)
+{
+    currentGameState = newState;
 
-        if (newState == GameManager.GameState.Menu)
+    if (newState == GameManager.GameState.Menu)
+    {
+        isGameOverMode = false;
+        steps = new string[]
         {
-            isGameOverMode = false;
-            steps = new string[]
-            {
-                "Hallo! Drücke A zum Fortfahren.",
-                "Du kannst dich bewegen indem du einen der Analog-Sticks nach vor drückst, achte dafür auf den Indikator.",
-                "Die Kamerea wird durch eine seitliche bewegung der analog sticks bewegt.",
-                "Greife Objekte mit der unteren Taste.",
-                "Interagiere mit Gegenständen durch Drücken Schultertaste während du es hälst",
-                "Gehe durch die Tür um das Spiel zu starten!"
-            };
-            currentPage = 0;
-            headerText.text = "Tutorial";
-            UpdateUI();
-            ShowUI();
-        }
-        else if (newState == GameManager.GameState.Win)
-        {
-            isGameOverMode = true;
-            steps = new string[]
-            {
-                "Herzlichen Glückwunsch!",
-                "Du hast das Spiel gewonnen.",
-                "Drücke A zum Neustarten."
-            };
-            currentPage = 0;
-            headerText.text = "Gewonnen!";
-            UpdateUI();
-            ShowUI();
-        }
-        else if (newState == GameManager.GameState.Drowned || newState == GameManager.GameState.ElectricShock)
-        {
-            isGameOverMode = true;
-            steps = new string[]
-            {
-                "Oh nein!",
-                "Du bist gestorben.",
-                "Drücke A zum Neustarten."
-            };
-            currentPage = 0;
-            headerText.text = "Game Over";
-            UpdateUI();
-            ShowUI();
-        }
-        else
-        {
-            // Für alle anderen Zustände: UI ausblenden
-            HideUI();
-        }
+            "Willkommen! Drücke A, um fortzufahren.",
+            "Schiebe den Analogstick nach vorne um zu sehen wohin du dich teleportierst",
+            "Drehe die Kamera, indem du den Stick nach links oder rechts bewegst.",
+            "Greife Objekte mit der unteren Taste.",
+            "Interagiere mit objeketen während du sie in der Hand hälst und, indem du die hintere Taste drückst.",
+            "Gehe durch die Tür, um das Spiel zu starten!"
+        };
+        currentPage = 0;
+        headerText.text = "Tutorial";
+        UpdateUI();
+        ShowUI();
     }
+    else if (newState == GameManager.GameState.Win)
+    {
+        isGameOverMode = true;
+        steps = new string[]
+        {
+            "Herzlichen Glückwunsch!",
+            "Du hast gewonnen.",
+            "Drücke A, um neu zu starten."
+        };
+        currentPage = 0;
+        headerText.text = "Gewonnen!";
+        UpdateUI();
+        ShowUI();
+    }
+    else if (newState == GameManager.GameState.Drowned)
+    {
+        isGameOverMode = true;
+        steps = new string[]
+        {
+            "Oh nein!",
+            "Du bist ertrunken.",
+            "Versuche beim nächsten mal eher zu fliehen.",
+            "Drücke A, um neu zu starten."
+        };
+        currentPage = 0;
+        headerText.text = "Game Over";
+        UpdateUI();
+        ShowUI();
+    }
+    else if (newState == GameManager.GameState.ElectricShock)
+    {
+        isGameOverMode = true;
+        steps = new string[]
+        {
+            "Oh nein!",
+            "Ein Stromschlag hat dich getötet.",
+            "Schalte beim nächsten mal unbedingt den Strom ab!",
+            "Drücke A, um neu zu starten."
+        };
+        currentPage = 0;
+        headerText.text = "Game Over";
+        UpdateUI();
+        ShowUI();
+    }
+    else
+    {
+        // Für alle anderen Zustände: UI ausblenden
+        HideUI();
+    }
+}
+
 
     /// <summary>
     /// Aktualisiert den angezeigten Text, den Seitenzähler und das Controller-Bild für den aktuellen Schritt.
