@@ -16,7 +16,7 @@ public class VoiceOverEventSender : MonoBehaviour
 
     private void Start()
     {
-        _targetCollider = GameObject.Find("Player");
+        _targetCollider = GameObject.Find("CenterEyeAnchor");
     }
 
     public enum ColliderOrGrabbable
@@ -28,8 +28,9 @@ public class VoiceOverEventSender : MonoBehaviour
     {
         if (type == ColliderOrGrabbable.COLLIDER  && other.gameObject == _targetCollider)
         {
+            
             OnAction?.Invoke(item);
-           
+            Debug.Log($"[VoiceOverEventSender] Event send OnTriggerEnter:  {other.gameObject.name} item: {item.ToString()} GameObject: {gameObject.name}");
         }
     }
 
@@ -37,7 +38,7 @@ public class VoiceOverEventSender : MonoBehaviour
     {
         if (type == ColliderOrGrabbable.GRABBABLE)
         {
-            Debug.Log("[VoiceOverEventSender] Grabbing");
+            Debug.Log($"[VoiceOverEventSender] Grabbing item: {item.ToString()}  GameObject: {gameObject.name}");
            OnAction?.Invoke(item);
           
         }
