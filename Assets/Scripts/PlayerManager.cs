@@ -173,6 +173,11 @@ public class PlayerManager : MonoBehaviour
             _timeUnderWater = 0;
         }
 
+        if (_timeUnderWater > DROWNINGTIME/2)
+        {
+          //  Mathf.Lerp()
+        }
+
         return _timeUnderWater > DROWNINGTIME;
     }
 
