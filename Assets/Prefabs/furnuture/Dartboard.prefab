@@ -179,6 +179,8 @@ GameObject:
   - component: {fileID: 6570766869991368580}
   - component: {fileID: 7554676801372956260}
   - component: {fileID: 1256348420986662788}
+  - component: {fileID: 5848937542404658800}
+  - component: {fileID: 4123194537962971610}
   m_Layer: 0
   m_Name: Dartboard
   m_TagString: Untagged
@@ -315,3 +317,38 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _collider: {fileID: 6570766869991368580}
+--- !u!114 &5848937542404658800
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2231726338693501222}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 935469d94988acc4e8d5f69543dfc004, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item: 8
+  type: 1
+--- !u!65 &4123194537962971610
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2231726338693501222}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.6832204, y: 1.8919983, z: 0.707374}
+  m_Center: {x: 0.016573595, y: -0.6693774, z: 0.33684778}
