@@ -1,7 +1,8 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
-public class WaterBehaviour : MonoBehaviour
+public class WaterBehaviour : MonoBehaviour 
 {
     [SerializeField] private float floodingSpeed = 0.08f;
     [SerializeField] private GameObject heightPlane;
@@ -91,7 +92,7 @@ public class WaterBehaviour : MonoBehaviour
         Vector2 Direction;
     };
 
-    private const float GRAVITY = 9.81f;
+    private const float GRAVITY = 9.8f;
 
     private void Awake()
     {
@@ -186,7 +187,15 @@ public class WaterBehaviour : MonoBehaviour
             displacement.y += a * sinF;
         }
 
-      
-        return Amplitude * displacement + transform.position;
+       // float fakeOffset = (WorldOffset.y + _WaveEffectsBoost) - v.vertex.y;
+       // v.waveHeight = amplitude * fakeOffset;
+        return Amplitude * displacement + worldPos;
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Vector3 pos = GetWaveDisplacement(new Vector3(20,0,0), Time.time);
+        Gizmos.DrawSphere(pos, 0.1f);
     }
 }

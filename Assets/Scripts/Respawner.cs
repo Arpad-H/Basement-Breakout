@@ -12,7 +12,7 @@ public class Respawner : MonoBehaviour
 
     void Update()
     {
-        if (transform.position.y < -1)
+        if (transform.position.y < -1 || transform.position.y > 8)
         {
             transform.position = spawnPoint;
         }
