@@ -12,11 +12,14 @@ public class AudioDetection : MonoBehaviour
     private GameObject battery;
     private bool hasEnergy = false;
     //private AudioHighPassFilter filter;
-    [SerializeField] private Transform winPos;
+    [SerializeField] private GameObject winPos;
     [SerializeField] private float winDistance = 10.0f;
     [SerializeField] private float winTimer = 3.0f;
     [SerializeField] private GameObject highlighter;
     private float timer = 0;
+
+    private bool playOnce = true;
+    private bool winOnce = true;
     public static event Action<GameManager.GameState> GameStateChangedMegaPhone;
     
     void Start()
@@ -52,9 +55,19 @@ public class AudioDetection : MonoBehaviour
         {
             print(timer > winTimer);
             timer += Time.deltaTime;
-            if(timer > winTimer)
-                GameStateChangedMegaPhone?.Invoke(GameManager.GameState.Win);
+            if (timer > winTimer && playOnce)
+            {
+                playOnce = false;
+                winPos.GetComponent<AudioSource>().Play();
+            }
         }
+
+        if (winOnce && !playOnce && !winPos.GetComponent<AudioSource>().isPlaying)
+        {
+            GameStateChangedMegaPhone?.Invoke(GameManager.GameState.Win);
+            winOnce = false;
+        }
+            
         /*if ((OVRInput.Get(OVRInput.Button.PrimaryHandTrigger) || OVRInput.Get(OVRInput.Button.SecondaryHandTrigger)) &&
             (OVRInput.Get(OVRInput.Button.PrimaryIndexTrigger) || OVRInput.Get(OVRInput.Button.SecondaryIndexTrigger))) {
             PlaySound();
