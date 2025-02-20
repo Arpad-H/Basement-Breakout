@@ -125,7 +125,7 @@ public class VoiceOverManager : MonoBehaviour
 
     private void PlayVoice(Item obj, Dictionary<Item, AudioSource> audioMapState, Dictionary<Item, AudioSource> audioMapStateless)
     {
-        Debug.Log($"[VoiceOverManager] audioMapState.TryGetValue(obj, out AudioSource audio) {audioMapState.TryGetValue(obj, out AudioSource audio2)} //audio != null {audio2 != null}");
+        Debug.Log($"[VoiceOverManager] audioMapState.TryGetValue(obj, out AudioSource audio) {audioMapState.TryGetValue(obj, out AudioSource audio2)} //audio != null {audio2 != null} //Item obj {obj.ToString()}");
         if (audioMapState.TryGetValue(obj, out AudioSource audio) && audio != null)
         {
             Debug.Log($"[VoiceOverManager] // _audioPlayedStatus.TryGetValue(audio, out bool wasPlayed) { _audioPlayedStatus.TryGetValue(audio, out bool wasPlayed2)} //!wasPlayed {wasPlayed2}; ");
@@ -154,18 +154,23 @@ public class VoiceOverManager : MonoBehaviour
                         break;
                 }
                 _audioPlayedStatus[audio] = true;
-                Debug.Log($"[VoiceOverManager] {obj.ToString()} // {audio}");
+                Debug.Log($"[VoiceOverManager]  audio.Play(); {obj.ToString()} // {audio}");
             }
             
                 
         }
         else if (audioMapStateless.TryGetValue(obj, out AudioSource audio1) && audio1 != null )
         {
+            Debug.Log($"[VoiceOverManager] else if audio1 =! {audio1 != null } // audio1: {audio1.clip.name} //");
             if ( _audioPlayedStatus.TryGetValue(audio1, out bool wasPlayed1) && !wasPlayed1)
             {
                 audio1.Play();
                 _audioPlayedStatus[audio1] = true;
-                Debug.Log($"[VoiceOverManager] {obj.ToString()} // {audio1}");
+                Debug.Log($"[VoiceOverManager] audio.Play(); {obj.ToString()} // {audio1}");
+            }
+            else
+            {
+                Debug.Log($"[VoiceOverManager]  _audioPlayedStatus.TryGetValue(audio1, out bool wasPlayed1) && !wasPlayed1 FAILED: //{_audioPlayedStatus.TryGetValue(audio1, out bool wasPlayed2)} //!wasPlayed1 {wasPlayed1}; ) ");
             }
            
         }

@@ -4,18 +4,15 @@ using System.Collections.Generic;
 using Oculus.Interaction;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Assertions.Must;
 
 public class VoiceOverEventSender : MonoBehaviour
 {
     [SerializeField] public VoiceOverManager.Item item;
     [SerializeField] public ColliderOrGrabbable type;
-
-    [Tooltip("The viewing area for the library, fridge and dartboard")] [SerializeField]
-    public float minAngleDaFrLi = 115f;
-    [SerializeField] public float maxAngleDaFrLi = 250f;
-
-    [SerializeField] public float minAngleWorkbench = 190f;
-    [SerializeField] public float maxAngleWorkbench = 290f;
+    private Collider _collider;
+    private  float viewAngleThreshold = 70f;
+    private float distanceThreshold = 0f;
 
     private GameObject _targetCollider;
     private bool _isColliding = false;
@@ -27,6 +24,7 @@ public class VoiceOverEventSender : MonoBehaviour
     private void Start()
     {
         _targetCollider = GameObject.Find("CenterEyeAnchor");
+        _collider = GetComponent<BoxCollider>();
     }
 
     public enum ColliderOrGrabbable
@@ -37,24 +35,16 @@ public class VoiceOverEventSender : MonoBehaviour
 
     private void Update()
     {
-        // Debug.Log($"[VoiceOverEventSender]  Player rotation  {_targetCollider.transform.rotation.eulerAngles}");
-        if (_isColliding)
+        
+        
+        if (type == ColliderOrGrabbable.COLLIDER)
         {
-            Debug.Log($"[VoiceOverEventSender] update Player rotatio y {_targetCollider.transform.rotation.eulerAngles.y} minAngle {minAngleDaFrLi} maxAngle {maxAngleDaFrLi}");
-            switch (item)
+            Debug.Log($"[VoiceOverEventSender] update  im Blickfeld und Distanze: {CheckObjectInFieldOfView(transform, _targetCollider.transform, viewAngleThreshold, distanceThreshold)} // Angle: {viewAngleThreshold} // Distance:{distanceThreshold} // Item {item.ToString()}");
+            if (CheckObjectInFieldOfView(transform, _targetCollider.transform, viewAngleThreshold, distanceThreshold))
             {
-                case VoiceOverManager.Item.Dartboad:
-                case VoiceOverManager.Item.Fridge:
-                case VoiceOverManager.Item.Library:
-                    SendEvent(minAngleDaFrLi, maxAngleDaFrLi, _targetCollider.transform.rotation.y);
-                    break;
-                case VoiceOverManager.Item.Workbench:
-                    SendEvent(minAngleWorkbench, maxAngleWorkbench, _targetCollider.transform.rotation.y);
-                    break;
-                default:
-                    Debug.Log($"[VoiceOverEventSender] Unknown Item: {item}] not found");
-                    break;
+                OnAction?.Invoke(item);
             }
+           
         }
     }
 
@@ -63,8 +53,8 @@ public class VoiceOverEventSender : MonoBehaviour
         if (type == ColliderOrGrabbable.COLLIDER && other.gameObject == _targetCollider)
         {
             _isColliding = true;
-            Debug.Log(
-                $"[VoiceOverEventSender] OnTriggerEnter:  {other.gameObject.name} item: {item.ToString()} GameObject: {gameObject.name}");
+            // Debug.Log(
+            //     $"[VoiceOverEventSender] OnTriggerEnter:  {other.gameObject.name} item: {item.ToString()} GameObject: {gameObject.name}");
         }
     }
 
@@ -73,18 +63,8 @@ public class VoiceOverEventSender : MonoBehaviour
         if (type == ColliderOrGrabbable.COLLIDER && other.gameObject == _targetCollider)
         {
             _isColliding = false;
-            Debug.Log(
-                $"[VoiceOverEventSender] Event send OnTriggerExit:  {other.gameObject.name} item: {item.ToString()} GameObject: {gameObject.name}");
-        }
-    }
-
-
-    private void SendEvent(float minAngle, float maxAngle, float angle)
-    {
-        Debug.Log($"[VoiceOverEventSender] Sending event: {item.ToString()} Im Blickfeld: {minAngle > angle && maxAngle > angle}");
-        if (minAngle > angle && maxAngle > angle)
-        {
-            OnAction?.Invoke(item);
+            // Debug.Log(
+            //     $"[VoiceOverEventSender] Event send OnTriggerExit:  {other.gameObject.name} item: {item.ToString()} GameObject: {gameObject.name}");
         }
     }
 
@@ -95,5 +75,16 @@ public class VoiceOverEventSender : MonoBehaviour
             Debug.Log($"[VoiceOverEventSender] Grabbing item: {item.ToString()}  GameObject: {gameObject.name}");
             OnAction?.Invoke(item);
         }
+    }
+
+
+    private bool CheckObjectInFieldOfView(Transform objecTransform, Transform player, float viewAngleThreshold, float distanceThreshold)
+    {
+        Vector3 directionToObject = (objecTransform.position - player.position).normalized;
+       float distanceToObject = (player.position- _collider.ClosestPoint(player.position)).magnitude;
+       
+        float angle = Vector3.Angle(player.forward, directionToObject);
+        Debug.Log($"[VoiceOverEventSender] Checking object: {directionToObject} // angle: {angle} // distance: {distanceToObject}");
+        return angle <= viewAngleThreshold && distanceToObject <= distanceThreshold;
     }
 }
