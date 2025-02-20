@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,7 +7,17 @@ public class OutlineManager : MonoBehaviour
 {
     private GameObject[] gameObjects;
     private Outline[] outlines;
-    
+
+    void Awake()
+    {
+        GameManager.OnGameStateChanged += showOutlines;
+    }
+
+    private void OnDestroy()
+    {
+        GameManager.OnGameStateChanged -= showOutlines;
+    }
+
     void Start()
     {
         gameObjects = GameObject.FindGameObjectsWithTag("Outline");
@@ -21,14 +32,14 @@ public class OutlineManager : MonoBehaviour
                 ++i;
             }
         }
-        GameManager.OnGameStateChanged += showOutlines;
     }
 
     private void enable()
     {
         for (int i = 0; i < outlines.Length; ++i)
         {
-            outlines[i].enabled = true;
+            if(outlines[i] != null)
+                outlines[i].enabled = true;
         }
     }
 
@@ -36,7 +47,8 @@ public class OutlineManager : MonoBehaviour
     {
         for (int i = 0; i < outlines.Length; ++i)
         {
-            outlines[i].enabled = false;
+            if(outlines[i] != null) 
+                outlines[i].enabled = false;
         }
     }
     

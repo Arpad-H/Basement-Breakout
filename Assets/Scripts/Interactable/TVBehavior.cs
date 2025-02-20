@@ -48,6 +48,7 @@ public class TVBehavior : MonoBehaviour
     {
         StartCoroutine(SubscribeToGameManagerEvent());
         LeverInteractable.OnLeverAction += LeverInteractableOnOnLeverAction;
+        GameManager.OnGameStateChanged += HandleGameStateChanged;
     }
 
    
@@ -84,7 +85,7 @@ public class TVBehavior : MonoBehaviour
             yield return null;
         }
 
-        GameManager.OnGameStateChanged += HandleGameStateChanged;
+        
      //   Debug.Log("TVBehavior: Successfully subscribed to GameManager events.");
     }
 
@@ -92,8 +93,9 @@ public class TVBehavior : MonoBehaviour
     {
         if (gameManager != null)
         {
-            GameManager.OnGameStateChanged -= HandleGameStateChanged;
+            
         }
+        GameManager.OnGameStateChanged -= HandleGameStateChanged;
         LeverInteractable.OnLeverAction -= LeverInteractableOnOnLeverAction;
     }
 
