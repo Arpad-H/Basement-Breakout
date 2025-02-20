@@ -10,16 +10,6 @@ public class OutlineManager : MonoBehaviour
 
     void Awake()
     {
-        GameManager.OnGameStateChanged += showOutlines;
-    }
-
-    private void OnDestroy()
-    {
-        GameManager.OnGameStateChanged -= showOutlines;
-    }
-
-    void Start()
-    {
         gameObjects = GameObject.FindGameObjectsWithTag("Outline");
         outlines = new Outline[gameObjects.Length];
         int i = 0;
@@ -32,6 +22,12 @@ public class OutlineManager : MonoBehaviour
                 ++i;
             }
         }
+        GameManager.OnGameStateChanged += showOutlines;
+    }
+
+    private void OnDestroy()
+    {
+        GameManager.OnGameStateChanged -= showOutlines;
     }
 
     private void enable()
