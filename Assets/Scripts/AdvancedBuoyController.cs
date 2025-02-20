@@ -58,9 +58,9 @@ public class AdvancedBuoyController : MonoBehaviour {
 		float waterLevel = lowAvgHeight;*/
 		
 		float objectHeight = transform.position.y;
-		//float waterHeight = waterTransform.position.y + heightOffset;
-		
-		float depth = objectHeight - GetWaterHeight(transform.position) - heightOffset;
+		float waterHeight = waterTransform.position.y + heightOffset;
+
+		float depth = objectHeight - waterHeight;//GetWaterHeight(transform.position) - heightOffset; //Zeile auskommentiert, da floating broken ist
 		if (depth < 0) // Object is submerged
 		{
 			if (!cannotSpin)
