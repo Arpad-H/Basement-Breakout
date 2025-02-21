@@ -21,6 +21,7 @@ public class AudioDetection : MonoBehaviour
     private bool playOnce = true;
     private bool winOnce = true;
     public static event Action<GameManager.GameState> GameStateChangedMegaPhone;
+    public static event Action<VoiceOverManager.Item> audioWonByMegaphoneWin;
     
     void Start()
     {
@@ -65,6 +66,7 @@ public class AudioDetection : MonoBehaviour
         if (winOnce && !playOnce && !winPos.GetComponent<AudioSource>().isPlaying)
         {
             GameStateChangedMegaPhone?.Invoke(GameManager.GameState.Win);
+            audioWonByMegaphoneWin?.Invoke(VoiceOverManager.Item.WonByMegaphoneWin);
             winOnce = false;
         }
             

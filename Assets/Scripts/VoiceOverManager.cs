@@ -70,6 +70,9 @@ public class VoiceOverManager : MonoBehaviour
     {
         VoiceOverEventSender.OnAction += VoiceOverEventSenderOnOnAction;
         GameManager.OnGameStateChanged += SetgameState;
+        TVBehavior.TVElectricShock +=  VoiceOverEventSenderOnOnAction;
+        WinCollision.audioWonByDoorWin += VoiceOverEventSenderOnOnAction;
+        AudioDetection.audioWonByMegaphoneWin += VoiceOverEventSenderOnOnAction;
         _audioGameMap = new()
         {
             { Item.Chainsaw, audioChainsawGame },
@@ -112,6 +115,9 @@ public class VoiceOverManager : MonoBehaviour
     {
         VoiceOverEventSender.OnAction -= VoiceOverEventSenderOnOnAction;
         GameManager.OnGameStateChanged -= SetgameState;
+        TVBehavior.TVElectricShock -= VoiceOverEventSenderOnOnAction;
+        WinCollision.audioWonByDoorWin -= VoiceOverEventSenderOnOnAction;
+        AudioDetection.audioWonByMegaphoneWin -= VoiceOverEventSenderOnOnAction;
     }
 
     private void VoiceOverEventSenderOnOnAction(Item obj)

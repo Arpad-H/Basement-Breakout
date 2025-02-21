@@ -43,6 +43,7 @@ public class TVBehavior : MonoBehaviour
 
     // Action zur Benachrichtigung anderer Objekte
     public static event Action<GameManager.GameState> gameStateChangedTVBehavior;
+    public static event Action<VoiceOverManager.Item> TVElectricShock;
 
     private void Awake()
     {
@@ -172,7 +173,6 @@ public class TVBehavior : MonoBehaviour
                     {
                         StartCoroutine(StartFlooding());
                         Debug.Log("TVBehavior: Changing GameState to 'Game' after first clip switch.");
-                        gameStateChangedTVBehavior?.Invoke(GameManager.GameState.Game); // Action auslösen
                         hasChangedStateAfterClip = true; // Verhindert weitere Änderungen
                     }
 
@@ -188,7 +188,9 @@ public class TVBehavior : MonoBehaviour
         yield return new WaitForSeconds(timeGameStarts);
         timeline.SetActive(true);
       //  waterBehaviour.HandleGameStateChanged(GameManager.GameState.Game);
-        HintVoiceClip.Play();
+        // HintVoiceClip.Play();
+       TVElectricShock?.Invoke(VoiceOverManager.Item.TVAfterElectroShock); 
+       gameStateChangedTVBehavior?.Invoke(GameManager.GameState.Game);
         
         
     }
