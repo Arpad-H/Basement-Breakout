@@ -189,7 +189,7 @@ public class TVBehavior : MonoBehaviour
         timeline.SetActive(true);
       //  waterBehaviour.HandleGameStateChanged(GameManager.GameState.Game);
         // HintVoiceClip.Play();
-       TVElectricShock?.Invoke(VoiceOverManager.Item.TVAfterElectroShock); 
+     
        gameStateChangedTVBehavior?.Invoke(GameManager.GameState.Game);
         
         
@@ -233,6 +233,7 @@ public class TVBehavior : MonoBehaviour
             videoPlayer.Play();
             tvDamageSound.loop = false;
             tvDamageSound.Play();
+            TVElectricShock?.Invoke(VoiceOverManager.Item.TVAfterElectroShock); 
             Debug.Log($"TVBehavior: water damage sound {tvDamageSound.clip.name} // {tvDamageSound.isPlaying}");
         
     }
@@ -242,6 +243,7 @@ public class TVBehavior : MonoBehaviour
         videoPlayer.clip = clip;
         videoPlayer.isLooping = true;
         videoPlayer.Play();
+        TVElectricShock?.Invoke(VoiceOverManager.Item.TVAfterElectroShock); 
         
     }
 
