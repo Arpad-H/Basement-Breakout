@@ -13,8 +13,9 @@ public class WinCollision : MonoBehaviour
         if (other.gameObject == targetGameObject)
         {
             Debug.Log($"[WinCollision[ {other.gameObject.name} || {targetGameObject.name}");
-            GameStateChangedWinCollision?.Invoke(GameManager.GameState.Win);
             audioWonByDoorWin?.Invoke(VoiceOverManager.Item.WonByDoorWin);
+            GameStateChangedWinCollision?.Invoke(GameManager.GameState.Win);
+            
             
         }
 

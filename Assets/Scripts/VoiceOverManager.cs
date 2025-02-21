@@ -18,7 +18,7 @@ public class VoiceOverManager : MonoBehaviour
 
     [SerializeField] private AudioSource audioCanisterGame;
     [SerializeField] private AudioSource audioChainsawGame;
-    [SerializeField] private AudioSource audioFuseboxGame;
+    //[SerializeField] private AudioSource audioFuseboxGame;
     [SerializeField] private AudioSource audioMegaphoneGame;
     [SerializeField] private AudioSource audioRemoteControllerBoatGame;
     [SerializeField] private AudioSource audioStairsGame;
@@ -50,6 +50,7 @@ public class VoiceOverManager : MonoBehaviour
     [SerializeField] private AudioSource audioWonByDoorWin;
     [SerializeField] private AudioSource audioWonByMegaphoneWin;
     [SerializeField] private AudioSource audioWoodchipWallpaperJoke;
+    [SerializeField] private AudioSource audioWindowBrush; //TODO Audio fehlt
 
     private AudioSource currentlyPlayingSource;
 
@@ -83,7 +84,7 @@ public class VoiceOverManager : MonoBehaviour
             { Item.Megaphone, audioMegaphoneGame },
             { Item.Remotecontrollerboat, audioRemoteControllerBoatGame },
             { Item.Stairs, audioStairsGame },
-            { Item.Fusebox, audioFuseboxGame },
+            //{ Item.Fusebox, audioFuseboxGame },
             { Item.Canister, audioCanisterGame }
         };
         _audioTutorialMap = new()
@@ -109,7 +110,8 @@ public class VoiceOverManager : MonoBehaviour
             { Item.WoodchipWallpaperJoke, audioWoodchipWallpaperJoke },
             { Item.WonByBoatWin, audioWonByBoatWin },
             { Item.WonByDoorWin, audioWonByDoorWin },
-            { Item.WonByMegaphoneWin, audioWonByMegaphoneWin }
+            { Item.WonByMegaphoneWin, audioWonByMegaphoneWin },
+            {Item.Window, audioWindowBrush}
         };
         InitializeAudioPlayedStatus();
     }
@@ -153,8 +155,10 @@ public class VoiceOverManager : MonoBehaviour
     private void PlayVoice(Item obj, Dictionary<Item, AudioSource> audioMapState,
         Dictionary<Item, AudioSource> audioMapStateless)
     {
+        
         Debug.Log(
             $"[VoiceOverManager] audioMapState.TryGetValue(obj, out AudioSource audio) {audioMapState.TryGetValue(obj, out AudioSource audio2)} //audio != null {audio2 != null} //Item obj {obj.ToString()}");
+        bool _audioIsPlayed = false;
         if (audioMapState.TryGetValue(obj, out AudioSource audio) && audio != null)
         {
             Debug.Log(
@@ -167,8 +171,9 @@ public class VoiceOverManager : MonoBehaviour
                     case Item.Canister:
                         if (!_chainsawCanisterWasPlayed)
                         {
-                            // audio.Play();
-                            _chainsawCanisterWasPlayed = PlaySound(audio);
+                            _audioIsPlayed =  PlaySound(audio);
+                            _chainsawCanisterWasPlayed = _audioIsPlayed;
+                            _audioPlayedStatus[audio] = _audioIsPlayed;
                         }
 
                         break;
@@ -176,17 +181,18 @@ public class VoiceOverManager : MonoBehaviour
                     case Item.Remotecontrollerboat:
                         if (!_boatRemoteControllerBoatWasPlayed)
                         {
-                            // audio.Play();
-                            _boatRemoteControllerBoatWasPlayed = PlaySound(audio);
+                            _audioIsPlayed =  PlaySound(audio);
+                            _boatRemoteControllerBoatWasPlayed = _audioIsPlayed;
+                            _audioPlayedStatus[audio] = _audioIsPlayed;
                         }
 
                         break;
                     default:
-                        // audio.Play();
+                        _audioPlayedStatus[audio] = PlaySound(audio);
                         break;
                 }
 
-                _audioPlayedStatus[audio] = PlaySound(audio);
+               
                 Debug.Log($"[VoiceOverManager]  audio.Play(); {obj.ToString()} // {audio}");
             }
         }
@@ -195,8 +201,16 @@ public class VoiceOverManager : MonoBehaviour
             Debug.Log($"[VoiceOverManager] else if audio1 =! {audio1 != null} // audio1: {audio1.clip.name} //");
             if (_audioPlayedStatus.TryGetValue(audio1, out bool wasPlayed1) && !wasPlayed1)
             {
-                // audio1.Play();
-                _audioPlayedStatus[audio1] = PlaySound(audio1);
+                if (obj == Item.Window)
+                {
+                    ForcePlaySound(audio1);
+                    _audioPlayedStatus[audio1] = true;
+                }
+                else
+                {
+                    _audioPlayedStatus[audio1] = PlaySound(audio1);
+                }
+                
                 Debug.Log($"[VoiceOverManager] audio.Play(); {obj.ToString()} // {audio1}");
             }
             else
@@ -223,6 +237,15 @@ public class VoiceOverManager : MonoBehaviour
             return true;
         }
        
+    }
+
+    private void ForcePlaySound(AudioSource audioSource)
+    {
+        Debug.Log($"[VoiceOverManager] ForcePlaySound {audioSource.clip.name}");
+        currentlyPlayingSource.Stop();
+        currentlyPlayingSource = audioSource;
+        currentlyPlayingSource.Play();
+        // currentlyPlayingSource.PlayOneShot(audioSource.clip);
     }
 
 
@@ -293,6 +316,7 @@ public class VoiceOverManager : MonoBehaviour
         WoodchipWallpaperJoke,
         WonByBoatWin,
         WonByDoorWin,
-        WonByMegaphoneWin
+        WonByMegaphoneWin,
+        Window
     }
 }

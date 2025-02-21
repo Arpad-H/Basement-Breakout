@@ -58,17 +58,18 @@ public class TVBehavior : MonoBehaviour
     {
         _electricityIsOn = obj;
         Debug.Log($"[TVBehavior] LeverInteractableOnOnLeverAction: {obj} // {(obj && _tvIsDamaged == false && _firstOnLeverAction == false)} // _tvIsDamaged = {_tvIsDamaged}] // _firstOnLeverAction = {_firstOnLeverAction}");
-        if (obj && _tvIsDamaged == false && _firstOnLeverAction == false)
+        if (obj && _tvIsDamaged == false ) //&& _firstOnLeverAction == false
         {
             Debug.Log($"[TVBehavior] LeverInteractableOnOnLeverAction: Enable TV");
       
-           changeClip(false);
+           changeClip(true);
            
         }
         else if (!obj)
         {
             Debug.Log($"[TVBehavior] LeverInteractableOnOnLeverAction: Disable TV");
             WaterDamage(videoPlayer, blackScreenClip);
+            StartCoroutine(StartFlooding());
         }
         else
         {
@@ -172,7 +173,7 @@ public class TVBehavior : MonoBehaviour
                     if (!hasChangedStateAfterClip && sendGameState)
                     {
                         StartCoroutine(StartFlooding());
-                        Debug.Log("TVBehavior: Changing GameState to 'Game' after first clip switch.");
+                        Debug.Log("[TVBehavior]: Changing GameState to 'Game' after first clip switch.");
                         hasChangedStateAfterClip = true; // Verhindert weitere Änderungen
                     }
 
@@ -185,13 +186,18 @@ public class TVBehavior : MonoBehaviour
 
     IEnumerator StartFlooding()
     {
+        hasChangedStateAfterClip = true;
         yield return new WaitForSeconds(timeGameStarts);
         timeline.SetActive(true);
       //  waterBehaviour.HandleGameStateChanged(GameManager.GameState.Game);
         // HintVoiceClip.Play();
      
        gameStateChangedTVBehavior?.Invoke(GameManager.GameState.Game);
-        
+       if (_electricityIsOn)
+       {
+           TVElectricShock?.Invoke(VoiceOverManager.Item.Window); 
+       }
+       
         
     }
 
@@ -243,7 +249,7 @@ public class TVBehavior : MonoBehaviour
         videoPlayer.clip = clip;
         videoPlayer.isLooping = true;
         videoPlayer.Play();
-        TVElectricShock?.Invoke(VoiceOverManager.Item.TVAfterElectroShock); 
+        // TVElectricShock?.Invoke(VoiceOverManager.Item.TVAfterElectroShock); 
         
     }
 
