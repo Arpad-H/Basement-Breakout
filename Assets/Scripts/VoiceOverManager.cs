@@ -42,14 +42,14 @@ public class VoiceOverManager : MonoBehaviour
     [SerializeField] private AudioSource audioWorkbench;
 
     [Header("Audio references for items state event")] [SerializeField]
-    private AudioSource audioTVAfterElectroShock;
+    private AudioSource audioBreatJoke;
 
     [SerializeField] private AudioSource audioDrowning;
-    [SerializeField] private AudioSource audioBreatJoke;
-    [SerializeField] private AudioSource audioWoodchipWallpaperJoke;
+    [SerializeField] private AudioSource audioTVAfterElectroShock;
     [SerializeField] private AudioSource audioWonByBoatWin;
     [SerializeField] private AudioSource audioWonByDoorWin;
     [SerializeField] private AudioSource audioWonByMegaphoneWin;
+    [SerializeField] private AudioSource audioWoodchipWallpaperJoke;
 
 
     [Header("Audio references for reminders")] [SerializeField]
@@ -96,7 +96,14 @@ public class VoiceOverManager : MonoBehaviour
             { Item.Workbench, audioWorkbench },
             { Item.Library, audioLibrary },
             { Item.Dartboad, audioDartboard },
-            { Item.Locker, audioLocker }
+            { Item.Locker, audioLocker },
+            { Item.TVAfterElectroShock, audioTVAfterElectroShock },
+            { Item.Drowning, audioDrowning },
+            { Item.BreatJoke, audioBreatJoke },
+            { Item.WoodchipWallpaperJoke, audioWoodchipWallpaperJoke },
+            { Item.WonByBoatWin, audioWonByBoatWin },
+            { Item.WonByDoorWin, audioWonByDoorWin },
+            { Item.WonByMegaphoneWin, audioWonByMegaphoneWin }
         };
         InitializeAudioPlayedStatus();
     }
@@ -131,6 +138,7 @@ public class VoiceOverManager : MonoBehaviour
             _audioPlayedStatus[audio] = false;
         }
     }
+
 
     private void PlayVoice(Item obj, Dictionary<Item, AudioSource> audioMapState,
         Dictionary<Item, AudioSource> audioMapStateless)

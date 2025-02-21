@@ -29,15 +29,15 @@ public class VoiceOverEventSender : MonoBehaviour
 
     public enum ColliderOrGrabbable
     {
-        GRABBABLE,
-        COLLIDER
+        Grabbable,
+        Collider,
     }
 
     private void Update()
     {
         
         
-        if (type == ColliderOrGrabbable.COLLIDER)
+        if (type == ColliderOrGrabbable.Collider)
         {
             Debug.Log($"[VoiceOverEventSender] update  im Blickfeld und Distanze: {CheckObjectInFieldOfView(transform, _targetCollider.transform, viewAngleThreshold, distanceThreshold)} // Angle: {viewAngleThreshold} // Distance:{distanceThreshold} // Item {item.ToString()}");
             if (CheckObjectInFieldOfView(transform, _targetCollider.transform, viewAngleThreshold, distanceThreshold))
@@ -50,7 +50,7 @@ public class VoiceOverEventSender : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (type == ColliderOrGrabbable.COLLIDER && other.gameObject == _targetCollider)
+        if (type == ColliderOrGrabbable.Collider && other.gameObject == _targetCollider)
         {
             _isColliding = true;
             // Debug.Log(
@@ -60,7 +60,7 @@ public class VoiceOverEventSender : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (type == ColliderOrGrabbable.COLLIDER && other.gameObject == _targetCollider)
+        if (type == ColliderOrGrabbable.Collider && other.gameObject == _targetCollider)
         {
             _isColliding = false;
             // Debug.Log(
@@ -70,7 +70,7 @@ public class VoiceOverEventSender : MonoBehaviour
 
     public void OnGrab()
     {
-        if (type == ColliderOrGrabbable.GRABBABLE)
+        if (type == ColliderOrGrabbable.Grabbable)
         {
             Debug.Log($"[VoiceOverEventSender] Grabbing item: {item.ToString()}  GameObject: {gameObject.name}");
             OnAction?.Invoke(item);
