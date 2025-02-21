@@ -65,8 +65,9 @@ public class AudioDetection : MonoBehaviour
 
         if (winOnce && !playOnce && !winPos.GetComponent<AudioSource>().isPlaying)
         {
-            GameStateChangedMegaPhone?.Invoke(GameManager.GameState.Win);
             audioWonByMegaphoneWin?.Invoke(VoiceOverManager.Item.WonByMegaphoneWin);
+            GameStateChangedMegaPhone?.Invoke(GameManager.GameState.Win);
+            
             winOnce = false;
         }
             

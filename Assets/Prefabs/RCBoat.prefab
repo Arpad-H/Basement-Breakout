@@ -228,12 +228,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9290201a81611c468138773aadc5f0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cannotSpin: 0
+  cannotSpin: 1
   rb: {fileID: 2248293628030254388}
   heightOffset: 0.1
-  floatDynamic: 4.24
-  pitchDynamic: 5
-  rollDynamic: 2.5
+  floatDynamic: 120
+  pitchDynamic: 1
+  rollDynamic: 1
   waterTransform: {fileID: 0}
   underwaterDrag: 3
   underwaterAngularDrag: 1
@@ -563,7 +563,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blockId: f8766c17-aaf8-4b55-9431-de8deea83842
-  instanceId: 1145b6e0-059c-4cd1-92b9-6242ceacb94b
+  instanceId: 2606fa06-f8c4-41aa-a979-013bc7509f8c
   version: 1
   installationRoutineCheckpoint:
     _installationRoutineId: f8338144-8280-4ff6-9455-ae2bb9c20fe8
@@ -782,8 +782,7 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Outline
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 2091886974810123260, guid: aa70f82ba6bc4e64f8b9d77004fde085, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
