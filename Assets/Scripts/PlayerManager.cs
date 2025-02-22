@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Cinemachine;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.PlayerLoop;
 using UnityEngine.UIElements;
 using UnityEngine.XR;
@@ -44,14 +45,21 @@ public class PlayerManager : MonoBehaviour
 
     [SerializeField] private float DROWNINGTIME = 10f;
     private float _timeUnderWater = 0f;
-
+    public AudioMixer drowningMixer; 
     [SerializeField] private GameObject waterPlane;
     [SerializeField] private Material screenMaterial;
     public static event Action<GameManager.GameState> GameStateChangedPlayer;
 
+    public float fadeDuration = 1f; 
+    private bool isFadingIn = false;
+    private bool isFadingOut = false;
+    private Coroutine fadeCoroutine;
+    
+    
     
     [SerializeField]private AudioSource _audioSource;
     [SerializeField]private AudioSource stairsSound;
+    [SerializeField]private AudioSource drowiningSound;
     private AudioClip _introducingTVClip;
     private OVRManager _ovrManager;
     private bool _setPlayerAtStartMenue = false;
@@ -164,23 +172,52 @@ public class PlayerManager : MonoBehaviour
 
     public bool Drawing()
     {
-        if (PlayerHead.transform.position.y < WaterheightPlane.transform.position.y)
+        
+        if (IsUnderwater()) 
         {
             _timeUnderWater += Time.deltaTime;
+
+            if (_timeUnderWater > DROWNINGTIME / 2 && !isFadingIn)
+            {
+                if (fadeCoroutine != null) StopCoroutine(fadeCoroutine); 
+                fadeCoroutine = StartCoroutine(FadeDrowningSound(-80f, 0f)); // Fade in
+                isFadingIn = true;
+                isFadingOut = false;
+            }
         }
         else
         {
-            _timeUnderWater = 0;
-        }
-
-        if (_timeUnderWater > DROWNINGTIME/2)
-        {
-          //  Mathf.Lerp()
+            if (isFadingIn && !isFadingOut) 
+            {
+                if (fadeCoroutine != null) StopCoroutine(fadeCoroutine); 
+                fadeCoroutine = StartCoroutine(FadeDrowningSound(0f, -80f)); // Fade out
+                isFadingOut = true;
+                isFadingIn = false;
+            }
+            _timeUnderWater = 0f; // Reset underwater time when above water
         }
 
         return _timeUnderWater > DROWNINGTIME;
     }
+    bool IsUnderwater()
+    {
+        return Head.position.y < WaterheightPlane.transform.position.y;
+    }
+    IEnumerator FadeDrowningSound(float startVolume, float targetVolume)
+    {
+        float startTime = Time.time;
 
+        while (Time.time < startTime + fadeDuration)
+        {
+            float t = (Time.time - startTime) / fadeDuration;
+            float newVolume = Mathf.Lerp(startVolume, targetVolume, t);
+            drowningMixer.SetFloat("DrowningVolume", newVolume);
+            yield return null;
+        }
+        
+        drowningMixer.SetFloat("DrowningVolume", targetVolume);
+    }
+    
     private void HandleGameStateChanged(GameManager.GameState gameState)
     {
         Debug.Log($"[PlayerManager]: GameState changed to {gameState}");
@@ -244,12 +281,6 @@ public class PlayerManager : MonoBehaviour
        
         screenMaterial.SetFloat("_alpha", targetAlpha);
     }
-
-
-    
-    
-  
-    
     
 
     void OnTriggerEnter(Collider other)
