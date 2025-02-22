@@ -58,7 +58,7 @@ public class VentilatorRotate : MonoBehaviour
             currentRotation += rotationSpeed * Time.deltaTime;
             currentRotation %= 360f;  
 
-            Quaternion mainRotation = Quaternion.Euler(0f, currentRotation, 0f);
+            Quaternion mainRotation = Quaternion.Euler(0f,  0f, currentRotation);
 
             float wobbleX = wobbleAmplitude * Mathf.Sin(Time.time * wobbleFrequency * 2 * Mathf.PI);
             float wobbleZ = wobbleAmplitude * Mathf.Cos(Time.time * wobbleFrequency * 2 * Mathf.PI);

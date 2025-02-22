@@ -54,7 +54,7 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log($"[GameManager]: OnWaterStateChangedCable: + {state}");
         cableISinWater = state;
-        checkPlayerAndCableInWhater(playerIsInWhater, cableISinWater, electricityIsActive);
+        CheckPlayerAndCableInWhater(playerIsInWhater, cableISinWater, electricityIsActive);
     }
 
 
@@ -62,7 +62,7 @@ public class GameManager : MonoBehaviour
     {
        
         playerIsInWhater = state;
-        checkPlayerAndCableInWhater(playerIsInWhater, cableISinWater, electricityIsActive);
+        CheckPlayerAndCableInWhater(playerIsInWhater, cableISinWater, electricityIsActive);
     }
 
 
@@ -70,7 +70,7 @@ public class GameManager : MonoBehaviour
     {
   
         electricityIsActive = state;
-        checkPlayerAndCableInWhater(playerIsInWhater, cableISinWater, electricityIsActive);
+        CheckPlayerAndCableInWhater(playerIsInWhater, cableISinWater, electricityIsActive);
     }
 
     public void UpdateGameState(GameState newState)
@@ -112,7 +112,7 @@ public class GameManager : MonoBehaviour
         Menu
     }
 
-    private void checkPlayerAndCableInWhater(bool playerIsInWhater, bool cableIsInWhater, bool electricityIsActive)
+    private void CheckPlayerAndCableInWhater(bool playerIsInWhater, bool cableIsInWhater, bool electricityIsActive)
     {
         if (playerIsInWhater == true && cableIsInWhater == true && electricityIsActive == true)
         {

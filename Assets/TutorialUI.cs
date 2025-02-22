@@ -46,12 +46,7 @@ public class TutorialUI : MonoBehaviour
         GameManager.OnGameStateChanged += OnGameStateChanged;
     }
 
-    private void OnEnable()
-    {
-        GameManager.OnGameStateChanged += OnGameStateChanged;
-    }
-
-    private void OnDisable()
+    private void OnDestroy()
     {
         GameManager.OnGameStateChanged -= OnGameStateChanged;
     }

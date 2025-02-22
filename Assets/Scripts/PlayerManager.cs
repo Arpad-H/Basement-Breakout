@@ -226,9 +226,10 @@ public class PlayerManager : MonoBehaviour
         {
             //AcivatePassthrough();
             
-            DeactivateTeleportInteractor();
-            ActivateRayInteractor();
+            //DeactivateTeleportInteractor();
+            //ActivateRayInteractor();
             SetPlayerPosToGameOverMenu();
+            Debug.Log($"[PlayerManager]: SetPlayerPosToGameOverMenu();");
         }
         else if (gameState == GameManager.GameState.Tutorial)
         {
