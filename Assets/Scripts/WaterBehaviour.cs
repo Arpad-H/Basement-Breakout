@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class WaterBehaviour : MonoBehaviour 
 {
+    [SerializeField] private GameObject test;
     [SerializeField] private float floodingSpeed = 0.08f;
     [SerializeField] private GameObject heightPlane;
 
@@ -107,6 +108,11 @@ public class WaterBehaviour : MonoBehaviour
 
     private void Update()
     {
+        
+        Vector3 pos = GetWaveDisplacement(new Vector3(20,0,0), Time.time);
+        test.transform.position = pos;
+        
+        
         if (isFlooding && heightPlane.transform.position.y < MaxHeight)
         {
             heightPlane.transform.Translate(Vector3.up * (Time.deltaTime * floodingSpeed));
@@ -174,7 +180,7 @@ public class WaterBehaviour : MonoBehaviour
 
             float dispersion = 6.28318f / length;
             float c = Mathf.Sqrt(GRAVITY / dispersion) * speed;
-            float f = dispersion * (Vector2.Dot(direction, new Vector2(worldPos.x, worldPos.z)) - c * time);
+            float f = dispersion * (Vector2.Dot(direction, new Vector2(worldPos.x, worldPos.z)) - c * (time/20));
 
             float sinF = Mathf.Sin(f);
             float cosF = Mathf.Cos(f);
@@ -189,7 +195,7 @@ public class WaterBehaviour : MonoBehaviour
 
        // float fakeOffset = (WorldOffset.y + _WaveEffectsBoost) - v.vertex.y;
        // v.waveHeight = amplitude * fakeOffset;
-        return Amplitude * displacement + worldPos;
+        return Amplitude * displacement +  new Vector3(worldPos.x,this.transform.position.y,worldPos.z);
     }
 
     private void OnDrawGizmos()
@@ -197,5 +203,6 @@ public class WaterBehaviour : MonoBehaviour
         Gizmos.color = Color.red;
         Vector3 pos = GetWaveDisplacement(new Vector3(20,0,0), Time.time);
         Gizmos.DrawSphere(pos, 0.1f);
+        test.transform.position = pos;
     }
 }

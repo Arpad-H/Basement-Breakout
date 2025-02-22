@@ -41,11 +41,15 @@ public class UnderWaterVFX : MonoBehaviour
 
     void Update()
     {
-        // Vector3 waterHeight = waterBehaviour.GetWaveDisplacement(transform.position, Time.time);
-        Vector3 waterHeight = waterPlane.position; 
+       
+       // Vector3 waterHeight = waterPlane.position; 
+       
+        Vector3 EyeHeightWorld = EyeHeight.transform.position;
+        Vector3 waterHeight = waterBehaviour.GetWaveDisplacement(EyeHeightWorld, Time.time);
         float distance = EyeHeight.transform.position.y - waterHeight.y;
-         avgDistance = EyeHeight.transform.position.y - waterPlane.position.y;
-        if (EyeHeight.transform.position.y < waterHeight.y) //FULLY UNDERWATER
+       // Debug.Log("EyeHeightWorld: " + EyeHeightWorld + " waterHeight: " + waterHeight);
+      //   avgDistance = EyeHeight.transform.position.y - waterPlane.position.y;
+        if (EyeHeightWorld.y < waterHeight.y) //FULLY UNDERWATER
         {
           
             timer += Time.deltaTime;
@@ -71,8 +75,9 @@ public class UnderWaterVFX : MonoBehaviour
           // StartCoroutine(FadePostProcessing(false, 1f));
             RenderSettings.fogDensity = 0.0f;
             timer = 0;
-            volume.enabled = false;
             volume.weight = 0;
+            volume.enabled = false;
+           
             //gameObject.GetComponent<MeshRenderer>().enabled = false;
            
         }
