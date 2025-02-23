@@ -34,7 +34,6 @@ public class UnderWaterVFX : MonoBehaviour
         waterBehaviour = FindObjectOfType<WaterBehaviour>();
         underwaterProfile.TryGet(out colorAdjustments);
         colorAdjustments.contrast.overrideState = true;
-        underwaterProfile.TryGet(out vignette);
       
     }
 
