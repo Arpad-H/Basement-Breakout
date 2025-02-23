@@ -15,6 +15,7 @@ public class UnderWaterVFX : MonoBehaviour
     [SerializeField] private VolumeProfile underwaterProfile;
     [SerializeField] private VolumeProfile aboveWaterProfile;
     [SerializeField] private Volume volume;
+    [SerializeField] private ParticleSystem bubbles;
     // [SerializeField] private Material distortionMaterial;
   
     //VOLUME PP EFFECTS
@@ -56,8 +57,8 @@ public class UnderWaterVFX : MonoBehaviour
             // StartCoroutine(FadePostProcessing(true, 0.5f));
             volume.weight = 1;
             // distortionMaterial.SetFloat("_blend", 0.1f);
-
-
+            
+            StartCoroutine(FadeParticleSystems(true, 1f));  // Fade in
         }
         else if (Mathf.Abs(distance) <= transitionDistance) //TRANSITION
         {
@@ -65,7 +66,8 @@ public class UnderWaterVFX : MonoBehaviour
             volume.enabled = true;
             volume.weight = 1- distance * transitionStrength;
             colorAdjustments.contrast.Override(Mathf.Lerp(-60f, 0f, Mathf.Abs(distance) * 5)); 
-                
+        
+            StartCoroutine(FadeParticleSystems(false, 1f)); // Fade out    
         }
         else //ABOVE WATER
         {
@@ -80,6 +82,26 @@ public class UnderWaterVFX : MonoBehaviour
            
         }
     }
+    IEnumerator FadeParticleSystems(bool enable, float duration)
+    {
+        ParticleSystem.MainModule mainModule = bubbles.main; // Store a copy of the MainModule
+        Color startColor = mainModule.startColor.color;
+        float startAlpha = startColor.a;
+        float targetAlpha = enable ? 1f : 0f;
+        float time = 0f;
+
+        while (time < duration)
+        {
+            float alpha = Mathf.Lerp(startAlpha, targetAlpha, time / duration);
+            mainModule.startColor = new Color(startColor.r, startColor.g, startColor.b, alpha);
+            time += Time.deltaTime;
+            yield return null;
+        }
+
+        // Ensure the final alpha is exactly the target
+        mainModule.startColor = new Color(startColor.r, startColor.g, startColor.b, targetAlpha);
+    }
+    
     IEnumerator FadePostProcessing(bool enable, float duration)
     {
         float startWeight = volume.weight;

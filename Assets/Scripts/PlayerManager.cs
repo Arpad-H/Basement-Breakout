@@ -68,7 +68,7 @@ public class PlayerManager : MonoBehaviour
     private AudioClip _introducingTVClip;
     private OVRManager _ovrManager;
     private bool _setPlayerAtStartMenue = false;
-
+private bool gameOver ;
     private Vignette vignette;
     private ColorAdjustments colorAdjustments;
 
@@ -86,7 +86,7 @@ public class PlayerManager : MonoBehaviour
         underwaterProfile.TryGet(out vignette);
         underwaterProfile.TryGet(out colorAdjustments);
 
-
+gameOver = false;
         _ovrManager = GetComponent<OVRManager>();
         if (startAtMenu)
         {
@@ -248,7 +248,7 @@ public class PlayerManager : MonoBehaviour
             colorAdjustments.saturation.Override(Mathf.Lerp(saturationStart, saturationTarget, t));
             yield return null;
         }
-
+        colorAdjustments.saturation.Override(saturationTarget);
         vignette.intensity.Override(target);
     }
 
@@ -262,7 +262,12 @@ public class PlayerManager : MonoBehaviour
 
             //DeactivateTeleportInteractor();
             //ActivateRayInteractor();
-            StartCoroutine(FadeToGameEnd(2f));
+            if (!gameOver)
+            {
+                StartCoroutine(FadeToGameEnd(2f));
+                gameOver = true;
+            }
+           
            
             Debug.Log($"[PlayerManager]: SetPlayerPosToGameOverMenu();");
         }
@@ -286,6 +291,8 @@ public class PlayerManager : MonoBehaviour
         DeactivateRayInteractor();
 
         yield return new WaitForSeconds(waitTime);
+        colorAdjustments.saturation.Override(10f);
+        vignette.intensity.Override(0);
         SetPlayerPosToGameOverMenu();
         ActivateTeleportInteractor();
 
