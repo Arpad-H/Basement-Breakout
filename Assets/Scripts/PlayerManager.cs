@@ -6,6 +6,8 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.PlayerLoop;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
 using UnityEngine.UIElements;
 using UnityEngine.XR;
 
@@ -43,20 +45,27 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] public OVRCameraRig cameraRig;
     [SerializeField] public bool startAtMenu = true;
 
+    [Header("Drowning")]
     [SerializeField] private float DROWNINGTIME = 10f;
+    [SerializeField]private float soundFadeDuration = 1f; 
+    [SerializeField] private AnimationCurve soundFadeCurve; 
+    [SerializeField] private float ppFadeDuration = 1f; 
+    [SerializeField] private AnimationCurve ppFadeCurve; 
+    
+    private bool isFadingIn = false;
+    private bool isFadingOut = false;
     private float _timeUnderWater = 0f;
+    private Coroutine soundFadeCoroutine;
+    private Coroutine vignetteFadeCoroutine;
+
     public AudioMixer drowningMixer; 
     [SerializeField] private GameObject waterPlane;
     [SerializeField] private Material screenMaterial;
     public static event Action<GameManager.GameState> GameStateChangedPlayer;
 
-    public float fadeDuration = 1f; 
-    private bool isFadingIn = false;
-    private bool isFadingOut = false;
-    private Coroutine fadeCoroutine;
+  
     
-    
-    
+    [SerializeField] private VolumeProfile underwaterProfile;
     [SerializeField]private AudioSource _audioSource;
     [SerializeField]private AudioSource stairsSound;
     [SerializeField]private AudioSource drowiningSound;
@@ -64,6 +73,8 @@ public class PlayerManager : MonoBehaviour
     private OVRManager _ovrManager;
     private bool _setPlayerAtStartMenue = false;
 
+    private Vignette vignette;
+    private ColorAdjustments colorAdjustments;
 
     private void Awake()
     {
@@ -76,6 +87,9 @@ public class PlayerManager : MonoBehaviour
         ActivateTeleportInteractor();
         DeactivateRayInteractor();
       
+        underwaterProfile.TryGet(out vignette);
+        underwaterProfile.TryGet(out colorAdjustments);
+        
         
         _ovrManager = GetComponent<OVRManager>();
         if (startAtMenu)
@@ -97,7 +111,7 @@ public class PlayerManager : MonoBehaviour
     int _counter = 0;
     private void Update()
     {
-        if (Drawing())
+        if (Drowning())
         {
             GameStateChangedPlayer?.Invoke(GameManager.GameState.Drowned);
         }
@@ -170,7 +184,7 @@ public class PlayerManager : MonoBehaviour
         recenterPlayer(sceneMenueTarget);
     }
 
-    public bool Drawing()
+    public bool Drowning()
     {
         
         if (IsUnderwater()) 
@@ -179,8 +193,10 @@ public class PlayerManager : MonoBehaviour
 
             if (_timeUnderWater > DROWNINGTIME / 2 && !isFadingIn)
             {
-                if (fadeCoroutine != null) StopCoroutine(fadeCoroutine); 
-                fadeCoroutine = StartCoroutine(FadeDrowningSound(-80f, 0f)); // Fade in
+                if (soundFadeCoroutine != null) StopCoroutine(soundFadeCoroutine);
+                if (vignetteFadeCoroutine!=null) StopCoroutine(vignetteFadeCoroutine);
+                soundFadeCoroutine = StartCoroutine(FadeDrowningSound(-80f, 10f)); // Fade in
+                vignetteFadeCoroutine = StartCoroutine(FadeDrowningPP(0f, 1f, 10f, -100f));
                 isFadingIn = true;
                 isFadingOut = false;
             }
@@ -189,8 +205,10 @@ public class PlayerManager : MonoBehaviour
         {
             if (isFadingIn && !isFadingOut) 
             {
-                if (fadeCoroutine != null) StopCoroutine(fadeCoroutine); 
-                fadeCoroutine = StartCoroutine(FadeDrowningSound(0f, -80f)); // Fade out
+                if (soundFadeCoroutine != null) StopCoroutine(soundFadeCoroutine); 
+                if (vignetteFadeCoroutine!=null) StopCoroutine(vignetteFadeCoroutine);
+                soundFadeCoroutine = StartCoroutine(FadeDrowningSound(10f, -80f)); // Fade out
+                vignetteFadeCoroutine = StartCoroutine(FadeDrowningPP(1f, 0f, -100f, 10f));
                 isFadingOut = true;
                 isFadingIn = false;
             }
@@ -207,15 +225,31 @@ public class PlayerManager : MonoBehaviour
     {
         float startTime = Time.time;
 
-        while (Time.time < startTime + fadeDuration)
+        while (Time.time < startTime + soundFadeDuration)
         {
-            float t = (Time.time - startTime) / fadeDuration;
-            float newVolume = Mathf.Lerp(startVolume, targetVolume, t);
+            float t = (Time.time - startTime) / soundFadeDuration;
+             float newVolume = Mathf.Lerp(startVolume, targetVolume, t);
+          //  float newVolume = soundFadeCurve.Evaluate(t) ;
             drowningMixer.SetFloat("DrowningVolume", newVolume);
             yield return null;
         }
         
         drowningMixer.SetFloat("DrowningVolume", targetVolume);
+    }
+    IEnumerator FadeDrowningPP(float start, float target,float saturationStart, float saturationTarget)
+    {
+        float startTime = Time.time;
+
+        while (Time.time < startTime + ppFadeDuration)
+        {
+            float t = (Time.time - startTime) / ppFadeDuration;
+            float newIntensity = Mathf.Lerp(start, target, t);
+            vignette.intensity.Override(newIntensity);
+            colorAdjustments.saturation.Override(Mathf.Lerp(saturationStart, saturationTarget, t));
+            yield return null;
+        }
+        
+        vignette.intensity.Override(target);
     }
     
     private void HandleGameStateChanged(GameManager.GameState gameState)

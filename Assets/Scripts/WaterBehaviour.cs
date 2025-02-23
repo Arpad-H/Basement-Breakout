@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class WaterBehaviour : MonoBehaviour 
 {
-    [SerializeField] private GameObject test;
+    // [SerializeField] private GameObject test;
     [SerializeField] private float floodingSpeed = 0.08f;
     [SerializeField] private GameObject heightPlane;
 
@@ -109,9 +109,9 @@ public class WaterBehaviour : MonoBehaviour
     private void Update()
     {
         
-        Vector3 pos = GetWaveDisplacement(new Vector3(20,0,0), Time.time);
-        test.transform.position = pos;
-        
+        // Vector3 pos = GetWaveDisplacement(new Vector3(20,0,0), Time.time);
+        // test.transform.position = pos;
+        //
         
         if (isFlooding && heightPlane.transform.position.y < MaxHeight)
         {
@@ -198,11 +198,11 @@ public class WaterBehaviour : MonoBehaviour
         return Amplitude * displacement +  new Vector3(worldPos.x,this.transform.position.y,worldPos.z);
     }
 
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.red;
-        Vector3 pos = GetWaveDisplacement(new Vector3(20,0,0), Time.time);
-        Gizmos.DrawSphere(pos, 0.1f);
-        test.transform.position = pos;
-    }
+    // private void OnDrawGizmos()
+    // {
+    //     Gizmos.color = Color.red;
+    //     Vector3 pos = GetWaveDisplacement(new Vector3(20,0,0), Time.time);
+    //     Gizmos.DrawSphere(pos, 0.1f);
+    //     test.transform.position = pos;
+    // }
 }

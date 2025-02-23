@@ -21,8 +21,7 @@ public class UnderWaterVFX : MonoBehaviour
     private ColorAdjustments colorAdjustments;
     private Vignette vignette;
 
-
-    public float avgDistance;
+    
     
     [SerializeField] private float distortionStrength = 0.1f;
     private float currentDistortion = 0.0f;
@@ -61,12 +60,12 @@ public class UnderWaterVFX : MonoBehaviour
 
 
         }
-        else if (Mathf.Abs(avgDistance) <= transitionDistance) //TRANSITION
+        else if (Mathf.Abs(distance) <= transitionDistance) //TRANSITION
         {
             // RenderSettings.fogDensity = distance * 0.1f;
             volume.enabled = true;
-            volume.weight = 1- avgDistance * transitionStrength;
-            colorAdjustments.contrast.Override(Mathf.Lerp(-60f, 0f, Mathf.Abs(avgDistance) * 5)); 
+            volume.weight = 1- distance * transitionStrength;
+            colorAdjustments.contrast.Override(Mathf.Lerp(-60f, 0f, Mathf.Abs(distance) * 5)); 
                 
         }
         else //ABOVE WATER

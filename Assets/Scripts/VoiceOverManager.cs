@@ -116,6 +116,8 @@ public class VoiceOverManager : MonoBehaviour
         InitializeAudioPlayedStatus();
     }
 
+ 
+
     private void OnDestroy()
     {
         VoiceOverEventSender.OnAction -= VoiceOverEventSenderOnOnAction;
