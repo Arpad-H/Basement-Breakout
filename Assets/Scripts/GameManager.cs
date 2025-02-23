@@ -52,7 +52,7 @@ public class GameManager : MonoBehaviour
 
     private void OnWaterStateChangedCable(bool state)
     {
-        Debug.Log($"[GameManager]: OnWaterStateChangedCable: + {state}");
+      //  Debug.Log($"[GameManager]: OnWaterStateChangedCable: + {state}");
         cableISinWater = state;
         CheckPlayerAndCableInWhater(playerIsInWhater, cableISinWater, electricityIsActive);
     }
@@ -96,7 +96,7 @@ public class GameManager : MonoBehaviour
                 throw new ArgumentOutOfRangeException(nameof(newState), newState, null);
         }
 
-        Debug.Log($"[Game Manager] updating game state to {newState}");
+      //  Debug.Log($"[Game Manager] updating game state to {newState}");
         OnGameStateChanged?.Invoke(newState);
     }
 
@@ -117,7 +117,7 @@ public class GameManager : MonoBehaviour
         if (playerIsInWhater == true && cableIsInWhater == true && electricityIsActive == true)
         {
             //TODO: Water Hight loest nicht Trigger aus in CollisonCOllider Script
-            Debug.Log("[GameManager]: OnWaterStateChangedPlayerAndCableInWhater: ");
+          //  Debug.Log("[GameManager]: OnWaterStateChangedPlayerAndCableInWhater: ");
             UpdateGameState(GameState.ElectricShock);
         }
     }
