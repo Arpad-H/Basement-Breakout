@@ -268,7 +268,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blockId: f10154e0-16b2-492f-97d0-6639f69e7df6
-  instanceId: 67536b56-ee57-4960-8207-3d6026563196
+  instanceId: 0251d6af-0acd-4e96-9025-30f96c5959f6
   version: 1
   installationRoutineCheckpoint:
     _installationRoutineId: 
@@ -1809,7 +1809,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blockId: 6b67162c-2460-4766-a931-980388647573
-  instanceId: 5acf2b58-fbd7-4140-9eaf-44ef69bbbab1
+  instanceId: 97d58058-aa1d-4789-aa9e-90de900358af
   version: 1
   installationRoutineCheckpoint:
     _installationRoutineId: 
@@ -2110,7 +2110,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blockId: 5817f7c0-f2a5-45f9-a5ca-64264e0166e8
-  instanceId: dbb71efa-68f2-43ec-a92f-e2605b3ee9a7
+  instanceId: a35a996a-c04d-4f49-97ed-9a1485a97ec8
   version: 1
   installationRoutineCheckpoint:
     _installationRoutineId: 
@@ -3588,7 +3588,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blockId: 6b67162c-2460-4766-a931-980388647573
-  instanceId: 254edd64-cc8c-4424-bf33-bb2748dd7981
+  instanceId: 6e638b87-50dd-4d60-a71c-8df5adce3f8c
   version: 1
   installationRoutineCheckpoint:
     _installationRoutineId: 
@@ -5057,7 +5057,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blockId: 81f55626-5fad-45e9-a1df-184f330da7ba
-  instanceId: 7ade61c1-d2da-4d16-8172-f5386b820166
+  instanceId: 7cc411b0-9f7d-4241-8be4-ce864890c7f9
   version: 1
   installationRoutineCheckpoint:
     _installationRoutineId: 
@@ -10109,7 +10109,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blockId: 0393ca30-f2a9-4865-a40f-f9a68d01c3a9
-  instanceId: b5f9af23-62f8-4e61-a1e2-d41012a57776
+  instanceId: dd6658b7-c536-4e35-9580-adf272073277
   version: 1
   installationRoutineCheckpoint:
     _installationRoutineId: 
@@ -17389,7 +17389,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blockId: 8b26b298-7bf4-490e-b245-a039c0184303
-  instanceId: 70c1d969-7101-4cf7-b8f9-0ac5c8ff7cab
+  instanceId: 9b51df8b-cd9b-48dc-a721-714de61ca8e9
   version: 1
   installationRoutineCheckpoint:
     _installationRoutineId: 
@@ -18506,7 +18506,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blockId: 8b26b298-7bf4-490e-b245-a039c0184303
-  instanceId: 952ab5ad-2dad-4625-95a6-cff52e68bd3f
+  instanceId: a411c457-2f3b-4c7c-9862-9d1d86123bc8
   version: 1
   installationRoutineCheckpoint:
     _installationRoutineId: 
@@ -24564,7 +24564,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blockId: 5817f7c0-f2a5-45f9-a5ca-64264e0166e8
-  instanceId: 37df6d19-48ff-45d5-8629-141ad17811e9
+  instanceId: c2eb04e2-c623-44e0-bd4c-b059f5ebbfeb
   version: 1
   installationRoutineCheckpoint:
     _installationRoutineId: 
@@ -25964,6 +25964,7 @@ GameObject:
   - component: {fileID: 7881909443596215701}
   - component: {fileID: 2565651918882613084}
   - component: {fileID: 2634365602933484253}
+  - component: {fileID: 1898397330625481673}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -26001,7 +26002,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blockId: e47682b9-c270-40b1-b16d-90b627a5ce1b
-  instanceId: 713f6075-eb3b-403f-9a7e-e3a2402218a2
+  instanceId: d1bbadeb-ee0c-48ad-9092-9fbcd894abe4
   version: 1
   installationRoutineCheckpoint:
     _installationRoutineId: 
@@ -26248,6 +26249,7 @@ MonoBehaviour:
   underwaterProfile: {fileID: 11400000, guid: 46bc37978bb004440a8b3fa45843f427, type: 2}
   _audioSource: {fileID: 1924983338837846761}
   sfxSound: {fileID: 0}
+  electricityShock: {fileID: 1898397330625481673}
   stairsClip: {fileID: 0}
   confettiClip: {fileID: 0}
   lossClip: {fileID: 0}
@@ -26577,6 +26579,102 @@ AudioSource:
   m_Volume: 1
   m_Pitch: 1
   Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!82 &1898397330625481673
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8388639224674664262}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: -4022930909100350339, guid: d09f38e0f944a2f4b90473f9b15c50cb, type: 2}
+  m_audioClip: {fileID: 8300000, guid: 151585fcc38c5b6478663a8f69a5f6ed, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
