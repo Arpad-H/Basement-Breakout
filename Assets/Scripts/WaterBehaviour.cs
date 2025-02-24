@@ -17,7 +17,7 @@ public class WaterBehaviour : MonoBehaviour
     float drowningtime = 10f;
     float timeUnderWater = 0f;
 
-    private bool isFlooding = false; // Steuert, ob das Wasser steigt
+    public bool isFlooding = false; // Steuert, ob das Wasser steigt
     private bool lowerSim = false; // Steuert, ob das Wasser steigt
 
     [Header("Waves")] [SerializeField] private int waveCount = 4;
