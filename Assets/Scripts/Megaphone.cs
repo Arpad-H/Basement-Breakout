@@ -22,6 +22,7 @@ public class AudioDetection : MonoBehaviour
     private bool winOnce = true;
     public static event Action<GameManager.GameState> GameStateChangedMegaPhone;
     public static event Action<VoiceOverManager.Item> audioWonByMegaphoneWin;
+    private bool yelled = false;
     
     void Start()
     {
@@ -54,7 +55,10 @@ public class AudioDetection : MonoBehaviour
     {
         if ((transform.position - winPos.transform.position).magnitude < winDistance && !audioSource.mute)
         {
-            print(timer > winTimer);
+            yelled = true;
+        }
+        if (yelled)
+        {
             timer += Time.deltaTime;
             if (timer > winTimer && playOnce)
             {
