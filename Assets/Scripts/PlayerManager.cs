@@ -64,7 +64,8 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] private VolumeProfile underwaterProfile;
     [SerializeField] private AudioSource _audioSource;
     [SerializeField] private AudioSource stairsSound;
-    [SerializeField] private AudioSource drowiningSound;
+    [SerializeField] private AudioClip stairsClip;
+    //[SerializeField] private AudioSource drowiningSound;
     private AudioClip _introducingTVClip;
     private OVRManager _ovrManager;
     private bool _setPlayerAtStartMenue = false;
@@ -304,17 +305,17 @@ gameOver = false;
         yield return StartCoroutine(Fade(1f, 0.5f));
 
 
-        stairsSound.Play();
+        stairsSound.PlayOneShot(stairsClip);
         DeactivateRayInteractor();
         SetPlayerPositionToStartGame();
 
 
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(stairsClip.length);
         stairsSound.Stop();
         ActivateTeleportInteractor();
         _audioSource.Play();
 
-        yield return StartCoroutine(Fade(0f, 0.5f));
+        yield return StartCoroutine(Fade(0f, 1f));
     }
 
     IEnumerator Fade(float targetAlpha, float duration)
