@@ -71,6 +71,7 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] private AudioClip lossClip;
     [SerializeField] private AudioClip partyhornClip;
     [SerializeField] private GameObject confetti;
+    [SerializeField] private GameObject electrocutionSparks;
     
     //[SerializeField] private AudioSource drowiningSound;
     private AudioClip _introducingTVClip;
@@ -89,6 +90,7 @@ private bool gameOver ;
     private void Start()
     {
         confetti.SetActive(false);
+        electrocutionSparks.SetActive(false);
         //DeactivateTeleportInteractor();
         ActivateTeleportInteractor();
         DeactivateRayInteractor();
@@ -272,10 +274,18 @@ gameOver = false;
             if (gameState == GameManager.GameState.ElectricShock && !gameOver )
             {
                 electricityShock.Play();
+                electrocutionSparks.SetActive(true);
             }
             if (!gameOver)
             {
-                StartCoroutine(FadeToGameEnd(2f));
+                if (gameState == GameManager.GameState.ElectricShock)
+                {
+                    StartCoroutine(FadeToGameEnd(2f, 1f));
+                }
+                else
+                {
+                    StartCoroutine(FadeToGameEnd(2f));
+                }
                 gameOver = true;
             }
            
@@ -294,9 +304,9 @@ gameOver = false;
      
     }
 
-    IEnumerator FadeToGameEnd(float waitTime)
+    IEnumerator FadeToGameEnd(float waitTime,float delay = 0)
     {
-       
+        yield return new WaitForSeconds(delay);
         yield return StartCoroutine(Fade(1f, 0.5f));
 
         DeactivateRayInteractor();
