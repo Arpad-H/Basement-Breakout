@@ -35,17 +35,23 @@ public class ElectricictyManager : MonoBehaviour
     {
         LeverInteractable.OnLeverAction += LeverInteractableOnonLeverAction;
         GameManager.OnGameStateChanged += GameManagerOnOnGameStateChanged;
+        Switch.OnSwitchChange += LeverInteractableOnonLeverAction;
     }
 
     private void OnDestroy()
     {
         LeverInteractable.OnLeverAction -= LeverInteractableOnonLeverAction;
         GameManager.OnGameStateChanged -= GameManagerOnOnGameStateChanged;
+        Switch.OnSwitchChange -= LeverInteractableOnonLeverAction;
     }
 
     private void GameManagerOnOnGameStateChanged(GameManager.GameState obj)
     {
         gameState = obj;
+        if (gameState == GameManager.GameState.Tutorial)
+        {
+            LeverInteractableOnonLeverAction(true);
+        }
     }
 
     private void LeverInteractableOnonLeverAction(bool state)

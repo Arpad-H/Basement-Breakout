@@ -7,12 +7,14 @@ using UnityEngine;
 public class Switch : OneGrabRotateTransformer
 {
     [SerializeField] public OneGrabRotateTransformer rotateTransform;
-    [SerializeField] public GameObject switchObject;
+    // [SerializeField] public GameObject switchObject;
     private bool _switchState = false;
     
     private bool _previousMaxAngleState = false;
     private bool _previousMinAngleState = false;
-    Vector3 _vector3;
+    private Vector3 _vector3;
+    
+    public static event Action<bool> OnSwitchChange;
     private void Start()
     {
         _vector3 = transform.rotation.eulerAngles;
@@ -27,13 +29,13 @@ public class Switch : OneGrabRotateTransformer
         if (isAtMaxAngle && !_previousMaxAngleState) 
         {
             Debug.Log($"Switch State: {_switchState} Light disable");
-            switchObject.SetActive(false);
+            OnSwitchChange?.Invoke(false);
             _switchState = !_switchState;
         }
         else if (isAtMinAngle && !_previousMinAngleState)
         {
             Debug.Log($"Switch State: {_switchState} Light enable");
-            switchObject.SetActive(true);
+            OnSwitchChange?.Invoke(true);
             _switchState = !_switchState;
         }
 
