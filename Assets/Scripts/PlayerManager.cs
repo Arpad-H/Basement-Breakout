@@ -63,8 +63,12 @@ public class PlayerManager : MonoBehaviour
 
     [SerializeField] private VolumeProfile underwaterProfile;
     [SerializeField] private AudioSource _audioSource;
-    [SerializeField] private AudioSource stairsSound;
+    [SerializeField] private AudioSource sfxSound;
     [SerializeField] private AudioClip stairsClip;
+    [SerializeField] private AudioClip confettiClip;
+    [SerializeField] private AudioClip lossClip;
+    [SerializeField] private AudioClip partyhornClip;
+    
     //[SerializeField] private AudioSource drowiningSound;
     private AudioClip _introducingTVClip;
     private OVRManager _ovrManager;
@@ -72,6 +76,7 @@ public class PlayerManager : MonoBehaviour
 private bool gameOver ;
     private Vignette vignette;
     private ColorAdjustments colorAdjustments;
+    private GameManager.GameState _gameState;
 
     private void Awake()
     {
@@ -259,6 +264,7 @@ gameOver = false;
         if (gameState is GameManager.GameState.Drowned or GameManager.GameState.Win
             or GameManager.GameState.ElectricShock)
         {
+            _gameState = gameState;
             //AcivatePassthrough();
 
             //DeactivateTeleportInteractor();
@@ -298,6 +304,20 @@ gameOver = false;
         ActivateTeleportInteractor();
 
         yield return StartCoroutine(Fade(0f, 0.5f));
+        PlayGameOversound();
+    }
+
+    private void PlayGameOversound()
+    {
+        if (_gameState == GameManager.GameState.Drowned || _gameState == GameManager.GameState.ElectricShock)
+        {
+           sfxSound.PlayOneShot(lossClip);
+        }
+        else if (_gameState == GameManager.GameState.Win)
+        {
+            sfxSound.PlayOneShot(confettiClip);
+            sfxSound.PlayOneShot(partyhornClip);
+        }
     }
 
     IEnumerator TransitionToBlack()
@@ -305,13 +325,13 @@ gameOver = false;
         yield return StartCoroutine(Fade(1f, 0.5f));
 
 
-        stairsSound.PlayOneShot(stairsClip);
+        sfxSound.PlayOneShot(stairsClip);
         DeactivateRayInteractor();
         SetPlayerPositionToStartGame();
 
 
         yield return new WaitForSeconds(stairsClip.length);
-        stairsSound.Stop();
+        sfxSound.Stop();
         ActivateTeleportInteractor();
         _audioSource.Play();
 
