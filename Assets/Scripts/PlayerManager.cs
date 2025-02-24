@@ -64,6 +64,8 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] private VolumeProfile underwaterProfile;
     [SerializeField] private AudioSource _audioSource;
     [SerializeField] private AudioSource sfxSound;
+    [SerializeField] private AudioSource electricityShock;
+    
     [SerializeField] private AudioClip stairsClip;
     [SerializeField] private AudioClip confettiClip;
     [SerializeField] private AudioClip lossClip;
@@ -262,15 +264,15 @@ gameOver = false;
 
     private void HandleGameStateChanged(GameManager.GameState gameState)
     {
+        _gameState = gameState;
         Debug.Log($"[PlayerManager]: GameState changed to {gameState}");
         if (gameState is GameManager.GameState.Drowned or GameManager.GameState.Win
             or GameManager.GameState.ElectricShock)
         {
-            _gameState = gameState;
-            //AcivatePassthrough();
-
-            //DeactivateTeleportInteractor();
-            //ActivateRayInteractor();
+            if (gameState == GameManager.GameState.ElectricShock && !gameOver )
+            {
+                electricityShock.Play();
+            }
             if (!gameOver)
             {
                 StartCoroutine(FadeToGameEnd(2f));

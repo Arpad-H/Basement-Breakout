@@ -268,7 +268,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blockId: f10154e0-16b2-492f-97d0-6639f69e7df6
-  instanceId: 8d3cf6b5-27e3-4050-ab2e-fcc8d15b620b
+  instanceId: 4659d1d0-6388-40c7-9634-63a4b0f16598
   version: 1
   installationRoutineCheckpoint:
     _installationRoutineId: 
@@ -1809,7 +1809,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blockId: 6b67162c-2460-4766-a931-980388647573
-  instanceId: c43a65b0-e6a7-461b-93df-80fbc96378a0
+  instanceId: 87c609ed-75a7-41d8-afe5-6a13d5b897f4
   version: 1
   installationRoutineCheckpoint:
     _installationRoutineId: 
@@ -2110,7 +2110,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blockId: 5817f7c0-f2a5-45f9-a5ca-64264e0166e8
-  instanceId: 82cb2c3a-0207-4aef-a3ea-7366b2b97b04
+  instanceId: fe046653-e4cf-4cc9-8f1b-ac721bc11375
   version: 1
   installationRoutineCheckpoint:
     _installationRoutineId: 
@@ -3588,7 +3588,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blockId: 6b67162c-2460-4766-a931-980388647573
-  instanceId: c57f96b0-11a1-4a3a-b68c-eaf3e55e130f
+  instanceId: 4116199c-d519-4c01-997d-2d5a0f0a93ef
   version: 1
   installationRoutineCheckpoint:
     _installationRoutineId: 
@@ -5057,7 +5057,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blockId: 81f55626-5fad-45e9-a1df-184f330da7ba
-  instanceId: f340dcda-f752-4735-8420-08b6b9486b62
+  instanceId: 359c9db9-088a-429e-8e17-6f212516056d
   version: 1
   installationRoutineCheckpoint:
     _installationRoutineId: 
@@ -10109,7 +10109,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blockId: 0393ca30-f2a9-4865-a40f-f9a68d01c3a9
-  instanceId: 8519e7ff-61ee-4a06-968a-3b4a5b1f06aa
+  instanceId: 25b14eee-8b24-474a-b061-94fec93a13b6
   version: 1
   installationRoutineCheckpoint:
     _installationRoutineId: 
@@ -17357,7 +17357,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blockId: 8b26b298-7bf4-490e-b245-a039c0184303
-  instanceId: 0e8c08fa-0f08-4e10-8eed-83267dcd9044
+  instanceId: b4f9ace0-a544-4a47-b601-20dd50cb9d01
   version: 1
   installationRoutineCheckpoint:
     _installationRoutineId: 
@@ -18474,7 +18474,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blockId: 8b26b298-7bf4-490e-b245-a039c0184303
-  instanceId: 42ae9de3-a585-44a9-96d1-1bed3a4cf0b5
+  instanceId: 81f93e94-cbe5-4799-bfa8-c0bc9160c355
   version: 1
   installationRoutineCheckpoint:
     _installationRoutineId: 
@@ -24532,7 +24532,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blockId: 5817f7c0-f2a5-45f9-a5ca-64264e0166e8
-  instanceId: e9f5d4d8-9bfa-496f-ac13-b7ac68b2bab1
+  instanceId: 69394a43-c28a-4fc8-8fc5-7b0efcd77ba0
   version: 1
   installationRoutineCheckpoint:
     _installationRoutineId: 
@@ -25969,7 +25969,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blockId: e47682b9-c270-40b1-b16d-90b627a5ce1b
-  instanceId: d6604288-b9b3-42cc-b998-003cec20abba
+  instanceId: cf738323-582c-43fb-8b0c-aef7945bc601
   version: 1
   installationRoutineCheckpoint:
     _installationRoutineId: 
@@ -26215,8 +26215,13 @@ MonoBehaviour:
   screenMaterial: {fileID: 2100000, guid: f83ff83cc6309904680efd6dd40d17e9, type: 2}
   underwaterProfile: {fileID: 11400000, guid: 46bc37978bb004440a8b3fa45843f427, type: 2}
   _audioSource: {fileID: 1924983338837846761}
-  stairsSound: {fileID: 5867502737926614113}
-  drowiningSound: {fileID: 2634365602933484253}
+  sfxSound: {fileID: 0}
+  electricityShock: {fileID: 5867502737926614113}
+  stairsClip: {fileID: 0}
+  confettiClip: {fileID: 0}
+  lossClip: {fileID: 0}
+  partyhornClip: {fileID: 0}
+  confetti: {fileID: 0}
 --- !u!114 &2964031266070254814
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26240,8 +26245,8 @@ AudioSource:
   m_GameObject: {fileID: 8388639224674664262}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: -8583495289018399276, guid: d09f38e0f944a2f4b90473f9b15c50cb, type: 2}
-  m_audioClip: {fileID: 8300000, guid: 8e1403a26e6d42b4689140e82009af6e, type: 3}
+  OutputAudioMixerGroup: {fileID: -4022930909100350339, guid: d09f38e0f944a2f4b90473f9b15c50cb, type: 2}
+  m_audioClip: {fileID: 8300000, guid: 151585fcc38c5b6478663a8f69a5f6ed, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
