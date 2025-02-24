@@ -68,6 +68,7 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] private AudioClip confettiClip;
     [SerializeField] private AudioClip lossClip;
     [SerializeField] private AudioClip partyhornClip;
+    [SerializeField] private GameObject confetti;
     
     //[SerializeField] private AudioSource drowiningSound;
     private AudioClip _introducingTVClip;
@@ -85,6 +86,7 @@ private bool gameOver ;
 
     private void Start()
     {
+        confetti.SetActive(false);
         //DeactivateTeleportInteractor();
         ActivateTeleportInteractor();
         DeactivateRayInteractor();
@@ -315,6 +317,7 @@ gameOver = false;
         }
         else if (_gameState == GameManager.GameState.Win)
         {
+            confetti.SetActive(true);
             sfxSound.PlayOneShot(confettiClip);
             sfxSound.PlayOneShot(partyhornClip);
         }
