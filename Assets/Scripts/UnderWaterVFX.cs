@@ -27,11 +27,16 @@ public class UnderWaterVFX : MonoBehaviour
     [SerializeField] private float distortionStrength = 0.1f;
     private float currentDistortion = 0.0f;
     private WaterBehaviour waterBehaviour;
-    
-  
+
+    private bool gameover;
     private float timer = 0;
+    private void Awake()
+    {
+        GameManager.OnGameStateChanged += HandleGameStateChanged;
+    }
     void Start()
     {
+        gameover = false;
         waterBehaviour = FindObjectOfType<WaterBehaviour>();
         underwaterProfile.TryGet(out colorAdjustments);
         colorAdjustments.contrast.overrideState = true;
@@ -82,9 +87,21 @@ public class UnderWaterVFX : MonoBehaviour
            
         }
     }
+    private void HandleGameStateChanged(GameManager.GameState gameState)
+    {
+        if (gameState is GameManager.GameState.Drowned or GameManager.GameState.Win
+            or GameManager.GameState.ElectricShock)
+        {
+           bubbles.Stop();
+        }
+    }
+    private void OnDestroy()
+    {
+        GameManager.OnGameStateChanged -= HandleGameStateChanged;
+    }
     IEnumerator FadeParticleSystems(bool enable, float duration)
     {
-        ParticleSystem.MainModule mainModule = bubbles.main; // Store a copy of the MainModule
+        ParticleSystem.MainModule mainModule = bubbles.main; 
         Color startColor = mainModule.startColor.color;
         float startAlpha = startColor.a;
         float targetAlpha = enable ? 1f : 0f;

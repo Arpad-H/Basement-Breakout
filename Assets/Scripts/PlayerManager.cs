@@ -63,14 +63,21 @@ public class PlayerManager : MonoBehaviour
 
     [SerializeField] private VolumeProfile underwaterProfile;
     [SerializeField] private AudioSource _audioSource;
-    [SerializeField] private AudioSource stairsSound;
-    [SerializeField] private AudioSource drowiningSound;
+    [SerializeField] private AudioSource sfxSound;
+    [SerializeField] private AudioClip stairsClip;
+    [SerializeField] private AudioClip confettiClip;
+    [SerializeField] private AudioClip lossClip;
+    [SerializeField] private AudioClip partyhornClip;
+    [SerializeField] private GameObject confetti;
+    
+    //[SerializeField] private AudioSource drowiningSound;
     private AudioClip _introducingTVClip;
     private OVRManager _ovrManager;
     private bool _setPlayerAtStartMenue = false;
 private bool gameOver ;
     private Vignette vignette;
     private ColorAdjustments colorAdjustments;
+    private GameManager.GameState _gameState;
 
     private void Awake()
     {
@@ -79,6 +86,7 @@ private bool gameOver ;
 
     private void Start()
     {
+        confetti.SetActive(false);
         //DeactivateTeleportInteractor();
         ActivateTeleportInteractor();
         DeactivateRayInteractor();
@@ -258,6 +266,7 @@ gameOver = false;
         if (gameState is GameManager.GameState.Drowned or GameManager.GameState.Win
             or GameManager.GameState.ElectricShock)
         {
+            _gameState = gameState;
             //AcivatePassthrough();
 
             //DeactivateTeleportInteractor();
@@ -297,6 +306,21 @@ gameOver = false;
         ActivateTeleportInteractor();
 
         yield return StartCoroutine(Fade(0f, 0.5f));
+        PlayGameOversound();
+    }
+
+    private void PlayGameOversound()
+    {
+        if (_gameState == GameManager.GameState.Drowned || _gameState == GameManager.GameState.ElectricShock)
+        {
+           sfxSound.PlayOneShot(lossClip);
+        }
+        else if (_gameState == GameManager.GameState.Win)
+        {
+            confetti.SetActive(true);
+            sfxSound.PlayOneShot(confettiClip);
+            sfxSound.PlayOneShot(partyhornClip);
+        }
     }
 
     IEnumerator TransitionToBlack()
@@ -304,17 +328,17 @@ gameOver = false;
         yield return StartCoroutine(Fade(1f, 0.5f));
 
 
-        stairsSound.Play();
+        sfxSound.PlayOneShot(stairsClip);
         DeactivateRayInteractor();
         SetPlayerPositionToStartGame();
 
 
-        yield return new WaitForSeconds(2f);
-        stairsSound.Stop();
+        yield return new WaitForSeconds(stairsClip.length);
+        sfxSound.Stop();
         ActivateTeleportInteractor();
         _audioSource.Play();
 
-        yield return StartCoroutine(Fade(0f, 0.5f));
+        yield return StartCoroutine(Fade(0f, 1f));
     }
 
     IEnumerator Fade(float targetAlpha, float duration)

@@ -10,14 +10,17 @@ public class burstingWindow : MonoBehaviour
     // [SerializeField] GameObject solidWindow;
     [SerializeField] GameObject shatteredWindow;
     ParticleSystem ps;
+    TraumaInducer traumaInducer;
 
     private void Awake()
     {
+        traumaInducer = GetComponent<TraumaInducer>();
         ps = shatteredWindow.GetComponent<ParticleSystem>();
     }
     public void BurstWindow() {
-        Debug.LogError("Bursting window");
         ps.Play();
+        StartCoroutine(shakeCamera());
+        
         // StartCoroutine(BurstWindowCorutine());
     }
     // IEnumerator BurstWindowCorutine() {
@@ -42,4 +45,15 @@ public class burstingWindow : MonoBehaviour
     //     yield return new WaitForSeconds(5);
     //     Destroy(this.GameObject());
     // }
+
+public IEnumerator shakeCamera() {
+    float time = 0;
+    while (time < 2)
+    {
+        traumaInducer.InduceTrauma();
+        time += Time.deltaTime;
+        yield return null;
+    }
+    yield return null;
+}
 }
