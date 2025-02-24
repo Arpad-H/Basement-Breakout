@@ -1,26 +1,56 @@
 fileFormatVersion: 2
 guid: abc00000000006620289098120313095
 ModelImporter:
-  serializedVersion: 23
-  fileIDToRecycleName:
-    100000: //RootNode
-    100002: SM_Rug_01_LOD0
-    100004: SM_Rug_01_LOD1
-    400000: //RootNode
-    400002: SM_Rug_01_LOD0
-    400004: SM_Rug_01_LOD1
-    2100000: MI_Carpet_01
-    2300000: SM_Rug_01_LOD0
-    2300002: SM_Rug_01_LOD1
-    3300000: SM_Rug_01_LOD0
-    3300002: SM_Rug_01_LOD1
-    4300000: SM_Rug_01_LOD0
-    4300002: SM_Rug_01_LOD1
-    4300004: SM_Rug_01_ConvexHulls
-    20500000: //RootNode
+  serializedVersion: 22200
+  internalIDToNameTable:
+  - first:
+      1: 100000
+    second: //RootNode
+  - first:
+      1: 100002
+    second: SM_Rug_01_LOD0
+  - first:
+      1: 100004
+    second: SM_Rug_01_LOD1
+  - first:
+      4: 400000
+    second: //RootNode
+  - first:
+      4: 400002
+    second: SM_Rug_01_LOD0
+  - first:
+      4: 400004
+    second: SM_Rug_01_LOD1
+  - first:
+      21: 2100000
+    second: MI_Carpet_01
+  - first:
+      23: 2300000
+    second: SM_Rug_01_LOD0
+  - first:
+      23: 2300002
+    second: SM_Rug_01_LOD1
+  - first:
+      33: 3300000
+    second: SM_Rug_01_LOD0
+  - first:
+      33: 3300002
+    second: SM_Rug_01_LOD1
+  - first:
+      43: 4300000
+    second: SM_Rug_01_LOD0
+  - first:
+      43: 4300002
+    second: SM_Rug_01_LOD1
+  - first:
+      43: 4300004
+    second: SM_Rug_01_ConvexHulls
+  - first:
+      205: 20500000
+    second: //RootNode
   externalObjects: {}
   materials:
-    importMaterials: 1
+    materialImportMode: 1
     materialName: 1
     materialSearch: 1
     materialLocation: 0
@@ -29,6 +59,7 @@ ModelImporter:
     bakeSimulation: 0
     resampleCurves: 1
     optimizeGameObjects: 0
+    removeConstantScaleCurves: 0
     motionNodeName: 
     rigImportErrors: 
     rigImportWarnings: 
@@ -36,41 +67,67 @@ ModelImporter:
     animationImportWarnings: 
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
     animationCompression: 1
     animationRotationError: 0.5
     animationPositionError: 0.5
     animationScaleError: 0.5
     animationWrapMode: 0
     extraExposedTransformPaths: []
+    extraUserProperties: []
     clipAnimations: []
     isReadable: 1
   meshes:
-    lODScreenPercentages: []
+    lODScreenPercentages:
+    - 0.25
+    - 0.01
     globalScale: 1
     meshCompression: 0
     addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importPhysicalCameras: 1
+    importVisibility: 1
     importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    nodeNameCollisionStrategy: 0
+    fileIdsGeneration: 1
     swapUVChannels: 0
-    generateSecondaryUV: 0
+    generateSecondaryUV: 1
     useFileUnits: 1
-    optimizeMeshForGPU: 0
     keepQuads: 0
     weldVertices: 0
+    bakeAxisConversion: 0
     preserveHierarchy: 0
-    indexFormat : 2
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    optimizeBones: 1
+    meshOptimizationFlags: 1
+    indexFormat: 2
     secondaryUVAngleDistortion: 8
-    secondaryUVAreaDistortion: 15.000001
+    secondaryUVAreaDistortion: 15
     secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 1
+    secondaryUVMinLightmapResolution: 20
+    secondaryUVMinObjectScale: 1
     secondaryUVPackMargin: 4
     useFileScale: 1
+    strictVertexDataChecks: 0
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0
     tangentImportMode: 0
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
   importAnimation: 1
-  copyAvatar: 0
   humanDescription:
-    serializedVersion: 2
+    serializedVersion: 3
     human: []
     skeleton: []
     armTwist: 0.5
@@ -80,15 +137,20 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
+    globalScale: 1
     rootMotionBoneName: 
-    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
     hasTranslationDoF: 0
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 2
   humanoidOversampling: 1
+  avatarSetup: 1
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 0
+  importBlendShapeDeformPercent: 0
+  remapMaterialsIfMaterialImportModeIsNone: 1
   additionalBone: 0
   userData: 
   assetBundleName: 
-  assetBundleVariant:
+  assetBundleVariant: 
