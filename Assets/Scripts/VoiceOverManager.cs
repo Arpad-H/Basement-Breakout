@@ -244,7 +244,11 @@ public class VoiceOverManager : MonoBehaviour
     private void ForcePlaySound(AudioSource audioSource)
     {
         Debug.Log($"[VoiceOverManager] ForcePlaySound {audioSource.clip.name}");
-        currentlyPlayingSource.Stop();
+        if (currentlyPlayingSource != null && currentlyPlayingSource.isPlaying)
+        {
+            currentlyPlayingSource.Stop();
+        }
+        
         currentlyPlayingSource = audioSource;
         currentlyPlayingSource.Play();
         // currentlyPlayingSource.PlayOneShot(audioSource.clip);
