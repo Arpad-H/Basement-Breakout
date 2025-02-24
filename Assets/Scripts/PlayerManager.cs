@@ -81,7 +81,7 @@ private bool gameOver ;
     private Vignette vignette;
     private ColorAdjustments colorAdjustments;
     private GameManager.GameState _gameState;
-
+private TraumaInducer traumaInducer;
     private void Awake()
     {
         GameManager.OnGameStateChanged += HandleGameStateChanged;
@@ -89,6 +89,7 @@ private bool gameOver ;
 
     private void Start()
     {
+        traumaInducer = electrocutionSparks.GetComponent<TraumaInducer>();
         confetti.SetActive(false);
         electrocutionSparks.SetActive(false);
         //DeactivateTeleportInteractor();
@@ -275,6 +276,7 @@ gameOver = false;
             {
                 electricityShock.Play();
                 electrocutionSparks.SetActive(true);
+                StartCoroutine(shakeCamera(1));
             }
             if (!gameOver)
             {
@@ -371,7 +373,16 @@ gameOver = false;
 
         screenMaterial.SetFloat("_alpha", targetAlpha);
     }
-
+    public IEnumerator shakeCamera(float duration) {
+        float time = 0;
+        while (time < duration)
+        {
+            traumaInducer.InduceTrauma();
+            time += Time.deltaTime;
+            yield return null;
+        }
+        yield return null;
+    }
 
     void OnTriggerEnter(Collider other)
     {
