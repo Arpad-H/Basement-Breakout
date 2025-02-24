@@ -104,11 +104,11 @@ private void OnGameStateChanged(GameManager.GameState newState)
         isGameOverMode = false;
         steps = new string[]
         {
-            "Willkommen! Drücke A, um fortzufahren.",
-            "Schiebe den Analogstick nach vorne um zu sehen wohin du dich teleportierst",
+            "Willkommen! Drücke A um fortzufahren.",
+            "Schiebe den Stick nach vorne um zu sehen, wohin du dich teleportierst.",
             "Drehe die Kamera, indem du den Stick nach links oder rechts bewegst.",
             "Greife Objekte mit der unteren Taste.",
-            "Interagiere mit objeketen während du sie in der Hand hälst und, indem du die hintere Taste drückst.",
+            "Benutze Objekte indem du die hintere Taste drückst, wenn sie in deiner Hand sind.",
             "Gehe durch die Tür, um das Spiel zu starten!"
         };
         currentPage = 0;
@@ -123,7 +123,7 @@ private void OnGameStateChanged(GameManager.GameState newState)
         {
             "Herzlichen Glückwunsch!",
             "Du hast gewonnen.",
-            "Drücke A, um neu zu starten."
+            "Drücke A um neuzustarten."
         };
         currentPage = 0;
         headerText.text = "Gewonnen!";
@@ -138,7 +138,7 @@ private void OnGameStateChanged(GameManager.GameState newState)
             "Oh nein!",
             "Du bist ertrunken.",
             "Versuche beim nächsten mal eher zu fliehen.",
-            "Drücke A, um neu zu starten."
+            "Drücke A um neuzustarten."
         };
         currentPage = 0;
         headerText.text = "Game Over";
@@ -183,7 +183,11 @@ private void OnGameStateChanged(GameManager.GameState newState)
         if (tutorialControllerImage != null && tutorialControllerSprites != null && tutorialControllerSprites.Length > currentPage)
         {
             tutorialControllerImage.sprite = tutorialControllerSprites[currentPage];
+        } if (isGameOverMode)
+        {
+            tutorialControllerImage.sprite = tutorialControllerSprites[0];    
         }
+       
     }
 
     /// <summary>
