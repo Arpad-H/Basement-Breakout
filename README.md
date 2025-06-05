@@ -18,6 +18,8 @@ Mit unserem Projekt "Basement Breakout" präsentieren wir ein immersives Erlebni
 
 Wir wollen damit ein Bewusstsein für die Gefahr schaffen, während das Wasser immer höher steigt. Gleichzeitig besteht die Herausforderung darin, die richtige Entscheidung zu treffen, da es mehrere Fluchtwege gibt. Die Teilnehmenden müssen abwägen, welcher Weg der richtige ist – anstatt panisch jeden Weg auszuprobieren.
 
+Es wurde für die Meta Quest 3 entwickelt und die Performance wurde für eine standalone Version getuned. Basement Breakout ist damit auf Messen, Lehrveranstaltungen sowie Schulungen einsätzbar.
+
 ## Presse
 Maiweg, Armin. 2025. „Wie Osnabrücker Studierende eine VR-Simulation gegen Starkregen-Gefahren entwickeln“. HasePost. https://www.hasepost.de/wie-osnabruecker-studierende-eine-vr-simulation-gegen-starkregen-gefahren-entwickeln-575830/ (19. März 2025).
 
